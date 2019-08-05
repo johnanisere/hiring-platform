@@ -5,6 +5,7 @@ import compression from 'compression';
 import morgan from 'morgan';
 import graphQLHTTP from 'express-graphql';
 import path from 'path';
+import mongoose from 'mongoose';
 
 import apiRouter from './routes/index';
 import schema from './schema';
