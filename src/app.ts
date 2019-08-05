@@ -1,3 +1,4 @@
+import dotenv from 'dotenv';
 import createError from 'http-errors';
 import express from 'express';
 import cors from 'cors';
@@ -5,12 +6,16 @@ import compression from 'compression';
 import morgan from 'morgan';
 import graphQLHTTP from 'express-graphql';
 import path from 'path';
-
+import dbConnection from './config/db';
 import apiRouter from './routes/index';
 import usersRouter from './routes/users';
 import schema from './schema';
-
+dotenv.config();
 const app = express();
+
+dbConnection.once('open', function() {
+  console.log('MongoDB database connection established successfully');
+});
 
 // Setup Request logging
 const logFormat = process.env.NODE_ENV === 'production' ? 'combined' : 'dev';
