@@ -6,13 +6,14 @@ import morgan from 'morgan';
 import graphQLHTTP from 'express-graphql';
 import path from 'path';
 import mongoose from 'mongoose';
+import MONGO_URI from './config/db';
 
 import apiRouter from './routes/index';
 import schema from './schema';
 
 const app = express();
 
-mongoose.connect('mongodb://localhost:27017/test', { useNewUrlParser: true });
+mongoose.connect(MONGO_URI, { useNewUrlParser: true });
 
 const connection = mongoose.connection;
 
