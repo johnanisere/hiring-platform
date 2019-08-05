@@ -9,6 +9,7 @@ import path from 'path';
 import seed from './db/seed';
 import dbConnection from './db';
 import apiRouter from './routes/index';
+import usersRouter from './routes/users';
 import schema from './schema';
 
 dotenv.config();
@@ -55,6 +56,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 
 app.use('/api', apiRouter);
+app.use('/users', usersRouter);
 
 app.use(
   '/graphql',
