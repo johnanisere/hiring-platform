@@ -7,6 +7,7 @@ import graphQLHTTP from 'express-graphql';
 import path from 'path';
 
 import apiRouter from './routes/index';
+import usersRouter from './routes/users';
 import schema from './schema';
 
 const app = express();
@@ -47,6 +48,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 
 app.use('/api', apiRouter);
+app.use('/users', usersRouter);
 
 app.use(
   '/graphql',
