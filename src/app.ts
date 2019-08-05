@@ -12,6 +12,14 @@ import schema from './schema';
 
 const app = express();
 
+mongoose.connect('mongodb://localhost:27017/test', { useNewUrlParser: true });
+
+const connection = mongoose.connection;
+
+connection.once('open', function() {
+  console.log('MongoDB database connection established successfully');
+});
+
 // Setup Request logging
 const logFormat = process.env.NODE_ENV === 'production' ? 'combined' : 'dev';
 
