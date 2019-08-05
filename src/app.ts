@@ -1,3 +1,4 @@
+import dotenv from 'dotenv';
 import createError from 'http-errors';
 import express from 'express';
 import cors from 'cors';
@@ -5,19 +6,13 @@ import compression from 'compression';
 import morgan from 'morgan';
 import graphQLHTTP from 'express-graphql';
 import path from 'path';
-import mongoose from 'mongoose';
-import MONGO_URI from './config/db';
-
+import dbConnection from './config/db';
 import apiRouter from './routes/index';
 import schema from './schema';
-
+dotenv.config();
 const app = express();
 
-mongoose.connect(MONGO_URI, { useNewUrlParser: true });
-
-const connection = mongoose.connection;
-
-connection.once('open', function() {
+dbConnection.once('open', function() {
   console.log('MongoDB database connection established successfully');
 });
 
