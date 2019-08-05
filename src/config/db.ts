@@ -1,3 +1,8 @@
-const MONGO_URL = 'mongodb://localhost:27017/test';
+import mongoose from 'mongoose';
+import { MONGO_URL } from './index';
 
-export default MONGO_URL;
+mongoose.connect(MONGO_URL, { useNewUrlParser: true });
+
+const connection = mongoose.connection;
+
+export default connection;
