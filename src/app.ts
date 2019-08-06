@@ -9,6 +9,7 @@ import path from 'path';
 import dbConnection from './config/db';
 import apiRouter from './routes/index';
 import schema from './schema';
+import interviewRoutes from './routes/interviews';
 dotenv.config();
 const app = express();
 
@@ -51,8 +52,6 @@ app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 
-app.use('/api', apiRouter);
-
 app.use(
   '/graphql',
   graphQLHTTP({
@@ -60,6 +59,9 @@ app.use(
     graphiql: true,
   }),
 );
+
+app.use('/api', interviewRoutes);
+app.use('/api', apiRouter);
 
 if (process.env.NODE_ENV === 'production') {
   app.use(express.static(path.join(__dirname, '../', 'client/build')));
