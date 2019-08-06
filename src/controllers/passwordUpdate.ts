@@ -7,16 +7,21 @@ export default async function updatePassword(
   _next: NextFunction,
 ) {
   try {
-    const user = await User.findById(req.body.id);
-    console.log(user);
-
-    if (!user) return 'User not found!!!';
-    user.password = req.body.newPassword;
-    const updated = await user.save();
-    return res.status(200).json({
-      message: 'Password updated',
-      updated,
-    });
+    const user = await User.findOne({ email: req.body.email });
+    if (!user) {
+      return res.send('User not found!!!');
+    } else {
+      user.password = req.body.newPassword;
+      const updated = await user.save();
+      return res.status(200).send({
+        message: 'Password updated',
+        updated: {
+          name: updated.name,
+          email: updated.email,
+          phone: updated.phone,
+        },
+      });
+    }
   } catch (err) {
     console.log(err.message);
     return res.status(400).json({
