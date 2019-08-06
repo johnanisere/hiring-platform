@@ -6,7 +6,7 @@ import compression from 'compression';
 import morgan from 'morgan';
 import graphQLHTTP from 'express-graphql';
 import path from 'path';
-// import seed from "./db/seed";
+import seed from './db/seed';
 import dbConnection from './db';
 import apiRouter from './routes/index';
 import schema from './schema';
@@ -15,8 +15,8 @@ dotenv.config();
 const app = express();
 
 dbConnection.once('open', function() {
-  // seed();
-  // console.log('MongoDB database connection established successfully');
+  seed();
+  console.log('MongoDB database connection established successfully');
 });
 
 // Setup Request logging

@@ -6,7 +6,7 @@ const cleanDb = async () => {
     console.log('succesfully cleared db');
     return await User.deleteMany({});
   } catch (err) {
-    console.log('Error: occured');
+    console.log('Error: occured', err);
     return err;
   }
 };
@@ -31,7 +31,7 @@ const seed = () => {
       return seedUsers();
     })
     .then(res =>
-      console.log(`database has been seeded with ${res.length} users`),
+      console.log(`Database has been seeded with ${res.length} users`),
     )
     .catch(err => {
       console.log({ err });
