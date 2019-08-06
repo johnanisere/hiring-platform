@@ -8,7 +8,8 @@
   "scripts": {
     "postinstall": "tsc",
     "build": "scripts/build.sh",
-    "start": "bin/www",
+    "start": "tsc --w bin/www",
+    "dev": "nodemon app",
     "test": "jest",
     "client:start": "cd client; yarn start"
   },

@@ -6,12 +6,12 @@ export interface IUser extends mongoose.Document {
   role: string;
   name: string;
   profilePhoto: string;
-  skills?: [string];
-  publications: string;
+  skills?: string[];
+  publications?: string[];
   cv?: string;
   bio?: string;
-  notifications: string;
-  contactPerson: string;
+  notifications: string[];
+  contactPerson?: string;
   phone: string;
   companyURL?: string;
   address: string;
@@ -24,15 +24,18 @@ const UserSchema: Schema = new Schema(
     role: { type: String },
     name: { type: String, required: true },
     profilePhoto: { type: String },
-    skills: { type: mongoose.Schema.Types.ObjectId, ref: 'Skill' },
-    publications: { type: mongoose.Schema.Types.ObjectId, ref: 'Publication' },
+    skills: { type: mongoose.Schema.Types.ObjectId, ref: 'Skills' },
+    publications: { type: mongoose.Schema.Types.ObjectId, ref: 'Publications' },
     cv: { type: String },
     bio: { type: String },
-    notifications: { type: String },
+    notifications: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: 'Notifications',
+    },
     contactPerson: { type: String },
     phone: { type: String, required: true },
     companyURL: { type: String },
-    address: { type: String, required: true },
+    address: { type: String },
   },
   { timestamps: true },
 );
