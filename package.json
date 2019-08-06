@@ -9,7 +9,7 @@
     "postinstall": "tsc",
     "build": "scripts/build.sh",
     "start": "bin/www",
-    "test": "jest",
+    "test": "jest --watchAll",
     "client:start": "cd client; yarn start"
   },
   "dependencies": {
