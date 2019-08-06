@@ -16,7 +16,6 @@ const InterviewsSchema: Schema = new Schema({
   time: { type: String, required: true },
   description: { type: String, required: true },
   accepted: { type: Boolean },
-  user: { type: Schema.Types.ObjectId, ref: 'User' },
 });
 
 export default mongoose.model<IInterviews>('Interviews', InterviewsSchema);
