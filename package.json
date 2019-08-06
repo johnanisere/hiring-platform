@@ -8,8 +8,8 @@
   "scripts": {
     "postinstall": "tsc",
     "build": "scripts/build.sh",
-    "start": "nodemon bin/www",
-    "test": "jest",
+    "start": "bin/www",
+    "test": "jest --watchAll",
     "client:start": "cd client; yarn start"
   },
   "dependencies": {
