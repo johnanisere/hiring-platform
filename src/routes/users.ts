@@ -1,13 +1,12 @@
 import { Router } from 'express';
-// import { authMiddleware } from '../middleware/auth';
+import { authMiddleware } from '../middleware/auth';
 import createUser from '../controllers/authentication';
+import updatePassword from '../controllers/passwordUpdate';
 
 const router = Router();
 
 router.post('/', createUser);
 
-router.post('/', async function(_req, res, _next) {
-  res.send('update password');
-});
+router.put('/passwordUpdate/', authMiddleware, updatePassword);
 
 export default router;
