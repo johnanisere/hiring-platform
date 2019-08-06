@@ -8,6 +8,7 @@ import graphQLHTTP from 'express-graphql';
 import path from 'path';
 import dbConnection from './config/db';
 import apiRouter from './routes/index';
+import usersRouter from './routes/users';
 import schema from './schema';
 import interviewRoutes from './routes/interviews';
 dotenv.config();
@@ -51,6 +52,9 @@ app.use(compression());
 app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
+
+app.use('/api', apiRouter);
+app.use('/users', usersRouter);
 
 app.use(
   '/graphql',
