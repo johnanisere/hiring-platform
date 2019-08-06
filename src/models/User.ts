@@ -33,6 +33,7 @@ const UserSchema: Schema = new Schema(
     phone: { type: String, required: true },
     companyURL: { type: String },
     address: { type: String, required: true },
+    interviews: { type: mongoose.Schema.Types.ObjectId, ref: 'Interviews' },
   },
   { timestamps: true },
 );
