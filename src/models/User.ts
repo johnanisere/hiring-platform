@@ -32,7 +32,7 @@ const UserSchema: Schema = new Schema(
     contactPerson: { type: String },
     phone: { type: String, required: true },
     companyURL: { type: String },
-    address: { type: String, required: true },
+    address: { type: String },
   },
   { timestamps: true },
 );
