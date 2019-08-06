@@ -22,8 +22,6 @@ export default async function createUser(
     },
   );
 
-  console.log(token);
-
   res.json({
     ...data.toObject(), //res is a mongoose doc, so we turn it to an object.
     id: data._id,
