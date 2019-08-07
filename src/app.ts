@@ -10,6 +10,7 @@ import dbConnection from './config/db';
 import apiRouter from './routes/index';
 import usersRouter from './routes/users';
 import schema from './schema';
+import interviewRoutes from './routes/interviews';
 dotenv.config();
 const app = express();
 const swaggerUi = require('swagger-ui-express');
