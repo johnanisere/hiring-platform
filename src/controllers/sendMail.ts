@@ -23,12 +23,21 @@ const msg = (to: String, password: String, link: String) => {
           email: to,
           password: password,
           link: link,
+          Sender_Name: 'Decagon Institute',
+          Sender_Address:
+            '2nd Floor Traditions Building Familoni Street, off Lekki - Epe Express',
+          Sender_City: 'Lagos, Nigeria',
+          Sender_Zip: '101233',
         },
       },
     ],
     template_id: 'd-41ea1953a3dc4cfabd666b5b92073602',
   };
 };
+
+// 2nd Floor Traditions Building,
+//   Familoni Street, off Lekki - Epe Express,
+//     Lagos, Nigeria
 
 async function sendInviteMail(req: Request) {
   let to = req.body.email,
