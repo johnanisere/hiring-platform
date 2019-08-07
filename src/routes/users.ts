@@ -5,8 +5,8 @@ import updatePassword from '../controllers/passwordUpdate';
 
 const router = Router();
 
-router.post('/', createUser);
-
-router.put('/passwordUpdate/', updatePassword);
+router
+  .post('/hiring-partner/invite', createUser)
+  .put('/update-password/', updatePassword);
 
 export default router;
