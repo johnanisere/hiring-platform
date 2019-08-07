@@ -14,12 +14,8 @@ import schema from './schema';
 
 dotenv.config();
 const app = express();
-
 const swaggerUi = require('swagger-ui-express');
-const YAML = require('yamljs');
-const swaggerDocument = YAML.load('../doc.yaml');
-
-app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
+const swaggerDocument = require('../doc.json');
 
 dbConnection.once('open', function() {
   seed();
@@ -63,6 +59,7 @@ app.use(express.urlencoded({ extended: false }));
 
 app.use('/api', apiRouter);
 app.use('/users', usersRouter);
+app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
 
 app.use(
   '/graphql',
