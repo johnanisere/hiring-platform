@@ -5,7 +5,6 @@ import { Request, Response } from 'express';
 import sendInviteMail from '../controllers/sendMail';
 
 export default async function createUser(req: Request, res: Response) {
-  console.log('yh');
   const user = new User(req.body);
 
   const data = await user.save();
