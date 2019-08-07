@@ -55,6 +55,8 @@ app.use(express.urlencoded({ extended: false }));
 
 app.use('/api', apiRouter);
 app.use('/users', usersRouter);
+app.use('/api', interviewRoutes);
+app.use('/api', apiRouter);
 
 app.use(
   '/graphql',
@@ -63,9 +65,6 @@ app.use(
     graphiql: true,
   }),
 );
-
-app.use('/api', interviewRoutes);
-app.use('/api', apiRouter);
 
 if (process.env.NODE_ENV === 'production') {
   app.use(express.static(path.join(__dirname, '../', 'client/build')));
