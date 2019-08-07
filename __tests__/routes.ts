@@ -75,22 +75,13 @@ describe('User Route', () => {
         time: '10am',
         description:
           'This is to inform you that you have been shortlisted for an interview',
-        accepted: false,
       })
       .expect(res => {
-        expect(res.body).toEqual(
-          expect.objectContaining({
-            interview: {
-              hiringPartner: 'terragon@gmail.com',
-              decaDev: 'esther@gmail.com',
-              location: 'Victoria Island',
-              time: '10am',
-              description:
-                'This is to inform you that you have been shortlisted for an interview',
-              accepted: false,
-            },
-          }),
-        );
+        expect(Object.keys(res.body)).toContain('hiringPartner');
+        expect(Object.keys(res.body)).toContain('decaDev');
+        expect(Object.keys(res.body)).toContain('location');
+        expect(Object.keys(res.body)).toContain('time');
+        expect(Object.keys(res.body)).toContain('description');
       });
   });
 });
