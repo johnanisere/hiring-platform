@@ -6,6 +6,7 @@ import compression from 'compression';
 import morgan from 'morgan';
 import graphQLHTTP from 'express-graphql';
 import path from 'path';
+import seed from './db/seed';
 import dbConnection from './config/db';
 import apiRouter from './routes/index';
 import usersRouter from './routes/users';
@@ -17,6 +18,7 @@ const swaggerUi = require('swagger-ui-express');
 const swaggerDocument = require('../doc.json');
 
 dbConnection.once('open', function() {
+  seed();
   console.log('MongoDB database connection established successfully');
 });
 
