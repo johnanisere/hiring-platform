@@ -1,0 +1,116 @@
+{
+  "openapi": "3.0.1",
+  "info": {
+    "title": "Decagon Hiring App",
+    "description": "This is all the apis for the app",
+    "version": "0.1.9"
+  },
+  "servers": [
+    {
+      "url": "http://localhost:/3005/",
+      "description": "server for localhost can be any port for testing (development)"
+    }
+  ],
+  "paths": {
+    "/users/": {
+      "get": {
+        "tags": ["Users"],
+        "summary": "Gets all users.",
+        "description": "This returns a list of users of in the app in an array format",
+        "operationId": "getUsers",
+        "responses": {
+          "200": {
+            "summary": "operation successful",
+            "description": "A JSON array of all users (decadevs)",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/definitions/Users"
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "The specified user ID is invalid."
+          }
+        }
+      }
+    },
+    "/users": {
+      "post": {
+        "tags": ["Users"],
+        "summary": "creates a user",
+        "description": "This creates a user for by sending them an email and asking them to  verify in an hour time.\n",
+        "operationId": "createUser",
+        "requestBody": {
+          "required": true
+        },
+        "produces": ["application/json"],
+        "parameters": [
+          {
+            "name": "User",
+            "in": "body",
+            "description": "The user to create.",
+            "schema": {
+              "$ref": "#/definitions/User"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Succefully created"
+          },
+          "400": {
+            "description": "Link has expired, pls request for another"
+          }
+        }
+      }
+    }
+  },
+
+  "definitions": {
+    "User": {
+      "required": ["password"],
+      "properties": {
+        "name": {
+          "type": "string"
+        },
+        "email": {
+          "type": "string"
+        },
+        "phone": {
+          "type": "string"
+        },
+        "password": {
+          "type": "string"
+        }
+      }
+    },
+    "Users": {
+      "properties": {
+        "name": {
+          "type": "string"
+        },
+        "email": {
+          "type": "string"
+        },
+        "phone": {
+          "type": "string"
+        }
+      }
+    }
+  },
+  "Error": {
+    "properties": {
+      "code": {
+        "type": "string"
+      },
+      "message": {
+        "type": "string"
+      }
+    }
+  }
+}
