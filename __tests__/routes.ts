@@ -65,4 +65,44 @@ describe('User Route', () => {
         );
       });
   });
+  test('schedule interview', () => {
+    return request(app)
+      .post('/api/v1/interview/invite/:userId')
+      .send({
+        hiringPartner: 'terragon@gmail.com',
+        decaDev: 'esther@gmail.com',
+        location: 'Victoria Island',
+        time: '10am',
+        description:
+          'This is to inform you that you have been shortlisted for an interview',
+        accepted: false,
+      })
+      .expect(res => {
+        expect(res.body).toEqual(
+          expect.objectContaining({
+            interview: {
+              hiringPartner: 'terragon@gmail.com',
+              decaDev: 'esther@gmail.com',
+              location: 'Victoria Island',
+              time: '10am',
+              description:
+                'This is to inform you that you have been shortlisted for an interview',
+              accepted: false,
+            },
+          }),
+        );
+      });
+  });
+
+  test('lists all decadevs', () => {
+    return request(app)
+      .get('/api/v1/users/decadevs')
+      .expect(res => {
+        expect(res.body).toEqual(
+          expect.objectContaining({
+            message: 'No Decadevs found!',
+          }),
+        );
+      });
+  });
 });

@@ -6,16 +6,19 @@ import compression from 'compression';
 import morgan from 'morgan';
 import graphQLHTTP from 'express-graphql';
 import path from 'path';
+import seed from './db/seed';
 import dbConnection from './config/db';
 import apiRouter from './routes/index';
 import usersRouter from './routes/users';
 import schema from './schema';
+import interviewRoutes from './routes/interviews';
 dotenv.config();
 const app = express();
 const swaggerUi = require('swagger-ui-express');
 const swaggerDocument = require('../doc.json');
 
 dbConnection.once('open', function() {
+  seed();
   console.log('MongoDB database connection established successfully');
 });
 
@@ -54,8 +57,9 @@ app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 
-app.use('/api/v1/users', usersRouter);
 app.use('/api', apiRouter);
+app.use('/api/v1/users', usersRouter);
+app.use('/api/v1/interview', interviewRoutes);
 app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
 
 app.use(
