@@ -15,6 +15,12 @@ import schema from './schema';
 dotenv.config();
 const app = express();
 
+const swaggerUi = require('swagger-ui-express');
+const YAML = require('yamljs');
+const swaggerDocument = YAML.load('../doc.yaml');
+
+app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
+
 dbConnection.once('open', function() {
   seed();
   console.log('MongoDB database connection established successfully');
