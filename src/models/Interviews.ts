@@ -15,7 +15,7 @@ const InterviewsSchema: Schema = new Schema({
   location: { type: String, required: true },
   time: { type: String, required: true },
   description: { type: String, required: true },
-  accepted: { type: Boolean },
+  accepted: { type: Boolean, default: false },
 });
 
 export default mongoose.model<IInterviews>('Interviews', InterviewsSchema);
