@@ -1,11 +1,9 @@
 import { Request } from 'express';
+require('dotenv').config();
 
-// const sgMail = require('../send-grid/send-mail');
 const sgMail = require('@sendgrid/mail');
 
-sgMail.setApiKey(
-  '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',
-);
+sgMail.setApiKey(process.env.SENDGRID_API_KEY);
 
 const msg = (to: String, password: String, link: String) => {
   return {
@@ -35,10 +33,6 @@ const msg = (to: String, password: String, link: String) => {
   };
 };
 
-// 2nd Floor Traditions Building,
-//   Familoni Street, off Lekki - Epe Express,
-//     Lagos, Nigeria
-
 async function sendInviteMail(req: Request) {
   let to = req.body.email,
     password = req.body.password,
@@ -52,10 +46,8 @@ async function sendInviteMail(req: Request) {
       console.log({ err: err.response.body.errors });
     });
   try {
-    // sgMail.send(msg(to, password, link));
   } catch (err) {
     console.log(msg(to, password, link));
-    // console.log({ err });
   }
 }
 
