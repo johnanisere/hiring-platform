@@ -12,6 +12,8 @@ import usersRouter from './routes/users';
 import schema from './schema';
 dotenv.config();
 const app = express();
+const swaggerUi = require('swagger-ui-express');
+const swaggerDocument = require('../doc.json');
 
 dbConnection.once('open', function() {
   console.log('MongoDB database connection established successfully');
@@ -54,6 +56,7 @@ app.use(express.urlencoded({ extended: false }));
 
 app.use('/api/v1/users', usersRouter);
 app.use('/api', apiRouter);
+app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
 
 app.use(
   '/graphql',
