@@ -21,7 +21,7 @@ describe('User Route', () => {
 
   test('creates a user', () => {
     return request(app)
-      .post('/users/hiring-partner/invite')
+      .post('/api/v1/users/hiring-partner/invite')
       .send({
         name: 'Flutterwave',
         email: 'careers@flutterwave.com',
@@ -47,7 +47,7 @@ describe('User Route', () => {
 
   test('updates password', () => {
     return request(app)
-      .put('/users/update-password/')
+      .put('/api/v1/users/update-password/')
       .send({
         email: 'careers@flutterwave.com',
         newPassword: 'newsecret',
