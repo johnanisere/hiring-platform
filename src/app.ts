@@ -57,6 +57,7 @@ app.use(express.urlencoded({ extended: false }));
 
 app.use('/api', apiRouter);
 app.use('/api/v1/users', usersRouter);
+app.use('/api/v1/interview', interviewRoutes);
 app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
 
 app.use(
