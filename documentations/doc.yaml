@@ -1,0 +1,57 @@
+openapi: 3.0.1
+info:
+  title: Decagon Hiring App
+  description: This is all the apis for the app
+  version: 0.1.9
+servers:
+  - url: http://localhost:/3000/
+    description: server for localhost can be any port for testing (development)
+paths:
+  /users:
+    post:
+      tag:
+        - Users
+      summary: creates a user
+      description: >
+        This creates a user for by sending them an email and asking them to 
+        verify in an hour time.
+      operationId: createUser
+      produces:
+        - application/json
+      parameters:
+        - name: User
+          in: body
+          description: The user to create.
+          schema:
+            $ref: '#/definitions/User'
+      responses:
+        '200':
+          description: Succefully created
+        '400':
+          description: Link has expired, pls request for another
+        '500':
+          $ref: '#/definitions/Standard500ErrorResponse'
+definitions:
+  User:
+    required:
+      - password
+    properties:
+      name:
+        type: string
+      email:
+        type: string
+      phone:
+        type: string
+      password:
+        type: string
+Error:
+  properties:
+    code:
+      type: string
+    message:
+      type: string
+responses:
+  Standard500ErrorResponse:
+    description: An unexpected error occured.
+    schema:
+      $ref: '#/definitions/Error'
