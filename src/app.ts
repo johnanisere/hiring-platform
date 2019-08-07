@@ -54,8 +54,8 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 
 app.use('/api', apiRouter);
-app.use('/users', usersRouter);
-app.use('/api', interviewRoutes);
+app.use('/api/v1/users', usersRouter);
+app.use('/api/v1', interviewRoutes);
 app.use('/api', apiRouter);
 
 app.use(
