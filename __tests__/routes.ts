@@ -65,4 +65,33 @@ describe('User Route', () => {
         );
       });
   });
+
+  test('schedule interview', () => {
+    return request(app)
+      .post('/api/interview/invite')
+      .send({
+        hiringPartner: 'terragon@gmail.com',
+        decaDev: 'esther@gmail.com',
+        location: 'Victoria Island',
+        time: '10am',
+        description:
+          'This is to inform you that you have been shortlisted for an interview',
+        accepted: false,
+      })
+      .expect(res => {
+        expect(res.body).toEqual(
+          expect.objectContaining({
+            interview: {
+              hiringPartner: 'terragon@gmail.com',
+              decaDev: 'esther@gmail.com',
+              location: 'Victoria Island',
+              time: '10am',
+              description:
+                'This is to inform you that you have been shortlisted for an interview',
+              accepted: false,
+            },
+          }),
+        );
+      });
+  });
 });
