@@ -1,5 +1,5 @@
 import request from 'supertest';
-
+import Interviews from '../src/models/Interviews';
 import app from '../src/app';
 
 const { connectMongoDB, disconnectMongoDB } = require('../testSetup/mongodb');
@@ -24,6 +24,9 @@ describe('User Route', () => {
         email: 'careers@flutterwave.com',
         phone: '08074382109',
         password: 'password',
+        profilePhoto:
+          'https://res.cloudinary.com/demo/image/upload/w_150,h_150,c_thumb,g_fac...',
+        role: 'Hiring Partner',
       })
       .expect(res => {
         expect(res.body).toEqual(
@@ -33,10 +36,12 @@ describe('User Route', () => {
             email: 'careers@flutterwave.com',
             password: expect.any(String),
             phone: expect.any(String),
+            profilePhoto: expect.any(String),
             token: expect.any(String),
             createdAt: expect.any(String),
             updatedAt: expect.any(String),
             id: expect.any(String),
+            role: expect.any(String),
           }),
         );
       });
@@ -62,9 +67,29 @@ describe('User Route', () => {
         );
       });
   });
+
+  test('lists all decadevs', () => {
+    return request(app)
+      .get('/api/v1/users/decadevs')
+      .expect(res => {
+        expect(res).toEqual(
+          expect.objectContaining({
+            email: 'janedoe@example.com',
+            name: 'Jane Mary',
+            phone: '08067890545',
+            password: 'mysecret',
+            role: 'dev',
+            profilePhoto: 'http://gravatar.com/profile_photo-1',
+            cv: 'resume-1',
+            bio: 'A very good dev',
+          }),
+        );
+      });
+  });
+
   test('schedule interview', () => {
     return request(app)
-      .post('/api/v1/interview/invite/:userId')
+      .post('/api/v1/interview/invite/')
       .send({
         hiringPartner: 'terragon@gmail.com',
         decaDev: 'esther@gmail.com',
@@ -72,30 +97,41 @@ describe('User Route', () => {
         time: '10am',
         description:
           'This is to inform you that you have been shortlisted for an interview',
-        accepted: false,
+        profilePhoto:
+          'https://res.cloudinary.com/demo/image/upload/w_150,h_150,c_thumb,g_fac...',
       })
       .expect(res => {
-        expect(res.body).toEqual(
-          expect.objectContaining({
-            interview: {
-              hiringPartner: 'terragon@gmail.com',
-              decaDev: 'esther@gmail.com',
-              location: 'Victoria Island',
-              time: '10am',
-              description:
-                'This is to inform you that you have been shortlisted for an interview',
-              accepted: false,
-            },
-          }),
-        );
+        expect(Object.keys(res.body)).toContain('hiringPartner');
+        expect(Object.keys(res.body)).toContain('decaDev');
+        expect(Object.keys(res.body)).toContain('location');
+        expect(Object.keys(res.body)).toContain('time');
+        expect(Object.keys(res.body)).toContain('description');
       });
   });
 
-  test('lists all decadevs', () => {
+  test('accept interview', async () => {
+    let id;
+    const interview = new Interviews({
+      hiringPartner: 'google@gmail.com',
+      decaDev: 'chukky@gmail.com',
+      location: 'Ikeja',
+      time: '9am',
+      description:
+        'This is to inform you that you have been shortlisted for an interview',
+      profilePhoto:
+        'https://res.cloudinary.com/demo/image/upload/w_150,h_150,c_thumb,g_fac...',
+    });
+
+    const savedInterview = await interview.save();
+
+    id = savedInterview._id;
+
     return request(app)
-      .get('/api/v1/users/decadevs')
+      .put(`/api/v1/interview/invite/${id}`)
+      .send({ accepted: true })
       .expect(res => {
-        expect(res.status).toBe(200);
+        expect(Object.keys(res.body.interview)).toContain('accepted');
+        expect(Object.keys(res.body.interview)).toContain('hiringPartner');
       });
   });
 });
