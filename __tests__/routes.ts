@@ -2,10 +2,7 @@ import request from 'supertest';
 import Interviews from '../src/models/Interviews';
 import app from '../src/app';
 
-const {
-  connectMongoDB,
-  disconnectMongoDB,
-} = require('../testSetup/mongodb.js');
+const { connectMongoDB, disconnectMongoDB } = require('../testSetup/mongodb');
 
 beforeAll(async () => await connectMongoDB());
 
