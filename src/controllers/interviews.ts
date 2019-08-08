@@ -2,7 +2,6 @@ import Interviews from '../models/Interviews';
 import { Request, Response } from 'express';
 import User from '../models/User';
 import { interviewValidation } from '../validator/interviewValidation';
-//import { celebrate, Joi } from 'celebrate';
 
 export const scheduleInterview = async (req: Request, res: Response) => {
   const { error } = interviewValidation(req.body);
