@@ -6,6 +6,7 @@ export interface IInterviews extends mongoose.Document {
   location: string;
   time: string;
   description: string;
+  profilePhoto: string;
   accepted: boolean;
 }
 
