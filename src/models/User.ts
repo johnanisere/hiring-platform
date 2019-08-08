@@ -16,13 +16,14 @@ export interface IUser extends mongoose.Document {
   phone: string;
   companyURL?: string;
   address: string;
+  interviews: Array<String>;
 }
 
 const UserSchema: Schema = new Schema(
   {
     email: { type: String, required: true, unique: true },
     password: { type: String, required: true },
-    role: { type: String },
+    role: { type: String, required: true },
     name: { type: String, required: true },
     profilePhoto: { type: String },
     skills: { type: mongoose.Schema.Types.ObjectId, ref: 'Skills' },
@@ -34,6 +35,7 @@ const UserSchema: Schema = new Schema(
     phone: { type: String, required: true },
     companyURL: { type: String },
     address: { type: String },
+    interviews: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Interviews' }],
   },
   { timestamps: true },
 );
