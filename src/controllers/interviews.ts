@@ -36,3 +36,16 @@ export const scheduleInterview = async (req: Request, res: Response) => {
     return res.status(404).json(`Error: ${error}`);
   }
 };
+
+export const acceptInterview = async (req: Request, res: Response) => {
+  try {
+    const interview = await Interviews.findByIdAndUpdate(
+      req.params.interviewId,
+      req.body,
+      { new: true },
+    );
+    return res.status(200).json({ interview });
+  } catch (error) {
+    return res.status(404).json(`Error: ${error}`);
+  }
+};
