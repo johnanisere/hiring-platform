@@ -2,10 +2,7 @@ import request from 'supertest';
 
 import app from '../src/app';
 
-const {
-  connectMongoDB,
-  disconnectMongoDB,
-} = require('../testSetup/mongodb.js');
+const { connectMongoDB, disconnectMongoDB } = require('../testSetup/mongodb');
 
 beforeAll(async () => await connectMongoDB());
 
@@ -98,11 +95,7 @@ describe('User Route', () => {
     return request(app)
       .get('/api/v1/users/decadevs')
       .expect(res => {
-        expect(res.body).toEqual(
-          expect.objectContaining({
-            message: 'No Decadevs found!',
-          }),
-        );
+        expect(res.status).toBe(400);
       });
   });
 });
