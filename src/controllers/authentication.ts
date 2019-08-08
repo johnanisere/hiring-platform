@@ -10,7 +10,7 @@ export default async function createUser(req: Request, res: Response) {
   const data = await user.save();
   const token = jwt.sign(
     {
-      id: data.id,
+      userId: data.id,
     },
     PRIVATE_KEY,
     {
