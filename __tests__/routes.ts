@@ -84,4 +84,16 @@ describe('User Route', () => {
         expect(Object.keys(res.body)).toContain('description');
       });
   });
+
+  test('lists all decadevs', () => {
+    return request(app)
+      .get('/api/v1/users/decadevs')
+      .expect(res => {
+        expect(res.body).toEqual(
+          expect.objectContaining({
+            message: 'No Decadevs found!',
+          }),
+        );
+      });
+  });
 });
