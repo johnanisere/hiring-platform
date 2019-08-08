@@ -1,5 +1,5 @@
 import request from 'supertest';
-
+//import Interviews from '../src/models/Interviews';
 import app from '../src/app';
 
 const {
@@ -107,3 +107,33 @@ describe('User Route', () => {
       });
   });
 });
+
+// describe('PUT/:id', () => {
+//   let id: any;
+
+//   const exec = async () => {
+//     return await request(app)
+//       .put('/api/v1/interview/invite/' + id)
+//       .send({ accepted: true });
+//   };
+
+//   beforeEach(async () => {
+//     const interview = new Interviews({
+//       hiringPartner: 'terragon@gmail.com',
+//       decaDev: 'esther@gmail.com',
+//       location: 'Victoria Island',
+//       time: '10am',
+//       description:
+//         'This is to inform you that you have been shortlisted for an interview',
+//     });
+
+//     id = interview._id;
+//   });
+
+//   it('testing', async () => {
+//     await exec();
+
+//     const updatedGenre = await Interviews.findById(id);
+//     expect(updatedGenre.accepted).toBe(true);
+//   });
+// });
