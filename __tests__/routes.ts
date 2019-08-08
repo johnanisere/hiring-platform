@@ -24,6 +24,8 @@ describe('User Route', () => {
         email: 'careers@flutterwave.com',
         phone: '08074382109',
         password: 'password',
+        profilePhoto:
+          'https://res.cloudinary.com/demo/image/upload/w_150,h_150,c_thumb,g_fac...',
         role: 'Hiring Partner',
       })
       .expect(res => {
@@ -34,6 +36,7 @@ describe('User Route', () => {
             email: 'careers@flutterwave.com',
             password: expect.any(String),
             phone: expect.any(String),
+            profilePhoto: expect.any(String),
             token: expect.any(String),
             createdAt: expect.any(String),
             updatedAt: expect.any(String),
@@ -94,6 +97,8 @@ describe('User Route', () => {
         time: '10am',
         description:
           'This is to inform you that you have been shortlisted for an interview',
+        profilePhoto:
+          'https://res.cloudinary.com/demo/image/upload/w_150,h_150,c_thumb,g_fac...',
       })
       .expect(res => {
         expect(Object.keys(res.body)).toContain('hiringPartner');
@@ -113,6 +118,8 @@ describe('User Route', () => {
       time: '9am',
       description:
         'This is to inform you that you have been shortlisted for an interview',
+      profilePhoto:
+        'https://res.cloudinary.com/demo/image/upload/w_150,h_150,c_thumb,g_fac...',
     });
 
     const savedInterview = await interview.save();
