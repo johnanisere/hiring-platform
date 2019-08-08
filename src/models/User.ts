@@ -25,7 +25,7 @@ const UserSchema: Schema = new Schema(
     password: { type: String, required: true },
     role: { type: String, required: true },
     name: { type: String, required: true },
-    profilePhoto: { type: String, required: true },
+    profilePhoto: { type: String },
     skills: { type: mongoose.Schema.Types.ObjectId, ref: 'Skills' },
     publications: { type: mongoose.Schema.Types.ObjectId, ref: 'Publications' },
     cv: { type: String },
@@ -40,10 +40,10 @@ const UserSchema: Schema = new Schema(
   { timestamps: true },
 );
 
-UserSchema.pre<IUser>('save', async function() {
+UserSchema.pre<IUser>('save', async function () {
   if (this.isModified('password')) {
     const salt = await bcrypt.genSalt(10);
-    this.password = await bcrypt.hash(this.password, salt);
+    this.password = await bcrypt.hash(this.password.toString(), salt);
   }
 });
 

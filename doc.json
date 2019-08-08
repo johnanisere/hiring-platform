@@ -11,10 +11,20 @@
       "description": "server for localhost can be any port for testing (development)"
     }
   ],
+  "tags": [
+    {
+      "name": "user",
+      "description": "Operations about Users"
+    },
+    {
+      "name": "interview",
+      "description": "Schedules of interviews"
+    }
+  ],
   "paths": {
     "/users/": {
       "get": {
-        "tags": ["Users"],
+        "tags": ["user"],
         "summary": "Gets all users.",
         "description": "This returns a list of users of in the app in an array format",
         "operationId": "getUsers",
@@ -39,11 +49,31 @@
         }
       }
     },
+    "/Users/devadevs": {
+      "get": {
+        "tags": ["user"],
+        "summary": "Lists all Decadevs on the platform",
+        "description": "Returns a list of all decadevs",
+        "operationId": "getAllDecadevs",
+        "produces": ["application/json"],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "$ref": "#/definitions/Decadev"
+            }
+          },
+          "404": {
+            "description": "No Decadevs found"
+          }
+        }
+      }
+    },
     "/users": {
       "post": {
-        "tags": ["Users"],
+        "tags": ["user"],
         "summary": "creates a user",
-        "description": "This creates a user for by sending them an email and asking them to  verify in an hour time.\n",
+        "description": "This creates a user for by sending them an email and asking them to verify in an hour time.\n",
         "operationId": "createUser",
         "requestBody": {
           "required": true
@@ -61,10 +91,93 @@
         ],
         "responses": {
           "200": {
-            "description": "Succefully created"
+            "description": "Successfully created"
           },
           "400": {
-            "description": "Link has expired, pls request for another"
+            "description": "Link has expired, please request for another."
+          }
+        }
+      }
+    },
+    "/users/update-password/": null,
+    "put": {
+      "tags": ["user"],
+      "summary": "Update a user password",
+      "description": "This finds a user by email and updates their password",
+      "operationId": "updatePassword",
+      "consumes": ["application/json"],
+      "produces": ["application/json"],
+      "parameters": [
+        {
+          "in": "body",
+          "name": "email",
+          "description": "User object that needs to be updated.",
+          "required": true,
+          "schema": {
+            "$ref": "#/definitions/User"
+          }
+        }
+      ],
+      "responses": {
+        "400": {
+          "description": "Invalid email supplied"
+        },
+        "404": {
+          "description": "User not found"
+        },
+        "405": {
+          "description": "Validation exception"
+        }
+      }
+    },
+    "/users/hiring-partner/invite": {
+      "post": {
+        "tags": ["user"],
+        "summary": "A hiring partner sends an invite to a decadev",
+        "description": "This creates an invite from the hiring partner to the decadev.",
+        "operationId": "createUser",
+        "consumes": ["application/json"],
+        "produces": ["application/json"],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "User",
+            "description": "A decadev that needs to be interviewed.",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/User"
+            }
+          }
+        ],
+        "responses": {
+          "405": {
+            "description": "Invalid input"
+          }
+        }
+      }
+    },
+    "/interview/invite/userId": {
+      "post": {
+        "tags": ["interview"],
+        "summary": "Schedules interview by userId",
+        "description": "Creates an interview between a hiring partner and a decadev.",
+        "operationId": "scheduleInterview",
+        "consumes": ["application/json"],
+        "produces": ["application/json"],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "description": "A decadev that needs to be interviewed.",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/User"
+            }
+          }
+        ],
+        "responses": {
+          "405": {
+            "description": "Invalid input"
           }
         }
       }
@@ -99,6 +212,33 @@
         "phone": {
           "type": "string"
         }
+      }
+    }
+  },
+  "Decadev": {
+    "type": "object",
+    "properties": {
+      "id": {
+        "type": "integer",
+        "format": "int64"
+      },
+      "username": {
+        "type": "string"
+      },
+      "email": {
+        "type": "string"
+      },
+      "name": {
+        "type": "string"
+      },
+      "password": {
+        "type": "string"
+      },
+      "role": {
+        "type": "string"
+      },
+      "profilePhoto": {
+        "type": "string"
       }
     }
   },
