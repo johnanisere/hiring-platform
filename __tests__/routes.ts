@@ -1,5 +1,5 @@
 import request from 'supertest';
-//import Interviews from '../src/models/Interviews';
+import Interviews from '../src/models/Interviews';
 import app from '../src/app';
 
 const {
@@ -106,34 +106,28 @@ describe('User Route', () => {
         expect(Object.keys(res.body)).toContain('description');
       });
   });
+
+  test('accept interview', async () => {
+    let id;
+    const interview = new Interviews({
+      hiringPartner: 'google@gmail.com',
+      decaDev: 'chukky@gmail.com',
+      location: 'Ikeja',
+      time: '9am',
+      description:
+        'This is to inform you that you have been shortlisted for an interview',
+    });
+
+    const savedInterview = await interview.save();
+
+    id = savedInterview._id;
+
+    return request(app)
+      .put(`/api/v1/interview/invite/${id}`)
+      .send({ accepted: true })
+      .expect(res => {
+        expect(Object.keys(res.body.interview)).toContain('accepted');
+        expect(Object.keys(res.body.interview)).toContain('hiringPartner');
+      });
+  });
 });
-
-// describe('PUT/:id', () => {
-//   let id: any;
-
-//   const exec = async () => {
-//     return await request(app)
-//       .put('/api/v1/interview/invite/' + id)
-//       .send({ accepted: true });
-//   };
-
-//   beforeEach(async () => {
-//     const interview = new Interviews({
-//       hiringPartner: 'terragon@gmail.com',
-//       decaDev: 'esther@gmail.com',
-//       location: 'Victoria Island',
-//       time: '10am',
-//       description:
-//         'This is to inform you that you have been shortlisted for an interview',
-//     });
-
-//     id = interview._id;
-//   });
-
-//   it('testing', async () => {
-//     await exec();
-
-//     const updatedGenre = await Interviews.findById(id);
-//     expect(updatedGenre.accepted).toBe(true);
-//   });
-// });
