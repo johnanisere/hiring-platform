@@ -95,7 +95,7 @@ describe('User Route', () => {
     return request(app)
       .get('/api/v1/users/decadevs')
       .expect(res => {
-        expect(res.status).toBe(400);
+        expect(res.status).toBe(200);
       });
   });
 });

@@ -3,7 +3,7 @@ import mongoose, { Schema } from 'mongoose';
 export interface IInterviews extends mongoose.Document {
   hiringPartner: String;
   decaDev: String;
-  profilePhoto: string;
+  profilePhoto: String;
   location: String;
   time: String;
   description: String;
