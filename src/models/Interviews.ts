@@ -12,6 +12,7 @@ export interface IInterviews extends mongoose.Document {
 const InterviewsSchema: Schema = new Schema({
   hiringPartner: { type: String, required: true },
   decaDev: { type: String, required: true },
+  profilePhoto: { type: String, required: true },
   location: { type: String, required: true },
   time: { type: String, required: true },
   description: { type: String, required: true },
