@@ -24,7 +24,7 @@ const UserSchema: Schema = new Schema(
     password: { type: String, required: true },
     role: { type: String },
     name: { type: String, required: true },
-    profilePhoto: { type: String },
+    profilePhoto: { type: String, required: true },
     skills: { type: mongoose.Schema.Types.ObjectId, ref: 'Skills' },
     publications: { type: mongoose.Schema.Types.ObjectId, ref: 'Publications' },
     cv: { type: String },

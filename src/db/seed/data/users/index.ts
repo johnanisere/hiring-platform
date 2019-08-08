@@ -9,7 +9,8 @@ export default [
     phone: '08074583218',
     password: 'mysecret',
     role: 'admin',
-    profilePhoto: 'http://gravatar.com/profile_photo',
+    profilePhoto:
+      'https://res.cloudinary.com/demo/image/upload/w_150,h_150,c_thumb,g_face,r_20,e_sepia/l_cloudinary_icon,g_south_east,x_5,y_5,w_50,o_60,e_brightness:200/a_10/front_face.png',
   },
   //  --------------- Deca devs -------------
   {
@@ -18,7 +19,8 @@ export default [
     phone: '08067890545',
     password: 'mysecret',
     role: 'dev',
-    profilePhoto: 'http://gravatar.com/profile_photo-1',
+    profilePhoto:
+      'https://res.cloudinary.com/demo/image/upload/w_150,h_150,c_thumb,g_face,r_20,e_sepia/l_cloudinary_icon,g_south_east,x_5,y_5,w_50,o_60,e_brightness:200/a_10/front_face.png',
     cv: 'resume-1',
     bio: 'A very good dev',
   },
@@ -28,8 +30,8 @@ export default [
     phone: '08043256784',
     password: 'mysecret',
     role: 'dev',
-    profilePhoto: 'http://gravatar.com/profile_photo-2',
-
+    profilePhoto:
+      'https://res.cloudinary.com/demo/image/upload/w_150,h_150,c_thumb,g_face,r_20,e_sepia/l_cloudinary_icon,g_south_east,x_5,y_5,w_50,o_60,e_brightness:200/a_10/front_face.png',
     cv: 'resume-2',
     bio: 'A good dev',
   },
@@ -39,7 +41,8 @@ export default [
     phone: '08066484894',
     password: 'mysecret',
     role: 'dev',
-    profilePhoto: 'http://gravatar.com/profile_photo-3',
+    profilePhoto:
+      'https://res.cloudinary.com/demo/image/upload/w_150,h_150,c_thumb,g_face,r_20,e_sepia/l_cloudinary_icon,g_south_east,x_5,y_5,w_50,o_60,e_brightness:200/a_10/front_face.png',
 
     cv: 'resume-3',
     bio: 'A good database manager',
@@ -50,7 +53,8 @@ export default [
     phone: '0808763468439',
     password: 'mysecret',
     role: 'dev',
-    profilePhoto: 'http://gravatar.com/profile_photo-4',
+    profilePhoto:
+      'https://res.cloudinary.com/demo/image/upload/w_150,h_150,c_thumb,g_face,r_20,e_sepia/l_cloudinary_icon,g_south_east,x_5,y_5,w_50,o_60,e_brightness:200/a_10/front_face.png',
 
     cv: 'resume-4',
     bio: 'A good Backend engineer',
@@ -61,8 +65,8 @@ export default [
     phone: '080856985759',
     password: 'mysecret',
     role: 'dev',
-    profilePhoto: 'http://gravatar.com/profile_photo-5',
-
+    profilePhoto:
+      'https://res.cloudinary.com/demo/image/upload/w_150,h_150,c_thumb,g_face,r_20,e_sepia/l_cloudinary_icon,g_south_east,x_5,y_5,w_50,o_60,e_brightness:200/a_10/front_face.png',
     cv: 'resume-5',
     bio: 'A good devOps engineer',
   },
@@ -72,8 +76,8 @@ export default [
     phone: '080769436434',
     password: 'mysecret',
     role: 'dev',
-    profilePhoto: 'http://gravatar.com/profile_photo-6',
-
+    profilePhoto:
+      'https://res.cloudinary.com/demo/image/upload/w_150,h_150,c_thumb,g_face,r_20,e_sepia/l_cloudinary_icon,g_south_east,x_5,y_5,w_50,o_60,e_brightness:200/a_10/front_face.png',
     cv: 'resume-6',
     bio: 'A great software engineer',
   },
@@ -83,8 +87,8 @@ export default [
     phone: '08087494934',
     password: 'mysecret',
     role: 'dev',
-    profilePhoto: 'http://gravatar.com/profile_photo-7',
-
+    profilePhoto:
+      'https://res.cloudinary.com/demo/image/upload/w_150,h_150,c_thumb,g_face,r_20,e_sepia/l_cloudinary_icon,g_south_east,x_5,y_5,w_50,o_60,e_brightness:200/a_10/front_face.png',
     cv: 'resume-7',
     bio: 'A great software dev',
   },
@@ -95,7 +99,8 @@ export default [
     phone: '08954738210',
     password: 'mysecret',
     role: 'hiringPartner1',
-    profilePhoto: 'http://gravatar.com/profile_photo/hiring-partner-1',
+    profilePhoto:
+      'https://res.cloudinary.com/demo/image/upload/w_150,h_150,c_thumb,g_face,r_20,e_sepia/l_cloudinary_icon,g_south_east,x_5,y_5,w_50,o_60,e_brightness:200/a_10/front_face.png',
     bio: 'I am a hiring partner 1',
     contactPerson: 'Mr. Johnson',
     companyURL: 'www.hiringpartner1.com',
@@ -107,7 +112,8 @@ export default [
     phone: '08056738561',
     password: 'mysecret',
     role: 'hiringPartner2',
-    profilePhoto: 'http://gravatar.com/profile_photo/hiring-partner-2',
+    profilePhoto:
+      'https://res.cloudinary.com/demo/image/upload/w_150,h_150,c_thumb,g_face,r_20,e_sepia/l_cloudinary_icon,g_south_east,x_5,y_5,w_50,o_60,e_brightness:200/a_10/front_face.png',
     bio: 'I am a hiring partner 2',
     contactPerson: 'Mr. Benson',
     companyURL: 'www.hiringpartner2.com',
@@ -119,7 +125,8 @@ export default [
     phone: '080986773821',
     password: 'mysecret',
     role: 'hiringPartner3',
-    profilePhoto: 'http://gravatar.com/profile_photo/hiring-partner-3',
+    profilePhoto:
+      'https://res.cloudinary.com/demo/image/upload/w_150,h_150,c_thumb,g_face,r_20,e_sepia/l_cloudinary_icon,g_south_east,x_5,y_5,w_50,o_60,e_brightness:200/a_10/front_face.png',
     bio: 'I am a hiring partner 3',
     contactPerson: 'Mr. Gibson',
     companyURL: 'www.hiringpartner3.com',
@@ -131,7 +138,8 @@ export default [
     phone: '088038749274',
     password: 'mysecret',
     role: 'hiringPartner4',
-    profilePhoto: 'http://gravatar.com/profile_photo/hiring-partner-4',
+    profilePhoto:
+      'https://res.cloudinary.com/demo/image/upload/w_150,h_150,c_thumb,g_face,r_20,e_sepia/l_cloudinary_icon,g_south_east,x_5,y_5,w_50,o_60,e_brightness:200/a_10/front_face.png',
     bio: 'I am a hiring partner 4',
     contactPerson: 'Mr. Samson',
     companyURL: 'www.hiringpartner4.com',
@@ -143,7 +151,8 @@ export default [
     phone: '0858598303974',
     password: 'mysecret',
     role: 'hiringPartner5',
-    profilePhoto: 'http://gravatar.com/profile_photo/hiring-partner-5',
+    profilePhoto:
+      'https://res.cloudinary.com/demo/image/upload/w_150,h_150,c_thumb,g_face,r_20,e_sepia/l_cloudinary_icon,g_south_east,x_5,y_5,w_50,o_60,e_brightness:200/a_10/front_face.png',
     bio: 'I am a hiring partner 5',
     contactPerson: 'Mr. Williamson',
     companyURL: 'www.hiringpartner5.com',
@@ -155,7 +164,8 @@ export default [
     phone: '089860610675',
     password: 'mysecret',
     role: 'hiringPartner6',
-    profilePhoto: 'http://gravatar.com/profile_photo/hiring-partner-6',
+    profilePhoto:
+      'https://res.cloudinary.com/demo/image/upload/w_150,h_150,c_thumb,g_face,r_20,e_sepia/l_cloudinary_icon,g_south_east,x_5,y_5,w_50,o_60,e_brightness:200/a_10/front_face.png',
     bio: 'I am a hiring partner 6',
     contactPerson: 'Mr. Anderson',
     companyURL: 'www.hiringpartner6.com',
@@ -167,7 +177,8 @@ export default [
     phone: '089860615575',
     password: 'mysecret',
     role: 'hiringPartner7',
-    profilePhoto: 'http://gravatar.com/profile_photo/hiring-partner-7',
+    profilePhoto:
+      'https://res.cloudinary.com/demo/image/upload/w_150,h_150,c_thumb,g_face,r_20,e_sepia/l_cloudinary_icon,g_south_east,x_5,y_5,w_50,o_60,e_brightness:200/a_10/front_face.png',
     bio: 'I am a hiring partner 7',
     contactPerson: 'Mr. Henderson',
     companyURL: 'www.hiringpartner7.com',
