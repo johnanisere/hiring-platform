@@ -31,6 +31,7 @@ export const scheduleInterview = async (req: Request, res: Response) => {
       decaDev: savedInterview.decaDev,
       location: savedInterview.location,
       time: savedInterview.time,
+      profilePhoto: savedInterview.profilePhoto,
       description: savedInterview.description,
       accepted: savedInterview.accepted,
       id: savedInterview._id,
@@ -52,15 +53,3 @@ export const acceptInterview = async (req: Request, res: Response) => {
     return res.status(404).json(`Error: ${error}`);
   }
 };
-
-// export const validator = celebrate({
-//   body: Joi.object().keys({
-//     hiringPartner: Joi.string().required().email(),
-//     decaDev: Joi.string().required().email(),
-//     location: Joi.string().required(),
-//     time: Joi.string().required(),
-//     description: Joi.string().required()
-//   }),
-// });
-
-// export default validator
