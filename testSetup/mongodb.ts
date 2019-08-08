@@ -9,7 +9,7 @@ function connectMongoDB() {
     .then(() => {
       console.log('Connected');
     })
-    .catch(err => {
+    .catch((err: any) => {
       console.error(err);
 
       process.exit(1);
