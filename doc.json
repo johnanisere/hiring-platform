@@ -49,7 +49,7 @@
         }
       }
     },
-    "/Users/devadevs": {
+    "/users/devadevs": {
       "get": {
         "tags": ["user"],
         "summary": "Lists all Decadevs on the platform",
