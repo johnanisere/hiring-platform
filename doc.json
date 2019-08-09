@@ -135,7 +135,7 @@
         "tags": ["user"],
         "summary": "A hiring partner sends an invite to a decadev",
         "description": "This creates an invite from the hiring partner to the decadev.",
-        "operationId": "createUser",
+        "operationId": "inviteHiringPartner",
         "consumes": ["application/json"],
         "produces": ["application/json"],
         "parameters": [
