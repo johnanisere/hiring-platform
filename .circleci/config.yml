@@ -9,6 +9,7 @@ orbs:
 workflows:
   heroku_deploy:
     jobs:
+      - build
       - deploy
 jobs:
   build:
