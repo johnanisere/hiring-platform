@@ -55,7 +55,7 @@
       "put": {
         "tags": ["user"],
         "summary": "Updates password",
-        "description": "Allows user to update password",
+        "description": "Allows user to update password via email",
         "operationId": "updatePassword",
         "produces": ["application/json"],
         "requestBody": {
@@ -93,7 +93,7 @@
                 "schema": {
                   "type": "array",
                   "items": {
-                    "$ref": "#/definitions/Email"
+                    "$ref": "#/definitions/User"
                   }
                 }
               }
@@ -169,7 +169,7 @@
         }
       }
     },
-    "/interview/invite/{userId}": {
+    "/interview/invite/{interviewId}": {
       "post": {
         "tags": ["interview"],
         "summary": "Schedules an interview by userId",
@@ -180,8 +180,8 @@
         "parameters": [
           {
             "in": "path",
-            "name": "userId",
-            "description": "A decadev userId.",
+            "name": "interviewId",
+            "description": "An interview Id.",
             "required": true,
             "schema": {
               "$ref": "#/definitions/UserId"
@@ -254,10 +254,7 @@
         "email": {
           "type": "string"
         },
-        "password": {
-          "type": "string"
-        },
-        "name": {
+        "newPassword": {
           "type": "string"
         }
       }
