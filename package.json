@@ -10,7 +10,7 @@
     "build": "scripts/build.sh",
     "start": "bin/www",
     "dev": "tsc --watch & nodemon bin/www ",
-    "test": "jest --watchAll",
+    "test": "jest",
     "client:start": "cd client; yarn start"
   },
   "dependencies": {
