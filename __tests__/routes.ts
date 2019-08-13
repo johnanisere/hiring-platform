@@ -123,6 +123,27 @@ describe('User Route', () => {
       .get('/api/v1/users/decadevs')
       .expect(res => {
         expect(res.body.allDecadevs.length).toBe(7);
+        expect(res.status).toBe(200);
+        expect(Object.keys(res.body)).toContain('allDecadevs');
+        expect(res.body.allDecadevs).toHaveLength(7);
+      });
+  });
+
+  test('user can sign up', () => {
+    return request(app)
+      .post('/api/v1/users/signup')
+      .send({
+        name: 'Egbo Uchenna',
+        email: 'egbouchennag@gmail.in',
+        role: 'dev',
+        phone: '08085743182',
+        password: 'newPassword',
+        profilePhoto: 'my profile_pic.',
+      })
+      .expect(res => {
+        expect(res.status).toBe(200);
+        expect(Object.keys(res.body)).toContain('output');
+        expect(Object.keys(res.body)).toContain('newUser');
       });
   });
 
