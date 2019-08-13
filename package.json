@@ -9,6 +9,7 @@
     "postinstall": "tsc",
     "build": "scripts/build.sh",
     "start": "bin/www",
+    "dev": "tsc --watch & nodemon bin/www",
     "test": "jest --watchAll",
     "client:start": "cd client; yarn start"
   },

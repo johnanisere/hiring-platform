@@ -2,7 +2,7 @@ const mongoose = require('mongoose');
 
 function connectMongoDB() {
   return mongoose
-    .connect('mongodb://localhost:27017/routesTest', {
+    .connect(`${process.env.MONGO_URI_TEST}`, {
       useNewUrlParser: true,
       useCreateIndex: true,
     })
