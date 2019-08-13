@@ -1,5 +1,5 @@
 import { Router } from 'express';
-import inviteHiringPartner from '../controllers/authentication';
+import inviteHiringPartner from '../controllers/inviteHiringPartner';
 import updatePassword from '../controllers/passwordUpdate';
 import getAllDecadevs from '../controllers/decadevs';
 import userLogin from '../controllers/userLogin';

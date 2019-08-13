@@ -123,6 +123,7 @@ describe('User Route', () => {
       .get('/api/v1/users/decadevs')
       .expect(res => {
         expect(res.body.allDecadevs.length).toBe(7);
+
         expect(res.status).toBe(200);
         expect(Object.keys(res.body)).toContain('allDecadevs');
         expect(res.body.allDecadevs).toHaveLength(7);
