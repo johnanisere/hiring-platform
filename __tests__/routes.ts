@@ -1,4 +1,5 @@
 import request from 'supertest';
+import getType from 'jest-get-type';
 import Interviews from '../src/models/Interviews';
 import app from '../src/app';
 
@@ -121,6 +122,25 @@ describe('User Route', () => {
       .expect(res => {
         expect(Object.keys(res.body.interview)).toContain('accepted');
         expect(Object.keys(res.body.interview)).toContain('hiringPartner');
+      });
+  });
+
+  test('logs in users', () => {
+    return request(app)
+      .post('/api/v1/users/user-login')
+      .send({
+        email: 'careers@flutterwave.com',
+        password: 'newsecret',
+      })
+      .expect(res => {
+        const { token } = res.body;
+        expect(getType(token)).toBe('string');
+        expect(res.body).toMatchObject({
+          name: 'Flutterwave',
+          email: 'careers@flutterwave.com',
+          phone: '08074382109',
+          role: 'Hiring Partner',
+        });
       });
   });
 });
