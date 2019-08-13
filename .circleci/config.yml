@@ -3,18 +3,25 @@
 # Check https://circleci.com/docs/2.0/language-javascript/ for more details
 #
 version: 2
+orbs:
+  heroku: circleci/heroku@0.0.8
+
+workflows:
+  heroku_deploy:
+    jobs:
+      - deploy
 jobs:
   build:
     docker:
       # specify the version you desire here
-      - image: circleci/node:10.16.0
+      - image: circleci/node:7.10
 
       # Specify service dependencies here if necessary
       # CircleCI maintains a library of pre-built images
       # documented at https://circleci.com/docs/2.0/circleci-images/
       # - image: circleci/mongo:3.4.4
 
-    working_directory: ~/exercise-react
+    working_directory: ~/repo
 
     steps:
       - checkout
@@ -26,14 +33,19 @@ jobs:
             # fallback to using the latest cache if no exact match is found
             - v1-dependencies-
 
-      - run: yarn
+      - run: yarn install
 
       - save_cache:
           paths:
             - node_modules
           key: v1-dependencies-{{ checksum "package.json" }}
 
-      # Run typescript
-      - run: yarn tsc
       # run tests!
-      - run: yarn jest
+      - run: yarn test
+  deploy:
+    executor: heroku/default # Uses the basic buildpack-deps image, which has the prerequisites for installing heroku's CLI.
+    steps:
+      - checkout
+      - heroku/install # Runs the heroku install command, if necessary.
+      - heroku/deploy-via-git: # Deploys branch to Heroku via git push.
+          only-branch: develop # If you specify an only-branch, the deploy will not occur for any other branch.

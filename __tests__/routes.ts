@@ -72,7 +72,7 @@ describe('User Route', () => {
     return request(app)
       .get('/api/v1/users/decadevs')
       .expect(res => {
-        expect(res).toEqual(
+        expect(res.body).toEqual(
           expect.objectContaining({
             email: 'janedoe@example.com',
             name: 'Jane Mary',
