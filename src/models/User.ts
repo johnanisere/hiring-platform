@@ -2,26 +2,31 @@ import mongoose, { Schema } from 'mongoose';
 import bcrypt from 'bcryptjs';
 
 export interface IUser extends mongoose.Document {
-  email: string;
-  password: string;
-  role: string;
-  name: string;
-  profilePhoto: string;
-  skills?: [string];
-  publications: string;
-  cv?: string;
-  bio?: string;
-  notifications: string;
-  contactPerson: string;
-  phone: string;
-  companyURL?: string;
-  address: string;
+  email: String;
+  password: String;
+  role: String;
+  name: String;
+  profilePhoto: String;
+  skills?: [String];
+  publications: String;
+  cv?: String;
+  bio?: String;
+  notifications: String;
+  contactPerson: String;
+  phone: String;
+  companyURL?: String;
+  address: String;
   interviews: Array<String>;
 }
 
 const UserSchema: Schema = new Schema(
   {
-    email: { type: String, required: true, unique: true },
+    email: {
+      type: String,
+      required: true,
+      unique: true,
+      match: /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/,
+    },
     password: { type: String, required: true },
     role: { type: String, required: true },
     name: { type: String, required: true },
@@ -43,7 +48,7 @@ const UserSchema: Schema = new Schema(
 UserSchema.pre<IUser>('save', async function() {
   if (this.isModified('password')) {
     const salt = await bcrypt.genSalt(10);
-    this.password = await bcrypt.hash(this.password, salt);
+    this.password = await bcrypt.hash(this.password.toString(), salt);
   }
 });
 

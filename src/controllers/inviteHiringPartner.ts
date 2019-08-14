@@ -2,9 +2,9 @@ import User from '../models/User';
 import jwt from 'jsonwebtoken';
 import { PRIVATE_KEY } from '../config';
 import { Request, Response } from 'express';
-import sendInviteMail from '../controllers/sendMail';
+import sendInviteMail from './sendMail';
 
-export default async function createUser(req: Request, res: Response) {
+export default async function inviteHiringPartner(req: Request, res: Response) {
   const user = new User(req.body);
 
   const data = await user.save();

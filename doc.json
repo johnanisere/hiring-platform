@@ -2,69 +2,324 @@
   "openapi": "3.0.1",
   "info": {
     "title": "Decagon Hiring App",
-    "description": "This is all the apis for the app",
+    "description": "This is all documentation of the APIs for the decagon hiring app.",
     "version": "0.1.9"
   },
   "servers": [
     {
-      "url": "http://localhost:/3005/",
-      "description": "server for localhost can be any port for testing (development)"
+      "url": "http://localhost:3005/api/v1",
+      "description": "server for localhost can be any port for testing (development)."
+    }
+  ],
+  "tags": [
+    {
+      "name": "user",
+      "description": "Operations about users"
+    },
+    {
+      "name": "interview",
+      "description": "Schedules of interviews"
     }
   ],
   "paths": {
-    "/users/": {
+    "/users/decadevs": {
       "get": {
-        "tags": ["Users"],
-        "summary": "Gets all users.",
-        "description": "This returns a list of users of in the app in an array format",
-        "operationId": "getUsers",
+        "tags": ["user"],
+        "summary": "Lists all decadevs on the platform",
+        "description": "Returns a JSON array list of all decadevs",
+        "operationId": "getAllDecadevs",
+        "consumes": ["application/json"],
+        "produces": ["application/json"],
         "responses": {
           "200": {
-            "summary": "operation successful",
-            "description": "A JSON array of all users (decadevs)",
+            "summary": "Operation successful",
+            "description": "A JSON array list of all users(decadevs)",
             "content": {
               "application/json": {
                 "schema": {
                   "type": "array",
                   "items": {
-                    "$ref": "#/definitions/Users"
+                    "$ref": "#/definitions/User"
+                  }
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "No Decadevs found"
+          }
+        }
+      }
+    },
+    "/users/signup": {
+      "post": {
+        "tags": ["user"],
+        "summary": "A user can sign up",
+        "description": "This enables a user decadev to sign up.",
+        "operationId": "signUp",
+        "consumes": ["application/json"],
+        "produces": ["application/json"],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/definitions/User"
+              }
+            },
+            "application/x-www-form-urlencoded": {
+              "schema": {
+                "$ref": "#/definitions/User"
+              }
+            },
+            "application/xml": {
+              "schema": {
+                "$ref": "#/definitions/User"
+              }
+            },
+            "text/plain": {
+              "schema": {
+                "$ref": "#/definitions/User"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Sign Up successful",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/definitions/User"
                   }
                 }
               }
             }
           },
           "400": {
-            "description": "The specified user ID is invalid."
+            "description": "Bad Request"
           }
         }
       }
     },
-    "/users": {
-      "post": {
-        "tags": ["Users"],
-        "summary": "creates a user",
-        "description": "This creates a user for by sending them an email and asking them to  verify in an hour time.\n",
-        "operationId": "createUser",
+    "/users/update-password/": {
+      "put": {
+        "tags": ["user"],
+        "summary": "Updates password",
+        "description": "Allows user to update password via email",
+        "operationId": "updatePassword",
+        "produces": ["application/json"],
         "requestBody": {
-          "required": true
+          "description": "The object of the user to be updated.",
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/definitions/Email"
+              }
+            },
+            "application/xml": {
+              "schema": {
+                "$ref": "#/definitions/Email"
+              }
+            },
+            "application/x-www-form-urlencoded": {
+              "schema": {
+                "$ref": "#/definitions/Email"
+              }
+            },
+            "text/plain": {
+              "schema": {
+                "$ref": "#/definitions/Email"
+              }
+            }
+          }
         },
+        "responses": {
+          "200": {
+            "summary": "Returns a decadev object that has been updated.",
+            "description": "Operation successful",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/definitions/User"
+                  }
+                }
+              }
+            }
+          },
+          "201": {
+            "description": "Password updated."
+          },
+          "400": {
+            "description": "The specified user email is invalid."
+          },
+          "404": {
+            "description": "A user with the specified email was not found."
+          },
+          "405": {
+            "description": "Validation exception."
+          }
+        }
+      }
+    },
+    "/users/hiring-partner/invite": {
+      "post": {
+        "tags": ["user"],
+        "summary": "A hiring partner invite.",
+        "description": "The admin creates an invite for hiring partner.",
+        "operationId": "inviteHiringPartner",
+        "consumes": ["application/json"],
+        "produces": ["application/json"],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/definitions/User"
+              }
+            },
+            "application/x-www-form-urlencoded": {
+              "schema": {
+                "$ref": "#/definitions/User"
+              }
+            },
+            "application/xml": {
+              "schema": {
+                "$ref": "#/definitions/User"
+              }
+            },
+            "text/plain": {
+              "schema": {
+                "$ref": "#/definitions/User"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/definitions/User"
+                  }
+                }
+              }
+            }
+          },
+          "201": {
+            "description": "Created."
+          },
+          "405": {
+            "description": "Invalid input"
+          }
+        }
+      }
+    },
+    "/interview/invite": {
+      "post": {
+        "tags": ["interview"],
+        "summary": "Schedules an interview by userId",
+        "description": "A hiring partner invites a decadev for interview.",
+        "operationId": "scheduleInterview",
+        "consumes": ["application/json"],
+        "produces": ["application/json"],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/definitions/Interview"
+              }
+            },
+            "application/x-www-form-urlencoded": {
+              "schema": {
+                "$ref": "#/definitions/Interview"
+              }
+            },
+            "application/xml": {
+              "schema": {
+                "$ref": "#/definitions/Interview"
+              }
+            },
+            "text/plain": {
+              "schema": {
+                "$ref": "#/definitions/Interview"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/definitions/Interview"
+                  }
+                }
+              }
+            }
+          },
+          "201": {
+            "description": "Interview Scheduled"
+          },
+          "405": {
+            "description": "Invalid input"
+          }
+        }
+      }
+    },
+    "/interview/invite/{interviewId}": {
+      "put": {
+        "tags": ["interview"],
+        "summary": "Accept interview by userId",
+        "description": "A decadev responds to interview.",
+        "operationId": "acceptInterview",
+        "consumes": ["application/json"],
         "produces": ["application/json"],
         "parameters": [
           {
-            "name": "User",
-            "in": "body",
-            "description": "The user to create.",
+            "in": "path",
+            "name": "interviewId",
+            "description": "An interview Id.",
+            "required": true,
             "schema": {
-              "$ref": "#/definitions/User"
+              "$ref": "#/definitions/UserId"
             }
           }
         ],
         "responses": {
           "200": {
-            "description": "Succefully created"
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/definitions/Interview"
+                  }
+                }
+              }
+            }
           },
           "400": {
-            "description": "Link has expired, pls request for another"
+            "description": "The specified interview ID is invalid (not a string)."
+          },
+          "404": {
+            "description": "An interview with the specified ID was not found."
+          },
+          "405": {
+            "description": "Invalid input"
+          },
+          "default": {
+            "description": "Unexpected error"
           }
         }
       }
@@ -72,34 +327,73 @@
   },
   "definitions": {
     "User": {
+      "type": "object",
       "required": ["password"],
       "properties": {
+        "id": {
+          "type": "string"
+        },
         "name": {
           "type": "string"
         },
         "email": {
-          "type": "string"
-        },
-        "phone": {
           "type": "string"
         },
         "password": {
           "type": "string"
-        }
-      }
-    },
-    "Users": {
-      "properties": {
-        "name": {
-          "type": "string"
-        },
-        "email": {
-          "type": "string"
         },
         "phone": {
           "type": "string"
+        },
+        "role": {
+          "type": "string"
+        },
+        "profilePhoto": {
+          "type": "string"
         }
       }
+    },
+    "Interview": {
+      "type": "object",
+      "required": true,
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "hiringPartner": {
+          "type": "string"
+        },
+        "decaDev": {
+          "type": "string"
+        },
+        "profilePhoto": {
+          "type": "string"
+        },
+        "location": {
+          "type": "string"
+        },
+        "time": {
+          "type": "string"
+        },
+        "description": {
+          "type": "string"
+        }
+      }
+    },
+    "Email": {
+      "type": "object",
+      "required": true,
+      "properties": {
+        "email": {
+          "type": "string"
+        },
+        "newPassword": {
+          "type": "string"
+        }
+      }
+    },
+    "UserId": {
+      "type": "string"
     }
   },
   "Error": {
