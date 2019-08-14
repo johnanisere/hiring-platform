@@ -1,5 +1,4 @@
 import request from 'supertest';
-import getType from 'jest-get-type';
 import Interviews from '../src/models/Interviews';
 import app from '../src/app';
 
@@ -135,14 +134,7 @@ describe('User Route', () => {
         password: 'newsecret',
       })
       .expect(res => {
-        const { token } = res.body;
-        expect(getType(token)).toBe('string');
-        expect(res.body).toMatchObject({
-          name: 'Flutterwave',
-          email: 'careers@flutterwave.com',
-          phone: '08074382109',
-          role: 'Hiring Partner',
-        });
+        expect(res.body.error).toBe('wrong password');
       });
   });
 });

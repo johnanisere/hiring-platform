@@ -32,7 +32,7 @@ export default async function userLogin(req: Request, res: Response) {
       interviews: 0,
     });
     if (!requestedSingleUser) {
-      throw new Error('User not found, create account!');
+      res.status(400).send({ error: 'user does not exist' });
     } else {
       const salt = await bcrypt.genSalt(10);
       value.password = await bcrypt.hash(value.password, salt);
@@ -40,8 +40,7 @@ export default async function userLogin(req: Request, res: Response) {
       const isMatch = await bcrypt.compare(value.password, suspected.password);
 
       if (!isMatch) {
-        res.send('wrong password');
-        throw new Error('wrong password');
+        res.status(400).send({ error: 'wrong password' });
       } else {
         const token = jwt.sign(
           {
@@ -59,6 +58,6 @@ export default async function userLogin(req: Request, res: Response) {
       }
     }
   } catch (err) {
-    res.send(err.message);
+    res.status(400).send('hey!');
   }
 }
