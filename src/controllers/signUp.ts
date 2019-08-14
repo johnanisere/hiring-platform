@@ -9,7 +9,7 @@ export default async function signUp(
   try {
     const user = await new User(req.body);
     const newUser = await user.save();
-    return res.status(200).send({
+    return res.status(200).json({
       output: 'Sign Up successful.',
       newUser,
     });
