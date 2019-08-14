@@ -10,6 +10,6 @@ router
   .get('/decadevs', getAllDecadevs)
   .post('/hiring-partner/invite', createUser)
   .put('/update-password/', updatePassword)
-  .post('/user-login', userLogin);
+  .post('/login', userLogin);
 
 export default router;
