@@ -128,10 +128,10 @@ describe('User Route', () => {
 
   test('logs in users', () => {
     return request(app)
-      .post('/api/v1/users/user-login')
+      .post('/api/v1/users/login')
       .send({
         email: 'careers@flutterwave.com',
-        password: 'newsecret',
+        password: 'newsecret2',
       })
       .expect(res => {
         expect(res.body.error).toBe('wrong password');

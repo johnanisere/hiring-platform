@@ -6,8 +6,14 @@ import { Request, Response } from 'express';
 import { PRIVATE_KEY } from '../config';
 
 const loginSchema: any = {
-  email: joi.string().required(),
-  password: joi.string().required(),
+  email: joi
+    .string()
+    .regex(/^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$/)
+    .required(),
+  password: joi
+    .string()
+    .regex(/^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/)
+    .required(),
 };
 
 export default async function userLogin(req: Request, res: Response) {
@@ -17,30 +23,21 @@ export default async function userLogin(req: Request, res: Response) {
     abortEarly: false,
   });
   if (error) {
-    console.log(error);
-    throw new Error('error!!!!! user is not valid!');
+    res.status(400).send({ error: 'error!!!!! user is not valid!' });
   }
 
   try {
     const requestedSingleUser = await User.findOne({
       email: value.email,
-    }).select({
-      __v: 0,
-      _id: 0,
-      isDeleted: 0,
-      dateCreated: 0,
-      interviews: 0,
     });
     if (!requestedSingleUser) {
-      res.status(400).send({ error: 'user does not exist' });
+      res.status(404).send({ error: 'user does not exist' });
     } else {
-      const salt = await bcrypt.genSalt(10);
-      value.password = await bcrypt.hash(value.password, salt);
       const suspected = requestedSingleUser.toObject();
       const isMatch = await bcrypt.compare(value.password, suspected.password);
 
       if (!isMatch) {
-        res.status(400).send({ error: 'wrong password' });
+        res.status(401).send({ error: 'wrong password' });
       } else {
         const token = jwt.sign(
           {
@@ -58,6 +55,6 @@ export default async function userLogin(req: Request, res: Response) {
       }
     }
   } catch (err) {
-    res.status(400).send('hey!');
+    res.status(400).send({ err });
   }
 }
