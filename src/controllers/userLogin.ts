@@ -25,8 +25,8 @@ export default async function userLogin(req: Request, res: Response) {
     const requestedSingleUser = await User.findOne({
       email: value.email,
     }).select({
-      password: 0,
       __v: 0,
+      _id: 0,
       isDeleted: 0,
       dateCreated: 0,
       interviews: 0,
@@ -37,8 +37,10 @@ export default async function userLogin(req: Request, res: Response) {
       const salt = await bcrypt.genSalt(10);
       value.password = await bcrypt.hash(value.password, salt);
       const suspected = requestedSingleUser.toObject();
-      const isMatch = bcrypt.compare(value.password, suspected.password);
+      const isMatch = await bcrypt.compare(value.password, suspected.password);
+
       if (!isMatch) {
+        res.send('wrong password');
         throw new Error('wrong password');
       } else {
         const token = jwt.sign(
