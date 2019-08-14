@@ -56,6 +56,21 @@ describe('interview route', () => {
         expect(Object.keys(res.body.interview)).toContain('hiringPartner');
       });
   });
+
+  test('invite devs', async () => {
+    return request(app)
+      .post('/api/v1//invite/devs')
+      .send({
+        squadNo: 'Squad 1',
+      })
+      .expect(res => {
+        expect(res.body).toEqual(
+          expect.objectContaining({
+            message: `Your invites have been sent to Squad 1`,
+          }),
+        );
+      });
+  });
 });
 
 describe('User Route', () => {
