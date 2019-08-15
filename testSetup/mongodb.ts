@@ -1,19 +1,16 @@
-const mongoose = require('mongoose');
+import mongoose from 'mongoose';
 
-function connectMongoDB() {
-  return mongoose
-    .connect('mongodb://localhost:27017/routesTest', {
+async function connectMongoDB() {
+  try {
+    await mongoose.connect('mongodb://localhost:27017/routesTest', {
       useNewUrlParser: true,
       useCreateIndex: true,
-    })
-    .then(() => {
-      console.log('Connected');
-    })
-    .catch((err: any) => {
-      console.error(err);
-
-      process.exit(1);
     });
+    console.log('Connected');
+  } catch (err) {
+    console.error(err);
+    process.exit(1);
+  }
 }
 
 function disconnectMongoDB() {

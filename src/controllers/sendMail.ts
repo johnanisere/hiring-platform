@@ -37,7 +37,7 @@ async function sendInviteMail(req: Request) {
   let to = req.body.email,
     password = req.body.password,
     link = 'https://google.com';
-  sgMail.send(msg(to, password, link)).catch((err: any) => {
+  await sgMail.send(msg(to, password, link)).catch((err: any) => {
     console.log({ err: err.message });
   });
 }
