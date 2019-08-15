@@ -59,7 +59,7 @@ describe('interview route', () => {
 
   test('invite devs', async () => {
     return request(app)
-      .post('/api/v1//invite/devs')
+      .post('/api/v1/invite/devs')
       .send({
         squadNo: 'Squad 1',
       })
