@@ -12,8 +12,8 @@ export function authMiddleware(
   const actualToken = token ? token.split(' ')[1] : '';
   jwt.verify(actualToken, PRIVATE_KEY, (err, payload) => {
     if (payload) {
-      User.findById(payload).then(() => {
-        //  req.user = doc;
+      User.findById(payload).then(doc => {
+        req.body.user = doc;
         return next();
       });
     }

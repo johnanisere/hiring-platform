@@ -37,7 +37,7 @@ const UserSchema: Schema = new Schema(
     bio: { type: String },
     notifications: { type: String },
     contactPerson: { type: String },
-    phone: { type: String, required: true },
+    phone: { type: String },
     companyURL: { type: String },
     address: { type: String },
     interviews: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Interviews' }],
