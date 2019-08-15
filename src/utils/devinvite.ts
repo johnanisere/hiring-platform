@@ -32,8 +32,8 @@ async function devsMailInvite(token: string, name: string, email: string) {
   let to = email,
     link = `https://google.com/${token}`;
   sendMail(msg(to, link, name))
-    .then(() => console.log(`email successfully sent to ${to}`))
-    .catch(err => console.log({ err }));
+    .then(() => {})
+    .catch(_err => {});
 }
 
 export default devsMailInvite;
