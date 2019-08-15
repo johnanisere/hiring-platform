@@ -133,6 +133,57 @@ describe('User Route', () => {
       });
   });
 
+  test('change password', () => {
+    return request(app)
+      .put('/api/v1/users/change-password/')
+      .send({
+        email: 'careers@flutterwave.com',
+        newPassword: 'mynewpassword1',
+        confirmPassword: 'mynewpassword1',
+      })
+      .expect(res => {
+        expect(res.body).toEqual(
+          expect.objectContaining({
+            message: 'password updated successfully',
+          }),
+        );
+      });
+  });
+
+  test('change password: Invalid email', () => {
+    return request(app)
+      .put('/api/v1/users/change-password/')
+      .send({
+        email: 'invalid@email.com',
+        newPassword: 'mynewpassword1',
+        confirmPassword: 'mynewpassword1',
+      })
+      .expect(res => {
+        expect(res.body).toEqual(
+          expect.objectContaining({
+            message: 'user not found',
+          }),
+        );
+      });
+  });
+
+  test("change password: They don't match", () => {
+    return request(app)
+      .put('/api/v1/users/change-password/')
+      .send({
+        email: 'careers@flutterwave.com',
+        newPassword: 'mynewpassword1',
+        confirmPassword: 'mynewpassword',
+      })
+      .expect(res => {
+        expect(res.body).toEqual(
+          expect.objectContaining({
+            message: "password doesn't match",
+          }),
+        );
+      });
+  });
+
   test('lists all decadevs', () => {
     return request(app)
       .get('/api/v1/users/decadevs')
