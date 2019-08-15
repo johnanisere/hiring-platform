@@ -29,7 +29,7 @@ const msg = (to: String, password: String, link: String) => {
         },
       },
     ],
-    template_id: 'd-41ea1953a3dc4cfabd666b5b92073602',
+    template_id: 'd-cea941da06044978bffc59af79d57157',
   };
 };
 
@@ -37,7 +37,7 @@ async function sendInviteMail(req: Request) {
   let to = req.body.email,
     password = req.body.password,
     link = 'https://google.com';
-  sgMail.send(msg(to, password, link)).catch((err: any) => {
+  await sgMail.send(msg(to, password, link)).catch((err: any) => {
     console.log({ err: err.message });
   });
 }

@@ -24,7 +24,7 @@ const msg = (to: string, link: string, name: string) => {
         },
       },
     ],
-    template_id: 'd-9e036570cbe24c15a8ca34bba221927a',
+    template_id: 'd-738d7d0623174e42874ad0ad442bc867',
   };
 };
 
