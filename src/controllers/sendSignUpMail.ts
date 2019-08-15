@@ -5,7 +5,7 @@ const sgMail = require('@sendgrid/mail');
 
 sgMail.setApiKey(process.env.SENDGRID_API_KEY);
 
-const msg = (to: string, link: string) => {
+const msg = (to: string, token: string, link: string) => {
   return {
     from: {
       email: 'johnanisere@gmail.com',
@@ -19,6 +19,7 @@ const msg = (to: string, link: string) => {
         ],
         dynamic_template_data: {
           email: to,
+          token: token,
           link: link,
           Sender_Name: 'Decagon Institute',
           Sender_Address:
@@ -32,10 +33,11 @@ const msg = (to: string, link: string) => {
   };
 };
 
-async function sendSignUpMail(req: Request, token: string) {
+async function sendSignUpMail(req: Request) {
   let to = req.body.email,
-    link = `https://hiringplatform/${token}`;
-  sgMail.send(msg(to, link)).catch((err: any) => {
+    token = req.body.token,
+    link = 'https://hiringplatform/';
+  sgMail.send(msg(to, token, link)).catch((err: any) => {
     console.log({ err: err.message });
   });
 }

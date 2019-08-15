@@ -25,21 +25,17 @@ export default async function signUp(
       },
     );
 
+    sendSignUpMail(req);
+
     res.status(200).json({
       output: 'Sign Up successful.',
       newUser,
-    });
-
-    sendSignUpMail(req, token);
-    res.json({
-      ...newUser.toObject(),
-      id: newUser._id,
       token: token,
     });
   } catch (error) {
     const { message } = error;
     console.log(error.message);
-    res.status(400).json({
+    res.status(400).send({
       output: 'Sign Up not successful!!!',
       message,
     });
