@@ -4,21 +4,20 @@ import jwt from 'jsonwebtoken';
 import { PRIVATE_KEY } from '../config';
 
 const sendInviteEmail = () => {
-  const invites = [
-    { name: 'seun jay', email: 'seunjay92@gmail.com' },
-    { name: 'jay seun', email: 'jayeobaoluwaseun@yahoo.com' },
-  ].map(async ({ name, email }) => {
-    const token = jwt.sign(
-      {
-        email: email,
-      },
-      PRIVATE_KEY,
-      {
-        expiresIn: '1h',
-      },
-    );
-    return await devsMailInvite(token, name, email);
-  });
+  const invites = [{ name: 'seun jay', email: 'seunjay92@gmail.com' }].map(
+    async ({ name, email }) => {
+      const token = jwt.sign(
+        {
+          email: email,
+        },
+        PRIVATE_KEY,
+        {
+          expiresIn: '1h',
+        },
+      );
+      return await devsMailInvite(token, name, email);
+    },
+  );
 
   Promise.all(invites);
 };

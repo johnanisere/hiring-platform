@@ -29,7 +29,7 @@ const msg = (to: String, password: String, link: String) => {
         },
       },
     ],
-    template_id: 'd-41ea1953a3dc4cfabd666b5b92073602',
+    template_id: 'd-cea941da06044978bffc59af79d57157',
   };
 };
 
