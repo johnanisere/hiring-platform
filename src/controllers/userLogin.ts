@@ -23,13 +23,13 @@ export default async function userLogin(req: Request, res: Response) {
     abortEarly: false,
   });
   if (error) {
-    res.status(400).send({ error: 'error!!!!! user is not valid!' });
+    res.status(400).send({ error: 'invalid input!' });
   }
 
   try {
     const requestedSingleUser = await User.findOne({
       email: value.email,
-    });
+    }).select({ __v: 0, _id: 0, createdAt: 0, updatedAt: 0 });
     if (!requestedSingleUser) {
       res.status(404).send({ error: 'user does not exist' });
     } else {
@@ -49,9 +49,11 @@ export default async function userLogin(req: Request, res: Response) {
             expiresIn: '1h',
           },
         );
-        res.header('auth-token', token);
-
-        res.status(200).send({ ...suspected, token });
+        const { password, ...rest } = suspected;
+        res
+          .header('auth-token', token)
+          .status(200)
+          .send({ ...rest, token });
       }
     }
   } catch (err) {
