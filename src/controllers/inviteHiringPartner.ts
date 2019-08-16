@@ -20,7 +20,7 @@ export default async function inviteHiringPartner(req: Request, res: Response) {
 
   sendInviteMail(req);
   res.json({
-    ...data.toObject(), //res is a mongoose doc, so we turn it to an object.
+    ...data.toObject(), //data is a mongoose doc, so we turn it to an object.
     id: data._id,
     token: token,
   });
