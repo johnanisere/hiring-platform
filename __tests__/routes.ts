@@ -1,6 +1,7 @@
 import request from 'supertest';
 import Interviews from '../src/models/Interviews';
 import app from '../src/app';
+// import auth from '../src/middleware/auth';
 
 const { connectMongoDB, disconnectMongoDB } = require('../testSetup/mongodb');
 
@@ -128,6 +129,54 @@ describe('User Route', () => {
               name: 'Flutterwave',
               phone: '08074382109',
             }),
+          }),
+        );
+      });
+  });
+
+  test('change password', async () => {
+    const response: any = await request(app)
+      .post('/api/v1/users/login')
+      .send({
+        email: 'johndoe@example.com',
+        password: 'mysecret2',
+      });
+    const token = `Bearer ${response.body.token}`;
+    return request(app)
+      .put('/api/v1/users/change-password/')
+      .set('authorization', token)
+      .send({
+        newPassword: 'mynewpassword1',
+        confirmPassword: 'mynewpassword1',
+      })
+      .expect(res => {
+        expect(res.body).toEqual(
+          expect.objectContaining({
+            message: 'Password updated successfully',
+          }),
+        );
+      });
+  });
+
+  test('change password: Invalid Password', async () => {
+    const response: any = await request(app)
+      .post('/api/v1/users/login')
+      .send({
+        email: 'janedoe@example.com',
+        password: 'mysecret',
+      });
+    const token = `Bearer ${response.body.token}`;
+    return request(app)
+      .put('/api/v1/users/change-password/')
+      .set('authorization', token)
+      .send({
+        newPassword: 'mynewpassword1',
+        confirmPassword: 'mynewpasswor234',
+      })
+      .expect(res => {
+        expect(res.body).toEqual(
+          expect.objectContaining({
+            error: `Password doesn't match`,
           }),
         );
       });
