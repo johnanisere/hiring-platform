@@ -7,7 +7,7 @@ export default async function updatePassword(
   _next: NextFunction,
 ) {
   try {
-    const user = await User.findOne({ email: req.body.email });
+    const user = await User.findOne({ email: req.body.user.email });
     if (!user) {
       return res.send('User not found!!!');
     } else {
@@ -23,7 +23,6 @@ export default async function updatePassword(
       });
     }
   } catch (err) {
-    console.log(err.message);
     return res.status(400).json({
       message: 'Password update failed!!!',
     });
