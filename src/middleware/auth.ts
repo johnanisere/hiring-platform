@@ -3,7 +3,7 @@ import jwt from 'jsonwebtoken';
 import { PRIVATE_KEY } from '../config';
 import User from '../models/User';
 
-export function authMiddleware(
+export default function authMiddleware(
   req: Request,
   res: Response,
   next: NextFunction,
