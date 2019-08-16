@@ -12,7 +12,7 @@ const loginSchema: any = {
     .required(),
   password: joi
     .string()
-    .regex(/^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/)
+    // .regex(/^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/)
     .required(),
 };
 
