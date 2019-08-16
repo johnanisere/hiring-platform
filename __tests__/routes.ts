@@ -1,6 +1,7 @@
 import request from 'supertest';
 import Interviews from '../src/models/Interviews';
 import app from '../src/app';
+// import auth from '../src/middleware/auth';
 
 const { connectMongoDB, disconnectMongoDB } = require('../testSetup/mongodb');
 
@@ -133,52 +134,49 @@ describe('User Route', () => {
       });
   });
 
-  test('change password', () => {
+  test('change password', async () => {
+    const response: any = await request(app)
+      .post('/api/v1/users/login')
+      .send({
+        email: 'johndoe@example.com',
+        password: 'mysecret2',
+      });
+    const token = `Bearer ${response.body.token}`;
     return request(app)
       .put('/api/v1/users/change-password/')
+      .set('authorization', token)
       .send({
-        email: 'careers@flutterwave.com',
         newPassword: 'mynewpassword1',
         confirmPassword: 'mynewpassword1',
       })
       .expect(res => {
         expect(res.body).toEqual(
           expect.objectContaining({
-            message: 'password updated successfully',
+            message: 'Password updated successfully',
           }),
         );
       });
   });
 
-  test('change password: Invalid email', () => {
-    return request(app)
-      .put('/api/v1/users/change-password/')
+  test('change password: Invalid Password', async () => {
+    const response: any = await request(app)
+      .post('/api/v1/users/login')
       .send({
-        email: 'invalid@email.com',
-        newPassword: 'mynewpassword1',
-        confirmPassword: 'mynewpassword1',
-      })
-      .expect(res => {
-        expect(res.body).toEqual(
-          expect.objectContaining({
-            message: 'user not found',
-          }),
-        );
+        email: 'janedoe@example.com',
+        password: 'mysecret',
       });
-  });
-
-  test("change password: They don't match", () => {
+    const token = `Bearer ${response.body.token}`;
     return request(app)
       .put('/api/v1/users/change-password/')
+      .set('authorization', token)
       .send({
-        email: 'careers@flutterwave.com',
         newPassword: 'mynewpassword1',
-        confirmPassword: 'mynewpassword',
+        confirmPassword: 'mynewpasswor234',
       })
       .expect(res => {
         expect(res.body).toEqual(
           expect.objectContaining({
-            message: "password doesn't match",
+            error: `Password doesn't match`,
           }),
         );
       });
