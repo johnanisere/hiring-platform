@@ -28,7 +28,7 @@ const msg = (to: string, link: string, name: string) => {
   };
 };
 
-async function devsMailInvite(token: string, name: string, email: string) {
+function devsMailInvite(token: string, name: string, email: string) {
   let to = email,
     link = `https://google.com/${token}`;
   sendMail(msg(to, link, name))
