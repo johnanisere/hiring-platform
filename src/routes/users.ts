@@ -10,11 +10,11 @@ import authMiddleware from '../middleware/auth';
 const router = Router();
 
 router
-  .get('/decadevs', getAllDecadevs)
   .post('/signup', signUp)
-  .post('/hiring-partner/invite', inviteHiringPartner)
-  .put('/update-password/', updatePassword)
   .post('/login', userLogin)
-  .put('/change-password', authMiddleware, changePassword);
+  .get('/decadevs', getAllDecadevs)
+  .post('/hiring-partner/invite', inviteHiringPartner)
+  .put('/change-password', authMiddleware, changePassword)
+  .put('/update-password/', authMiddleware, updatePassword);
 
 export default router;
