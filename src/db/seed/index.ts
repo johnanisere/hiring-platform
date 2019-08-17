@@ -11,13 +11,10 @@ const cleanDb = async () => {
   }
 };
 
-const seedUsers = async () => {
+export const seedUsers = async () => {
   try {
-    const allUsers = users.map(async user => {
-      const newUser = await new User(user);
-      return newUser.save();
-    });
-    const res = await Promise.all(allUsers);
+    const res = await User.insertMany(users);
+    console.log(`Database has been seeded with ${res.length} users`);
     return res;
   } catch (err) {
     console.log({ err });
