@@ -1,10 +1,13 @@
 import request from 'supertest';
 import app from '../src/app';
-// import auth from '../src/middleware/auth';
+import { seedUsers } from '../src/db/seed/index';
 
 const { connectMongoDB, disconnectMongoDB } = require('../testSetup/mongodb');
 
-beforeAll(async () => await connectMongoDB());
+beforeAll(async () => {
+  await connectMongoDB();
+  await seedUsers();
+});
 
 afterAll(() => disconnectMongoDB());
 
@@ -14,6 +17,42 @@ describe('User Route', () => {
       .get('/api')
       .expect('Content-Type', /json/)
       .expect(200, { message: { hello: 'Hello World' } });
+  });
+
+  test('updates password', () => {
+    return request(app)
+      .post('/api/v1/users/hiring-partner/invite')
+      .send({
+        name: 'Larang',
+        email: 'careers@larang.com',
+        phone: '08074382109',
+        password: 'password',
+        profilePhoto:
+          'https://res.cloudinary.com/demo/image/upload/w_150,h_150,c_thumb,g_fac...',
+        role: 'Hiring Partner',
+      })
+      .then(response => {
+        const token = response.body.token;
+        return request(app)
+          .put('/api/v1/users/update-password/')
+          .set('Authorization', `Bearer ${token}`)
+          .send({
+            email: 'careers@larang.com',
+            newPassword: 'newsecret',
+          })
+          .expect(res => {
+            expect(res.body).toEqual(
+              expect.objectContaining({
+                message: 'Password updated',
+                updated: expect.objectContaining({
+                  email: 'careers@larang.com',
+                  name: 'Larang',
+                  phone: '08074382109',
+                }),
+              }),
+            );
+          });
+      });
   });
 
   test('creates a user', () => {
@@ -47,24 +86,15 @@ describe('User Route', () => {
       });
   });
 
-  test('updates password', () => {
+  test('logs in users', () => {
     return request(app)
-      .put('/api/v1/users/update-password/')
+      .post('/api/v1/users/login')
       .send({
         email: 'careers@flutterwave.com',
-        newPassword: 'newsecret',
+        password: 'newsecret2',
       })
       .expect(res => {
-        expect(res.body).toEqual(
-          expect.objectContaining({
-            message: 'Password updated',
-            updated: expect.objectContaining({
-              email: 'careers@flutterwave.com',
-              name: 'Flutterwave',
-              phone: '08074382109',
-            }),
-          }),
-        );
+        expect(res.body.error).toBe('wrong password');
       });
   });
 
@@ -143,18 +173,6 @@ describe('User Route', () => {
         expect(res.status).toBe(200);
         expect(Object.keys(res.body)).toContain('output');
         expect(Object.keys(res.body)).toContain('newUser');
-      });
-  });
-
-  test('logs in users', () => {
-    return request(app)
-      .post('/api/v1/users/login')
-      .send({
-        email: 'careers@flutterwave.com',
-        password: 'newsecret2',
-      })
-      .expect(res => {
-        expect(res.body.error).toBe('wrong password');
       });
   });
 });
