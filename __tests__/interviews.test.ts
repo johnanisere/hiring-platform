@@ -1,10 +1,14 @@
 import request from 'supertest';
 import Interviews from '../src/models/Interviews';
 import app from '../src/app';
+import { seedUsers } from '../src/db/seed/index';
 
 const { connectMongoDB, disconnectMongoDB } = require('../testSetup/mongodb');
 
-beforeAll(async () => await connectMongoDB());
+beforeAll(async () => {
+  await connectMongoDB();
+  await seedUsers();
+});
 
 afterAll(() => disconnectMongoDB());
 
