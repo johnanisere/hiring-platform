@@ -11,6 +11,7 @@ export default async function inviteHiringPartner(req: Request, res: Response) {
   const token = jwt.sign(
     {
       userId: data.id,
+      email: data.email,
     },
     PRIVATE_KEY,
     {
