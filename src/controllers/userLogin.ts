@@ -6,14 +6,8 @@ import { Request, Response } from 'express';
 import { PRIVATE_KEY } from '../config';
 
 const loginSchema: any = {
-  email: joi
-    .string()
-    .regex(/^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$/)
-    .required(),
-  password: joi
-    .string()
-    // .regex(/^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/)
-    .required(),
+  email: joi.string().required(),
+  password: joi.string().required(),
 };
 
 export default async function userLogin(req: Request, res: Response) {
@@ -23,7 +17,7 @@ export default async function userLogin(req: Request, res: Response) {
     abortEarly: false,
   });
   if (error) {
-    res.status(400).send({ error: 'invalid input!' });
+    res.status(400).send({ error });
   }
 
   try {
