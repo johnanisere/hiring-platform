@@ -19,12 +19,6 @@ export default function authMiddleware(
   const actualToken = token.split(' ')[1];
 
   jwt.verify(actualToken, PRIVATE_KEY, (err: any, payload: any) => {
-    if (payload) {
-      User.findOne({ email: payload.email }).then(doc => {
-        req.body.user = doc;
-        return next();
-      });
-    }
     if (err) {
       res.status(401).send({ message: 'UnAuthorised User' });
     }

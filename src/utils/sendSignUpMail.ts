@@ -1,9 +1,5 @@
 import { Request } from 'express';
-require('dotenv').config();
-
-const sgMail = require('@sendgrid/mail');
-
-sgMail.setApiKey(process.env.SENDGRID_API_KEY);
+import sendMail from './sendMail';
 
 const msg = (to: string, token: string, link: string) => {
   return {
@@ -37,9 +33,7 @@ async function sendSignUpMail(req: Request) {
   let to = req.body.email,
     token = req.body.token,
     link = 'https://hiringplatform/';
-  sgMail.send(msg(to, token, link)).catch((err: any) => {
-    console.log({ err: err.message });
-  });
+  sendMail(msg(to, token, link));
 }
 
 export default sendSignUpMail;
