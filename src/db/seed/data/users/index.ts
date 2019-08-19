@@ -10,7 +10,7 @@ export default [
     password: 'mysecret2',
     role: 'admin',
     profilePhoto:
-      'https://res.cloudinary.com/demo/image/upload/w_150,h_150,c_thumb,g_face,r_20,e_sepia/l_cloudinary_icon,g_south_east,x_5,y_5,w_50,o_60,e_brightness:200/a_10/front_face.png',
+      'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSIcqjP8a8EfGrtkCX0CJXJ4HRltM5u8Jdhkz_TneWdb4rfPsMi',
   },
   //  --------------- Deca devs -------------
   {
@@ -20,7 +20,7 @@ export default [
     password: 'mysecret',
     role: 'dev',
     profilePhoto:
-      'https://res.cloudinary.com/demo/image/upload/w_150,h_150,c_thumb,g_face,r_20,e_sepia/l_cloudinary_icon,g_south_east,x_5,y_5,w_50,o_60,e_brightness:200/a_10/front_face.png',
+      'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSIcqjP8a8EfGrtkCX0CJXJ4HRltM5u8Jdhkz_TneWdb4rfPsMi',
     cv: 'resume-1',
     bio: 'A very good dev',
   },
@@ -31,18 +31,18 @@ export default [
     password: 'mysecret',
     role: 'dev',
     profilePhoto:
-      'https://res.cloudinary.com/demo/image/upload/w_150,h_150,c_thumb,g_face,r_20,e_sepia/l_cloudinary_icon,g_south_east,x_5,y_5,w_50,o_60,e_brightness:200/a_10/front_face.png',
+      'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSIcqjP8a8EfGrtkCX0CJXJ4HRltM5u8Jdhkz_TneWdb4rfPsMi',
     cv: 'resume-2',
     bio: 'A good dev',
   },
   {
-    email: 'seunjay@example.com',
+    email: 'seunjay@ewdxample.com',
     name: 'Jayeoba Seun',
     phone: '08066484894',
     password: 'mysecret',
     role: 'dev',
     profilePhoto:
-      'https://res.cloudinary.com/demo/image/upload/w_150,h_150,c_thumb,g_face,r_20,e_sepia/l_cloudinary_icon,g_south_east,x_5,y_5,w_50,o_60,e_brightness:200/a_10/front_face.png',
+      'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSIcqjP8a8EfGrtkCX0CJXJ4HRltM5u8Jdhkz_TneWdb4rfPsMi',
 
     cv: 'resume-3',
     bio: 'A good database manager',
@@ -54,7 +54,7 @@ export default [
     password: 'mysecret',
     role: 'dev',
     profilePhoto:
-      'https://res.cloudinary.com/demo/image/upload/w_150,h_150,c_thumb,g_face,r_20,e_sepia/l_cloudinary_icon,g_south_east,x_5,y_5,w_50,o_60,e_brightness:200/a_10/front_face.png',
+      'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSIcqjP8a8EfGrtkCX0CJXJ4HRltM5u8Jdhkz_TneWdb4rfPsMi',
 
     cv: 'resume-4',
     bio: 'A good Backend engineer',
@@ -66,7 +66,7 @@ export default [
     password: 'mysecret',
     role: 'dev',
     profilePhoto:
-      'https://res.cloudinary.com/demo/image/upload/w_150,h_150,c_thumb,g_face,r_20,e_sepia/l_cloudinary_icon,g_south_east,x_5,y_5,w_50,o_60,e_brightness:200/a_10/front_face.png',
+      'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSIcqjP8a8EfGrtkCX0CJXJ4HRltM5u8Jdhkz_TneWdb4rfPsMi',
     cv: 'resume-5',
     bio: 'A good devOps engineer',
   },
@@ -77,7 +77,7 @@ export default [
     password: 'mysecret',
     role: 'dev',
     profilePhoto:
-      'https://res.cloudinary.com/demo/image/upload/w_150,h_150,c_thumb,g_face,r_20,e_sepia/l_cloudinary_icon,g_south_east,x_5,y_5,w_50,o_60,e_brightness:200/a_10/front_face.png',
+      'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSIcqjP8a8EfGrtkCX0CJXJ4HRltM5u8Jdhkz_TneWdb4rfPsMi',
     cv: 'resume-6',
     bio: 'A great software engineer',
   },
@@ -88,7 +88,7 @@ export default [
     password: 'mysecret',
     role: 'dev',
     profilePhoto:
-      'https://res.cloudinary.com/demo/image/upload/w_150,h_150,c_thumb,g_face,r_20,e_sepia/l_cloudinary_icon,g_south_east,x_5,y_5,w_50,o_60,e_brightness:200/a_10/front_face.png',
+      'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSIcqjP8a8EfGrtkCX0CJXJ4HRltM5u8Jdhkz_TneWdb4rfPsMi',
     cv: 'resume-7',
     bio: 'A great software dev',
   },
@@ -100,7 +100,7 @@ export default [
     password: 'mysecret',
     role: 'hiringPartner1',
     profilePhoto:
-      'https://res.cloudinary.com/demo/image/upload/w_150,h_150,c_thumb,g_face,r_20,e_sepia/l_cloudinary_icon,g_south_east,x_5,y_5,w_50,o_60,e_brightness:200/a_10/front_face.png',
+      'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSIcqjP8a8EfGrtkCX0CJXJ4HRltM5u8Jdhkz_TneWdb4rfPsMi',
     bio: 'I am a hiring partner 1',
     contactPerson: 'Mr. Johnson',
     companyURL: 'www.hiringpartner1.com',
@@ -113,7 +113,7 @@ export default [
     password: 'mysecret',
     role: 'hiringPartner2',
     profilePhoto:
-      'https://res.cloudinary.com/demo/image/upload/w_150,h_150,c_thumb,g_face,r_20,e_sepia/l_cloudinary_icon,g_south_east,x_5,y_5,w_50,o_60,e_brightness:200/a_10/front_face.png',
+      'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSIcqjP8a8EfGrtkCX0CJXJ4HRltM5u8Jdhkz_TneWdb4rfPsMi',
     bio: 'I am a hiring partner 2',
     contactPerson: 'Mr. Benson',
     companyURL: 'www.hiringpartner2.com',
@@ -123,10 +123,10 @@ export default [
     email: 'hiringpartner3@example.com',
     name: 'Hiring Partner3',
     phone: '080986773821',
-    password: 'mysecret',
+    password: 'mysecret2',
     role: 'hiringPartner3',
     profilePhoto:
-      'https://res.cloudinary.com/demo/image/upload/w_150,h_150,c_thumb,g_face,r_20,e_sepia/l_cloudinary_icon,g_south_east,x_5,y_5,w_50,o_60,e_brightness:200/a_10/front_face.png',
+      'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSIcqjP8a8EfGrtkCX0CJXJ4HRltM5u8Jdhkz_TneWdb4rfPsMi',
     bio: 'I am a hiring partner 3',
     contactPerson: 'Mr. Gibson',
     companyURL: 'www.hiringpartner3.com',
@@ -139,7 +139,7 @@ export default [
     password: 'mysecret',
     role: 'hiringPartner4',
     profilePhoto:
-      'https://res.cloudinary.com/demo/image/upload/w_150,h_150,c_thumb,g_face,r_20,e_sepia/l_cloudinary_icon,g_south_east,x_5,y_5,w_50,o_60,e_brightness:200/a_10/front_face.png',
+      'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSIcqjP8a8EfGrtkCX0CJXJ4HRltM5u8Jdhkz_TneWdb4rfPsMi',
     bio: 'I am a hiring partner 4',
     contactPerson: 'Mr. Samson',
     companyURL: 'www.hiringpartner4.com',
@@ -152,7 +152,7 @@ export default [
     password: 'mysecret',
     role: 'hiringPartner5',
     profilePhoto:
-      'https://res.cloudinary.com/demo/image/upload/w_150,h_150,c_thumb,g_face,r_20,e_sepia/l_cloudinary_icon,g_south_east,x_5,y_5,w_50,o_60,e_brightness:200/a_10/front_face.png',
+      'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSIcqjP8a8EfGrtkCX0CJXJ4HRltM5u8Jdhkz_TneWdb4rfPsMi',
     bio: 'I am a hiring partner 5',
     contactPerson: 'Mr. Williamson',
     companyURL: 'www.hiringpartner5.com',
@@ -165,7 +165,7 @@ export default [
     password: 'mysecret',
     role: 'hiringPartner6',
     profilePhoto:
-      'https://res.cloudinary.com/demo/image/upload/w_150,h_150,c_thumb,g_face,r_20,e_sepia/l_cloudinary_icon,g_south_east,x_5,y_5,w_50,o_60,e_brightness:200/a_10/front_face.png',
+      'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSIcqjP8a8EfGrtkCX0CJXJ4HRltM5u8Jdhkz_TneWdb4rfPsMi',
     bio: 'I am a hiring partner 6',
     contactPerson: 'Mr. Anderson',
     companyURL: 'www.hiringpartner6.com',
@@ -178,7 +178,7 @@ export default [
     password: 'mysecret',
     role: 'hiringPartner7',
     profilePhoto:
-      'https://res.cloudinary.com/demo/image/upload/w_150,h_150,c_thumb,g_face,r_20,e_sepia/l_cloudinary_icon,g_south_east,x_5,y_5,w_50,o_60,e_brightness:200/a_10/front_face.png',
+      'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSIcqjP8a8EfGrtkCX0CJXJ4HRltM5u8Jdhkz_TneWdb4rfPsMi',
     bio: 'I am a hiring partner 7',
     contactPerson: 'Mr. Henderson',
     companyURL: 'www.hiringpartner7.com',
