@@ -2,7 +2,7 @@ import User from '../models/User';
 import jwt from 'jsonwebtoken';
 import { PRIVATE_KEY } from '../config';
 import { Request, Response } from 'express';
-import sendInviteMail from './sendMail';
+import sendInviteMail from '../utils/sendInviteMail';
 
 export default async function inviteHiringPartner(req: Request, res: Response) {
   const user = new User(req.body);
@@ -11,6 +11,7 @@ export default async function inviteHiringPartner(req: Request, res: Response) {
   const token = jwt.sign(
     {
       userId: data.id,
+      email: data.email,
     },
     PRIVATE_KEY,
     {
@@ -20,7 +21,7 @@ export default async function inviteHiringPartner(req: Request, res: Response) {
 
   sendInviteMail(req);
   res.json({
-    ...data.toObject(), //res is a mongoose doc, so we turn it to an object.
+    ...data.toObject(),
     id: data._id,
     token: token,
   });

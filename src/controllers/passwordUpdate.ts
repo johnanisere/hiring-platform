@@ -7,13 +7,16 @@ export default async function updatePassword(
   _next: NextFunction,
 ) {
   try {
-    const user = await User.findOne({ email: req.body.email });
+    const { email } = req.body.user;
+    const user = await User.findOne({ email });
+
     if (!user) {
-      return res.send('User not found!!!');
+      res.send('User not found!!!');
     } else {
       user.password = req.body.newPassword;
       const updated = await user.save();
-      return res.status(200).send({
+
+      res.status(200).send({
         message: 'Password updated',
         updated: {
           name: updated.name,
@@ -23,9 +26,9 @@ export default async function updatePassword(
       });
     }
   } catch (err) {
-    console.log(err.message);
-    return res.status(400).json({
+    res.status(400).send({
       message: 'Password update failed!!!',
+      error: err.message,
     });
   }
 }

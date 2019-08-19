@@ -6,14 +6,8 @@ import { Request, Response } from 'express';
 import { PRIVATE_KEY } from '../config';
 
 const loginSchema: any = {
-  email: joi
-    .string()
-    .regex(/^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$/)
-    .required(),
-  password: joi
-    .string()
-    // .regex(/^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/)
-    .required(),
+  email: joi.string().required(),
+  password: joi.string().required(),
 };
 
 export default async function userLogin(req: Request, res: Response) {
@@ -23,13 +17,13 @@ export default async function userLogin(req: Request, res: Response) {
     abortEarly: false,
   });
   if (error) {
-    res.status(400).send({ error: 'error!!!!! user is not valid!' });
+    res.status(400).send({ error });
   }
 
   try {
     const requestedSingleUser = await User.findOne({
       email: value.email,
-    });
+    }).select({ __v: 0, _id: 0, createdAt: 0, updatedAt: 0 });
     if (!requestedSingleUser) {
       res.status(404).send({ error: 'user does not exist' });
     } else {
@@ -49,9 +43,11 @@ export default async function userLogin(req: Request, res: Response) {
             expiresIn: '1h',
           },
         );
-        res.header('auth-token', token);
-
-        res.status(200).send({ ...suspected, token });
+        const { password, ...rest } = suspected;
+        res
+          .header('auth-token', token)
+          .status(200)
+          .send({ ...rest, token });
       }
     }
   } catch (err) {

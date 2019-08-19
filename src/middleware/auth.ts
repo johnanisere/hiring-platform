@@ -8,18 +8,28 @@ export default function authMiddleware(
   res: Response,
   next: NextFunction,
 ) {
-  const token = `${req.headers['authorization']}`;
-  const actualToken = token ? token.split(' ')[1] : '';
+  const token = req.headers['authorization'];
+
+  if (!token) {
+    res.status(401).send({ message: 'UnAuthorised User' });
+
+    return;
+  }
+
+  const actualToken = token.split(' ')[1];
 
   jwt.verify(actualToken, PRIVATE_KEY, (err: any, payload: any) => {
-    if (payload) {
-      User.findOne({ email: payload.email }).then(doc => {
-        req.body.user = doc;
-        return next();
-      });
-    }
     if (err) {
-      res.status(401).send(err);
+      res.status(401).send({ message: 'UnAuthorised User' });
     }
+
+    User.findOne({ email: payload.email }).then(doc => {
+      if (doc) {
+        req.body.user = doc;
+        next();
+      } else {
+        res.status(401).send({ error: 'Unauthorized User' });
+      }
+    });
   });
 }

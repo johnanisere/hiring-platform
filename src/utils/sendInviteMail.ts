@@ -1,9 +1,5 @@
 import { Request } from 'express';
-require('dotenv').config();
-
-const sgMail = require('@sendgrid/mail');
-
-sgMail.setApiKey(process.env.SENDGRID_API_KEY);
+import sendMail from './sendMail';
 
 const msg = (to: String, password: String, link: String) => {
   return {
@@ -37,9 +33,7 @@ async function sendInviteMail(req: Request) {
   let to = req.body.email,
     password = req.body.password,
     link = 'https://google.com';
-  await sgMail.send(msg(to, password, link)).catch((err: any) => {
-    console.log({ err: err.message });
-  });
+  await sendMail(msg(to, password, link));
 }
 
 export default sendInviteMail;
