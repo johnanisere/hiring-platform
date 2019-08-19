@@ -1,10 +1,14 @@
 import request from 'supertest';
 import Interviews from '../src/models/Interviews';
 import app from '../src/app';
+import { seedUsers } from '../src/db/seed/index';
 
 const { connectMongoDB, disconnectMongoDB } = require('../testSetup/mongodb');
 
-beforeAll(async () => await connectMongoDB());
+beforeAll(async () => {
+  await connectMongoDB();
+  await seedUsers();
+});
 
 afterAll(() => disconnectMongoDB());
 
@@ -56,21 +60,6 @@ describe('interview route', () => {
         expect(Object.keys(res.body.interview)).toContain('hiringPartner');
       });
   });
-
-  test('invite devs', async () => {
-    return request(app)
-      .post('/api/v1/invite/devs')
-      .send({
-        squadNo: 'Squad 1',
-      })
-      .expect(res => {
-        expect(res.body).toEqual(
-          expect.objectContaining({
-            message: `Your invites have been sent to Squad 1`,
-          }),
-        );
-      });
-  });
 });
 
 describe('User Route', () => {
@@ -81,7 +70,34 @@ describe('User Route', () => {
       .expect(200, { message: { hello: 'Hello World' } });
   });
 
-  test('creates a user', () => {
+  test('updates password', async () => {
+    const user = await request(app)
+      .post('/api/v1/users/login')
+      .send({
+        email: 'johndoe@example.com',
+        password: 'mysecret2',
+      });
+    return request(app)
+      .put('/api/v1/users/update-password/')
+      .set('Authorization', `Bearer ${user.body.token}`)
+      .send({
+        newPassword: 'newsecret',
+      })
+      .expect(res => {
+        expect(res.body).toEqual(
+          expect.objectContaining({
+            message: 'Password updated',
+            updated: expect.objectContaining({
+              email: 'johndoe@example.com',
+              name: 'John Doe',
+              phone: '08074583218',
+            }),
+          }),
+        );
+      });
+  });
+
+  test('Invite hiring partner', () => {
     return request(app)
       .post('/api/v1/users/hiring-partner/invite')
       .send({
@@ -112,108 +128,6 @@ describe('User Route', () => {
       });
   });
 
-  test('updates password', () => {
-    return request(app)
-      .put('/api/v1/users/update-password/')
-      .send({
-        email: 'careers@flutterwave.com',
-        newPassword: 'newsecret',
-      })
-      .expect(res => {
-        expect(res.body).toEqual(
-          expect.objectContaining({
-            message: 'Password updated',
-            updated: expect.objectContaining({
-              email: 'careers@flutterwave.com',
-              name: 'Flutterwave',
-              phone: '08074382109',
-            }),
-          }),
-        );
-      });
-  });
-
-  test('change password', () => {
-    return request(app)
-      .put('/api/v1/users/change-password/')
-      .send({
-        email: 'careers@flutterwave.com',
-        newPassword: 'mynewpassword1',
-        confirmPassword: 'mynewpassword1',
-      })
-      .expect(res => {
-        expect(res.body).toEqual(
-          expect.objectContaining({
-            message: 'password updated successfully',
-          }),
-        );
-      });
-  });
-
-  test('change password: Invalid email', () => {
-    return request(app)
-      .put('/api/v1/users/change-password/')
-      .send({
-        email: 'invalid@email.com',
-        newPassword: 'mynewpassword1',
-        confirmPassword: 'mynewpassword1',
-      })
-      .expect(res => {
-        expect(res.body).toEqual(
-          expect.objectContaining({
-            message: 'user not found',
-          }),
-        );
-      });
-  });
-
-  test("change password: They don't match", () => {
-    return request(app)
-      .put('/api/v1/users/change-password/')
-      .send({
-        email: 'careers@flutterwave.com',
-        newPassword: 'mynewpassword1',
-        confirmPassword: 'mynewpassword',
-      })
-      .expect(res => {
-        expect(res.body).toEqual(
-          expect.objectContaining({
-            message: "password doesn't match",
-          }),
-        );
-      });
-  });
-
-  test('lists all decadevs', () => {
-    return request(app)
-      .get('/api/v1/users/decadevs')
-      .expect(res => {
-        expect(res.body.allDecadevs.length).toBe(7);
-
-        expect(res.status).toBe(200);
-        expect(Object.keys(res.body)).toContain('allDecadevs');
-        expect(res.body.allDecadevs).toHaveLength(7);
-      });
-  });
-
-  test('user can sign up', () => {
-    return request(app)
-      .post('/api/v1/users/signup')
-      .send({
-        name: 'Egbo Uchenna',
-        email: 'egbouchennag@gmail.in',
-        role: 'dev',
-        phone: '08085743182',
-        password: 'newPassword',
-        profilePhoto: 'my profile_pic.',
-      })
-      .expect(res => {
-        expect(res.status).toBe(200);
-        expect(Object.keys(res.body)).toContain('output');
-        expect(Object.keys(res.body)).toContain('newUser');
-      });
-  });
-
   test('logs in users', () => {
     return request(app)
       .post('/api/v1/users/login')
@@ -223,6 +137,14 @@ describe('User Route', () => {
       })
       .expect(res => {
         expect(res.body.error).toBe('wrong password');
+      });
+  });
+
+  test('lists all decadevs', () => {
+    return request(app)
+      .get('/api/v1/users/decadevs')
+      .expect(res => {
+        expect(res.body.allDecadevs.length).toBe(7);
       });
   });
 });

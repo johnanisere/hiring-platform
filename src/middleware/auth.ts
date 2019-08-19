@@ -3,21 +3,33 @@ import jwt from 'jsonwebtoken';
 import { PRIVATE_KEY } from '../config';
 import User from '../models/User';
 
-export function authMiddleware(
+export default function authMiddleware(
   req: Request,
   res: Response,
   next: NextFunction,
 ) {
   const token = req.headers['authorization'];
-  const actualToken = token ? token.split(' ')[1] : '';
-  jwt.verify(actualToken, PRIVATE_KEY, (err, payload) => {
-    if (payload) {
-      User.findById(payload).then(doc => {
-        req.body.user = doc;
-        return next();
-      });
+
+  if (!token) {
+    res.status(401).send({ message: 'UnAuthorised User' });
+
+    return;
+  }
+
+  const actualToken = token.split(' ')[1];
+
+  jwt.verify(actualToken, PRIVATE_KEY, (err: any, payload: any) => {
+    if (err) {
+      res.status(401).send({ message: 'UnAuthorised User' });
     }
-    return res.status(401).send(err);
+
+    User.findOne({ email: payload.email }).then(doc => {
+      if (doc) {
+        req.body.user = doc;
+        next();
+      } else {
+        res.status(401).send({ error: 'Unauthorized User' });
+      }
+    });
   });
-  return res.status(401).json({ message: 'UnAuthorised' });
 }

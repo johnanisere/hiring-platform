@@ -2,7 +2,7 @@ import User from '../models/User';
 import jwt from 'jsonwebtoken';
 import { PRIVATE_KEY } from '../config';
 import { Response, Request, NextFunction } from 'express';
-import sendSignUpMail from '../controllers/sendSignUpMail';
+import sendSignUpMail from '../utils/sendSignUpMail';
 
 export default async function signUp(
   req: Request,
