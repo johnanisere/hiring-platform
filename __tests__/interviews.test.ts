@@ -61,3 +61,90 @@ describe('interview route', () => {
       });
   });
 });
+
+describe('User Route', () => {
+  test('Has a /api endpoint', () => {
+    return request(app)
+      .get('/api')
+      .expect('Content-Type', /json/)
+      .expect(200, { message: { hello: 'Hello World' } });
+  });
+
+  test('updates password', async () => {
+    const user = await request(app)
+      .post('/api/v1/users/login')
+      .send({
+        email: 'johndoe@example.com',
+        password: 'mysecret2',
+      });
+    return request(app)
+      .put('/api/v1/users/update-password/')
+      .set('Authorization', `Bearer ${user.body.token}`)
+      .send({
+        newPassword: 'newsecret',
+      })
+      .expect(res => {
+        expect(res.body).toEqual(
+          expect.objectContaining({
+            message: 'Password updated',
+            updated: expect.objectContaining({
+              email: 'johndoe@example.com',
+              name: 'John Doe',
+              phone: '08074583218',
+            }),
+          }),
+        );
+      });
+  });
+
+  test('Invite hiring partner', () => {
+    return request(app)
+      .post('/api/v1/users/hiring-partner/invite')
+      .send({
+        name: 'Flutterwave',
+        email: 'careers@flutterwave.com',
+        phone: '08074382109',
+        password: 'password',
+        profilePhoto:
+          'https://res.cloudinary.com/demo/image/upload/w_150,h_150,c_thumb,g_fac...',
+        role: 'Hiring Partner',
+      })
+      .expect(res => {
+        expect(res.body).toEqual(
+          expect.objectContaining({
+            _id: expect.any(String),
+            name: 'Flutterwave',
+            email: 'careers@flutterwave.com',
+            password: expect.any(String),
+            phone: expect.any(String),
+            profilePhoto: expect.any(String),
+            token: expect.any(String),
+            createdAt: expect.any(String),
+            updatedAt: expect.any(String),
+            id: expect.any(String),
+            role: expect.any(String),
+          }),
+        );
+      });
+  });
+
+  test('logs in users', () => {
+    return request(app)
+      .post('/api/v1/users/login')
+      .send({
+        email: 'careers@flutterwave.com',
+        password: 'newsecret2',
+      })
+      .expect(res => {
+        expect(res.body.error).toBe('wrong password');
+      });
+  });
+
+  test('lists all decadevs', () => {
+    return request(app)
+      .get('/api/v1/users/decadevs')
+      .expect(res => {
+        expect(res.body.allDecadevs.length).toBe(7);
+      });
+  });
+});
