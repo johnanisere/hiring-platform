@@ -29,11 +29,11 @@ const msg = (to: String, password: String, link: String) => {
   };
 };
 
-async function sendInviteMail(req: Request) {
+function sendInviteMail(req: Request) {
   let to = req.body.email,
     password = req.body.password,
     link = 'https://google.com';
-  await sendMail(msg(to, password, link));
+  sendMail(msg(to, password, link));
 }
 
 export default sendInviteMail;

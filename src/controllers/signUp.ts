@@ -12,7 +12,7 @@ export default async function signUp(
   try {
     const iUser = await User.findOne({ email: req.body.email });
     if (iUser) {
-      res.status(400).json({ email: 'Email already exists.' });
+      res.status(400).json({ error: ` Email ${iUser.email} already exists.` });
     } else {
       const user = await new User(req.body);
       user.profilePhoto =
@@ -40,6 +40,6 @@ export default async function signUp(
       });
     }
   } catch (error) {
-    res.status(400).send(error.message);
+    res.status(400).send(error);
   }
 }
