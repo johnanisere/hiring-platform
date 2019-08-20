@@ -1,7 +1,7 @@
 import request from 'supertest';
 import Interviews from '../src/models/Interviews';
 import app from '../src/app';
-import { seedUsers } from '../src/db/seed/index';
+import seedUsers from '../src/db/seed/index';
 
 const { connectMongoDB, disconnectMongoDB } = require('../testSetup/mongodb');
 
@@ -145,6 +145,40 @@ describe('User Route', () => {
       .get('/api/v1/users/decadevs')
       .expect(res => {
         expect(res.body.allDecadevs.length).toBe(7);
+
+        expect(res.status).toBe(200);
+        expect(Object.keys(res.body)).toContain('allDecadevs');
+        expect(res.body.allDecadevs).toHaveLength(7);
+      });
+  });
+
+  test('user can sign up', () => {
+    return request(app)
+      .post('/api/v1/users/signup')
+      .send({
+        name: 'Egbo Uchenna',
+        email: 'egbouchennag@gmail.in',
+        role: 'dev',
+        phone: '08085743182',
+        password: 'newPassword',
+        profilePhoto: 'my profile_pic.',
+      })
+      .expect(res => {
+        expect(res.status).toBe(200);
+        expect(Object.keys(res.body)).toContain('message');
+        expect(Object.keys(res.body)).toContain('newUser');
+      });
+  });
+
+  test('logs in users', () => {
+    return request(app)
+      .post('/api/v1/users/login')
+      .send({
+        email: 'careers@flutterwave.com',
+        password: 'newsecret2',
+      })
+      .expect(res => {
+        expect(res.body.error).toBe('wrong password');
       });
   });
 });

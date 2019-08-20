@@ -1,9 +1,10 @@
+import { Request } from 'express';
 import sendMail from './sendMail';
 
-const msg = (to: string, link: string, name: string) => {
+const msg = (to: string, token: string, link: string) => {
   return {
     from: {
-      email: 'johndoe@example.com',
+      email: 'johnanisere@gmail.com',
     },
     personalizations: [
       {
@@ -13,25 +14,26 @@ const msg = (to: string, link: string, name: string) => {
           },
         ],
         dynamic_template_data: {
+          email: to,
+          token: token,
+          link: link,
           Sender_Name: 'Decagon Institute',
           Sender_Address:
             '2nd Floor Traditions Building Familoni Street, off Lekki - Epe Express',
           Sender_City: 'Lagos, Nigeria',
           Sender_Zip: '101233',
-          link,
-          name,
-          Sender_State: 'Lagos',
         },
       },
     ],
-    template_id: 'd-738d7d0623174e42874ad0ad442bc867',
+    template_id: 'd-cb7aa83d3f304115a1ae683442d6e1b9',
   };
 };
 
-function devsMailInvite(token: string, name: string, email: string) {
-  let to = email,
-    link = `https://google.com/${token}`;
-  sendMail(msg(to, link, name)).catch(_err => {});
+async function sendSignUpMail(req: Request) {
+  let to = req.body.email,
+    token = req.body.token,
+    link = 'https://hiringplatform/';
+  sendMail(msg(to, token, link));
 }
 
-export default devsMailInvite;
+export default sendSignUpMail;
