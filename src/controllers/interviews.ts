@@ -4,8 +4,6 @@ import User from '../models/User';
 import { interviewValidation } from '../validator/interviewValidation';
 
 export const scheduleInterview = async (req: Request, res: Response) => {
-  console.log('PARTNER: ', req.body);
-
   const { error } = interviewValidation(req.body);
   if (error) return res.status(400).send(error.details[0].message);
   const interview = new Interviews(req.body);
