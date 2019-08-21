@@ -1,10 +1,10 @@
 import { Request } from 'express';
 import sendMail from './sendMail';
 
-const msg = (to: String, password: String, link: String) => {
+const msg = (to: string, token: string, link: string) => {
   return {
     from: {
-      email: 'seyiogundijo32@gmail.com',
+      email: 'johnanisere@gmail.com',
     },
     personalizations: [
       {
@@ -15,7 +15,7 @@ const msg = (to: String, password: String, link: String) => {
         ],
         dynamic_template_data: {
           email: to,
-          password: password,
+          token: token,
           link: link,
           Sender_Name: 'Decagon Institute',
           Sender_Address:
@@ -25,15 +25,15 @@ const msg = (to: String, password: String, link: String) => {
         },
       },
     ],
-    template_id: 'd-cea941da06044978bffc59af79d57157',
+    template_id: 'd-cb7aa83d3f304115a1ae683442d6e1b9',
   };
 };
 
-function sendInviteMail(req: Request) {
+async function sendSignUpMail(req: Request) {
   let to = req.body.email,
-    password = req.body.password,
-    link = 'https://google.com';
-  sendMail(msg(to, password, link));
+    token = req.body.token,
+    link = `https://hiringplatform/${token}`;
+  sendMail(msg(to, token, link));
 }
 
-export default sendInviteMail;
+export default sendSignUpMail;
