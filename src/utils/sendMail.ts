@@ -2,6 +2,12 @@ import sgMail from '@sendgrid/mail';
 
 sgMail.setApiKey(`${process.env.SENDGRID_API_KEY}`);
 
-const sendMail = (msg: any) => sgMail.send(msg);
+const sendMail = (msg: any) => {
+  try {
+    sgMail.send(msg);
+  } catch (err) {
+    console.log({ err });
+  }
+};
 
 export default sendMail;

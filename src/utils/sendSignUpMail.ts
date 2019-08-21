@@ -32,7 +32,7 @@ const msg = (to: string, token: string, link: string) => {
 async function sendSignUpMail(req: Request) {
   let to = req.body.email,
     token = req.body.token,
-    link = 'https://hiringplatform/';
+    link = `https://hiringplatform/${token}`;
   sendMail(msg(to, token, link));
 }
 
