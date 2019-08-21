@@ -1,5 +1,4 @@
 import request from 'supertest';
-import Interviews from '../src/models/Interviews';
 import app from '../src/app';
 import seedUsers from '../src/db/seed/index';
 
@@ -20,44 +19,20 @@ describe('interview route', () => {
         hiringPartner: 'terragon@gmail.com',
         decaDev: 'esther@gmail.com',
         location: 'Victoria Island',
-        time: '10am',
+        startTime: '10am',
+        endTime: '11am',
         description:
           'This is to inform you that you have been shortlisted for an interview',
-        profilePhoto:
-          'https://res.cloudinary.com/demo/image/upload/w_150,h_150,c_thumb,g_fac...',
+        eventId: 'EI234',
       })
       .expect(res => {
         expect(Object.keys(res.body)).toContain('hiringPartner');
         expect(Object.keys(res.body)).toContain('decaDev');
         expect(Object.keys(res.body)).toContain('location');
-        expect(Object.keys(res.body)).toContain('time');
+        expect(Object.keys(res.body)).toContain('startTime');
+        expect(Object.keys(res.body)).toContain('endTime');
         expect(Object.keys(res.body)).toContain('description');
-      });
-  });
-
-  test('accept interview', async () => {
-    let id;
-    const interview = new Interviews({
-      hiringPartner: 'google@gmail.com',
-      decaDev: 'chukky@gmail.com',
-      location: 'Ikeja',
-      time: '9am',
-      description:
-        'This is to inform you that you have been shortlisted for an interview',
-      profilePhoto:
-        'https://res.cloudinary.com/demo/image/upload/w_150,h_150,c_thumb,g_fac...',
-    });
-
-    const savedInterview = await interview.save();
-
-    id = savedInterview._id;
-
-    return request(app)
-      .put(`/api/v1/interview/invite/${id}`)
-      .send({ accepted: true })
-      .expect(res => {
-        expect(Object.keys(res.body.interview)).toContain('accepted');
-        expect(Object.keys(res.body.interview)).toContain('hiringPartner');
+        expect(Object.keys(res.body)).toContain('eventId');
       });
   });
 });
