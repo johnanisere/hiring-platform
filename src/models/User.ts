@@ -33,7 +33,7 @@ const UserSchema: Schema = new Schema(
     role: { type: String, required: true },
     name: { type: String, required: true },
     profilePhoto: { type: String, required: true },
-    gender: { type: String, required: true },
+    gender: { type: String, default: 'male' },
     skills: { type: mongoose.Schema.Types.ObjectId, ref: 'Skills' },
     publications: { type: mongoose.Schema.Types.ObjectId, ref: 'Publications' },
     cv: { type: String },
