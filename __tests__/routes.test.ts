@@ -139,7 +139,6 @@ describe('User Route', () => {
         profilePhoto: 'my profile_pic.',
       })
       .expect(res => {
-        console.log({ body: res.body });
         expect(res.status).toBe(200);
         expect(Object.keys(res.body)).toContain('message');
         expect(Object.keys(res.body)).toContain('newUser');
