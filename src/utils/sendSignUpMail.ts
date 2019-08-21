@@ -1,7 +1,7 @@
 import { Request } from 'express';
 import sendMail from './sendMail';
 
-const msg = (to: string, token: string, link: string) => {
+const msg = (to: string, link: string, name: string) => {
   return {
     from: {
       email: 'johnanisere@gmail.com',
@@ -14,9 +14,8 @@ const msg = (to: string, token: string, link: string) => {
           },
         ],
         dynamic_template_data: {
-          email: to,
-          token: token,
-          link: link,
+          name,
+          link,
           Sender_Name: 'Decagon Institute',
           Sender_Address:
             '2nd Floor Traditions Building Familoni Street, off Lekki - Epe Express',
@@ -32,8 +31,9 @@ const msg = (to: string, token: string, link: string) => {
 async function sendSignUpMail(req: Request) {
   let to = req.body.email,
     token = req.body.token,
+    name = req.body.name,
     link = `https://hiringplatform/${token}`;
-  sendMail(msg(to, token, link));
+  sendMail(msg(to, link, name));
 }
 
 export default sendSignUpMail;
