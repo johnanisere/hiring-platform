@@ -31,7 +31,7 @@ const msg = (to: string, link: string, name: string) => {
 function devsMailInvite(token: string, name: string, email: string) {
   let to = email,
     link = `https://google.com/${token}`;
-  sendMail(msg(to, link, name)).catch(_err => {});
+  sendMail(msg(to, link, name));
 }
 
 export default devsMailInvite;
