@@ -11,8 +11,9 @@ export const interviewValidation = (data: any) => {
       .required()
       .email(),
     location: joi.string().required(),
-    time: joi.string().required(),
-    profilePhoto: joi.string().required(),
+    startTime: joi.string().required(),
+    endTime: joi.string().required(),
+    eventId: joi.string().required(),
     description: joi
       .string()
       .required()
