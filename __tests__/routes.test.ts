@@ -119,11 +119,11 @@ describe('User Route', () => {
     return request(app)
       .get('/api/v1/users/decadevs')
       .expect(res => {
-        expect(res.body.allDecadevs.length).toBe(7);
+        expect(res.body.allDecadevs.length).toBe(4);
 
         expect(res.status).toBe(200);
         expect(Object.keys(res.body)).toContain('allDecadevs');
-        expect(res.body.allDecadevs).toHaveLength(7);
+        expect(res.body.allDecadevs).toHaveLength(4);
       });
   });
 

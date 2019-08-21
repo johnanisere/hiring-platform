@@ -17,6 +17,7 @@ export interface IUser extends mongoose.Document {
   companyURL?: String;
   address: String;
   interviews: Array<String>;
+  count: number;
 }
 
 const UserSchema: Schema = new Schema(
@@ -40,6 +41,10 @@ const UserSchema: Schema = new Schema(
     phone: { type: String },
     companyURL: { type: String },
     address: { type: String },
+    count: {
+      type: Number,
+      default: 0,
+    },
     interviews: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Interviews' }],
   },
   { timestamps: true },
