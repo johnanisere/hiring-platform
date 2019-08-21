@@ -2,6 +2,10 @@ import sgMail from '@sendgrid/mail';
 
 sgMail.setApiKey(`${process.env.SENDGRID_API_KEY}`);
 
-const sendMail = (msg: any) => sgMail.send(msg);
+const sendMail = async (msg: any) => {
+  try {
+    await sgMail.send(msg);
+  } catch (err) {}
+};
 
 export default sendMail;
