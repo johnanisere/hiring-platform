@@ -1,10 +1,12 @@
 import users from './data/users';
 import User from '../../models/User';
+import Cycle from '../../models/Cycle';
 
 const cleanDb = async () => {
   try {
-    console.log('succesfully cleared db');
-    return await User.deleteMany({});
+    await Cycle.deleteMany({});
+    await User.deleteMany({});
+    return console.log('succesfully cleared db');
   } catch (err) {
     console.log('Error: occured', err);
     return err;
@@ -17,6 +19,8 @@ export const seedUsers = async () => {
       const newUser = await new User(user);
       return newUser.save();
     });
+    const cycle = await new Cycle();
+    await cycle.save();
     const res = await Promise.all(allUsers);
     return res;
   } catch (err) {
