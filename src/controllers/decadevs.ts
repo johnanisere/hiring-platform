@@ -8,9 +8,10 @@ import { Response, Request } from 'express';
  * @access   authorized.
  */
 export default async function getAllDecadevs(req: Request, res: Response) {
-  const { gender } = req.query;
+  let { gender } = req.query;
+  gender = gender ? `${gender}`.toLowerCase() : '';
   try {
-    const onGenderNotPassed = !gender || gender === 'All';
+    const onGenderNotPassed = !gender || gender === 'all';
     //get cycle count
     let activeCycle = await Cycle.findOne({ name: 'default' });
     let activeCycleCount = activeCycle ? activeCycle.count : 1;
