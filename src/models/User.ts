@@ -31,7 +31,7 @@ const UserSchema: Schema = new Schema(
     password: { type: String, required: true },
     role: { type: String, required: true },
     name: { type: String, required: true },
-    profilePhoto: { type: String, required: true },
+    profilePhoto: { type: String },
     skills: { type: mongoose.Schema.Types.ObjectId, ref: 'Skills' },
     publications: { type: mongoose.Schema.Types.ObjectId, ref: 'Publications' },
     cv: { type: String },

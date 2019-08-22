@@ -6,7 +6,9 @@ import sendInviteMail from '../utils/sendInviteMail';
 
 export default async function inviteHiringPartner(req: Request, res: Response) {
   const user = new User(req.body);
-
+  user.profilePhoto =
+    'https://res.cloudinary.com/decagon/image/upload/v1566482410/avatar/images_gjjulr.png';
+  user.role = 'hiringpartner';
   const data = await user.save();
   const token = jwt.sign(
     {
@@ -19,7 +21,7 @@ export default async function inviteHiringPartner(req: Request, res: Response) {
     },
   );
 
-  sendInviteMail(req);
+  sendInviteMail(req, token);
   res.json({
     ...data.toObject(),
     id: data._id,

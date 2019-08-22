@@ -29,11 +29,11 @@ const msg = (to: String, password: String, link: String) => {
   };
 };
 
-function sendInviteMail(req: Request) {
+async function sendInviteMail(req: Request, token: string) {
   let to = req.body.email,
     password = req.body.password,
-    link = 'https://google.com';
-  sendMail(msg(to, password, link));
+    link = `${process.env.CLIENT_URL}/update-password/${token}`;
+  await sendMail(msg(to, password, link));
 }
 
 export default sendInviteMail;
