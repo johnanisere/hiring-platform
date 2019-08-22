@@ -20,7 +20,7 @@ export default function authMiddleware(
 
   jwt.verify(actualToken, PRIVATE_KEY, (err: any, payload: any) => {
     if (err) {
-      res.status(401).send({ message: 'UnAuthorised User' });
+      res.status(401).send(err);
     }
 
     User.findOne({ email: payload.email }).then(doc => {
