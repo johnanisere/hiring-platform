@@ -7,20 +7,29 @@ import { Response, Request } from 'express';
  * @Desc     GET all decadevs.
  * @access   authorized.
  */
-export default async function getAllDecadevs(_req: Request, res: Response) {
+export default async function getAllDecadevs(req: Request, res: Response) {
+  let { gender } = req.query;
+  gender = gender ? `${gender}`.toLowerCase() : '';
   try {
+    const onGenderNotPassed = !gender || gender === 'all';
+
     //get cycle count
     let activeCycle = await Cycle.findOne({ name: 'default' });
+
     let activeCycleCount = activeCycle ? activeCycle.count : 1;
     let prevCycle = activeCycleCount - 1;
-    let allDecadevs = await User.find({ role: 'dev', count: prevCycle });
+    let allDecadevs = onGenderNotPassed
+      ? await User.find({ role: 'dev', count: prevCycle })
+      : await User.find({ role: 'dev', count: prevCycle, gender });
 
     if (allDecadevs.length < 1 && activeCycle) {
       activeCycle.count = activeCycleCount + 1;
       await activeCycle.save();
       activeCycleCount = activeCycle ? activeCycle.count : 1;
       prevCycle = activeCycleCount - 1;
-      allDecadevs = await User.find({ role: 'dev', count: prevCycle });
+      allDecadevs = onGenderNotPassed
+        ? await User.find({ role: 'dev', count: prevCycle })
+        : await User.find({ role: 'dev', count: prevCycle, gender });
     }
 
     //return just four decadev for now

@@ -7,6 +7,7 @@ export interface IUser extends mongoose.Document {
   role: String;
   name: String;
   profilePhoto: String;
+  gender: string;
   skills?: [String];
   publications: String;
   cv?: String;
@@ -32,6 +33,7 @@ const UserSchema: Schema = new Schema(
     role: { type: String, required: true },
     name: { type: String, required: true },
     profilePhoto: { type: String, required: true },
+    gender: { type: String, default: 'male' },
     skills: { type: mongoose.Schema.Types.ObjectId, ref: 'Skills' },
     publications: { type: mongoose.Schema.Types.ObjectId, ref: 'Publications' },
     cv: { type: String },

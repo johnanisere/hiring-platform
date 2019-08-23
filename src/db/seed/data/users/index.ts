@@ -22,6 +22,7 @@ export default [
     profilePhoto:
       'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSIcqjP8a8EfGrtkCX0CJXJ4HRltM5u8Jdhkz_TneWdb4rfPsMi',
     cv: 'resume-1',
+    gender: 'female',
     bio: 'A very good dev',
   },
   {
@@ -30,6 +31,7 @@ export default [
     phone: '08043256784',
     password: 'mysecret',
     role: 'dev',
+    gender: 'female',
     profilePhoto:
       'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSIcqjP8a8EfGrtkCX0CJXJ4HRltM5u8Jdhkz_TneWdb4rfPsMi',
     cv: 'resume-2',
@@ -41,6 +43,7 @@ export default [
     phone: '08066484894',
     password: 'mysecret',
     role: 'dev',
+    gender: 'male',
     profilePhoto:
       'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSIcqjP8a8EfGrtkCX0CJXJ4HRltM5u8Jdhkz_TneWdb4rfPsMi',
 
@@ -53,6 +56,7 @@ export default [
     phone: '0808763468439',
     password: 'mysecret',
     role: 'dev',
+    gender: 'female',
     profilePhoto:
       'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSIcqjP8a8EfGrtkCX0CJXJ4HRltM5u8Jdhkz_TneWdb4rfPsMi',
 
@@ -65,6 +69,7 @@ export default [
     phone: '080856985759',
     password: 'mysecret',
     role: 'dev',
+    gender: 'male',
     profilePhoto:
       'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSIcqjP8a8EfGrtkCX0CJXJ4HRltM5u8Jdhkz_TneWdb4rfPsMi',
     cv: 'resume-5',
@@ -76,6 +81,7 @@ export default [
     phone: '080769436434',
     password: 'mysecret',
     role: 'dev',
+    gender: 'male',
     profilePhoto:
       'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSIcqjP8a8EfGrtkCX0CJXJ4HRltM5u8Jdhkz_TneWdb4rfPsMi',
     cv: 'resume-6',
@@ -87,6 +93,7 @@ export default [
     phone: '08087494934',
     password: 'mysecret',
     role: 'dev',
+    gender: 'male',
     profilePhoto:
       'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSIcqjP8a8EfGrtkCX0CJXJ4HRltM5u8Jdhkz_TneWdb4rfPsMi',
     cv: 'resume-7',
@@ -98,7 +105,7 @@ export default [
     name: 'Hiring Partner1',
     phone: '08954738210',
     password: 'mysecret',
-    role: 'hiringPartner1',
+    role: 'hiringpartner',
     profilePhoto:
       'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSIcqjP8a8EfGrtkCX0CJXJ4HRltM5u8Jdhkz_TneWdb4rfPsMi',
     bio: 'I am a hiring partner 1',
@@ -111,7 +118,7 @@ export default [
     name: 'Hiring Partner2',
     phone: '08056738561',
     password: 'mysecret',
-    role: 'hiringPartner2',
+    role: 'hiringpartner',
     profilePhoto:
       'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSIcqjP8a8EfGrtkCX0CJXJ4HRltM5u8Jdhkz_TneWdb4rfPsMi',
     bio: 'I am a hiring partner 2',
@@ -124,7 +131,7 @@ export default [
     name: 'Hiring Partner3',
     phone: '080986773821',
     password: 'mysecret2',
-    role: 'hiringPartner3',
+    role: 'hiringpartner',
     profilePhoto:
       'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSIcqjP8a8EfGrtkCX0CJXJ4HRltM5u8Jdhkz_TneWdb4rfPsMi',
     bio: 'I am a hiring partner 3',
@@ -137,7 +144,7 @@ export default [
     name: 'Hiring Partner4',
     phone: '088038749274',
     password: 'mysecret',
-    role: 'hiringPartner4',
+    role: 'hiringpartner',
     profilePhoto:
       'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSIcqjP8a8EfGrtkCX0CJXJ4HRltM5u8Jdhkz_TneWdb4rfPsMi',
     bio: 'I am a hiring partner 4',
@@ -150,7 +157,7 @@ export default [
     name: 'Hiring Partner5',
     phone: '0858598303974',
     password: 'mysecret',
-    role: 'hiringPartner5',
+    role: 'hiringpartner',
     profilePhoto:
       'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSIcqjP8a8EfGrtkCX0CJXJ4HRltM5u8Jdhkz_TneWdb4rfPsMi',
     bio: 'I am a hiring partner 5',
@@ -163,7 +170,7 @@ export default [
     name: 'Hiring Partner6',
     phone: '089860610675',
     password: 'mysecret',
-    role: 'hiringPartner6',
+    role: 'hiringpartner',
     profilePhoto:
       'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSIcqjP8a8EfGrtkCX0CJXJ4HRltM5u8Jdhkz_TneWdb4rfPsMi',
     bio: 'I am a hiring partner 6',
@@ -176,7 +183,7 @@ export default [
     name: 'Hiring Partner7',
     phone: '089860615575',
     password: 'mysecret',
-    role: 'hiringPartner7',
+    role: 'hiringpartner',
     profilePhoto:
       'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSIcqjP8a8EfGrtkCX0CJXJ4HRltM5u8Jdhkz_TneWdb4rfPsMi',
     bio: 'I am a hiring partner 7',
