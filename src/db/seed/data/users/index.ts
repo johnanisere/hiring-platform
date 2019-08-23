@@ -22,6 +22,7 @@ export default [
     profilePhoto:
       'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSIcqjP8a8EfGrtkCX0CJXJ4HRltM5u8Jdhkz_TneWdb4rfPsMi',
     cv: 'resume-1',
+    gender: 'female',
     bio: 'A very good dev',
   },
   {
@@ -30,6 +31,7 @@ export default [
     phone: '08043256784',
     password: 'mysecret',
     role: 'dev',
+    gender: 'female',
     profilePhoto:
       'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSIcqjP8a8EfGrtkCX0CJXJ4HRltM5u8Jdhkz_TneWdb4rfPsMi',
     cv: 'resume-2',
@@ -41,6 +43,7 @@ export default [
     phone: '08066484894',
     password: 'mysecret',
     role: 'dev',
+    gender: 'male',
     profilePhoto:
       'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSIcqjP8a8EfGrtkCX0CJXJ4HRltM5u8Jdhkz_TneWdb4rfPsMi',
 
@@ -53,6 +56,7 @@ export default [
     phone: '0808763468439',
     password: 'mysecret',
     role: 'dev',
+    gender: 'female',
     profilePhoto:
       'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSIcqjP8a8EfGrtkCX0CJXJ4HRltM5u8Jdhkz_TneWdb4rfPsMi',
 
@@ -65,6 +69,7 @@ export default [
     phone: '080856985759',
     password: 'mysecret',
     role: 'dev',
+    gender: 'male',
     profilePhoto:
       'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSIcqjP8a8EfGrtkCX0CJXJ4HRltM5u8Jdhkz_TneWdb4rfPsMi',
     cv: 'resume-5',
@@ -76,6 +81,7 @@ export default [
     phone: '080769436434',
     password: 'mysecret',
     role: 'dev',
+    gender: 'male',
     profilePhoto:
       'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSIcqjP8a8EfGrtkCX0CJXJ4HRltM5u8Jdhkz_TneWdb4rfPsMi',
     cv: 'resume-6',
@@ -87,6 +93,7 @@ export default [
     phone: '08087494934',
     password: 'mysecret',
     role: 'dev',
+    gender: 'male',
     profilePhoto:
       'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSIcqjP8a8EfGrtkCX0CJXJ4HRltM5u8Jdhkz_TneWdb4rfPsMi',
     cv: 'resume-7',
