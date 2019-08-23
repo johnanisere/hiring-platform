@@ -127,6 +127,34 @@ describe('User Route', () => {
       });
   });
 
+  test('lists female decadevs', async () => {
+    const gender = 'female';
+    const decadevs = await request(app).get(
+      `/api/v1/users/decadevs?gender=${gender}`,
+    );
+
+    for (let i = 0; i < JSON.parse(decadevs.text).allDecadevs.length; i++) {
+      expect(JSON.parse(decadevs.text).allDecadevs[i]).toHaveProperty(
+        'gender',
+        'female',
+      );
+    }
+  });
+
+  test('lists male decadevs', async () => {
+    const gender = 'male';
+    const decadevs = await request(app).get(
+      `/api/v1/users/decadevs?gender=${gender}`,
+    );
+
+    for (let i = 0; i < JSON.parse(decadevs.text).allDecadevs.length; i++) {
+      expect(JSON.parse(decadevs.text).allDecadevs[i]).toHaveProperty(
+        'gender',
+        'male',
+      );
+    }
+  });
+
   test('user can sign up', () => {
     return request(app)
       .post('/api/v1/users/signup')
