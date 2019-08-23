@@ -12,8 +12,10 @@ export default async function getAllDecadevs(req: Request, res: Response) {
   gender = gender ? `${gender}`.toLowerCase() : '';
   try {
     const onGenderNotPassed = !gender || gender === 'all';
+
     //get cycle count
     let activeCycle = await Cycle.findOne({ name: 'default' });
+
     let activeCycleCount = activeCycle ? activeCycle.count : 1;
     let prevCycle = activeCycleCount - 1;
     let allDecadevs = onGenderNotPassed
