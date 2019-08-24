@@ -13,6 +13,7 @@ export default [
       'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSIcqjP8a8EfGrtkCX0CJXJ4HRltM5u8Jdhkz_TneWdb4rfPsMi',
   },
   //  --------------- Deca devs -------------
+  //______FEMALES_______________
   {
     email: 'janedoe9@example.com',
     name: 'Jane Mary',
@@ -46,6 +47,7 @@ export default [
     gender: 'female',
     profilePhoto:
       'http://www.hummingbirdchicago.com/uploads/7/2/0/8/72086165/hummingbird-studios-l-24_orig.jpg',
+
     cv: 'resume-3',
     bio: 'A good database manager',
   },
@@ -58,6 +60,10 @@ export default [
     gender: 'female',
     profilePhoto:
       'https://images.squarespace-cdn.com/content/v1/583475d259cc68abe8c5a4f1/1559667463001-LTX9PRLYCZ9N99RYRSJS/ke17ZwdGBToddI8pDm48kIzNWfZh9v0nvEHU3WAJ1tF7gQa3H78H3Y0txjaiv_0fDoOvxcdMmMKkDsyUqMSsMWxHk725yiiHCCLfrh8O1z4YTzHvnKhyp6Da-NYroOW3ZGjoBKy3azqku80C789l0ooWhOa5cxQSJsU3rXf8luXAp4RuSF8fCIvAJcvjt_IcZoixb7Wm7IaIkEuLM8C6Ew/Headshot+Photographer+-+Todd+Estrin+photography.jpg?format=2500w',
+<<<<<<< HEAD
+=======
+
+>>>>>>> adds images to seed
     cv: 'resume-4',
     bio: 'A good Backend engineer',
   },
@@ -337,6 +343,62 @@ export default [
     cv: 'resume-7',
     bio: 'A great software dev',
   },
+  {
+    email: 'anewuser@example.com',
+    name: 'Anew User',
+    phone: '08087494934',
+    password: 'mysecret',
+    role: 'dev',
+    profilePhoto:
+      'https://hokiesports.com/images/2018/9/18/Alexander_Walker_Nickeil_19MB_HEAD_46.jpg',
+    cv: 'resume-7',
+    bio: 'A great software dev',
+  },
+  {
+    email: 'anewuser@example.com',
+    name: 'Anew User',
+    phone: '08087494934',
+    password: 'mysecret',
+    role: 'dev',
+    profilePhoto:
+      'https://ukathletics.com/images/2018/8/28/Muhammad_Kendall_2018_07.jpg?width=300',
+    cv: 'resume-7',
+    bio: 'A great software dev',
+  },
+  {
+    email: 'anewuser@example.com',
+    name: 'Anew User',
+    phone: '08087494934',
+    password: 'mysecret',
+    role: 'dev',
+    profilePhoto:
+      'https://hokiesports.com/images/2018/7/5/Hooker_Hendon_18FB_HEAD_46.jpg',
+    cv: 'resume-7',
+    bio: 'A great software dev',
+  },
+  {
+    email: 'anewuser@example.com',
+    name: 'Anew User',
+    phone: '08087494934',
+    password: 'mysecret',
+    role: 'dev',
+    profilePhoto:
+      'https://images.squarespace-cdn.com/content/v1/59509048893fc0ee580fc306/1562036593641-Z0TPOFYWHQUO2FX7KDSK/ke17ZwdGBToddI8pDm48kAYL4NvDXtGPhTA_HR0UHOEUqsxRUqqbr1mOJYKfIPR7LoDQ9mXPOjoJoqy81S2I8N_N4V1vUb5AoIIIbLZhVYxCRW4BPu10St3TBAUQYVKcvIvivBmmEjNJDh1pzCKzF4x7ot7jYBb7QyHHDnoB2ejCTN3jjH9RKfMxH1-VOTLh/website+0.jpg',
+    cv: 'resume-7',
+    bio: 'A great software dev',
+  },
+  {
+    email: 'anewuser@example.com',
+    name: 'Anew User',
+    phone: '08087494934',
+    password: 'mysecret',
+    role: 'dev',
+    profilePhoto:
+      'https://cache.meero.com/blog_article_photo_lg/blog-media/402/74f9d796-495a-48d1-8a74-ecbf89aeb19f.jpg',
+    cv: 'resume-7',
+    bio: 'A great software dev',
+  },
+
   //  ------------- Hiring Partners ---------------
   {
     email: 'hiringpartner1@example.com',
