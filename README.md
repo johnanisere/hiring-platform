@@ -1,4 +1,4 @@
-# Express React Template with Typescript
+# Express Template with Typescript
 
 Run the server with
 
