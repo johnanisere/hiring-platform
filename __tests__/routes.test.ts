@@ -16,8 +16,8 @@ describe('interview route', () => {
     return request(app)
       .post('/api/v1/interview/invite/')
       .send({
-        hiringPartner: 'terragon@gmail.com',
-        decaDev: 'esther@gmail.com',
+        hiringPartner: 'hiringpartner1@example.com',
+        decaDev: 'anewuser03@example.com',
         location: 'Victoria Island',
         startTime: '10am',
         endTime: '11am',
@@ -34,7 +34,7 @@ describe('interview route', () => {
         expect(Object.keys(res.body)).toContain('description');
         expect(Object.keys(res.body)).toContain('eventId');
       });
-  });
+  }, 30000);
 });
 
 describe('User Route', () => {
