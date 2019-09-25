@@ -189,7 +189,7 @@ describe('User Route', () => {
 describe('Hiring Partners Verification', () => {
   test('get all unverified hirers', () => {
     return request(app)
-      .get('/api/v1/unverified')
+      .get('/api/v1/hirer/unverified')
       .expect(res => {
         expect(res.status).toBe(204 || 200);
       });
