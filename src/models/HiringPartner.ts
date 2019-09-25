@@ -9,7 +9,7 @@ export interface IHiringPartner extends mongoose.Document {
   phone: String;
   numberOfTalentsRequired: String;
   deadline: String;
-  isActive: Boolean;
+  isVerified: Boolean;
 }
 
 const HiringPartnerSchema: Schema = new Schema(
