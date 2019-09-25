@@ -60,10 +60,6 @@ export default [
     gender: 'female',
     profilePhoto:
       'https://images.squarespace-cdn.com/content/v1/583475d259cc68abe8c5a4f1/1559667463001-LTX9PRLYCZ9N99RYRSJS/ke17ZwdGBToddI8pDm48kIzNWfZh9v0nvEHU3WAJ1tF7gQa3H78H3Y0txjaiv_0fDoOvxcdMmMKkDsyUqMSsMWxHk725yiiHCCLfrh8O1z4YTzHvnKhyp6Da-NYroOW3ZGjoBKy3azqku80C789l0ooWhOa5cxQSJsU3rXf8luXAp4RuSF8fCIvAJcvjt_IcZoixb7Wm7IaIkEuLM8C6Ew/Headshot+Photographer+-+Todd+Estrin+photography.jpg?format=2500w',
-<<<<<<< HEAD
-=======
-
->>>>>>> adds images to seed
     cv: 'resume-4',
     bio: 'A good Backend engineer',
   },
