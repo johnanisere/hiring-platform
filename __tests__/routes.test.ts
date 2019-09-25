@@ -194,4 +194,13 @@ describe('Hiring Partners Verification', () => {
         expect(res.status).toBe(204 || 200);
       });
   });
+
+  test('verify an hiringPartner', () => {
+    return request(app)
+      .put('/api/v1/hirer/verifyhirer')
+      .send({ email: 'sharon@hirer.com' })
+      .expect(res => {
+        expect(res.body).toEqual({ message: 'Hirer not unverified!' });
+      });
+  });
 });
