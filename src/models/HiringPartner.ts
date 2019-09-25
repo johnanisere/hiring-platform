@@ -40,9 +40,8 @@ const HiringPartnerSchema: Schema = new Schema(
       ],
       required: true,
     },
-    isActive: {
+    isVerified: {
       type: Boolean,
-      required: true,
       default: false,
     },
   },
