@@ -13,7 +13,7 @@ import usersRouter from './routes/users';
 import schema from './schema';
 import interviewRoutes from './routes/interviews';
 import inviteDevsRoutes from './routes/inviteDevs';
-import verifyHirerRoute from './routes/verifyHirer';
+import verifyHirerRoute from './routes/hirer';
 dotenv.config();
 const app = express();
 const swaggerUi = require('swagger-ui-express');
