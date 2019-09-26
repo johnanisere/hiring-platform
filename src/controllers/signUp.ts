@@ -39,7 +39,9 @@ export default async function signUp(
         token: token,
       });
     }
+    return;
   } catch (error) {
     res.status(400).send(error);
+    return;
   }
 }
