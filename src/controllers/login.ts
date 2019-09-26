@@ -50,7 +50,9 @@ export default async function userLogin(req: Request, res: Response) {
           .send({ ...rest, token });
       }
     }
+    return;
   } catch (err) {
     res.status(400).send({ err });
+    return;
   }
 }

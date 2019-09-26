@@ -12,6 +12,7 @@ export default async function updatePassword(
 
     if (!user) {
       res.send('User not found!!!');
+      return;
     } else {
       user.password = req.body.newPassword;
       const updated = await user.save();
@@ -25,10 +26,12 @@ export default async function updatePassword(
         },
       });
     }
+    return;
   } catch (err) {
     res.status(400).send({
       message: 'Password update failed!!!',
       error: err.message,
     });
+    return;
   }
 }

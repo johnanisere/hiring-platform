@@ -185,3 +185,83 @@ describe('User Route', () => {
       });
   });
 });
+
+describe('Hiring Partners Verification', () => {
+  test('SignUp an hiring Partner', () => {
+    return request(app)
+      .post('/api/v1/hirer/signup')
+      .send({
+        contactPerson: 'Shola',
+        email: 'sheyiogundijo@gmail.com',
+        name: 'GTB',
+        designation: 'CTO',
+        Website: 'www.GTB.com',
+        phone: '08066589871',
+        numberOfTalentsRequired: '0-5',
+        deadline: "Let's Talk First",
+      })
+      .expect(res => {
+        expect(res.body).toEqual(
+          expect.objectContaining({
+            message:
+              'Success!. An email has been sent to you. Please click link to verify your account.',
+            token: expect.any(String),
+            data: {
+              __v: expect.any(Number),
+              _id: expect.any(String),
+              contactPerson: 'Shola',
+              email: 'sheyiogundijo@gmail.com',
+              name: 'GTB',
+              designation: 'CTO',
+              phone: '08066589871',
+              numberOfTalentsRequired: '0-5',
+              deadline: "Let's Talk First",
+
+              createdAt: expect.any(String),
+              isVerified: false,
+              updatedAt: expect.any(String),
+            },
+          }),
+        );
+      });
+  });
+  test('get all unverified hirers', () => {
+    return request(app)
+      .get('/api/v1/hirer/unverified')
+      .expect(res => {
+        expect(res.status).toBe(200);
+        expect(res.body).toEqual(
+          expect.arrayContaining([
+            expect.objectContaining({
+              __v: 0,
+              _id: expect.any(String),
+              contactPerson: 'Shola',
+              createdAt: expect.any(String),
+              deadline: "Let's Talk First",
+              designation: 'CTO',
+              email: 'sheyiogundijo@gmail.com',
+              isVerified: false,
+              name: 'GTB',
+              numberOfTalentsRequired: '0-5',
+              phone: '08066589871',
+              updatedAt: expect.any(String),
+            }),
+          ]),
+        );
+      });
+  });
+
+  test('verify an hiringPartner', () => {
+    return request(app)
+      .put('/api/v1/hirer/verifyhirer')
+      .send({
+        email: 'sheyiogundijo@gmail.com',
+        name: 'GTB',
+      })
+      .expect(res => {
+        expect(res.body).toEqual({
+          message: 'GTB has been verified!',
+        });
+      });
+  });
+});
