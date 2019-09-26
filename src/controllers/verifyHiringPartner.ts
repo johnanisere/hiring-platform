@@ -3,15 +3,19 @@ import { Request, Response } from 'express';
 
 export async function verifyHirer(req: Request, res: Response) {
   try {
-    const unverifiedPartner = await HiringPartner.findOne({
-      email: req.body.email,
-    });
+    await HiringPartner.updateOne(
+      {
+        email: req.body.email,
+      },
+      { isVerified: true },
+    ).exec();
 
-    if (unverifiedPartner) {
-      unverifiedPartner.isVerified = true;
-    }
-    res.send({ message: 'Hirer not unverified!' });
+    res.send({
+      message: `${req.body.name} has been verified!`,
+    });
+    return;
   } catch (err) {
     res.status(400).send(err.message);
+    return;
   }
 }
