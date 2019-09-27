@@ -9,7 +9,8 @@ export interface IHiringPartner extends mongoose.Document {
   phone: String;
   numberOfTalentsRequired: String;
   deadline: String;
-  isVerified: Boolean;
+  verified: Boolean;
+  active: Boolean;
 }
 
 const HiringPartnerSchema: Schema = new Schema(
@@ -27,7 +28,7 @@ const HiringPartnerSchema: Schema = new Schema(
     phone: { type: String },
     numberOfTalentsRequired: {
       type: String,
-      enum: ['0-5', '6-10', '11-20', '21 and above'],
+      enum: ['1-5', '6-10', '11-20', '21 and above'],
       required: true,
     },
     deadline: {
@@ -40,7 +41,11 @@ const HiringPartnerSchema: Schema = new Schema(
       ],
       required: true,
     },
-    isVerified: {
+    verified: {
+      type: Boolean,
+      default: false,
+    },
+    active: {
       type: Boolean,
       default: false,
     },
