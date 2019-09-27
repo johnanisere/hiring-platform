@@ -1,17 +1,17 @@
 import HiringPartner from '../models/HiringPartner';
 import { Request, Response } from 'express';
 
-export async function verifyHirer(req: Request, res: Response) {
+export async function activateHirer(req: Request, res: Response) {
   try {
     await HiringPartner.updateOne(
       {
         email: req.body.email,
       },
-      { isVerified: true },
+      { activate: true },
     ).exec();
 
-    res.send({
-      message: `${req.body.name} has been verified!`,
+    res.status(200).send({
+      message: `${req.body.name} has been activated!`,
     });
     return;
   } catch (err) {
