@@ -218,16 +218,17 @@ describe('Hiring Partners Verification', () => {
               deadline: "Let's Talk First",
 
               createdAt: expect.any(String),
-              isVerified: false,
+              active: false,
+              verified: expect.any(Boolean),
               updatedAt: expect.any(String),
             },
           }),
         );
       });
   });
-  test('get all unverified hirers', () => {
+  test('get all unactivated hirers', () => {
     return request(app)
-      .get('/api/v1/hirer/unverified')
+      .get('/api/v1/hirer/unactivated')
       .expect(res => {
         expect(res.status).toBe(200);
         expect(res.body).toEqual(
@@ -240,7 +241,8 @@ describe('Hiring Partners Verification', () => {
               deadline: "Let's Talk First",
               designation: 'CTO',
               email: 'sheyiogundijo@gmail.com',
-              isVerified: false,
+              active: false,
+              verified: expect.any(Boolean),
               name: 'GTB',
               numberOfTalentsRequired: '0-5',
               phone: '08066589871',
@@ -251,16 +253,16 @@ describe('Hiring Partners Verification', () => {
       });
   });
 
-  test('verify an hiringPartner', () => {
+  test('Admin can activate an hiringPartner', () => {
     return request(app)
-      .put('/api/v1/hirer/verifyhirer')
+      .put('/api/v1/hirer/activatehirer')
       .send({
         email: 'sheyiogundijo@gmail.com',
         name: 'GTB',
       })
       .expect(res => {
         expect(res.body).toEqual({
-          message: 'GTB has been verified!',
+          message: 'GTB has been activated!',
         });
       });
   });
