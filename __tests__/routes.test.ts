@@ -197,7 +197,7 @@ describe('Hiring Partners Verification', () => {
         designation: 'CTO',
         Website: 'www.GTB.com',
         phone: '08066589871',
-        numberOfTalentsRequired: '0-5',
+        numberOfTalentsRequired: '1-5',
         deadline: "Let's Talk First",
       })
       .expect(res => {
@@ -214,7 +214,7 @@ describe('Hiring Partners Verification', () => {
               name: 'GTB',
               designation: 'CTO',
               phone: '08066589871',
-              numberOfTalentsRequired: '0-5',
+              numberOfTalentsRequired: '1-5',
               deadline: "Let's Talk First",
 
               createdAt: expect.any(String),
@@ -244,7 +244,7 @@ describe('Hiring Partners Verification', () => {
               active: false,
               verified: expect.any(Boolean),
               name: 'GTB',
-              numberOfTalentsRequired: '0-5',
+              numberOfTalentsRequired: '1-5',
               phone: '08066589871',
               updatedAt: expect.any(String),
             }),
