@@ -1,11 +1,11 @@
-import mongoose, { Schema } from 'mongoose';
+import { Schema } from 'mongoose';
 
-export interface ISkills extends mongoose.Document {
-  skill: String;
+export interface ISkills {
+  type: String;
+  description: String;
 }
 
-const SkillSchema: Schema = new Schema({
-  skill: { type: String },
+export const SkillSchema: Schema = new Schema({
+  type: { type: String },
+  description: { type: String },
 });
-
-export default mongoose.model<ISkills>('Skills', SkillSchema);
