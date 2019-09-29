@@ -1,5 +1,9 @@
 import mongoose, { Schema } from 'mongoose';
 import bcrypt from 'bcryptjs';
+import { ISkills, SkillSchema } from './Skills';
+import { EmploymentSchema, IEmployment } from './Employment';
+import { IExperience, ExperienceSchema } from './Experiences';
+import { IPortfolio, PortfolioSchema } from './Portfolio';
 
 export interface IUser extends mongoose.Document {
   email: String;
@@ -8,7 +12,7 @@ export interface IUser extends mongoose.Document {
   name: String;
   profilePhoto: String;
   gender: string;
-  skills?: [String];
+  skills?: Array<ISkills>;
   publications: String;
   cv?: String;
   bio?: String;
@@ -19,6 +23,14 @@ export interface IUser extends mongoose.Document {
   address: String;
   interviews: Array<String>;
   count: number;
+  //******************* */
+  currentRole?: String;
+  joined: String;
+  description: String;
+  portfolio: Array<IPortfolio>;
+  stack: Array<String>;
+  experiences: Array<IExperience>;
+  employment: Array<IEmployment>;
 }
 
 const UserSchema: Schema = new Schema(
@@ -34,7 +46,7 @@ const UserSchema: Schema = new Schema(
     name: { type: String, required: true },
     profilePhoto: { type: String, required: true },
     gender: { type: String, default: 'male' },
-    skills: { type: mongoose.Schema.Types.ObjectId, ref: 'Skills' },
+    skills: { type: [SkillSchema] },
     publications: { type: mongoose.Schema.Types.ObjectId, ref: 'Publications' },
     cv: { type: String },
     bio: { type: String },
@@ -48,6 +60,21 @@ const UserSchema: Schema = new Schema(
       default: 0,
     },
     interviews: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Interviews' }],
+    currentRole: {
+      type: String,
+    },
+    joined: {
+      type: String,
+    },
+    description: {
+      type: String,
+    },
+    portfolio: { type: [PortfolioSchema] },
+    stack: {
+      type: [String],
+    },
+    experience: { type: [ExperienceSchema] },
+    employments: { type: [EmploymentSchema] },
   },
   { timestamps: true },
 );
