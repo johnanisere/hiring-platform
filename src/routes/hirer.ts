@@ -1,13 +1,15 @@
 import { Router } from 'express';
-import { getAllUnverified } from '../controllers/getAllUnverified';
-import { verifyHirer } from '../controllers/verifyHiringPartner';
+import { getAllUnactivated } from '../controllers/getAllUnactivateded';
+import { activateHirer } from '../controllers/activateHiringPartner';
 import hirerSignUp from '../controllers/hirerSignUp';
+import verifyHirer from '../controllers/verifyHirer';
 
 const router = Router();
 
 router
-  .get('/unverified', getAllUnverified)
-  .put('/verifyhirer', verifyHirer)
-  .post('/signup', hirerSignUp);
+  .get('/unactivated', getAllUnactivated)
+  .put('/activatehirer', activateHirer)
+  .post('/signup', hirerSignUp)
+  .put('/verifyhirer', verifyHirer);
 
 export default router;
