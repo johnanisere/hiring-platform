@@ -23,7 +23,6 @@ export interface IUser extends mongoose.Document {
   address: String;
   interviews: Array<String>;
   count: number;
-  //******************* */
   currentRole?: String;
   joined: String;
   description: String;
@@ -71,7 +70,7 @@ const UserSchema: Schema = new Schema(
     },
     portfolio: { type: [PortfolioSchema] },
     stack: {
-      type: [String],
+      type: Schema.Types.Mixed,
     },
     experience: { type: [ExperienceSchema] },
     employments: { type: [EmploymentSchema] },

@@ -1,13 +1,13 @@
 import mongoose, { Schema } from 'mongoose';
 
 export interface IInterviews extends mongoose.Document {
-  hiringPartner: string;
-  decaDev: string;
-  location: string;
-  startTime: string;
-  endTime: string;
-  description: string;
-  eventId: string;
+  hiringPartner: String;
+  decaDev: String;
+  location: String;
+  startTime: String;
+  endTime: String;
+  description: String;
+  eventId: String;
 }
 
 const InterviewsSchema: Schema = new Schema({
