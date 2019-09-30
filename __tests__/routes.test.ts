@@ -26,13 +26,18 @@ describe('interview route', () => {
         eventId: 'EI234',
       })
       .expect(res => {
-        expect(Object.keys(res.body)).toContain('hiringPartner');
-        expect(Object.keys(res.body)).toContain('decaDev');
-        expect(Object.keys(res.body)).toContain('location');
-        expect(Object.keys(res.body)).toContain('startTime');
-        expect(Object.keys(res.body)).toContain('endTime');
-        expect(Object.keys(res.body)).toContain('description');
-        expect(Object.keys(res.body)).toContain('eventId');
+        expect(res.body).toEqual(
+          expect.objectContaining({
+            hiringPartner: expect.any(String),
+            decaDev: expect.any(String),
+            location: expect.any(String),
+            startTime: expect.any(String),
+            endTime: expect.any(String),
+            description: expect.any(String),
+            eventId: expect.any(String),
+            id: expect.any(String),
+          }),
+        );
       });
   }, 30000);
 });
@@ -182,6 +187,88 @@ describe('User Route', () => {
       })
       .expect(res => {
         expect(res.body.error).toBe('wrong password');
+      });
+  });
+});
+
+describe('Hiring Partners Verification', () => {
+  test('SignUp an hiring Partner', () => {
+    return request(app)
+      .post('/api/v1/hirer/signup')
+      .send({
+        contactPerson: 'Shola',
+        email: 'sheyiogundijo@gmail.com',
+        name: 'GTB',
+        designation: 'CTO',
+        Website: 'www.GTB.com',
+        phone: '08066589871',
+        numberOfTalentsRequired: '1-5',
+        deadline: "Let's Talk First",
+      })
+      .expect(res => {
+        expect(res.body).toEqual(
+          expect.objectContaining({
+            message:
+              'Success!. An email has been sent to you. Please click link to verify your account.',
+            token: expect.any(String),
+            data: {
+              __v: expect.any(Number),
+              _id: expect.any(String),
+              contactPerson: 'Shola',
+              email: 'sheyiogundijo@gmail.com',
+              name: 'GTB',
+              designation: 'CTO',
+              phone: '08066589871',
+              numberOfTalentsRequired: '1-5',
+              deadline: "Let's Talk First",
+
+              createdAt: expect.any(String),
+              active: false,
+              verified: expect.any(Boolean),
+              updatedAt: expect.any(String),
+            },
+          }),
+        );
+      });
+  });
+  test('get all unactivated hirers', () => {
+    return request(app)
+      .get('/api/v1/hirer/unactivated')
+      .expect(res => {
+        expect(res.status).toBe(200);
+        expect(res.body).toEqual(
+          expect.arrayContaining([
+            expect.objectContaining({
+              __v: 0,
+              _id: expect.any(String),
+              contactPerson: 'Shola',
+              createdAt: expect.any(String),
+              deadline: "Let's Talk First",
+              designation: 'CTO',
+              email: 'sheyiogundijo@gmail.com',
+              active: false,
+              verified: expect.any(Boolean),
+              name: 'GTB',
+              numberOfTalentsRequired: '1-5',
+              phone: '08066589871',
+              updatedAt: expect.any(String),
+            }),
+          ]),
+        );
+      });
+  });
+
+  test('Admin can activate an hiringPartner', () => {
+    return request(app)
+      .put('/api/v1/hirer/activatehirer')
+      .send({
+        email: 'sheyiogundijo@gmail.com',
+        name: 'GTB',
+      })
+      .expect(res => {
+        expect(res.body).toEqual({
+          message: 'GTB has been activated!',
+        });
       });
   });
 });

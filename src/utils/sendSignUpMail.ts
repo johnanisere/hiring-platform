@@ -32,7 +32,7 @@ async function sendSignUpMail(req: Request) {
   let to = req.body.email,
     token = req.body.token,
     name = req.body.name,
-    link = `https://hiringplatform/${token}`;
+    link = `http://localhost:3000/verify-hirer/${token}/${req.body.email}`;
   sendMail(msg(to, link, name));
 }
 
