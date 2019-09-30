@@ -26,13 +26,18 @@ describe('interview route', () => {
         eventId: 'EI234',
       })
       .expect(res => {
-        expect(Object.keys(res.body)).toContain('hiringPartner');
-        expect(Object.keys(res.body)).toContain('decaDev');
-        expect(Object.keys(res.body)).toContain('location');
-        expect(Object.keys(res.body)).toContain('startTime');
-        expect(Object.keys(res.body)).toContain('endTime');
-        expect(Object.keys(res.body)).toContain('description');
-        expect(Object.keys(res.body)).toContain('eventId');
+        expect(res.body).toEqual(
+          expect.objectContaining({
+            hiringPartner: expect.any(String),
+            decaDev: expect.any(String),
+            location: expect.any(String),
+            startTime: expect.any(String),
+            endTime: expect.any(String),
+            description: expect.any(String),
+            eventId: expect.any(String),
+            id: expect.any(String),
+          }),
+        );
       });
   }, 30000);
 });
