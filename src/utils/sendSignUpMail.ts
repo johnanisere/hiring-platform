@@ -28,9 +28,8 @@ const msg = (to: string, link: string, name: string) => {
   };
 };
 
-async function sendSignUpMail(req: Request) {
+async function sendSignUpMail(req: Request, token: string) {
   let to = req.body.email,
-    token = req.body.token,
     name = req.body.name,
     link = `http://localhost:3000/verify-hirer/${token}/${req.body.email}`;
   sendMail(msg(to, link, name));

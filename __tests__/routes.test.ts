@@ -196,9 +196,9 @@ describe('Hiring Partners Verification', () => {
     return request(app)
       .post('/api/v1/hirer/signup')
       .send({
-        contactPerson: 'Shola',
+        name: 'Shola',
         email: 'sheyiogundijo@gmail.com',
-        name: 'GTB',
+        nameOfOrg: 'GTB',
         designation: 'CTO',
         Website: 'www.GTB.com',
         phone: '08066589871',
@@ -214,9 +214,9 @@ describe('Hiring Partners Verification', () => {
             data: {
               __v: expect.any(Number),
               _id: expect.any(String),
-              contactPerson: 'Shola',
+              name: 'Shola',
               email: 'sheyiogundijo@gmail.com',
-              name: 'GTB',
+              nameOfOrg: 'GTB',
               designation: 'CTO',
               phone: '08066589871',
               numberOfTalentsRequired: '1-5',
@@ -241,14 +241,14 @@ describe('Hiring Partners Verification', () => {
             expect.objectContaining({
               __v: 0,
               _id: expect.any(String),
-              contactPerson: 'Shola',
+              name: 'Shola',
               createdAt: expect.any(String),
               deadline: "Let's Talk First",
               designation: 'CTO',
               email: 'sheyiogundijo@gmail.com',
               active: false,
               verified: expect.any(Boolean),
-              name: 'GTB',
+              nameOfOrg: 'GTB',
               numberOfTalentsRequired: '1-5',
               phone: '08066589871',
               updatedAt: expect.any(String),
@@ -264,6 +264,7 @@ describe('Hiring Partners Verification', () => {
       .send({
         email: 'sheyiogundijo@gmail.com',
         name: 'GTB',
+        active: false,
       })
       .expect(res => {
         expect(res.body).toEqual({
