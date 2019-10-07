@@ -1,8 +1,6 @@
 import HiringPartner from '../models/HiringPartner';
 import { Request, Response } from 'express';
-import jwt from 'jsonwebtoken';
-import { PRIVATE_KEY } from '../config';
-import sendInviteMail from '../utils/sendInviteMail';
+import accountActivateMail from '../utils/accountActivateMail';
 
 export async function activateHirer(req: Request, res: Response) {
   try {
@@ -18,20 +16,9 @@ export async function activateHirer(req: Request, res: Response) {
         },
       ).exec();
 
-      const data = await hirer.save();
-
-      const token = jwt.sign(
-        {
-          userId: data.id,
-          email: data.email,
-        },
-        PRIVATE_KEY,
-        {
-          expiresIn: '1h',
-        },
-      );
+      await hirer.save();
       try {
-        sendInviteMail(req, token);
+        accountActivateMail(req);
       } catch (err) {
         res.status(400).send({
           see: 'seems to be an issue with sending an email',
