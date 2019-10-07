@@ -31,7 +31,7 @@ const msg = (to: string, link: string, name: string) => {
 async function sendSignUpMail(req: Request, token: string) {
   let to = req.body.email,
     name = req.body.name,
-    link = `http://localhost:3000/verify-hirer/${token}/${req.body.email}`;
+    link = `${process.env.CLIENT_URL}/verify-hirer/${token}/${req.body.email}`;
   sendMail(msg(to, link, name));
 }
 
