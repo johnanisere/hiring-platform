@@ -1,10 +1,10 @@
 import mongoose from 'mongoose';
 
-function connectMongoDB() {
+async function connectMongoDB() {
   mongoose.set('useNewUrlParser', true);
   mongoose.set('useFindAndModify', false);
   mongoose.set('useCreateIndex', true);
-  return mongoose
+  await mongoose
     .connect('mongodb://localhost:27017/routesTest', {
       useNewUrlParser: true,
       useCreateIndex: true,
@@ -17,8 +17,8 @@ function connectMongoDB() {
   console.log('Connected');
 }
 
-function disconnectMongoDB() {
-  mongoose.connection.db.dropDatabase();
+async function disconnectMongoDB() {
+  await mongoose.connection.db.dropDatabase();
 
   mongoose.connection.close();
 }

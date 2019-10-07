@@ -4,7 +4,7 @@
 export default [
   // ---------------- Admin User --------------
   {
-    email: 'johndoe@example.com',
+    email: 'doe@example.com',
     name: 'John Doe',
     phone: '08074583218',
     password: 'mysecret2',

@@ -19,7 +19,7 @@ export default async function hirerSignUp(req: Request, res: Response) {
       },
     );
     try {
-      sendSignUpMail(req);
+      sendSignUpMail(req, token);
     } catch (err) {
       res.status(400).send({
         see: `seems to be an issue with sending an email to ${req.body.email}!`,

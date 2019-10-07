@@ -31,7 +31,7 @@ export default async function signUp(
         },
       );
 
-      sendSignUpMail(req);
+      sendSignUpMail(req, token);
       res.status(200).json({
         message:
           'Sign Up successful. An email has been sent to you.Please click link to verify your account.',

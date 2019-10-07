@@ -12,6 +12,7 @@ export default async function verifyHirer(req: Request, res: Response) {
         },
         { verified: true },
       ).exec();
+      await hirer.save();
 
       res.status(200).send({
         message: `${req.body.email}, your account has been verified! You'll hear from us soon.`,
@@ -19,7 +20,7 @@ export default async function verifyHirer(req: Request, res: Response) {
       return;
     } else {
       res.status(200).send({
-        message: `${req.body.email}, your account has been verification has been unsuccessful!`,
+        message: `${req.body.email}, your account verification has been unsuccessful!`,
       });
     }
     return;

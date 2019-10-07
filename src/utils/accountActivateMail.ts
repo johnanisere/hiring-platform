@@ -1,10 +1,10 @@
 import { Request } from 'express';
 import sendMail from './sendMail';
 
-const msg = (to: string, link: string, name: string) => {
+const msg = (to: String, name: String, link: String) => {
   return {
     from: {
-      email: 'johnanisere@gmail.com',
+      email: 'seyiogundijo32@gmail.com',
     },
     personalizations: [
       {
@@ -14,8 +14,9 @@ const msg = (to: string, link: string, name: string) => {
           },
         ],
         dynamic_template_data: {
-          name,
-          link,
+          email: to,
+          name: name,
+          link: link,
           Sender_Name: 'Decagon Institute',
           Sender_Address:
             '2nd Floor Traditions Building Familoni Street, off Lekki - Epe Express',
@@ -24,15 +25,15 @@ const msg = (to: string, link: string, name: string) => {
         },
       },
     ],
-    template_id: 'd-cb7aa83d3f304115a1ae683442d6e1b9',
+    template_id: 'd-738d7d0623174e42874ad0ad442bc867',
   };
 };
 
-async function sendSignUpMail(req: Request, token: string) {
+async function accountActivateMail(req: Request) {
   let to = req.body.email,
     name = req.body.name,
-    link = `${process.env.CLIENT_URL}/verify-hirer/${token}/${req.body.email}`;
-  sendMail(msg(to, link, name));
+    link = `${process.env.CLIENT_URL}/login/partner`;
+  await sendMail(msg(to, name, link));
 }
 
-export default sendSignUpMail;
+export default accountActivateMail;
