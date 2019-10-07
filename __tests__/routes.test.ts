@@ -50,32 +50,27 @@ describe('User Route', () => {
       .expect(200, { message: { hello: 'Hello World' } });
   });
 
-  test('updates password', async () => {
-    const user = await request(app)
-      .post('/api/v1/users/login')
-      .send({
-        email: 'johndoe@example.com',
-        password: 'mysecret2',
-      });
-    return request(app)
-      .put('/api/v1/users/update-password/')
-      .set('Authorization', `Bearer ${user.body.token}`)
-      .send({
-        newPassword: 'newsecret',
-      })
-      .expect(res => {
-        expect(res.body).toEqual(
-          expect.objectContaining({
-            message: 'Password updated',
-            updated: expect.objectContaining({
-              email: 'johndoe@example.com',
-              name: 'John Doe',
-              phone: '08074583218',
-            }),
-          }),
-        );
-      });
-  });
+  // test('updates password', async () => {
+  //   const user = await request(app)
+  //     .post('/api/v1/users/login')
+  //     .send({
+  //       email: 'johndoe@example.com',
+  //       password: 'mysecret2',
+  //     });
+  //   return request(app)
+  //     .put('/api/v1/users/update-password/')
+  //     .set('Authorization', `Bearer ${user.body.token}`)
+  //     .send({
+  //       newPassword: 'newsecret',
+  //     })
+  //     .expect(res => {
+  //       expect(res.body).toEqual(
+  //         expect.objectContaining({
+  //           expect.objectContaining({})
+  //         }),
+  //       );
+  //     });
+  // });
 
   test('Invite hiring partner', () => {
     return request(app)
