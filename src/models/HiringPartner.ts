@@ -1,4 +1,5 @@
 import mongoose, { Schema } from 'mongoose';
+import bcrypt from 'bcryptjs';
 
 export interface IHiringPartner extends mongoose.Document {
   name: String;
@@ -11,6 +12,7 @@ export interface IHiringPartner extends mongoose.Document {
   deadline: String;
   verified: Boolean;
   active: Boolean;
+  password: String;
 }
 
 const HiringPartnerSchema: Schema = new Schema(
@@ -49,9 +51,19 @@ const HiringPartnerSchema: Schema = new Schema(
       type: Boolean,
       default: false,
     },
+    password: {
+      type: String,
+    },
   },
   { timestamps: true },
 );
+
+HiringPartnerSchema.pre<IHiringPartner>('save', async function() {
+  if (this.isModified('password')) {
+    const salt = await bcrypt.genSalt(10);
+    this.password = await bcrypt.hash(this.password.toString(), salt);
+  }
+});
 
 export default mongoose.model<IHiringPartner>(
   'HiringPartner',

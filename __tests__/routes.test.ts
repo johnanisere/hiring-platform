@@ -204,6 +204,7 @@ describe('Hiring Partners Verification', () => {
         phone: '08066589871',
         numberOfTalentsRequired: '1-5',
         deadline: "Let's Talk First",
+        password: 'mysecret2',
       })
       .expect(res => {
         expect(res.body).toEqual(
@@ -226,6 +227,7 @@ describe('Hiring Partners Verification', () => {
               active: false,
               verified: expect.any(Boolean),
               updatedAt: expect.any(String),
+              password: expect.any(String),
             },
           }),
         );
@@ -269,6 +271,28 @@ describe('Hiring Partners Verification', () => {
       .expect(res => {
         expect(res.body).toEqual({
           message: 'GTB has been activated!',
+        });
+      });
+  });
+  test('Hiring Partner can login', () => {
+    return request(app)
+      .post('/api/v1/hirer/login')
+      .send({
+        email: 'sheyiogundijo@gmail.com',
+        password: 'mysecret2',
+      })
+      .expect(res => {
+        expect(res.body).toEqual({
+          verified: expect.any(Boolean),
+          active: expect.any(Boolean),
+          email: 'sheyiogundijo@gmail.com',
+          name: expect.any(String),
+          phone: expect.any(String),
+          nameOfOrg: expect.any(String),
+          designation: expect.any(String),
+          numberOfTalentsRequired: expect.any(String),
+          deadline: expect.any(String),
+          token: expect.any(String),
         });
       });
   });
