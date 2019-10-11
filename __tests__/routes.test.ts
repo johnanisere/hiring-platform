@@ -23,7 +23,7 @@ describe('interview route', () => {
         endTime: '11am',
         description:
           'This is to inform you that you have been shortlisted for an interview',
-        eventId: 'EI234',
+        nameOfOrg: 'Paystack',
       })
       .expect(res => {
         expect(res.body).toEqual(
@@ -34,7 +34,6 @@ describe('interview route', () => {
             startTime: expect.any(String),
             endTime: expect.any(String),
             description: expect.any(String),
-            eventId: expect.any(String),
             id: expect.any(String),
           }),
         );
@@ -49,28 +48,6 @@ describe('User Route', () => {
       .expect('Content-Type', /json/)
       .expect(200, { message: { hello: 'Hello World' } });
   });
-
-  // test('updates password', async () => {
-  //   const user = await request(app)
-  //     .post('/api/v1/users/login')
-  //     .send({
-  //       email: 'johndoe@example.com',
-  //       password: 'mysecret2',
-  //     });
-  //   return request(app)
-  //     .put('/api/v1/users/update-password/')
-  //     .set('Authorization', `Bearer ${user.body.token}`)
-  //     .send({
-  //       newPassword: 'newsecret',
-  //     })
-  //     .expect(res => {
-  //       expect(res.body).toEqual(
-  //         expect.objectContaining({
-  //           expect.objectContaining({})
-  //         }),
-  //       );
-  //     });
-  // });
 
   test('Invite hiring partner', () => {
     return request(app)
