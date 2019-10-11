@@ -15,7 +15,7 @@ export default [
   //  --------------- Deca devs -------------
   //______FEMALES_______________
   {
-    email: 'janedoe9@example.com',
+    email: 'sheyiogundijo@gmail.com',
     name: 'Jane Mary',
     phone: '08067890545',
     password: 'mysecret',

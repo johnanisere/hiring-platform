@@ -7,7 +7,7 @@ export interface IInterviews extends mongoose.Document {
   startTime: String;
   endTime: String;
   description: String;
-  eventId: String;
+  nameOfOrg: String;
 }
 
 const InterviewsSchema: Schema = new Schema({
@@ -17,7 +17,7 @@ const InterviewsSchema: Schema = new Schema({
   startTime: { type: String, required: true },
   endTime: { type: String, required: true },
   description: { type: String, required: true },
-  eventId: { type: String, required: true },
+  nameOfOrg: { type: String, required: true },
 });
 
 export default mongoose.model<IInterviews>('Interviews', InterviewsSchema);
