@@ -49,8 +49,12 @@ const msg = (
 
 async function interviewInvitationMail(req: Request, decaDev: IUser) {
   let to = req.body.decaDev,
-    accept = 'google.com',
-    decline = 'google.com',
+    accept = `http://localhost:3005/api/v1/interview/response/${true}/${
+      req.body.decaDev
+    }`,
+    decline = `http://localhost:3005/api/v1/interview/response/${false}/${
+      req.body.decaDev
+    }`,
     name = decaDev.name,
     location = req.body.location,
     startTime = req.body.startTime,
