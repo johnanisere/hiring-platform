@@ -3,7 +3,11 @@ import { MONGO_URL } from './index';
 const condition = process.env.NODE_ENV !== 'test';
 
 if (condition) {
-  mongoose.connect(MONGO_URL, { useNewUrlParser: true, useCreateIndex: true });
+  mongoose.connect(MONGO_URL, {
+    useNewUrlParser: true,
+    useCreateIndex: true,
+    useFindAndModify: false,
+  });
 }
 const connection = mongoose.connection;
 

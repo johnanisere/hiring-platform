@@ -17,7 +17,7 @@ export default function authMiddleware(
   }
 
   const actualToken = token.split(' ')[1];
-
+  console.log(actualToken);
   jwt.verify(actualToken, PRIVATE_KEY, (err: any, payload: any) => {
     if (err) {
       res.status(401).send(err);

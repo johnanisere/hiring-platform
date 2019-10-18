@@ -2,6 +2,7 @@ import { Schema } from 'mongoose';
 
 export interface IPortfolio {
   title: String;
+  languages: String;
   years: String;
 }
 

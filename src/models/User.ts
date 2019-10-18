@@ -1,7 +1,7 @@
 import mongoose, { Schema } from 'mongoose';
 import bcrypt from 'bcryptjs';
 import { ISkills, SkillSchema } from './Skills';
-import { EmploymentSchema, IEmployment } from './Employment';
+import { IEmployment } from './Employment';
 import { IExperience, ExperienceSchema } from './Experiences';
 import { IPortfolio, PortfolioSchema } from './Portfolio';
 
@@ -12,6 +12,11 @@ export interface IUser extends mongoose.Document {
   name: String;
   profilePhoto: String;
   gender: string;
+  github: String;
+  linkedIn: String;
+  stackOverflow: String;
+  website: String;
+  location: String;
   skills?: Array<ISkills>;
   publications: String;
   cv?: String;
@@ -29,7 +34,7 @@ export interface IUser extends mongoose.Document {
   portfolio: Array<IPortfolio>;
   stack: Array<String>;
   experiences: Array<IExperience>;
-  employment: Array<IEmployment>;
+  employments: Array<IEmployment>;
 }
 
 const UserSchema: Schema = new Schema(
@@ -45,6 +50,11 @@ const UserSchema: Schema = new Schema(
     name: { type: String, required: true },
     profilePhoto: { type: String, required: true },
     gender: { type: String, default: 'male' },
+    github: String,
+    linkedIn: String,
+    stackOverflow: String,
+    website: String,
+    location: String,
     skills: { type: [SkillSchema] },
     publications: { type: mongoose.Schema.Types.ObjectId, ref: 'Publications' },
     cv: { type: String },
@@ -73,7 +83,7 @@ const UserSchema: Schema = new Schema(
       type: Schema.Types.Mixed,
     },
     experience: { type: [ExperienceSchema] },
-    employments: { type: [EmploymentSchema] },
+    employments: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Employment' }],
   },
   { timestamps: true },
 );
