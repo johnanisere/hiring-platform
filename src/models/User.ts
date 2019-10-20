@@ -1,9 +1,9 @@
 import mongoose, { Schema } from 'mongoose';
 import bcrypt from 'bcryptjs';
-import { ISkills, SkillSchema } from './Skills';
+import { ISkills } from './Skills';
 import { IEmployment } from './Employment';
 import { IExperience, ExperienceSchema } from './Experiences';
-import { IPortfolio, PortfolioSchema } from './Portfolio';
+import { IPortfolio } from './Portfolio';
 
 export interface IUser extends mongoose.Document {
   email: String;
@@ -17,7 +17,7 @@ export interface IUser extends mongoose.Document {
   stackOverflow: String;
   website: String;
   location: String;
-  skills?: Array<ISkills>;
+  skills: Array<ISkills>;
   publications: String;
   cv?: String;
   bio?: String;
@@ -55,7 +55,7 @@ const UserSchema: Schema = new Schema(
     stackOverflow: String,
     website: String,
     location: String,
-    skills: { type: [SkillSchema] },
+    skills: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Skill' }],
     publications: { type: mongoose.Schema.Types.ObjectId, ref: 'Publications' },
     cv: { type: String },
     bio: { type: String },
@@ -78,7 +78,7 @@ const UserSchema: Schema = new Schema(
     description: {
       type: String,
     },
-    portfolio: { type: [PortfolioSchema] },
+    portfolio: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Portfolio' }],
     stack: {
       type: Schema.Types.Mixed,
     },

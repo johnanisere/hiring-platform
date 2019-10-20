@@ -31,37 +31,7 @@ export default [
     location: 'Lagos',
     bio: 'A very good dev',
     employments: [],
-    skills: [
-      {
-        type: 'Languages',
-        description: 'CSS, HTML, Sass, JavaScript',
-      },
-      {
-        type: 'Frameworks',
-        description: 'Unity3D, Unity, SproutCore, AngularJS, Jasmine',
-      },
-      {
-        type: 'Tools',
-        description: 'Bower, Git, Karma, Grunt',
-      },
-      {
-        type: 'Paradigms',
-        description: 'Agile Software Development',
-      },
-      {
-        type: 'Platforms',
-        description: 'WordPress, WordPress Theme Design, MacOS',
-      },
-      {
-        type: 'Storage',
-        description: 'NoSQL, MySQL',
-      },
-      {
-        type: 'Other',
-        description:
-          'PSD to HTML, PSD Slicing, Freelance, Programming, Freelance Programmer, ADK, IT, User Experience (UX), Localization',
-      },
-    ],
+    skills: [],
     currentRole: 'JavaScript Developer in Seattle, WA, United States',
     joined: 'Member since August 21, 2015',
     stack: [
@@ -75,23 +45,7 @@ export default [
     ],
     description:
       'April is a senior front-end web developer with over 15 years of experience at companies like Starbucks, Rosetta Stone, and Livemocha. She specializes in building front-ends for JavaScript web applications and has a deep expertise in the nuances of cross-platform development.',
-    portfolio: [
-      {
-        title: 'Rosetta Stone',
-        languages: 'JavaScript, AngularJS, HTML, CSS, Bower, Grunt, Git',
-        link: 'https://www.toptal.com/resume/april-leone#employment-101111',
-      },
-      {
-        title: 'Livemocha',
-        languages: 'JavaScript, HTML, CSS, SproutCore, WordPress',
-        link: 'https://www.toptal.com/resume/april-leone#employment-101111',
-      },
-      {
-        title: 'Starbucks',
-        languages: 'Visual Studio, HTML, Sitecore',
-        link: 'https://www.toptal.com/resume/april-leone#employment-101111',
-      },
-    ],
+    portfolio: [],
     experience: [
       {
         title: 'HTML',
@@ -140,37 +94,7 @@ export default [
     cv: 'resume-2',
     bio: 'A good dev',
     employments: [],
-    skills: [
-      {
-        type: 'Languages',
-        description: 'CSS, HTML, Sass, JavaScript',
-      },
-      {
-        type: 'Frameworks',
-        description: 'Unity3D, Unity, SproutCore, AngularJS, Jasmine',
-      },
-      {
-        type: 'Tools',
-        description: 'Bower, Git, Karma, Grunt',
-      },
-      {
-        type: 'Paradigms',
-        description: 'Agile Software Development',
-      },
-      {
-        type: 'Platforms',
-        description: 'WordPress, WordPress Theme Design, MacOS',
-      },
-      {
-        type: 'Storage',
-        description: 'NoSQL, MySQL',
-      },
-      {
-        type: 'Other',
-        description:
-          'PSD to HTML, PSD Slicing, Freelance, Programming, Freelance Programmer, ADK, IT, User Experience (UX), Localization',
-      },
-    ],
+    skills: [],
     currentRole: 'JavaScript Developer in Seattle, WA, United States',
     joined: 'Member since August 21, 2015',
     stack: [
@@ -185,23 +109,7 @@ export default [
     description:
       'April is a senior front-end web developer with over 15 years of experience at companies like Starbucks, Rosetta Stone, and Livemocha. She specializes in building front-ends for JavaScript web applications and has a deep expertise in the nuances of cross-platform development.',
 
-    portfolio: [
-      {
-        title: 'Rosetta Stone',
-        languages: 'JavaScript, AngularJS, HTML, CSS, Bower, Grunt, Git',
-        link: 'https://www.toptal.com/resume/april-leone#employment-101111',
-      },
-      {
-        title: 'Livemocha',
-        languages: 'JavaScript, HTML, CSS, SproutCore, WordPress',
-        link: 'https://www.toptal.com/resume/april-leone#employment-101111',
-      },
-      {
-        title: 'Starbucks',
-        languages: 'Visual Studio, HTML, Sitecore',
-        link: 'https://www.toptal.com/resume/april-leone#employment-101111',
-      },
-    ],
+    portfolio: [],
     experience: [
       {
         title: 'HTML',
@@ -251,37 +159,7 @@ export default [
     cv: 'resume-3',
     bio: 'A good database manager',
     employments: [],
-    skills: [
-      {
-        type: 'Languages',
-        description: 'CSS, HTML, Sass, JavaScript',
-      },
-      {
-        type: 'Frameworks',
-        description: 'Unity3D, Unity, SproutCore, AngularJS, Jasmine',
-      },
-      {
-        type: 'Tools',
-        description: 'Bower, Git, Karma, Grunt',
-      },
-      {
-        type: 'Paradigms',
-        description: 'Agile Software Development',
-      },
-      {
-        type: 'Platforms',
-        description: 'WordPress, WordPress Theme Design, MacOS',
-      },
-      {
-        type: 'Storage',
-        description: 'NoSQL, MySQL',
-      },
-      {
-        type: 'Other',
-        description:
-          'PSD to HTML, PSD Slicing, Freelance, Programming, Freelance Programmer, ADK, IT, User Experience (UX), Localization',
-      },
-    ],
+    skills: [],
     currentRole: 'JavaScript Developer in Seattle, WA, United States',
     joined: 'Member since August 21, 2015',
     stack: [
@@ -295,23 +173,7 @@ export default [
     ],
     description:
       'April is a senior front-end web developer with over 15 years of experience at companies like Starbucks, Rosetta Stone, and Livemocha. She specializes in building front-ends for JavaScript web applications and has a deep expertise in the nuances of cross-platform development.',
-    portfolio: [
-      {
-        title: 'Rosetta Stone',
-        languages: 'JavaScript, AngularJS, HTML, CSS, Bower, Grunt, Git',
-        link: 'https://www.toptal.com/resume/april-leone#employment-101111',
-      },
-      {
-        title: 'Livemocha',
-        languages: 'JavaScript, HTML, CSS, SproutCore, WordPress',
-        link: 'https://www.toptal.com/resume/april-leone#employment-101111',
-      },
-      {
-        title: 'Starbucks',
-        languages: 'Visual Studio, HTML, Sitecore',
-        link: 'https://www.toptal.com/resume/april-leone#employment-101111',
-      },
-    ],
+    portfolio: [],
     experience: [
       {
         title: 'HTML',
@@ -360,37 +222,7 @@ export default [
     cv: 'resume-4',
     bio: 'A good Backend engineer',
     employments: [],
-    skills: [
-      {
-        type: 'Languages',
-        description: 'CSS, HTML, Sass, JavaScript',
-      },
-      {
-        type: 'Frameworks',
-        description: 'Unity3D, Unity, SproutCore, AngularJS, Jasmine',
-      },
-      {
-        type: 'Tools',
-        description: 'Bower, Git, Karma, Grunt',
-      },
-      {
-        type: 'Paradigms',
-        description: 'Agile Software Development',
-      },
-      {
-        type: 'Platforms',
-        description: 'WordPress, WordPress Theme Design, MacOS',
-      },
-      {
-        type: 'Storage',
-        description: 'NoSQL, MySQL',
-      },
-      {
-        type: 'Other',
-        description:
-          'PSD to HTML, PSD Slicing, Freelance, Programming, Freelance Programmer, ADK, IT, User Experience (UX), Localization',
-      },
-    ],
+    skills: [],
     currentRole: 'JavaScript Developer in Seattle, WA, United States',
     joined: 'Member since August 21, 2015',
     stack: [
@@ -404,23 +236,7 @@ export default [
     ],
     description:
       'April is a senior front-end web developer with over 15 years of experience at companies like Starbucks, Rosetta Stone, and Livemocha. She specializes in building front-ends for JavaScript web applications and has a deep expertise in the nuances of cross-platform development.',
-    portfolio: [
-      {
-        title: 'Rosetta Stone',
-        languages: 'JavaScript, AngularJS, HTML, CSS, Bower, Grunt, Git',
-        link: 'https://www.toptal.com/resume/april-leone#employment-101111',
-      },
-      {
-        title: 'Livemocha',
-        languages: 'JavaScript, HTML, CSS, SproutCore, WordPress',
-        link: 'https://www.toptal.com/resume/april-leone#employment-101111',
-      },
-      {
-        title: 'Starbucks',
-        languages: 'Visual Studio, HTML, Sitecore',
-        link: 'https://www.toptal.com/resume/april-leone#employment-101111',
-      },
-    ],
+    portfolio: [],
     experience: [
       {
         title: 'HTML',
@@ -469,37 +285,7 @@ export default [
     cv: 'resume-5',
     bio: 'Fast Learner interested in fullstack software development ',
     employments: [],
-    skills: [
-      {
-        type: 'Languages',
-        description: 'CSS, HTML, Sass, JavaScript',
-      },
-      {
-        type: 'Frameworks',
-        description: 'Unity3D, Unity, SproutCore, AngularJS, Jasmine',
-      },
-      {
-        type: 'Tools',
-        description: 'Bower, Git, Karma, Grunt',
-      },
-      {
-        type: 'Paradigms',
-        description: 'Agile Software Development',
-      },
-      {
-        type: 'Platforms',
-        description: 'WordPress, WordPress Theme Design, MacOS',
-      },
-      {
-        type: 'Storage',
-        description: 'NoSQL, MySQL',
-      },
-      {
-        type: 'Other',
-        description:
-          'PSD to HTML, PSD Slicing, Freelance, Programming, Freelance Programmer, ADK, IT, User Experience (UX), Localization',
-      },
-    ],
+    skills: [],
     currentRole: 'JavaScript Developer in Seattle, WA, United States',
     joined: 'Member since August 21, 2015',
     stack: [
@@ -513,23 +299,7 @@ export default [
     ],
     description:
       'April is a senior front-end web developer with over 15 years of experience at companies like Starbucks, Rosetta Stone, and Livemocha. She specializes in building front-ends for JavaScript web applications and has a deep expertise in the nuances of cross-platform development.',
-    portfolio: [
-      {
-        title: 'Rosetta Stone',
-        languages: 'JavaScript, AngularJS, HTML, CSS, Bower, Grunt, Git',
-        link: 'https://www.toptal.com/resume/april-leone#employment-101111',
-      },
-      {
-        title: 'Livemocha',
-        languages: 'JavaScript, HTML, CSS, SproutCore, WordPress',
-        link: 'https://www.toptal.com/resume/april-leone#employment-101111',
-      },
-      {
-        title: 'Starbucks',
-        languages: 'Visual Studio, HTML, Sitecore',
-        link: 'https://www.toptal.com/resume/april-leone#employment-101111',
-      },
-    ],
+    portfolio: [],
     experience: [
       {
         title: 'HTML',
@@ -578,37 +348,7 @@ export default [
     cv: 'resume-6',
     bio: 'A great software engineer',
     employments: [],
-    skills: [
-      {
-        type: 'Languages',
-        description: 'CSS, HTML, Sass, JavaScript',
-      },
-      {
-        type: 'Frameworks',
-        description: 'Unity3D, Unity, SproutCore, AngularJS, Jasmine',
-      },
-      {
-        type: 'Tools',
-        description: 'Bower, Git, Karma, Grunt',
-      },
-      {
-        type: 'Paradigms',
-        description: 'Agile Software Development',
-      },
-      {
-        type: 'Platforms',
-        description: 'WordPress, WordPress Theme Design, MacOS',
-      },
-      {
-        type: 'Storage',
-        description: 'NoSQL, MySQL',
-      },
-      {
-        type: 'Other',
-        description:
-          'PSD to HTML, PSD Slicing, Freelance, Programming, Freelance Programmer, ADK, IT, User Experience (UX), Localization',
-      },
-    ],
+    skills: [],
     currentRole: 'JavaScript Developer in Seattle, WA, United States',
     joined: 'Member since August 21, 2015',
     stack: [
@@ -622,23 +362,7 @@ export default [
     ],
     description:
       'April is a senior front-end web developer with over 15 years of experience at companies like Starbucks, Rosetta Stone, and Livemocha. She specializes in building front-ends for JavaScript web applications and has a deep expertise in the nuances of cross-platform development.',
-    portfolio: [
-      {
-        title: 'Rosetta Stone',
-        languages: 'JavaScript, AngularJS, HTML, CSS, Bower, Grunt, Git',
-        link: 'https://www.toptal.com/resume/april-leone#employment-101111',
-      },
-      {
-        title: 'Livemocha',
-        languages: 'JavaScript, HTML, CSS, SproutCore, WordPress',
-        link: 'https://www.toptal.com/resume/april-leone#employment-101111',
-      },
-      {
-        title: 'Starbucks',
-        languages: 'Visual Studio, HTML, Sitecore',
-        link: 'https://www.toptal.com/resume/april-leone#employment-101111',
-      },
-    ],
+    portfolio: [],
     experience: [
       {
         title: 'HTML',
@@ -687,37 +411,7 @@ export default [
     cv: 'resume-7',
     bio: 'A great software dev',
     employments: [],
-    skills: [
-      {
-        type: 'Languages',
-        description: 'CSS, HTML, Sass, JavaScript',
-      },
-      {
-        type: 'Frameworks',
-        description: 'Unity3D, Unity, SproutCore, AngularJS, Jasmine',
-      },
-      {
-        type: 'Tools',
-        description: 'Bower, Git, Karma, Grunt',
-      },
-      {
-        type: 'Paradigms',
-        description: 'Agile Software Development',
-      },
-      {
-        type: 'Platforms',
-        description: 'WordPress, WordPress Theme Design, MacOS',
-      },
-      {
-        type: 'Storage',
-        description: 'NoSQL, MySQL',
-      },
-      {
-        type: 'Other',
-        description:
-          'PSD to HTML, PSD Slicing, Freelance, Programming, Freelance Programmer, ADK, IT, User Experience (UX), Localization',
-      },
-    ],
+    skills: [],
     currentRole: 'JavaScript Developer in Seattle, WA, United States',
     joined: 'Member since August 21, 2015',
     stack: [
@@ -731,23 +425,7 @@ export default [
     ],
     description:
       'April is a senior front-end web developer with over 15 years of experience at companies like Starbucks, Rosetta Stone, and Livemocha. She specializes in building front-ends for JavaScript web applications and has a deep expertise in the nuances of cross-platform development.',
-    portfolio: [
-      {
-        title: 'Rosetta Stone',
-        languages: 'JavaScript, AngularJS, HTML, CSS, Bower, Grunt, Git',
-        link: 'https://www.toptal.com/resume/april-leone#employment-101111',
-      },
-      {
-        title: 'Livemocha',
-        languages: 'JavaScript, HTML, CSS, SproutCore, WordPress',
-        link: 'https://www.toptal.com/resume/april-leone#employment-101111',
-      },
-      {
-        title: 'Starbucks',
-        languages: 'Visual Studio, HTML, Sitecore',
-        link: 'https://www.toptal.com/resume/april-leone#employment-101111',
-      },
-    ],
+    portfolio: [],
     experience: [
       {
         title: 'HTML',
@@ -796,37 +474,7 @@ export default [
     cv: 'resume-7',
     bio: 'A great software dev',
     employments: [],
-    skills: [
-      {
-        type: 'Languages',
-        description: 'CSS, HTML, Sass, JavaScript',
-      },
-      {
-        type: 'Frameworks',
-        description: 'Unity3D, Unity, SproutCore, AngularJS, Jasmine',
-      },
-      {
-        type: 'Tools',
-        description: 'Bower, Git, Karma, Grunt',
-      },
-      {
-        type: 'Paradigms',
-        description: 'Agile Software Development',
-      },
-      {
-        type: 'Platforms',
-        description: 'WordPress, WordPress Theme Design, MacOS',
-      },
-      {
-        type: 'Storage',
-        description: 'NoSQL, MySQL',
-      },
-      {
-        type: 'Other',
-        description:
-          'PSD to HTML, PSD Slicing, Freelance, Programming, Freelance Programmer, ADK, IT, User Experience (UX), Localization',
-      },
-    ],
+    skills: [],
     currentRole: 'JavaScript Developer in Seattle, WA, United States',
     joined: 'Member since August 21, 2015',
     stack: [
@@ -858,37 +506,7 @@ export default [
     cv: 'resume-7',
     bio: 'A great software dev',
     employments: [],
-    skills: [
-      {
-        type: 'Languages',
-        description: 'CSS, HTML, Sass, JavaScript',
-      },
-      {
-        type: 'Frameworks',
-        description: 'Unity3D, Unity, SproutCore, AngularJS, Jasmine',
-      },
-      {
-        type: 'Tools',
-        description: 'Bower, Git, Karma, Grunt',
-      },
-      {
-        type: 'Paradigms',
-        description: 'Agile Software Development',
-      },
-      {
-        type: 'Platforms',
-        description: 'WordPress, WordPress Theme Design, MacOS',
-      },
-      {
-        type: 'Storage',
-        description: 'NoSQL, MySQL',
-      },
-      {
-        type: 'Other',
-        description:
-          'PSD to HTML, PSD Slicing, Freelance, Programming, Freelance Programmer, ADK, IT, User Experience (UX), Localization',
-      },
-    ],
+    skills: [],
     currentRole: 'JavaScript Developer in Seattle, WA, United States',
     joined: 'Member since August 21, 2015',
     stack: [
@@ -902,23 +520,7 @@ export default [
     ],
     description:
       'April is a senior front-end web developer with over 15 years of experience at companies like Starbucks, Rosetta Stone, and Livemocha. She specializes in building front-ends for JavaScript web applications and has a deep expertise in the nuances of cross-platform development.',
-    portfolio: [
-      {
-        title: 'Rosetta Stone',
-        languages: 'JavaScript, AngularJS, HTML, CSS, Bower, Grunt, Git',
-        link: 'https://www.toptal.com/resume/april-leone#employment-101111',
-      },
-      {
-        title: 'Livemocha',
-        languages: 'JavaScript, HTML, CSS, SproutCore, WordPress',
-        link: 'https://www.toptal.com/resume/april-leone#employment-101111',
-      },
-      {
-        title: 'Starbucks',
-        languages: 'Visual Studio, HTML, Sitecore',
-        link: 'https://www.toptal.com/resume/april-leone#employment-101111',
-      },
-    ],
+    portfolio: [],
     experience: [
       {
         title: 'HTML',
@@ -967,37 +569,7 @@ export default [
     cv: 'resume-7',
     bio: 'A great software dev',
     employments: [],
-    skills: [
-      {
-        type: 'Languages',
-        description: 'CSS, HTML, Sass, JavaScript',
-      },
-      {
-        type: 'Frameworks',
-        description: 'Unity3D, Unity, SproutCore, AngularJS, Jasmine',
-      },
-      {
-        type: 'Tools',
-        description: 'Bower, Git, Karma, Grunt',
-      },
-      {
-        type: 'Paradigms',
-        description: 'Agile Software Development',
-      },
-      {
-        type: 'Platforms',
-        description: 'WordPress, WordPress Theme Design, MacOS',
-      },
-      {
-        type: 'Storage',
-        description: 'NoSQL, MySQL',
-      },
-      {
-        type: 'Other',
-        description:
-          'PSD to HTML, PSD Slicing, Freelance, Programming, Freelance Programmer, ADK, IT, User Experience (UX), Localization',
-      },
-    ],
+    skills: [],
     currentRole: 'JavaScript Developer in Seattle, WA, United States',
     joined: 'Member since August 21, 2015',
     stack: [
@@ -1011,23 +583,7 @@ export default [
     ],
     description:
       'April is a senior front-end web developer with over 15 years of experience at companies like Starbucks, Rosetta Stone, and Livemocha. She specializes in building front-ends for JavaScript web applications and has a deep expertise in the nuances of cross-platform development.',
-    portfolio: [
-      {
-        title: 'Rosetta Stone',
-        languages: 'JavaScript, AngularJS, HTML, CSS, Bower, Grunt, Git',
-        link: 'https://www.toptal.com/resume/april-leone#employment-101111',
-      },
-      {
-        title: 'Livemocha',
-        languages: 'JavaScript, HTML, CSS, SproutCore, WordPress',
-        link: 'https://www.toptal.com/resume/april-leone#employment-101111',
-      },
-      {
-        title: 'Starbucks',
-        languages: 'Visual Studio, HTML, Sitecore',
-        link: 'https://www.toptal.com/resume/april-leone#employment-101111',
-      },
-    ],
+    portfolio: [],
     experience: [
       {
         title: 'HTML',
@@ -1076,37 +632,7 @@ export default [
     cv: 'resume-7',
     bio: 'A great software dev',
     employments: [],
-    skills: [
-      {
-        type: 'Languages',
-        description: 'CSS, HTML, Sass, JavaScript',
-      },
-      {
-        type: 'Frameworks',
-        description: 'Unity3D, Unity, SproutCore, AngularJS, Jasmine',
-      },
-      {
-        type: 'Tools',
-        description: 'Bower, Git, Karma, Grunt',
-      },
-      {
-        type: 'Paradigms',
-        description: 'Agile Software Development',
-      },
-      {
-        type: 'Platforms',
-        description: 'WordPress, WordPress Theme Design, MacOS',
-      },
-      {
-        type: 'Storage',
-        description: 'NoSQL, MySQL',
-      },
-      {
-        type: 'Other',
-        description:
-          'PSD to HTML, PSD Slicing, Freelance, Programming, Freelance Programmer, ADK, IT, User Experience (UX), Localization',
-      },
-    ],
+    skills: [],
     currentRole: 'JavaScript Developer in Seattle, WA, United States',
     joined: 'Member since August 21, 2015',
     stack: [
@@ -1120,23 +646,7 @@ export default [
     ],
     description:
       'April is a senior front-end web developer with over 15 years of experience at companies like Starbucks, Rosetta Stone, and Livemocha. She specializes in building front-ends for JavaScript web applications and has a deep expertise in the nuances of cross-platform development.',
-    portfolio: [
-      {
-        title: 'Rosetta Stone',
-        languages: 'JavaScript, AngularJS, HTML, CSS, Bower, Grunt, Git',
-        link: 'https://www.toptal.com/resume/april-leone#employment-101111',
-      },
-      {
-        title: 'Livemocha',
-        languages: 'JavaScript, HTML, CSS, SproutCore, WordPress',
-        link: 'https://www.toptal.com/resume/april-leone#employment-101111',
-      },
-      {
-        title: 'Starbucks',
-        languages: 'Visual Studio, HTML, Sitecore',
-        link: 'https://www.toptal.com/resume/april-leone#employment-101111',
-      },
-    ],
+    portfolio: [],
     experience: [
       {
         title: 'HTML',
@@ -1185,37 +695,7 @@ export default [
     cv: 'resume-7',
     bio: 'A great software dev',
     employments: [],
-    skills: [
-      {
-        type: 'Languages',
-        description: 'CSS, HTML, Sass, JavaScript',
-      },
-      {
-        type: 'Frameworks',
-        description: 'Unity3D, Unity, SproutCore, AngularJS, Jasmine',
-      },
-      {
-        type: 'Tools',
-        description: 'Bower, Git, Karma, Grunt',
-      },
-      {
-        type: 'Paradigms',
-        description: 'Agile Software Development',
-      },
-      {
-        type: 'Platforms',
-        description: 'WordPress, WordPress Theme Design, MacOS',
-      },
-      {
-        type: 'Storage',
-        description: 'NoSQL, MySQL',
-      },
-      {
-        type: 'Other',
-        description:
-          'PSD to HTML, PSD Slicing, Freelance, Programming, Freelance Programmer, ADK, IT, User Experience (UX), Localization',
-      },
-    ],
+    skills: [],
     currentRole: 'JavaScript Developer in Seattle, WA, United States',
     joined: 'Member since August 21, 2015',
     stack: [
@@ -1229,23 +709,7 @@ export default [
     ],
     description:
       'April is a senior front-end web developer with over 15 years of experience at companies like Starbucks, Rosetta Stone, and Livemocha. She specializes in building front-ends for JavaScript web applications and has a deep expertise in the nuances of cross-platform development.',
-    portfolio: [
-      {
-        title: 'Rosetta Stone',
-        languages: 'JavaScript, AngularJS, HTML, CSS, Bower, Grunt, Git',
-        link: 'https://www.toptal.com/resume/april-leone#employment-101111',
-      },
-      {
-        title: 'Livemocha',
-        languages: 'JavaScript, HTML, CSS, SproutCore, WordPress',
-        link: 'https://www.toptal.com/resume/april-leone#employment-101111',
-      },
-      {
-        title: 'Starbucks',
-        languages: 'Visual Studio, HTML, Sitecore',
-        link: 'https://www.toptal.com/resume/april-leone#employment-101111',
-      },
-    ],
+    portfolio: [],
     experience: [
       {
         title: 'HTML',
@@ -1294,37 +758,7 @@ export default [
     cv: 'resume-7',
     bio: 'A great software dev',
     employments: [],
-    skills: [
-      {
-        type: 'Languages',
-        description: 'CSS, HTML, Sass, JavaScript',
-      },
-      {
-        type: 'Frameworks',
-        description: 'Unity3D, Unity, SproutCore, AngularJS, Jasmine',
-      },
-      {
-        type: 'Tools',
-        description: 'Bower, Git, Karma, Grunt',
-      },
-      {
-        type: 'Paradigms',
-        description: 'Agile Software Development',
-      },
-      {
-        type: 'Platforms',
-        description: 'WordPress, WordPress Theme Design, MacOS',
-      },
-      {
-        type: 'Storage',
-        description: 'NoSQL, MySQL',
-      },
-      {
-        type: 'Other',
-        description:
-          'PSD to HTML, PSD Slicing, Freelance, Programming, Freelance Programmer, ADK, IT, User Experience (UX), Localization',
-      },
-    ],
+    skills: [],
     currentRole: 'JavaScript Developer in Seattle, WA, United States',
     joined: 'Member since August 21, 2015',
     stack: [
@@ -1338,23 +772,7 @@ export default [
     ],
     description:
       'April is a senior front-end web developer with over 15 years of experience at companies like Starbucks, Rosetta Stone, and Livemocha. She specializes in building front-ends for JavaScript web applications and has a deep expertise in the nuances of cross-platform development.',
-    portfolio: [
-      {
-        title: 'Rosetta Stone',
-        languages: 'JavaScript, AngularJS, HTML, CSS, Bower, Grunt, Git',
-        link: 'https://www.toptal.com/resume/april-leone#employment-101111',
-      },
-      {
-        title: 'Livemocha',
-        languages: 'JavaScript, HTML, CSS, SproutCore, WordPress',
-        link: 'https://www.toptal.com/resume/april-leone#employment-101111',
-      },
-      {
-        title: 'Starbucks',
-        languages: 'Visual Studio, HTML, Sitecore',
-        link: 'https://www.toptal.com/resume/april-leone#employment-101111',
-      },
-    ],
+    portfolio: [],
     experience: [
       {
         title: 'HTML',
@@ -1403,37 +821,7 @@ export default [
     cv: 'resume-7',
     bio: 'A great software dev',
     employments: [],
-    skills: [
-      {
-        type: 'Languages',
-        description: 'CSS, HTML, Sass, JavaScript',
-      },
-      {
-        type: 'Frameworks',
-        description: 'Unity3D, Unity, SproutCore, AngularJS, Jasmine',
-      },
-      {
-        type: 'Tools',
-        description: 'Bower, Git, Karma, Grunt',
-      },
-      {
-        type: 'Paradigms',
-        description: 'Agile Software Development',
-      },
-      {
-        type: 'Platforms',
-        description: 'WordPress, WordPress Theme Design, MacOS',
-      },
-      {
-        type: 'Storage',
-        description: 'NoSQL, MySQL',
-      },
-      {
-        type: 'Other',
-        description:
-          'PSD to HTML, PSD Slicing, Freelance, Programming, Freelance Programmer, ADK, IT, User Experience (UX), Localization',
-      },
-    ],
+    skills: [],
     currentRole: 'JavaScript Developer in Seattle, WA, United States',
     joined: 'Member since August 21, 2015',
     stack: [
@@ -1447,23 +835,7 @@ export default [
     ],
     description:
       'April is a senior front-end web developer with over 15 years of experience at companies like Starbucks, Rosetta Stone, and Livemocha. She specializes in building front-ends for JavaScript web applications and has a deep expertise in the nuances of cross-platform development.',
-    portfolio: [
-      {
-        title: 'Rosetta Stone',
-        languages: 'JavaScript, AngularJS, HTML, CSS, Bower, Grunt, Git',
-        link: 'https://www.toptal.com/resume/april-leone#employment-101111',
-      },
-      {
-        title: 'Livemocha',
-        languages: 'JavaScript, HTML, CSS, SproutCore, WordPress',
-        link: 'https://www.toptal.com/resume/april-leone#employment-101111',
-      },
-      {
-        title: 'Starbucks',
-        languages: 'Visual Studio, HTML, Sitecore',
-        link: 'https://www.toptal.com/resume/april-leone#employment-101111',
-      },
-    ],
+    portfolio: [],
     experience: [
       {
         title: 'HTML',
@@ -1513,37 +885,7 @@ export default [
     cv: 'resume-7',
     bio: 'A great software dev',
     employments: [],
-    skills: [
-      {
-        type: 'Languages',
-        description: 'CSS, HTML, Sass, JavaScript',
-      },
-      {
-        type: 'Frameworks',
-        description: 'Unity3D, Unity, SproutCore, AngularJS, Jasmine',
-      },
-      {
-        type: 'Tools',
-        description: 'Bower, Git, Karma, Grunt',
-      },
-      {
-        type: 'Paradigms',
-        description: 'Agile Software Development',
-      },
-      {
-        type: 'Platforms',
-        description: 'WordPress, WordPress Theme Design, MacOS',
-      },
-      {
-        type: 'Storage',
-        description: 'NoSQL, MySQL',
-      },
-      {
-        type: 'Other',
-        description:
-          'PSD to HTML, PSD Slicing, Freelance, Programming, Freelance Programmer, ADK, IT, User Experience (UX), Localization',
-      },
-    ],
+    skills: [],
     currentRole: 'JavaScript Developer in Seattle, WA, United States',
     joined: 'Member since August 21, 2015',
     stack: [
@@ -1557,23 +899,7 @@ export default [
     ],
     description:
       'April is a senior front-end web developer with over 15 years of experience at companies like Starbucks, Rosetta Stone, and Livemocha. She specializes in building front-ends for JavaScript web applications and has a deep expertise in the nuances of cross-platform development.',
-    portfolio: [
-      {
-        title: 'Rosetta Stone',
-        languages: 'JavaScript, AngularJS, HTML, CSS, Bower, Grunt, Git',
-        link: 'https://www.toptal.com/resume/april-leone#employment-101111',
-      },
-      {
-        title: 'Livemocha',
-        languages: 'JavaScript, HTML, CSS, SproutCore, WordPress',
-        link: 'https://www.toptal.com/resume/april-leone#employment-101111',
-      },
-      {
-        title: 'Starbucks',
-        languages: 'Visual Studio, HTML, Sitecore',
-        link: 'https://www.toptal.com/resume/april-leone#employment-101111',
-      },
-    ],
+    portfolio: [],
     experience: [
       {
         title: 'HTML',
@@ -1621,37 +947,7 @@ export default [
     cv: 'resume-7',
     bio: 'A great software dev',
     employments: [],
-    skills: [
-      {
-        type: 'Languages',
-        description: 'CSS, HTML, Sass, JavaScript',
-      },
-      {
-        type: 'Frameworks',
-        description: 'Unity3D, Unity, SproutCore, AngularJS, Jasmine',
-      },
-      {
-        type: 'Tools',
-        description: 'Bower, Git, Karma, Grunt',
-      },
-      {
-        type: 'Paradigms',
-        description: 'Agile Software Development',
-      },
-      {
-        type: 'Platforms',
-        description: 'WordPress, WordPress Theme Design, MacOS',
-      },
-      {
-        type: 'Storage',
-        description: 'NoSQL, MySQL',
-      },
-      {
-        type: 'Other',
-        description:
-          'PSD to HTML, PSD Slicing, Freelance, Programming, Freelance Programmer, ADK, IT, User Experience (UX), Localization',
-      },
-    ],
+    skills: [],
     currentRole: 'JavaScript Developer in Seattle, WA, United States',
     joined: 'Member since August 21, 2015',
     stack: [
@@ -1665,23 +961,7 @@ export default [
     ],
     description:
       'April is a senior front-end web developer with over 15 years of experience at companies like Starbucks, Rosetta Stone, and Livemocha. She specializes in building front-ends for JavaScript web applications and has a deep expertise in the nuances of cross-platform development.',
-    portfolio: [
-      {
-        title: 'Rosetta Stone',
-        languages: 'JavaScript, AngularJS, HTML, CSS, Bower, Grunt, Git',
-        link: 'https://www.toptal.com/resume/april-leone#employment-101111',
-      },
-      {
-        title: 'Livemocha',
-        languages: 'JavaScript, HTML, CSS, SproutCore, WordPress',
-        link: 'https://www.toptal.com/resume/april-leone#employment-101111',
-      },
-      {
-        title: 'Starbucks',
-        languages: 'Visual Studio, HTML, Sitecore',
-        link: 'https://www.toptal.com/resume/april-leone#employment-101111',
-      },
-    ],
+    portfolio: [],
     experience: [
       {
         title: 'HTML',
@@ -1730,37 +1010,7 @@ export default [
     cv: 'resume-7',
     bio: 'A great software dev',
     employments: [],
-    skills: [
-      {
-        type: 'Languages',
-        description: 'CSS, HTML, Sass, JavaScript',
-      },
-      {
-        type: 'Frameworks',
-        description: 'Unity3D, Unity, SproutCore, AngularJS, Jasmine',
-      },
-      {
-        type: 'Tools',
-        description: 'Bower, Git, Karma, Grunt',
-      },
-      {
-        type: 'Paradigms',
-        description: 'Agile Software Development',
-      },
-      {
-        type: 'Platforms',
-        description: 'WordPress, WordPress Theme Design, MacOS',
-      },
-      {
-        type: 'Storage',
-        description: 'NoSQL, MySQL',
-      },
-      {
-        type: 'Other',
-        description:
-          'PSD to HTML, PSD Slicing, Freelance, Programming, Freelance Programmer, ADK, IT, User Experience (UX), Localization',
-      },
-    ],
+    skills: [],
     currentRole: 'JavaScript Developer in Seattle, WA, United States',
     joined: 'Member since August 21, 2015',
     stack: [
@@ -1774,23 +1024,7 @@ export default [
     ],
     description:
       'April is a senior front-end web developer with over 15 years of experience at companies like Starbucks, Rosetta Stone, and Livemocha. She specializes in building front-ends for JavaScript web applications and has a deep expertise in the nuances of cross-platform development.',
-    portfolio: [
-      {
-        title: 'Rosetta Stone',
-        languages: 'JavaScript, AngularJS, HTML, CSS, Bower, Grunt, Git',
-        link: 'https://www.toptal.com/resume/april-leone#employment-101111',
-      },
-      {
-        title: 'Livemocha',
-        languages: 'JavaScript, HTML, CSS, SproutCore, WordPress',
-        link: 'https://www.toptal.com/resume/april-leone#employment-101111',
-      },
-      {
-        title: 'Starbucks',
-        languages: 'Visual Studio, HTML, Sitecore',
-        link: 'https://www.toptal.com/resume/april-leone#employment-101111',
-      },
-    ],
+    portfolio: [],
     experience: [
       {
         title: 'HTML',
@@ -1839,37 +1073,7 @@ export default [
     cv: 'resume-7',
     bio: 'A great software dev',
     employments: [],
-    skills: [
-      {
-        type: 'Languages',
-        description: 'CSS, HTML, Sass, JavaScript',
-      },
-      {
-        type: 'Frameworks',
-        description: 'Unity3D, Unity, SproutCore, AngularJS, Jasmine',
-      },
-      {
-        type: 'Tools',
-        description: 'Bower, Git, Karma, Grunt',
-      },
-      {
-        type: 'Paradigms',
-        description: 'Agile Software Development',
-      },
-      {
-        type: 'Platforms',
-        description: 'WordPress, WordPress Theme Design, MacOS',
-      },
-      {
-        type: 'Storage',
-        description: 'NoSQL, MySQL',
-      },
-      {
-        type: 'Other',
-        description:
-          'PSD to HTML, PSD Slicing, Freelance, Programming, Freelance Programmer, ADK, IT, User Experience (UX), Localization',
-      },
-    ],
+    skills: [],
     currentRole: 'JavaScript Developer in Seattle, WA, United States',
     joined: 'Member since August 21, 2015',
     stack: [
@@ -1883,23 +1087,7 @@ export default [
     ],
     description:
       'April is a senior front-end web developer with over 15 years of experience at companies like Starbucks, Rosetta Stone, and Livemocha. She specializes in building front-ends for JavaScript web applications and has a deep expertise in the nuances of cross-platform development.',
-    portfolio: [
-      {
-        title: 'Rosetta Stone',
-        languages: 'JavaScript, AngularJS, HTML, CSS, Bower, Grunt, Git',
-        link: 'https://www.toptal.com/resume/april-leone#employment-101111',
-      },
-      {
-        title: 'Livemocha',
-        languages: 'JavaScript, HTML, CSS, SproutCore, WordPress',
-        link: 'https://www.toptal.com/resume/april-leone#employment-101111',
-      },
-      {
-        title: 'Starbucks',
-        languages: 'Visual Studio, HTML, Sitecore',
-        link: 'https://www.toptal.com/resume/april-leone#employment-101111',
-      },
-    ],
+    portfolio: [],
     experience: [
       {
         title: 'HTML',
@@ -1948,37 +1136,7 @@ export default [
     cv: 'resume-7',
     bio: 'A great software dev',
     employments: [],
-    skills: [
-      {
-        type: 'Languages',
-        description: 'CSS, HTML, Sass, JavaScript',
-      },
-      {
-        type: 'Frameworks',
-        description: 'Unity3D, Unity, SproutCore, AngularJS, Jasmine',
-      },
-      {
-        type: 'Tools',
-        description: 'Bower, Git, Karma, Grunt',
-      },
-      {
-        type: 'Paradigms',
-        description: 'Agile Software Development',
-      },
-      {
-        type: 'Platforms',
-        description: 'WordPress, WordPress Theme Design, MacOS',
-      },
-      {
-        type: 'Storage',
-        description: 'NoSQL, MySQL',
-      },
-      {
-        type: 'Other',
-        description:
-          'PSD to HTML, PSD Slicing, Freelance, Programming, Freelance Programmer, ADK, IT, User Experience (UX), Localization',
-      },
-    ],
+    skills: [],
     currentRole: 'JavaScript Developer in Seattle, WA, United States',
     joined: 'Member since August 21, 2015',
     stack: [
@@ -1992,23 +1150,7 @@ export default [
     ],
     description:
       'April is a senior front-end web developer with over 15 years of experience at companies like Starbucks, Rosetta Stone, and Livemocha. She specializes in building front-ends for JavaScript web applications and has a deep expertise in the nuances of cross-platform development.',
-    portfolio: [
-      {
-        title: 'Rosetta Stone',
-        languages: 'JavaScript, AngularJS, HTML, CSS, Bower, Grunt, Git',
-        link: 'https://www.toptal.com/resume/april-leone#employment-101111',
-      },
-      {
-        title: 'Livemocha',
-        languages: 'JavaScript, HTML, CSS, SproutCore, WordPress',
-        link: 'https://www.toptal.com/resume/april-leone#employment-101111',
-      },
-      {
-        title: 'Starbucks',
-        languages: 'Visual Studio, HTML, Sitecore',
-        link: 'https://www.toptal.com/resume/april-leone#employment-101111',
-      },
-    ],
+    portfolio: [],
     experience: [
       {
         title: 'HTML',
@@ -2057,37 +1199,7 @@ export default [
     cv: 'resume-7',
     bio: 'A great software dev',
     employments: [],
-    skills: [
-      {
-        type: 'Languages',
-        description: 'CSS, HTML, Sass, JavaScript',
-      },
-      {
-        type: 'Frameworks',
-        description: 'Unity3D, Unity, SproutCore, AngularJS, Jasmine',
-      },
-      {
-        type: 'Tools',
-        description: 'Bower, Git, Karma, Grunt',
-      },
-      {
-        type: 'Paradigms',
-        description: 'Agile Software Development',
-      },
-      {
-        type: 'Platforms',
-        description: 'WordPress, WordPress Theme Design, MacOS',
-      },
-      {
-        type: 'Storage',
-        description: 'NoSQL, MySQL',
-      },
-      {
-        type: 'Other',
-        description:
-          'PSD to HTML, PSD Slicing, Freelance, Programming, Freelance Programmer, ADK, IT, User Experience (UX), Localization',
-      },
-    ],
+    skills: [],
     currentRole: 'JavaScript Developer in Seattle, WA, United States',
     joined: 'Member since August 21, 2015',
     stack: [
@@ -2101,23 +1213,7 @@ export default [
     ],
     description:
       'April is a senior front-end web developer with over 15 years of experience at companies like Starbucks, Rosetta Stone, and Livemocha. She specializes in building front-ends for JavaScript web applications and has a deep expertise in the nuances of cross-platform development.',
-    portfolio: [
-      {
-        title: 'Rosetta Stone',
-        languages: 'JavaScript, AngularJS, HTML, CSS, Bower, Grunt, Git',
-        link: 'https://www.toptal.com/resume/april-leone#employment-101111',
-      },
-      {
-        title: 'Livemocha',
-        languages: 'JavaScript, HTML, CSS, SproutCore, WordPress',
-        link: 'https://www.toptal.com/resume/april-leone#employment-101111',
-      },
-      {
-        title: 'Starbucks',
-        languages: 'Visual Studio, HTML, Sitecore',
-        link: 'https://www.toptal.com/resume/april-leone#employment-101111',
-      },
-    ],
+    portfolio: [],
     experience: [
       {
         title: 'HTML',
@@ -2166,37 +1262,7 @@ export default [
     cv: 'resume-7',
     bio: 'A great software dev',
     employments: [],
-    skills: [
-      {
-        type: 'Languages',
-        description: 'CSS, HTML, Sass, JavaScript',
-      },
-      {
-        type: 'Frameworks',
-        description: 'Unity3D, Unity, SproutCore, AngularJS, Jasmine',
-      },
-      {
-        type: 'Tools',
-        description: 'Bower, Git, Karma, Grunt',
-      },
-      {
-        type: 'Paradigms',
-        description: 'Agile Software Development',
-      },
-      {
-        type: 'Platforms',
-        description: 'WordPress, WordPress Theme Design, MacOS',
-      },
-      {
-        type: 'Storage',
-        description: 'NoSQL, MySQL',
-      },
-      {
-        type: 'Other',
-        description:
-          'PSD to HTML, PSD Slicing, Freelance, Programming, Freelance Programmer, ADK, IT, User Experience (UX), Localization',
-      },
-    ],
+    skills: [],
     currentRole: 'JavaScript Developer in Seattle, WA, United States',
     joined: 'Member since August 21, 2015',
     stack: [
@@ -2210,23 +1276,7 @@ export default [
     ],
     description:
       'April is a senior front-end web developer with over 15 years of experience at companies like Starbucks, Rosetta Stone, and Livemocha. She specializes in building front-ends for JavaScript web applications and has a deep expertise in the nuances of cross-platform development.',
-    portfolio: [
-      {
-        title: 'Rosetta Stone',
-        languages: 'JavaScript, AngularJS, HTML, CSS, Bower, Grunt, Git',
-        link: 'https://www.toptal.com/resume/april-leone#employment-101111',
-      },
-      {
-        title: 'Livemocha',
-        languages: 'JavaScript, HTML, CSS, SproutCore, WordPress',
-        link: 'https://www.toptal.com/resume/april-leone#employment-101111',
-      },
-      {
-        title: 'Starbucks',
-        languages: 'Visual Studio, HTML, Sitecore',
-        link: 'https://www.toptal.com/resume/april-leone#employment-101111',
-      },
-    ],
+    portfolio: [],
     experience: [
       {
         title: 'HTML',
@@ -2275,37 +1325,7 @@ export default [
     cv: 'resume-7',
     bio: 'A great software dev',
     employments: [],
-    skills: [
-      {
-        type: 'Languages',
-        description: 'CSS, HTML, Sass, JavaScript',
-      },
-      {
-        type: 'Frameworks',
-        description: 'Unity3D, Unity, SproutCore, AngularJS, Jasmine',
-      },
-      {
-        type: 'Tools',
-        description: 'Bower, Git, Karma, Grunt',
-      },
-      {
-        type: 'Paradigms',
-        description: 'Agile Software Development',
-      },
-      {
-        type: 'Platforms',
-        description: 'WordPress, WordPress Theme Design, MacOS',
-      },
-      {
-        type: 'Storage',
-        description: 'NoSQL, MySQL',
-      },
-      {
-        type: 'Other',
-        description:
-          'PSD to HTML, PSD Slicing, Freelance, Programming, Freelance Programmer, ADK, IT, User Experience (UX), Localization',
-      },
-    ],
+    skills: [],
     currentRole: 'JavaScript Developer in Seattle, WA, United States',
     joined: 'Member since August 21, 2015',
     stack: [
@@ -2319,23 +1339,7 @@ export default [
     ],
     description:
       'April is a senior front-end web developer with over 15 years of experience at companies like Starbucks, Rosetta Stone, and Livemocha. She specializes in building front-ends for JavaScript web applications and has a deep expertise in the nuances of cross-platform development.',
-    portfolio: [
-      {
-        title: 'Rosetta Stone',
-        languages: 'JavaScript, AngularJS, HTML, CSS, Bower, Grunt, Git',
-        link: 'https://www.toptal.com/resume/april-leone#employment-101111',
-      },
-      {
-        title: 'Livemocha',
-        languages: 'JavaScript, HTML, CSS, SproutCore, WordPress',
-        link: 'https://www.toptal.com/resume/april-leone#employment-101111',
-      },
-      {
-        title: 'Starbucks',
-        languages: 'Visual Studio, HTML, Sitecore',
-        link: 'https://www.toptal.com/resume/april-leone#employment-101111',
-      },
-    ],
+    portfolio: [],
     experience: [
       {
         title: 'HTML',
@@ -2384,37 +1388,7 @@ export default [
     cv: 'resume-7',
     bio: 'A great software dev',
     employments: [],
-    skills: [
-      {
-        type: 'Languages',
-        description: 'CSS, HTML, Sass, JavaScript',
-      },
-      {
-        type: 'Frameworks',
-        description: 'Unity3D, Unity, SproutCore, AngularJS, Jasmine',
-      },
-      {
-        type: 'Tools',
-        description: 'Bower, Git, Karma, Grunt',
-      },
-      {
-        type: 'Paradigms',
-        description: 'Agile Software Development',
-      },
-      {
-        type: 'Platforms',
-        description: 'WordPress, WordPress Theme Design, MacOS',
-      },
-      {
-        type: 'Storage',
-        description: 'NoSQL, MySQL',
-      },
-      {
-        type: 'Other',
-        description:
-          'PSD to HTML, PSD Slicing, Freelance, Programming, Freelance Programmer, ADK, IT, User Experience (UX), Localization',
-      },
-    ],
+    skills: [],
     currentRole: 'JavaScript Developer in Seattle, WA, United States',
     joined: 'Member since August 21, 2015',
     stack: [
@@ -2428,23 +1402,7 @@ export default [
     ],
     description:
       'April is a senior front-end web developer with over 15 years of experience at companies like Starbucks, Rosetta Stone, and Livemocha. She specializes in building front-ends for JavaScript web applications and has a deep expertise in the nuances of cross-platform development.',
-    portfolio: [
-      {
-        title: 'Rosetta Stone',
-        languages: 'JavaScript, AngularJS, HTML, CSS, Bower, Grunt, Git',
-        link: 'https://www.toptal.com/resume/april-leone#employment-101111',
-      },
-      {
-        title: 'Livemocha',
-        languages: 'JavaScript, HTML, CSS, SproutCore, WordPress',
-        link: 'https://www.toptal.com/resume/april-leone#employment-101111',
-      },
-      {
-        title: 'Starbucks',
-        languages: 'Visual Studio, HTML, Sitecore',
-        link: 'https://www.toptal.com/resume/april-leone#employment-101111',
-      },
-    ],
+    portfolio: [],
     experience: [
       {
         title: 'HTML',
@@ -2493,37 +1451,7 @@ export default [
     cv: 'resume-7',
     bio: 'A great software dev',
     employments: [],
-    skills: [
-      {
-        type: 'Languages',
-        description: 'CSS, HTML, Sass, JavaScript',
-      },
-      {
-        type: 'Frameworks',
-        description: 'Unity3D, Unity, SproutCore, AngularJS, Jasmine',
-      },
-      {
-        type: 'Tools',
-        description: 'Bower, Git, Karma, Grunt',
-      },
-      {
-        type: 'Paradigms',
-        description: 'Agile Software Development',
-      },
-      {
-        type: 'Platforms',
-        description: 'WordPress, WordPress Theme Design, MacOS',
-      },
-      {
-        type: 'Storage',
-        description: 'NoSQL, MySQL',
-      },
-      {
-        type: 'Other',
-        description:
-          'PSD to HTML, PSD Slicing, Freelance, Programming, Freelance Programmer, ADK, IT, User Experience (UX), Localization',
-      },
-    ],
+    skills: [],
     currentRole: 'JavaScript Developer in Seattle, WA, United States',
     joined: 'Member since August 21, 2015',
     stack: [
@@ -2537,23 +1465,7 @@ export default [
     ],
     description:
       'April is a senior front-end web developer with over 15 years of experience at companies like Starbucks, Rosetta Stone, and Livemocha. She specializes in building front-ends for JavaScript web applications and has a deep expertise in the nuances of cross-platform development.',
-    portfolio: [
-      {
-        title: 'Rosetta Stone',
-        languages: 'JavaScript, AngularJS, HTML, CSS, Bower, Grunt, Git',
-        link: 'https://www.toptal.com/resume/april-leone#employment-101111',
-      },
-      {
-        title: 'Livemocha',
-        languages: 'JavaScript, HTML, CSS, SproutCore, WordPress',
-        link: 'https://www.toptal.com/resume/april-leone#employment-101111',
-      },
-      {
-        title: 'Starbucks',
-        languages: 'Visual Studio, HTML, Sitecore',
-        link: 'https://www.toptal.com/resume/april-leone#employment-101111',
-      },
-    ],
+    portfolio: [],
     experience: [
       {
         title: 'HTML',
@@ -2602,37 +1514,7 @@ export default [
     cv: 'resume-7',
     bio: 'A great software dev',
     employments: [],
-    skills: [
-      {
-        type: 'Languages',
-        description: 'CSS, HTML, Sass, JavaScript',
-      },
-      {
-        type: 'Frameworks',
-        description: 'Unity3D, Unity, SproutCore, AngularJS, Jasmine',
-      },
-      {
-        type: 'Tools',
-        description: 'Bower, Git, Karma, Grunt',
-      },
-      {
-        type: 'Paradigms',
-        description: 'Agile Software Development',
-      },
-      {
-        type: 'Platforms',
-        description: 'WordPress, WordPress Theme Design, MacOS',
-      },
-      {
-        type: 'Storage',
-        description: 'NoSQL, MySQL',
-      },
-      {
-        type: 'Other',
-        description:
-          'PSD to HTML, PSD Slicing, Freelance, Programming, Freelance Programmer, ADK, IT, User Experience (UX), Localization',
-      },
-    ],
+    skills: [],
     currentRole: 'JavaScript Developer in Seattle, WA, United States',
     joined: 'Member since August 21, 2015',
     stack: [
@@ -2646,23 +1528,7 @@ export default [
     ],
     description:
       'April is a senior front-end web developer with over 15 years of experience at companies like Starbucks, Rosetta Stone, and Livemocha. She specializes in building front-ends for JavaScript web applications and has a deep expertise in the nuances of cross-platform development.',
-    portfolio: [
-      {
-        title: 'Rosetta Stone',
-        languages: 'JavaScript, AngularJS, HTML, CSS, Bower, Grunt, Git',
-        link: 'https://www.toptal.com/resume/april-leone#employment-101111',
-      },
-      {
-        title: 'Livemocha',
-        languages: 'JavaScript, HTML, CSS, SproutCore, WordPress',
-        link: 'https://www.toptal.com/resume/april-leone#employment-101111',
-      },
-      {
-        title: 'Starbucks',
-        languages: 'Visual Studio, HTML, Sitecore',
-        link: 'https://www.toptal.com/resume/april-leone#employment-101111',
-      },
-    ],
+    portfolio: [],
     experience: [
       {
         title: 'HTML',
@@ -2711,37 +1577,7 @@ export default [
     cv: 'resume-7',
     bio: 'A great software dev',
     employments: [],
-    skills: [
-      {
-        type: 'Languages',
-        description: 'CSS, HTML, Sass, JavaScript',
-      },
-      {
-        type: 'Frameworks',
-        description: 'Unity3D, Unity, SproutCore, AngularJS, Jasmine',
-      },
-      {
-        type: 'Tools',
-        description: 'Bower, Git, Karma, Grunt',
-      },
-      {
-        type: 'Paradigms',
-        description: 'Agile Software Development',
-      },
-      {
-        type: 'Platforms',
-        description: 'WordPress, WordPress Theme Design, MacOS',
-      },
-      {
-        type: 'Storage',
-        description: 'NoSQL, MySQL',
-      },
-      {
-        type: 'Other',
-        description:
-          'PSD to HTML, PSD Slicing, Freelance, Programming, Freelance Programmer, ADK, IT, User Experience (UX), Localization',
-      },
-    ],
+    skills: [],
     currentRole: 'JavaScript Developer in Seattle, WA, United States',
     joined: 'Member since August 21, 2015',
     stack: [
@@ -2755,23 +1591,7 @@ export default [
     ],
     description:
       'April is a senior front-end web developer with over 15 years of experience at companies like Starbucks, Rosetta Stone, and Livemocha. She specializes in building front-ends for JavaScript web applications and has a deep expertise in the nuances of cross-platform development.',
-    portfolio: [
-      {
-        title: 'Rosetta Stone',
-        languages: 'JavaScript, AngularJS, HTML, CSS, Bower, Grunt, Git',
-        link: 'https://www.toptal.com/resume/april-leone#employment-101111',
-      },
-      {
-        title: 'Livemocha',
-        languages: 'JavaScript, HTML, CSS, SproutCore, WordPress',
-        link: 'https://www.toptal.com/resume/april-leone#employment-101111',
-      },
-      {
-        title: 'Starbucks',
-        languages: 'Visual Studio, HTML, Sitecore',
-        link: 'https://www.toptal.com/resume/april-leone#employment-101111',
-      },
-    ],
+    portfolio: [],
     experience: [
       {
         title: 'HTML',
@@ -2820,37 +1640,7 @@ export default [
     cv: 'resume-7',
     bio: 'A great software dev',
     employments: [],
-    skills: [
-      {
-        type: 'Languages',
-        description: 'CSS, HTML, Sass, JavaScript',
-      },
-      {
-        type: 'Frameworks',
-        description: 'Unity3D, Unity, SproutCore, AngularJS, Jasmine',
-      },
-      {
-        type: 'Tools',
-        description: 'Bower, Git, Karma, Grunt',
-      },
-      {
-        type: 'Paradigms',
-        description: 'Agile Software Development',
-      },
-      {
-        type: 'Platforms',
-        description: 'WordPress, WordPress Theme Design, MacOS',
-      },
-      {
-        type: 'Storage',
-        description: 'NoSQL, MySQL',
-      },
-      {
-        type: 'Other',
-        description:
-          'PSD to HTML, PSD Slicing, Freelance, Programming, Freelance Programmer, ADK, IT, User Experience (UX), Localization',
-      },
-    ],
+    skills: [],
     currentRole: 'JavaScript Developer in Seattle, WA, United States',
     joined: 'Member since August 21, 2015',
     stack: [
@@ -2864,23 +1654,7 @@ export default [
     ],
     description:
       'April is a senior front-end web developer with over 15 years of experience at companies like Starbucks, Rosetta Stone, and Livemocha. She specializes in building front-ends for JavaScript web applications and has a deep expertise in the nuances of cross-platform development.',
-    portfolio: [
-      {
-        title: 'Rosetta Stone',
-        languages: 'JavaScript, AngularJS, HTML, CSS, Bower, Grunt, Git',
-        link: 'https://www.toptal.com/resume/april-leone#employment-101111',
-      },
-      {
-        title: 'Livemocha',
-        languages: 'JavaScript, HTML, CSS, SproutCore, WordPress',
-        link: 'https://www.toptal.com/resume/april-leone#employment-101111',
-      },
-      {
-        title: 'Starbucks',
-        languages: 'Visual Studio, HTML, Sitecore',
-        link: 'https://www.toptal.com/resume/april-leone#employment-101111',
-      },
-    ],
+    portfolio: [],
     experience: [
       {
         title: 'HTML',
@@ -2929,37 +1703,7 @@ export default [
     cv: 'resume-7',
     bio: 'A great software dev',
     employments: [],
-    skills: [
-      {
-        type: 'Languages',
-        description: 'CSS, HTML, Sass, JavaScript',
-      },
-      {
-        type: 'Frameworks',
-        description: 'Unity3D, Unity, SproutCore, AngularJS, Jasmine',
-      },
-      {
-        type: 'Tools',
-        description: 'Bower, Git, Karma, Grunt',
-      },
-      {
-        type: 'Paradigms',
-        description: 'Agile Software Development',
-      },
-      {
-        type: 'Platforms',
-        description: 'WordPress, WordPress Theme Design, MacOS',
-      },
-      {
-        type: 'Storage',
-        description: 'NoSQL, MySQL',
-      },
-      {
-        type: 'Other',
-        description:
-          'PSD to HTML, PSD Slicing, Freelance, Programming, Freelance Programmer, ADK, IT, User Experience (UX), Localization',
-      },
-    ],
+    skills: [],
     currentRole: 'JavaScript Developer in Seattle, WA, United States',
     joined: 'Member since August 21, 2015',
     stack: [
@@ -2973,23 +1717,7 @@ export default [
     ],
     description:
       'April is a senior front-end web developer with over 15 years of experience at companies like Starbucks, Rosetta Stone, and Livemocha. She specializes in building front-ends for JavaScript web applications and has a deep expertise in the nuances of cross-platform development.',
-    portfolio: [
-      {
-        title: 'Rosetta Stone',
-        languages: 'JavaScript, AngularJS, HTML, CSS, Bower, Grunt, Git',
-        link: 'https://www.toptal.com/resume/april-leone#employment-101111',
-      },
-      {
-        title: 'Livemocha',
-        languages: 'JavaScript, HTML, CSS, SproutCore, WordPress',
-        link: 'https://www.toptal.com/resume/april-leone#employment-101111',
-      },
-      {
-        title: 'Starbucks',
-        languages: 'Visual Studio, HTML, Sitecore',
-        link: 'https://www.toptal.com/resume/april-leone#employment-101111',
-      },
-    ],
+    portfolio: [],
     experience: [
       {
         title: 'HTML',
@@ -3038,37 +1766,7 @@ export default [
     cv: 'resume-7',
     bio: 'A great software dev',
     employments: [],
-    skills: [
-      {
-        type: 'Languages',
-        description: 'CSS, HTML, Sass, JavaScript',
-      },
-      {
-        type: 'Frameworks',
-        description: 'Unity3D, Unity, SproutCore, AngularJS, Jasmine',
-      },
-      {
-        type: 'Tools',
-        description: 'Bower, Git, Karma, Grunt',
-      },
-      {
-        type: 'Paradigms',
-        description: 'Agile Software Development',
-      },
-      {
-        type: 'Platforms',
-        description: 'WordPress, WordPress Theme Design, MacOS',
-      },
-      {
-        type: 'Storage',
-        description: 'NoSQL, MySQL',
-      },
-      {
-        type: 'Other',
-        description:
-          'PSD to HTML, PSD Slicing, Freelance, Programming, Freelance Programmer, ADK, IT, User Experience (UX), Localization',
-      },
-    ],
+    skills: [],
     currentRole: 'JavaScript Developer in Seattle, WA, United States',
     joined: 'Member since August 21, 2015',
     stack: [
@@ -3082,23 +1780,7 @@ export default [
     ],
     description:
       'April is a senior front-end web developer with over 15 years of experience at companies like Starbucks, Rosetta Stone, and Livemocha. She specializes in building front-ends for JavaScript web applications and has a deep expertise in the nuances of cross-platform development.',
-    portfolio: [
-      {
-        title: 'Rosetta Stone',
-        languages: 'JavaScript, AngularJS, HTML, CSS, Bower, Grunt, Git',
-        link: 'https://www.toptal.com/resume/april-leone#employment-101111',
-      },
-      {
-        title: 'Livemocha',
-        languages: 'JavaScript, HTML, CSS, SproutCore, WordPress',
-        link: 'https://www.toptal.com/resume/april-leone#employment-101111',
-      },
-      {
-        title: 'Starbucks',
-        languages: 'Visual Studio, HTML, Sitecore',
-        link: 'https://www.toptal.com/resume/april-leone#employment-101111',
-      },
-    ],
+    portfolio: [],
     experience: [
       {
         title: 'HTML',
@@ -3147,37 +1829,7 @@ export default [
     cv: 'resume-7',
     bio: 'A great software dev',
     employments: [],
-    skills: [
-      {
-        type: 'Languages',
-        description: 'CSS, HTML, Sass, JavaScript',
-      },
-      {
-        type: 'Frameworks',
-        description: 'Unity3D, Unity, SproutCore, AngularJS, Jasmine',
-      },
-      {
-        type: 'Tools',
-        description: 'Bower, Git, Karma, Grunt',
-      },
-      {
-        type: 'Paradigms',
-        description: 'Agile Software Development',
-      },
-      {
-        type: 'Platforms',
-        description: 'WordPress, WordPress Theme Design, MacOS',
-      },
-      {
-        type: 'Storage',
-        description: 'NoSQL, MySQL',
-      },
-      {
-        type: 'Other',
-        description:
-          'PSD to HTML, PSD Slicing, Freelance, Programming, Freelance Programmer, ADK, IT, User Experience (UX), Localization',
-      },
-    ],
+    skills: [],
     currentRole: 'JavaScript Developer in Seattle, WA, United States',
     joined: 'Member since August 21, 2015',
     stack: [
@@ -3191,23 +1843,7 @@ export default [
     ],
     description:
       'April is a senior front-end web developer with over 15 years of experience at companies like Starbucks, Rosetta Stone, and Livemocha. She specializes in building front-ends for JavaScript web applications and has a deep expertise in the nuances of cross-platform development.',
-    portfolio: [
-      {
-        title: 'Rosetta Stone',
-        languages: 'JavaScript, AngularJS, HTML, CSS, Bower, Grunt, Git',
-        link: 'https://www.toptal.com/resume/april-leone#employment-101111',
-      },
-      {
-        title: 'Livemocha',
-        languages: 'JavaScript, HTML, CSS, SproutCore, WordPress',
-        link: 'https://www.toptal.com/resume/april-leone#employment-101111',
-      },
-      {
-        title: 'Starbucks',
-        languages: 'Visual Studio, HTML, Sitecore',
-        link: 'https://www.toptal.com/resume/april-leone#employment-101111',
-      },
-    ],
+    portfolio: [],
     experience: [
       {
         title: 'HTML',
@@ -3256,37 +1892,7 @@ export default [
     cv: 'resume-7',
     bio: 'A great software dev',
     employments: [],
-    skills: [
-      {
-        type: 'Languages',
-        description: 'CSS, HTML, Sass, JavaScript',
-      },
-      {
-        type: 'Frameworks',
-        description: 'Unity3D, Unity, SproutCore, AngularJS, Jasmine',
-      },
-      {
-        type: 'Tools',
-        description: 'Bower, Git, Karma, Grunt',
-      },
-      {
-        type: 'Paradigms',
-        description: 'Agile Software Development',
-      },
-      {
-        type: 'Platforms',
-        description: 'WordPress, WordPress Theme Design, MacOS',
-      },
-      {
-        type: 'Storage',
-        description: 'NoSQL, MySQL',
-      },
-      {
-        type: 'Other',
-        description:
-          'PSD to HTML, PSD Slicing, Freelance, Programming, Freelance Programmer, ADK, IT, User Experience (UX), Localization',
-      },
-    ],
+    skills: [],
     currentRole: 'JavaScript Developer in Seattle, WA, United States',
     joined: 'Member since August 21, 2015',
     stack: [
@@ -3300,23 +1906,7 @@ export default [
     ],
     description:
       'April is a senior front-end web developer with over 15 years of experience at companies like Starbucks, Rosetta Stone, and Livemocha. She specializes in building front-ends for JavaScript web applications and has a deep expertise in the nuances of cross-platform development.',
-    portfolio: [
-      {
-        title: 'Rosetta Stone',
-        languages: 'JavaScript, AngularJS, HTML, CSS, Bower, Grunt, Git',
-        link: 'https://www.toptal.com/resume/april-leone#employment-101111',
-      },
-      {
-        title: 'Livemocha',
-        languages: 'JavaScript, HTML, CSS, SproutCore, WordPress',
-        link: 'https://www.toptal.com/resume/april-leone#employment-101111',
-      },
-      {
-        title: 'Starbucks',
-        languages: 'Visual Studio, HTML, Sitecore',
-        link: 'https://www.toptal.com/resume/april-leone#employment-101111',
-      },
-    ],
+    portfolio: [],
     experience: [
       {
         title: 'HTML',
@@ -3365,37 +1955,7 @@ export default [
     cv: 'resume-7',
     bio: 'A great software dev',
     employments: [],
-    skills: [
-      {
-        type: 'Languages',
-        description: 'CSS, HTML, Sass, JavaScript',
-      },
-      {
-        type: 'Frameworks',
-        description: 'Unity3D, Unity, SproutCore, AngularJS, Jasmine',
-      },
-      {
-        type: 'Tools',
-        description: 'Bower, Git, Karma, Grunt',
-      },
-      {
-        type: 'Paradigms',
-        description: 'Agile Software Development',
-      },
-      {
-        type: 'Platforms',
-        description: 'WordPress, WordPress Theme Design, MacOS',
-      },
-      {
-        type: 'Storage',
-        description: 'NoSQL, MySQL',
-      },
-      {
-        type: 'Other',
-        description:
-          'PSD to HTML, PSD Slicing, Freelance, Programming, Freelance Programmer, ADK, IT, User Experience (UX), Localization',
-      },
-    ],
+    skills: [],
     currentRole: 'JavaScript Developer in Seattle, WA, United States',
     joined: 'Member since August 21, 2015',
     stack: [
@@ -3409,23 +1969,7 @@ export default [
     ],
     description:
       'April is a senior front-end web developer with over 15 years of experience at companies like Starbucks, Rosetta Stone, and Livemocha. She specializes in building front-ends for JavaScript web applications and has a deep expertise in the nuances of cross-platform development.',
-    portfolio: [
-      {
-        title: 'Rosetta Stone',
-        languages: 'JavaScript, AngularJS, HTML, CSS, Bower, Grunt, Git',
-        link: 'https://www.toptal.com/resume/april-leone#employment-101111',
-      },
-      {
-        title: 'Livemocha',
-        languages: 'JavaScript, HTML, CSS, SproutCore, WordPress',
-        link: 'https://www.toptal.com/resume/april-leone#employment-101111',
-      },
-      {
-        title: 'Starbucks',
-        languages: 'Visual Studio, HTML, Sitecore',
-        link: 'https://www.toptal.com/resume/april-leone#employment-101111',
-      },
-    ],
+    portfolio: [],
     experience: [
       {
         title: 'HTML',

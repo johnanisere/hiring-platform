@@ -10,7 +10,6 @@ export default async function updateUserInfo(
   try {
     const email = req.params.email;
     const request = req.body;
-
     try {
       let keys = Object.keys(request);
       for (const item of keys) {
@@ -19,14 +18,19 @@ export default async function updateUserInfo(
           { [item]: request[item] },
         );
       }
-      const user = await User.findOne({ email }).populate('employments');
-
-      res.status(200).send({
-        message: `Details have been successfully updated`,
-        user,
-      });
-
-      return;
+      const user = await User.findOne({ email })
+        .populate('employments')
+        .populate('skills')
+        .populate('portfolio')
+        .select({ __v: 0, _id: 0, createdAt: 0, updatedAt: 0, password: 0 });
+      if (user !== null) {
+        const updatedUser = await user.save();
+        res.status(200).send({
+          message: `Details have been successfully updated`,
+          user: updatedUser,
+        });
+        return;
+      }
     } catch (err) {
       res.send({
         see: 'seems to be an error with the forIn in UpdateUserInfo controller',

@@ -15,5 +15,3 @@ export const EmploymentSchema: Schema = new Schema({
 });
 
 export default mongoose.model<IEmployment>('Employment', EmploymentSchema);
-
-// var childSchema = new Schema({ name: 'string' });

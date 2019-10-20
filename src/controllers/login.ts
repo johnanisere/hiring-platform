@@ -25,6 +25,8 @@ export default async function userLogin(req: Request, res: Response) {
       email: value.email,
     })
       .populate('employments')
+      .populate('skills')
+      .populate('portfolio')
       .select({ __v: 0, _id: 0, createdAt: 0, updatedAt: 0 });
     if (!requestedSingleUser) {
       res.status(404).send({ error: 'user does not exist' });
