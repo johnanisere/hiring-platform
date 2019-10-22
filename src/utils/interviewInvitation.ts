@@ -59,10 +59,10 @@ async function interviewInvitationMail(
   id: String,
 ) {
   let to = req.body.decaDev,
-    accept = `http://localhost:3000/interview-response/${true}/${
+    accept = `${process.env.CLIENT_URL}/interview-response/${true}/${
       req.body.decaDev
     }/${id}`,
-    decline = `http://localhost:3000/interview-response/${false}/${
+    decline = `${process.env.CLIENT_URL}/interview-response/${false}/${
       req.body.decaDev
     }/${id}`,
     name = decaDev.name,
