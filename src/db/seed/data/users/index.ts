@@ -206,7 +206,7 @@ export default [
     ],
   },
   {
-    email: 'sheyiStar@example.com',
+    email: 'hesthersheeyi@gmail.com',
     name: 'Esther Seyi',
     phone: '0808763468439',
     password: 'mysecret',

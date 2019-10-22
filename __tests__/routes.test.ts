@@ -21,6 +21,8 @@ describe('interview route', () => {
         location: 'Victoria Island',
         startTime: '10am',
         endTime: '11am',
+        startDate: 'wed, 1st oct 2019',
+        endDate: 'wed, 1st oct 2019',
         description:
           'This is to inform you that you have been shortlisted for an interview',
         nameOfOrg: 'Paystack',
@@ -35,10 +37,20 @@ describe('interview route', () => {
             endTime: expect.any(String),
             description: expect.any(String),
             id: expect.any(String),
+            startDate: expect.any(String),
+            endDate: expect.any(String),
           }),
         );
       });
   }, 30000);
+  test('Gets all Interviews', async () => {
+    return request(app)
+      .get('/api/v1/interview/get-interviews')
+      .expect(res => {
+        expect(res.status).toBe(200);
+        expect(Object.keys(res.body)).toContain('allInterviews');
+      });
+  });
 });
 
 describe('User Route', () => {

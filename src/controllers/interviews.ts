@@ -8,10 +8,12 @@ export const scheduleInterview = async (req: Request, res: Response) => {
     const { error } = interviewValidation(req.body);
     if (error) return res.status(400).send(error.details[0].message);
     const interview = new Interviews(req.body);
+
     try {
       const hiringPartner = await User.findOne({
         email: req.body.hiringPartner,
       });
+
       hiringPartner && hiringPartner.interviews.push(interview._id);
       hiringPartner && (await hiringPartner.save());
     } catch (err) {
@@ -24,7 +26,7 @@ export const scheduleInterview = async (req: Request, res: Response) => {
       if (decaDev) {
         decaDev.interviews.push(interview._id);
         await decaDev.save();
-        interviewInvitationMail(req, decaDev);
+        interviewInvitationMail(req, decaDev, interview._id);
       }
     } catch (error) {
       res.status(400).send(error);
@@ -39,6 +41,8 @@ export const scheduleInterview = async (req: Request, res: Response) => {
         location: savedInterview.location,
         startTime: savedInterview.startTime,
         endTime: savedInterview.endTime,
+        startDate: savedInterview.startDate,
+        endDate: savedInterview.endDate,
         description: savedInterview.description,
         id: savedInterview._id,
       });

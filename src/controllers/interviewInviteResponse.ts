@@ -3,30 +3,58 @@ import Interviews from '../models/Interviews';
 
 export async function interviewInviteResponse(req: Request, res: Response) {
   try {
-    const intent = req.params.intent;
-    const email = req.params.email;
+    const { intent, interviewId } = req.params;
 
     if (intent === 'true') {
-      await Interviews.updateOne(
+      await Interviews.findOneAndUpdate(
         {
-          email,
+          _id: interviewId,
         },
         {
           accepted: true,
         },
-      ).exec();
-    } else if (intent === 'false') {
-      await Interviews.updateOne(
         {
-          email,
+          new: true,
+        },
+      ).exec();
+      await Interviews.findOneAndUpdate(
+        {
+          _id: interviewId,
+        },
+        {
+          pending: false,
+        },
+        {
+          new: true,
+        },
+      ).exec();
+
+      res.status(200).send({
+        message: 'Interview Invitation has beeen accepted',
+      });
+      return;
+    } else if (intent === 'false') {
+      await Interviews.findOneAndUpdate(
+        {
+          _id: interviewId,
         },
         {
           declined: true,
         },
       ).exec();
+      await Interviews.findOneAndUpdate(
+        {
+          _id: interviewId,
+        },
+        {
+          pending: false,
+        },
+      ).exec();
+      res.status(200).send({
+        message: 'Interview Invitation has beeen declined',
+      });
+      return;
     }
-
-    return;
   } catch (error) {
     res.status(400).send({
       see: 'seems to be an error in the interviewInviteResponse controller',

@@ -14,13 +14,22 @@ export default async function getAllDecadevs(req: Request, res: Response) {
     const onGenderNotPassed = !gender || gender === 'all';
 
     //get cycle count
-    let activeCycle = await Cycle.findOne({ name: 'default' });
+    let activeCycle = await Cycle.findOne({ name: 'default' })
+      .populate('employments')
+      .populate('skills')
+      .populate('portfolio');
 
     let activeCycleCount = activeCycle ? activeCycle.count : 1;
     let prevCycle = activeCycleCount - 1;
     let allDecadevs = onGenderNotPassed
       ? await User.find({ role: 'dev', count: prevCycle })
-      : await User.find({ role: 'dev', count: prevCycle, gender });
+          .populate('employments')
+          .populate('skills')
+          .populate('portfolio')
+      : await User.find({ role: 'dev', count: prevCycle, gender })
+          .populate('employments')
+          .populate('skills')
+          .populate('portfolio');
 
     if (allDecadevs.length < 1 && activeCycle) {
       activeCycle.count = activeCycleCount + 1;
@@ -29,7 +38,13 @@ export default async function getAllDecadevs(req: Request, res: Response) {
       prevCycle = activeCycleCount - 1;
       allDecadevs = onGenderNotPassed
         ? await User.find({ role: 'dev', count: prevCycle })
-        : await User.find({ role: 'dev', count: prevCycle, gender });
+            .populate('employments')
+            .populate('skills')
+            .populate('portfolio')
+        : await User.find({ role: 'dev', count: prevCycle, gender })
+            .populate('employments')
+            .populate('skills')
+            .populate('portfolio');
     }
 
     //return just four decadev for now

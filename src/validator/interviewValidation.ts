@@ -13,6 +13,8 @@ export const interviewValidation = (data: any) => {
     location: joi.string().required(),
     startTime: joi.string().required(),
     endTime: joi.string().required(),
+    startDate: joi.string().required(),
+    endDate: joi.string().required(),
     description: joi
       .string()
       .required()

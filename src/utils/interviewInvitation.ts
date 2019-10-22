@@ -10,9 +10,12 @@ const msg = (
   location: String,
   startTime: String,
   endTime: String,
+  startDate: String,
+  endDate: String,
   description: String,
   hiringPartner: String,
   nameOfOrg: String,
+  id: String,
 ) => {
   return {
     from: {
@@ -32,6 +35,8 @@ const msg = (
           location: location,
           startTime: startTime,
           endTime: endTime,
+          startDate: startDate,
+          endDate: endDate,
           description: description,
           hiringPartner: hiringPartner,
           nameOfOrg: nameOfOrg,
@@ -40,6 +45,7 @@ const msg = (
             '2nd Floor Traditions Building Familoni Street, off Lekki - Epe Express',
           Sender_City: 'Lagos, Nigeria',
           Sender_Zip: '101233',
+          id: id,
         },
       },
     ],
@@ -47,21 +53,28 @@ const msg = (
   };
 };
 
-async function interviewInvitationMail(req: Request, decaDev: IUser) {
+async function interviewInvitationMail(
+  req: Request,
+  decaDev: IUser,
+  id: String,
+) {
   let to = req.body.decaDev,
-    accept = `http://localhost:3005/api/v1/interview/response/${true}/${
+    accept = `http://localhost:3000/interview-response/${true}/${
       req.body.decaDev
-    }`,
-    decline = `http://localhost:3005/api/v1/interview/response/${false}/${
+    }/${id}`,
+    decline = `http://localhost:3000/interview-response/${false}/${
       req.body.decaDev
-    }`,
+    }/${id}`,
     name = decaDev.name,
     location = req.body.location,
     startTime = req.body.startTime,
     endTime = req.body.endTime,
+    startDate = req.body.startDate,
+    endDate = req.body.endDate,
     description = req.body.description,
     hiringPartner = req.body.hiringPartner,
-    nameOfOrg = req.body.nameOfOrg;
+    nameOfOrg = req.body.nameOfOrg,
+    devID = id;
 
   await sendMail(
     msg(
@@ -72,9 +85,12 @@ async function interviewInvitationMail(req: Request, decaDev: IUser) {
       location,
       startTime,
       endTime,
+      startDate,
+      endDate,
       description,
       hiringPartner,
       nameOfOrg,
+      devID,
     ),
   );
 }
