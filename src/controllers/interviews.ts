@@ -36,15 +36,18 @@ export const scheduleInterview = async (req: Request, res: Response) => {
       const savedInterview = await interview.save();
 
       return res.status(201).json({
-        hiringPartner: savedInterview.hiringPartner,
-        decaDev: savedInterview.decaDev,
-        location: savedInterview.location,
-        startTime: savedInterview.startTime,
-        endTime: savedInterview.endTime,
-        startDate: savedInterview.startDate,
-        endDate: savedInterview.endDate,
-        description: savedInterview.description,
-        id: savedInterview._id,
+        interviewData: {
+          hiringPartner: savedInterview.hiringPartner,
+          decaDev: savedInterview.decaDev,
+          location: savedInterview.location,
+          startTime: savedInterview.startTime,
+          endTime: savedInterview.endTime,
+          startDate: savedInterview.startDate,
+          endDate: savedInterview.endDate,
+          description: savedInterview.description,
+          id: savedInterview._id,
+        },
+        message: "Interview has been sent to Decadev's email",
       });
     } catch (error) {
       return res.status(404).json(`Error: ${error}`);
