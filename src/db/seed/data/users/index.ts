@@ -78,7 +78,7 @@ export default [
     ],
   },
   {
-    email: 'julianbrandt@example.com',
+    email: 'kijovog723@mailnet.top',
     name: 'Julian Brandt',
     phone: '08043256784',
     password: 'mysecret',
@@ -332,7 +332,7 @@ export default [
     ],
   },
   {
-    email: 'egbouchesco@example.com',
+    email: 'yenibim115@imailto.net',
     name: 'Egbo Uchenna',
     phone: '080769436434',
     password: 'mysecret',
