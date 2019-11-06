@@ -8,10 +8,13 @@ import { Response, Request } from 'express';
  * @access   authorized.
  */
 export default async function getAllDecadevs(req: Request, res: Response) {
-  let { gender } = req.query;
-  gender = gender ? `${gender}`.toLowerCase() : '';
+  let { pod } = req.query;
+  console.log({ pod });
+  pod = pod ? `${pod}`.toLowerCase() : '';
+  // gender = gender ? `${gender}`.toLowerCase() : '';
   try {
-    const onGenderNotPassed = !gender || gender === 'all';
+    // const onGenderNotPassed = !gender || gender === 'all';
+    const onPodNotPassed = !pod || pod === 'all';
 
     //get cycle count
     let activeCycle = await Cycle.findOne({ name: 'default' })
@@ -21,12 +24,12 @@ export default async function getAllDecadevs(req: Request, res: Response) {
 
     let activeCycleCount = activeCycle ? activeCycle.count : 1;
     let prevCycle = activeCycleCount - 1;
-    let allDecadevs = onGenderNotPassed
+    let allDecadevs = onPodNotPassed
       ? await User.find({ role: 'dev', count: prevCycle })
           .populate('employments')
           .populate('skills')
           .populate('portfolio')
-      : await User.find({ role: 'dev', count: prevCycle, gender })
+      : await User.find({ role: 'dev', count: prevCycle, pod })
           .populate('employments')
           .populate('skills')
           .populate('portfolio');
@@ -36,12 +39,12 @@ export default async function getAllDecadevs(req: Request, res: Response) {
       await activeCycle.save();
       activeCycleCount = activeCycle ? activeCycle.count : 1;
       prevCycle = activeCycleCount - 1;
-      allDecadevs = onGenderNotPassed
+      allDecadevs = onPodNotPassed
         ? await User.find({ role: 'dev', count: prevCycle })
             .populate('employments')
             .populate('skills')
             .populate('portfolio')
-        : await User.find({ role: 'dev', count: prevCycle, gender })
+        : await User.find({ role: 'dev', count: prevCycle, pod })
             .populate('employments')
             .populate('skills')
             .populate('portfolio');
