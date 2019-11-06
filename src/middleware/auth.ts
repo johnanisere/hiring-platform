@@ -23,7 +23,7 @@ export default function authMiddleware(
       res.status(401).send(err);
     }
 
-    User.findOne({ email: payload.email }).then(doc => {
+    User.findOne({ email: payload.email }, { password: -1 }).then(doc => {
       if (doc) {
         req.body.user = doc;
         next();
