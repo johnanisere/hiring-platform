@@ -6,7 +6,7 @@ const { connectMongoDB, disconnectMongoDB } = require('../testSetup/mongodb');
 
 beforeAll(async () => {
   await connectMongoDB();
-  await seedUsers();
+  seedUsers();
 });
 
 afterAll(() => disconnectMongoDB());
