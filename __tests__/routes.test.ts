@@ -200,21 +200,9 @@ describe('Hiring Partners Verification', () => {
               'Success!. An email has been sent to you. Please click link to verify your account.',
             token: expect.any(String),
             data: {
-              __v: expect.any(Number),
-              _id: expect.any(String),
-              name: 'Shola',
-              email: 'sheyiogundijo@gmail.com',
-              nameOfOrg: 'GTB',
-              designation: 'CTO',
-              phone: '08066589871',
-              numberOfTalentsRequired: '1-5',
-              deadline: "Let's Talk First",
-
-              createdAt: expect.any(String),
               active: false,
-              verified: expect.any(Boolean),
-              updatedAt: expect.any(String),
-              password: expect.any(String),
+              name: 'Shola',
+              verified: false,
             },
           }),
         );
