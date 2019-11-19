@@ -30,7 +30,7 @@ const msg = (to: string, link: string, name: string) => {
 
 async function devsMailInvite(token: string, name: string, email: string) {
   let to = email,
-    link = `http://localhost:3000/login/${token}`;
+    link = `http://localhost:3000/update-password/${token}/${email}`;
 
   await sendMail(msg(to, link, name));
   console.log('Done');

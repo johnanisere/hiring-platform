@@ -144,7 +144,7 @@ export default [
     ],
   },
   {
-    email: 'seunjay@ewdxample.com',
+    email: 'amakirij@gmail.com',
     pod: 'java',
     name: 'Jayeoba Seun',
     phone: '08066484894',

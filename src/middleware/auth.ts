@@ -18,18 +18,19 @@ export default function authMiddleware(
 
   const actualToken = token.split(' ')[1];
 
-  jwt.verify(actualToken, PRIVATE_KEY, (err: any, payload: any) => {
+  jwt.verify(actualToken, PRIVATE_KEY, async (err: any, payload: any) => {
     if (err) {
       res.status(401).send(err);
     }
 
-    User.findOne({ email: payload.email }, { password: -1 }).then(doc => {
-      if (doc) {
-        req.body.user = doc;
-        next();
-      } else {
-        res.status(401).send({ error: 'Unauthorized User' });
-      }
+    let doc = await User.findOne({ email: payload.email }).select({
+      password: 0,
     });
+    if (doc) {
+      req.body.user = doc;
+      next();
+    } else {
+      res.status(401).send({ error: 'Unauthorized User' });
+    }
   });
 }
