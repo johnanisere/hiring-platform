@@ -35,6 +35,7 @@ export interface IUser extends mongoose.Document {
   stack: Array<String>;
   experiences: Array<IExperience>;
   employments: Array<IEmployment>;
+  pod: String;
 }
 
 const UserSchema: Schema = new Schema(
@@ -84,6 +85,7 @@ const UserSchema: Schema = new Schema(
     },
     experience: { type: [ExperienceSchema] },
     employments: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Employment' }],
+    pod: { type: String },
   },
   { timestamps: true },
 );

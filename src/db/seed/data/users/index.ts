@@ -16,6 +16,7 @@ export default [
   //______FEMALES_______________
   {
     email: 'sheyiogundijo@gmail.com',
+    pod: 'java',
     name: 'Jane Mary',
     phone: '08067890545',
     password: 'mysecret',
@@ -78,8 +79,9 @@ export default [
     ],
   },
   {
-    email: 'julianbrandt@example.com',
+    email: 'kijovog723@mailnet.top',
     name: 'Julian Brandt',
+    pod: 'java',
     phone: '08043256784',
     password: 'mysecret',
     role: 'dev',
@@ -142,7 +144,8 @@ export default [
     ],
   },
   {
-    email: 'seunjay@ewdxample.com',
+    email: 'amakirij@gmail.com',
+    pod: 'java',
     name: 'Jayeoba Seun',
     phone: '08066484894',
     password: 'mysecret',
@@ -207,6 +210,7 @@ export default [
   },
   {
     email: 'hesthersheeyi@gmail.com',
+    pod: 'c',
     name: 'Esther Seyi',
     phone: '0808763468439',
     password: 'mysecret',
@@ -270,6 +274,7 @@ export default [
   },
   {
     email: 'charleslukes@example.com',
+    pod: 'c',
     name: 'Charles Lukes',
     phone: '080856985759',
     password: 'mysecret',
@@ -332,7 +337,8 @@ export default [
     ],
   },
   {
-    email: 'egbouchesco@example.com',
+    email: 'yenibim115@imailto.net',
+    pod: 'c',
     name: 'Egbo Uchenna',
     phone: '080769436434',
     password: 'mysecret',
@@ -396,6 +402,7 @@ export default [
   },
   {
     email: 'anewuser8@example.com',
+    pod: 'python',
     name: 'Anew User',
     phone: '08087494934',
     password: 'mysecret',
@@ -459,6 +466,7 @@ export default [
   },
   {
     email: 'anewuser7@example.com',
+    pod: 'python',
     name: 'Anew User',
     phone: '08087494934',
     password: 'mysecret',
@@ -491,6 +499,7 @@ export default [
   },
   {
     email: 'anewuser6@example.com',
+    pod: 'python',
     name: 'Anew User',
     phone: '08087494934',
     password: 'mysecret',
@@ -554,6 +563,7 @@ export default [
   },
   {
     email: 'anewuser5@example.com',
+    pod: 'python',
     name: 'Anew User',
     phone: '08087494934',
     password: 'mysecret',
@@ -617,6 +627,7 @@ export default [
   },
   {
     email: 'anewuser4@example.com',
+    pod: 'nodejs',
     name: 'Anew User',
     phone: '08087494934',
     password: 'mysecret',
@@ -680,6 +691,7 @@ export default [
   },
   {
     email: 'anewuser3@example.com',
+    pod: 'nodejs',
     name: 'Anew User',
     phone: '08087494934',
     password: 'mysecret',
@@ -743,6 +755,7 @@ export default [
   },
   {
     email: 'anewuser2@example.com',
+    pod: 'nodejs',
     name: 'Anew User',
     phone: '08087494934',
     password: 'mysecret',
@@ -806,6 +819,7 @@ export default [
   },
   {
     email: 'anewuser1@example.com',
+    pod: 'android',
     name: 'Anew User',
     phone: '08087494934',
     password: 'mysecret',
@@ -870,6 +884,7 @@ export default [
 
   {
     email: 'anewuser10@example.com',
+    pod: 'android',
     name: 'Anew User',
     phone: '08087494934',
     password: 'mysecret',
@@ -933,6 +948,7 @@ export default [
   },
   {
     email: 'anewuser11@example.com',
+    pod: 'android',
     name: 'Anew User',
     phone: '08087494934',
     password: 'mysecret',
@@ -995,6 +1011,7 @@ export default [
   },
   {
     email: 'anewuser12@example.com',
+    pod: 'android',
     name: 'Anew User',
     phone: '08087494934',
     password: 'mysecret',
@@ -1058,6 +1075,7 @@ export default [
   },
   {
     email: 'anewuser13@example.com',
+    pod: 'java',
     name: 'Anew User',
     phone: '08087494934',
     password: 'mysecret',
@@ -1121,6 +1139,7 @@ export default [
   },
   {
     email: 'anewuser14@example.com',
+    pod: 'java',
     name: 'Anew User',
     phone: '08087494934',
     password: 'mysecret',
@@ -1184,6 +1203,7 @@ export default [
   },
   {
     email: 'anewuser15@example.com',
+    pod: 'c',
     name: 'Anew User',
     phone: '08087494934',
     password: 'mysecret',
@@ -1247,6 +1267,7 @@ export default [
   },
   {
     email: 'anewuser16@example.com',
+    pod: 'c',
     name: 'Anew User',
     phone: '08087494934',
     password: 'mysecret',
@@ -1310,6 +1331,7 @@ export default [
   },
   {
     email: 'anewuser17@example.com',
+    pod: 'c',
     name: 'Anew User',
     phone: '08087494934',
     password: 'mysecret',
@@ -1373,6 +1395,7 @@ export default [
   },
   {
     email: 'anewuser18@example.com',
+    pod: 'python',
     name: 'Anew User',
     phone: '08087494934',
     password: 'mysecret',
@@ -1436,6 +1459,7 @@ export default [
   },
   {
     email: 'anewuser19@example.com',
+    pod: 'nodejs',
     name: 'Anew User',
     phone: '08087494934',
     password: 'mysecret',
@@ -1499,6 +1523,7 @@ export default [
   },
   {
     email: 'anewuser01@example.com',
+    pod: 'c',
     name: 'Anew User',
     phone: '08087494934',
     password: 'mysecret',
@@ -1562,6 +1587,7 @@ export default [
   },
   {
     email: 'anewuser02@example.com',
+    pod: 'java',
     name: 'Anew User',
     phone: '08087494934',
     password: 'mysecret',
@@ -1625,6 +1651,7 @@ export default [
   },
   {
     email: 'anewuser03@example.com',
+    pod: 'nodejs',
     name: 'Anew User',
     phone: '08087494934',
     password: 'mysecret',
@@ -1688,6 +1715,7 @@ export default [
   },
   {
     email: 'anewuser@example.com',
+    pod: 'c',
     name: 'Anew User',
     phone: '08087494934',
     password: 'mysecret',
@@ -1751,6 +1779,7 @@ export default [
   },
   {
     email: 'anewuser@example.com',
+    pod: 'android',
     name: 'Anew User',
     phone: '08087494934',
     password: 'mysecret',
@@ -1814,6 +1843,7 @@ export default [
   },
   {
     email: 'anewuser@example.com',
+    pod: 'nodejs',
     name: 'Anew User',
     phone: '08087494934',
     password: 'mysecret',
@@ -1880,6 +1910,7 @@ export default [
     name: 'Anew User',
     phone: '08087494934',
     password: 'mysecret',
+    pod: 'c',
     role: 'dev',
     gender: 'male',
     github: 'https://github.com',
@@ -1940,6 +1971,7 @@ export default [
   },
   {
     email: 'anewuser@example.com',
+    pod: 'c',
     name: 'Anew User',
     phone: '08087494934',
     password: 'mysecret',

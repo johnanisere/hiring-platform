@@ -6,7 +6,7 @@ const { connectMongoDB, disconnectMongoDB } = require('../testSetup/mongodb');
 
 beforeAll(async () => {
   await connectMongoDB();
-  await seedUsers();
+  seedUsers();
 });
 
 afterAll(() => disconnectMongoDB());
@@ -30,15 +30,18 @@ describe('interview route', () => {
       .expect(res => {
         expect(res.body).toEqual(
           expect.objectContaining({
-            hiringPartner: expect.any(String),
-            decaDev: expect.any(String),
-            location: expect.any(String),
-            startTime: expect.any(String),
-            endTime: expect.any(String),
-            description: expect.any(String),
-            id: expect.any(String),
-            startDate: expect.any(String),
-            endDate: expect.any(String),
+            interviewData: expect.objectContaining({
+              hiringPartner: expect.any(String),
+              decaDev: expect.any(String),
+              location: expect.any(String),
+              startTime: expect.any(String),
+              endTime: expect.any(String),
+              description: expect.any(String),
+              id: expect.any(String),
+              startDate: expect.any(String),
+              endDate: expect.any(String),
+            }),
+            message: "Interview has been sent to Decadev's email",
           }),
         );
       });
@@ -116,30 +119,30 @@ describe('User Route', () => {
       });
   });
 
-  test('lists female decadevs', async () => {
-    const gender = 'female';
+  test('lists java decadevs', async () => {
+    const pod = 'java';
     const decadevs = await request(app).get(
-      `/api/v1/users/decadevs?gender=${gender}`,
+      `/api/v1/users/decadevs?pod=${pod}`,
     );
 
     for (let i = 0; i < JSON.parse(decadevs.text).allDecadevs.length; i++) {
       expect(JSON.parse(decadevs.text).allDecadevs[i]).toHaveProperty(
-        'gender',
-        'female',
+        'pod',
+        'java',
       );
     }
   });
 
-  test('lists male decadevs', async () => {
-    const gender = 'male';
+  test('lists nodejs decadevs', async () => {
+    const pod = 'nodejs';
     const decadevs = await request(app).get(
-      `/api/v1/users/decadevs?gender=${gender}`,
+      `/api/v1/users/decadevs?pod=${pod}`,
     );
 
     for (let i = 0; i < JSON.parse(decadevs.text).allDecadevs.length; i++) {
       expect(JSON.parse(decadevs.text).allDecadevs[i]).toHaveProperty(
-        'gender',
-        'male',
+        'pod',
+        'nodejs',
       );
     }
   });
@@ -197,21 +200,9 @@ describe('Hiring Partners Verification', () => {
               'Success!. An email has been sent to you. Please click link to verify your account.',
             token: expect.any(String),
             data: {
-              __v: expect.any(Number),
-              _id: expect.any(String),
-              name: 'Shola',
-              email: 'sheyiogundijo@gmail.com',
-              nameOfOrg: 'GTB',
-              designation: 'CTO',
-              phone: '08066589871',
-              numberOfTalentsRequired: '1-5',
-              deadline: "Let's Talk First",
-
-              createdAt: expect.any(String),
               active: false,
-              verified: expect.any(Boolean),
-              updatedAt: expect.any(String),
-              password: expect.any(String),
+              name: 'Shola',
+              verified: false,
             },
           }),
         );
@@ -333,6 +324,7 @@ describe('Updates Decadev Profile', () => {
               stack: expect.any(Array),
               stackOverflow: expect.any(String),
               website: expect.any(String),
+              pod: expect.any(String),
             },
           }),
         );
@@ -389,6 +381,7 @@ describe('Updates Decadev Profile', () => {
               stack: expect.any(Array),
               stackOverflow: expect.any(String),
               website: expect.any(String),
+              pod: expect.any(String),
             },
           }),
         );
@@ -438,6 +431,7 @@ describe('Updates Decadev Profile', () => {
               stack: expect.any(Array),
               stackOverflow: expect.any(String),
               website: expect.any(String),
+              pod: expect.any(String),
             },
           }),
         );
@@ -487,6 +481,7 @@ describe('Updates Decadev Profile', () => {
               stack: expect.any(Array),
               stackOverflow: expect.any(String),
               website: expect.any(String),
+              pod: expect.any(String),
             },
           }),
         );
@@ -560,6 +555,7 @@ describe('Updates Decadev Profile', () => {
               stack: expect.any(Array),
               stackOverflow: expect.any(String),
               website: expect.any(String),
+              pod: expect.any(String),
             },
           }),
         );
@@ -619,6 +615,7 @@ describe('Updates Decadev Profile', () => {
               stack: expect.any(Array),
               stackOverflow: expect.any(String),
               website: expect.any(String),
+              pod: expect.any(String),
             },
           }),
         );
@@ -677,6 +674,7 @@ describe('Updates Decadev Profile', () => {
               stack: expect.any(Array),
               stackOverflow: expect.any(String),
               website: expect.any(String),
+              pod: expect.any(String),
             },
           }),
         );
@@ -735,6 +733,7 @@ describe('Updates Decadev Profile', () => {
               stack: expect.any(Array),
               stackOverflow: expect.any(String),
               website: expect.any(String),
+              pod: expect.any(String),
             },
           }),
         );
@@ -793,6 +792,7 @@ describe('Updates Decadev Profile', () => {
               stack: expect.any(Array),
               stackOverflow: expect.any(String),
               website: expect.any(String),
+              pod: expect.any(String),
             },
           }),
         );
@@ -865,6 +865,7 @@ describe('Updates Decadev Profile', () => {
               stack: expect.any(Array),
               stackOverflow: expect.any(String),
               website: expect.any(String),
+              pod: expect.any(String),
             },
           }),
         );

@@ -13,6 +13,7 @@ export interface IInterviews extends mongoose.Document {
   accepted: Boolean;
   declined: Boolean;
   pending: Boolean;
+  declineReason: String;
 }
 
 const InterviewsSchema: Schema = new Schema({
@@ -28,6 +29,7 @@ const InterviewsSchema: Schema = new Schema({
   accepted: { type: Boolean, default: false },
   declined: { type: Boolean, default: false },
   pending: { type: Boolean, default: true },
+  declineReason: { type: String },
 });
 
 export default mongoose.model<IInterviews>('Interviews', InterviewsSchema);

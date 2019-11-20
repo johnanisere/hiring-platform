@@ -3,7 +3,7 @@ import sendMail from './sendMail';
 const msg = (to: string, link: string, name: string) => {
   return {
     from: {
-      email: 'johndoe@example.com',
+      email: 'hesthersheeyi@gmail.com',
     },
     personalizations: [
       {
@@ -28,10 +28,12 @@ const msg = (to: string, link: string, name: string) => {
   };
 };
 
-function devsMailInvite(token: string, name: string, email: string) {
+async function devsMailInvite(token: string, name: string, email: string) {
   let to = email,
-    link = `https://google.com/${token}`;
-  sendMail(msg(to, link, name));
+    link = `${process.env.CLIENT_URL}/update-password/${token}/${email}`;
+
+  await sendMail(msg(to, link, name));
+  console.log('Done');
 }
 
 export default devsMailInvite;

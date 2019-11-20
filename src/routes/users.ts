@@ -19,6 +19,7 @@ import updatePortfolioInfo, {
   newPortfolio,
   deletePortfolio,
 } from '../controllers/updatePortfolio';
+import authCurrentUser from '../controllers/authCurrentUser';
 
 const router = Router();
 
@@ -38,6 +39,7 @@ router
   .put('/update/delete-skill/:email', authMiddleware, deleteSkill)
   .put('/update/projectInfo/:email', authMiddleware, updatePortfolioInfo)
   .put('/update/new-project/:email', authMiddleware, newPortfolio)
-  .put('/update/delete-project/:email', authMiddleware, deletePortfolio);
+  .put('/update/delete-project/:email', authMiddleware, deletePortfolio)
+  .post('/me', authCurrentUser);
 
 export default router;
