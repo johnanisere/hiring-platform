@@ -7,6 +7,7 @@ export interface IHiringPartner extends mongoose.Document {
   nameOfOrg: String;
   designation: String;
   Website?: String;
+  industry: String;
   phone: String;
   numberOfTalentsRequired: String;
   deadline: String;
@@ -27,7 +28,8 @@ const HiringPartnerSchema: Schema = new Schema(
     nameOfOrg: { type: String, required: true },
     designation: { type: String, required: true },
     website: { type: String },
-    phone: { type: String },
+    industry: { type: String, required: true },
+    phone: { type: String, required: true },
     numberOfTalentsRequired: {
       type: String,
       enum: ['1-5', '6-10', '11-20', '21 and above'],

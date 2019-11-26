@@ -27,6 +27,7 @@ export interface IUser extends mongoose.Document {
   companyURL?: String;
   address: String;
   interviews: Array<String>;
+  tests: Array<String>;
   count: number;
   currentRole?: String;
   joined: String;
@@ -70,6 +71,7 @@ const UserSchema: Schema = new Schema(
       default: 0,
     },
     interviews: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Interviews' }],
+    tests: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Tests' }],
     currentRole: {
       type: String,
     },

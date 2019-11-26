@@ -14,6 +14,7 @@ import schema from './schema';
 import interviewRoutes from './routes/interviews';
 import inviteDevsRoutes from './routes/inviteDevs';
 import verifyHirerRoute from './routes/hirer';
+import testsRoutes from './routes/tests';
 dotenv.config();
 const app = express();
 const swaggerUi = require('swagger-ui-express');
@@ -64,6 +65,7 @@ app.use('/api/v1/users', usersRouter);
 app.use('/api/v1/interview', interviewRoutes);
 app.use('/api/v1/invites', inviteDevsRoutes);
 app.use('/api/v1/hirer', verifyHirerRoute);
+app.use('/api/v1/tests', testsRoutes);
 
 app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
 

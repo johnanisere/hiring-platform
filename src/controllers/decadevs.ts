@@ -43,7 +43,11 @@ export default async function getAllDecadevs(req: Request, res: Response) {
     await Promise.all(updateCycle);
     (start += 4), (end += 4);
 
-    return res.send({ allDecadevs: fourDecaDev, pod });
+    return res.send({
+      allDecadevs: fourDecaDev,
+      pod,
+      total: allDecadevs.length,
+    });
   } catch (error) {
     return res.status(400).json({
       message: 'No Decadevs found!',
