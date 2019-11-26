@@ -12,8 +12,9 @@ const sendInviteEmail = (emails: []) => {
       role: 'dev',
       name: array[0],
       profilePhoto:
-        'https://res.cloudinary.com/demo/image/upload/w_150,h_150,c_thumb,g_face,r_20,e_sepia/l_cloudinary_icon,g_south_east,x_5,y_5,w_50,o_60,e_brightness:200/a_10/front_face.png',
+        'https://res.cloudinary.com/decagon/image/upload/v1574531245/avatar-1577909_960_720_v012qj.png',
       email: array[1],
+      pod: array[2],
     });
     const newDev = await user.save();
     const token = jwt.sign(

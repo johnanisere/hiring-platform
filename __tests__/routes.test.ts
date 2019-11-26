@@ -192,6 +192,7 @@ describe('Hiring Partners Verification', () => {
         numberOfTalentsRequired: '1-5',
         deadline: "Let's Talk First",
         password: 'mysecret2',
+        industry: 'Technology',
       })
       .expect(res => {
         expect(res.body).toEqual(
@@ -203,6 +204,7 @@ describe('Hiring Partners Verification', () => {
               active: false,
               name: 'Shola',
               verified: false,
+              industry: expect.any(String),
             },
           }),
         );
@@ -268,6 +270,7 @@ describe('Hiring Partners Verification', () => {
           numberOfTalentsRequired: expect.any(String),
           deadline: expect.any(String),
           token: expect.any(String),
+          industry: expect.any(String),
         });
       });
   });
@@ -312,6 +315,7 @@ describe('Updates Decadev Profile', () => {
               gender: expect.any(String),
               github: expect.any(String),
               interviews: [],
+              tests: expect.any(Array),
               joined: expect.any(String),
               linkedIn: expect.any(String),
               location: expect.any(String),
@@ -369,6 +373,7 @@ describe('Updates Decadev Profile', () => {
               gender: expect.any(String),
               github: expect.any(String),
               interviews: [],
+              tests: expect.any(Array),
               joined: expect.any(String),
               linkedIn: expect.any(String),
               location: expect.any(String),
@@ -419,6 +424,7 @@ describe('Updates Decadev Profile', () => {
               gender: expect.any(String),
               github: expect.any(String),
               interviews: [],
+              tests: expect.any(Array),
               joined: expect.any(String),
               linkedIn: expect.any(String),
               location: expect.any(String),
@@ -469,6 +475,7 @@ describe('Updates Decadev Profile', () => {
               gender: expect.any(String),
               github: expect.any(String),
               interviews: [],
+              tests: expect.any(Array),
               joined: expect.any(String),
               linkedIn: expect.any(String),
               location: expect.any(String),
@@ -543,6 +550,7 @@ describe('Updates Decadev Profile', () => {
               gender: expect.any(String),
               github: expect.any(String),
               interviews: [],
+              tests: expect.any(Array),
               joined: expect.any(String),
               linkedIn: expect.any(String),
               location: expect.any(String),
@@ -603,6 +611,7 @@ describe('Updates Decadev Profile', () => {
               gender: expect.any(String),
               github: expect.any(String),
               interviews: [],
+              tests: expect.any(Array),
               joined: expect.any(String),
               linkedIn: expect.any(String),
               location: expect.any(String),
@@ -662,6 +671,7 @@ describe('Updates Decadev Profile', () => {
               gender: expect.any(String),
               github: expect.any(String),
               interviews: [],
+              tests: expect.any(Array),
               joined: expect.any(String),
               linkedIn: expect.any(String),
               location: expect.any(String),
@@ -721,6 +731,7 @@ describe('Updates Decadev Profile', () => {
               gender: expect.any(String),
               github: expect.any(String),
               interviews: [],
+              tests: expect.any(Array),
               joined: expect.any(String),
               linkedIn: expect.any(String),
               location: expect.any(String),
@@ -780,6 +791,7 @@ describe('Updates Decadev Profile', () => {
               gender: expect.any(String),
               github: expect.any(String),
               interviews: [],
+              tests: expect.any(Array),
               joined: expect.any(String),
               linkedIn: expect.any(String),
               location: expect.any(String),
@@ -853,6 +865,7 @@ describe('Updates Decadev Profile', () => {
               gender: expect.any(String),
               github: expect.any(String),
               interviews: [],
+              tests: expect.any(Array),
               joined: expect.any(String),
               linkedIn: expect.any(String),
               location: expect.any(String),
