@@ -20,7 +20,7 @@ export default async function updateEmploymentInfo(
       .populate('employments')
       .populate('skills')
       .populate('portfolio')
-      .populate('publication')
+      .populate('publications')
       .populate('education')
       .select({ __v: 0, _id: 0, createdAt: 0, updatedAt: 0, password: 0 });
     user ? await user.save() : console.log('Dev not found');
@@ -63,7 +63,7 @@ export async function newEmployment(
       .populate('employments')
       .populate('skills')
       .populate('portfolio')
-      .populate('publication')
+      .populate('publications')
       .populate('education')
       .select({ __v: 0, _id: 0, createdAt: 0, updatedAt: 0, password: 0 });
     if (user !== null) {
@@ -99,7 +99,7 @@ export async function deleteEmployment(
       .populate('employments')
       .populate('skills')
       .populate('portfolio')
-      .populate('publication')
+      .populate('publications')
       .populate('education')
       .select({ __v: 0, _id: 0, createdAt: 0, updatedAt: 0, password: 0 });
 
