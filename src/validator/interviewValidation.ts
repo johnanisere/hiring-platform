@@ -13,11 +13,17 @@ export const interviewValidation = (data: any) => {
     location: joi.string().required(),
     startTime: joi.string().required(),
     endTime: joi.string().required(),
-    eventId: joi.string().required(),
+    startDate: joi.string().required(),
+    endDate: joi.string().required(),
     description: joi
       .string()
       .required()
-      .max(100),
+      .max(500),
+    nameOfOrg: joi.string().required(),
+    accepted: joi.boolean(),
+    declined: joi.boolean(),
+    pending: joi.boolean(),
+    declineReason: joi.string(),
   };
 
   return joi.validate(data, schema);

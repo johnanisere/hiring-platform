@@ -1,5 +1,6 @@
 import User from '../models/User';
 import { Request, Response, NextFunction } from 'express';
+import bcrypt from 'bcryptjs';
 
 export default async function updatePassword(
   req: Request,
@@ -7,14 +8,19 @@ export default async function updatePassword(
   _next: NextFunction,
 ) {
   try {
-    const { email } = req.body.user;
-    const user = await User.findOne({ email });
+    const { password, confirmPassword, email } = req.body;
+    console.log({ email, password, confirmPassword });
+    if (password !== confirmPassword)
+      return res.status(400).json({ error: "Password doesn't match" });
+
+    const salt = await bcrypt.genSalt(10);
+    const hash = await bcrypt.hash(password, salt);
+    const user = await User.findOneAndUpdate({ email }, { password: hash });
 
     if (!user) {
       res.send('User not found!!!');
       return;
     } else {
-      user.password = req.body.newPassword;
       const updated = await user.save();
 
       res.status(200).send({
@@ -22,7 +28,6 @@ export default async function updatePassword(
         updated: {
           name: updated.name,
           email: updated.email,
-          phone: updated.phone,
         },
       });
     }

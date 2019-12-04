@@ -4,16 +4,18 @@ import seedUsers from '../src/db/seed/index';
 
 const { connectMongoDB, disconnectMongoDB } = require('../testSetup/mongodb');
 
+let interviewId = '';
+
 beforeAll(async () => {
   await connectMongoDB();
-  await seedUsers();
+  seedUsers();
 });
 
 afterAll(() => disconnectMongoDB());
 
 describe('interview route', () => {
-  test('schedule interview', () => {
-    return request(app)
+  test('schedule interview', async () => {
+    let interview = await request(app)
       .post('/api/v1/interview/invite/')
       .send({
         hiringPartner: 'hiringpartner1@example.com',
@@ -21,64 +23,70 @@ describe('interview route', () => {
         location: 'Victoria Island',
         startTime: '10am',
         endTime: '11am',
+        startDate: 'wed, 1st oct 2019',
+        endDate: 'wed, 1st oct 2019',
         description:
           'This is to inform you that you have been shortlisted for an interview',
-        eventId: 'EI234',
+        nameOfOrg: 'Paystack',
       })
       .expect(res => {
         expect(res.body).toEqual(
           expect.objectContaining({
-            hiringPartner: expect.any(String),
-            decaDev: expect.any(String),
-            location: expect.any(String),
-            startTime: expect.any(String),
-            endTime: expect.any(String),
-            description: expect.any(String),
-            eventId: expect.any(String),
-            id: expect.any(String),
+            interviewData: expect.objectContaining({
+              hiringPartner: expect.any(String),
+              decaDev: expect.any(String),
+              location: expect.any(String),
+              startTime: expect.any(String),
+              endTime: expect.any(String),
+              description: expect.any(String),
+              id: expect.any(String),
+              startDate: expect.any(String),
+              endDate: expect.any(String),
+            }),
+            message: "Interview has been sent to Decadev's email",
           }),
         );
       });
+
+    interviewId = interview.body.interviewData.id;
   }, 30000);
+  test('Gets all Interviews', async () => {
+    return request(app)
+      .get('/api/v1/interview/get-interviews')
+      .expect(res => {
+        expect(res.status).toBe(200);
+        expect(Object.keys(res.body)).toContain('allInterviews');
+      });
+  });
+
+  test('Adds Reason for interview decline', async () => {
+    return await request(app)
+      .put('/api/v1/interview/why-decline/')
+      .send({
+        interviewId: interviewId,
+        declineReason: 'i just do not like the idea',
+      })
+      .expect(res => {
+        expect(res.status).toBe(200);
+        expect(res.body).toEqual(
+          expect.objectContaining({
+            message: 'Interview Invitation has been declined',
+          }),
+        );
+      });
+  });
 });
 
 describe('User Route', () => {
-  test('Has a /api endpoint', () => {
-    return request(app)
+  test('Has a /api endpoint', async () => {
+    return await request(app)
       .get('/api')
       .expect('Content-Type', /json/)
       .expect(200, { message: { hello: 'Hello World' } });
   });
 
-  test('updates password', async () => {
-    const user = await request(app)
-      .post('/api/v1/users/login')
-      .send({
-        email: 'johndoe@example.com',
-        password: 'mysecret2',
-      });
-    return request(app)
-      .put('/api/v1/users/update-password/')
-      .set('Authorization', `Bearer ${user.body.token}`)
-      .send({
-        newPassword: 'newsecret',
-      })
-      .expect(res => {
-        expect(res.body).toEqual(
-          expect.objectContaining({
-            message: 'Password updated',
-            updated: expect.objectContaining({
-              email: 'johndoe@example.com',
-              name: 'John Doe',
-              phone: '08074583218',
-            }),
-          }),
-        );
-      });
-  });
-
-  test('Invite hiring partner', () => {
-    return request(app)
+  test('Invite hiring partner', async () => {
+    return await request(app)
       .post('/api/v1/users/hiring-partner/invite')
       .send({
         name: 'Flutterwave',
@@ -108,8 +116,8 @@ describe('User Route', () => {
       });
   });
 
-  test('logs in users', () => {
-    return request(app)
+  test('logs in users', async () => {
+    return await request(app)
       .post('/api/v1/users/login')
       .send({
         email: 'careers@flutterwave.com',
@@ -120,8 +128,8 @@ describe('User Route', () => {
       });
   });
 
-  test('lists all decadevs', () => {
-    return request(app)
+  test('lists all decadevs', async () => {
+    return await request(app)
       .get('/api/v1/users/decadevs')
       .expect(res => {
         expect(res.body.allDecadevs.length).toBe(4);
@@ -132,30 +140,30 @@ describe('User Route', () => {
       });
   });
 
-  test('lists female decadevs', async () => {
-    const gender = 'female';
+  test('lists java decadevs', async () => {
+    const pod = 'java';
     const decadevs = await request(app).get(
-      `/api/v1/users/decadevs?gender=${gender}`,
+      `/api/v1/users/decadevs?pod=${pod}`,
     );
 
     for (let i = 0; i < JSON.parse(decadevs.text).allDecadevs.length; i++) {
       expect(JSON.parse(decadevs.text).allDecadevs[i]).toHaveProperty(
-        'gender',
-        'female',
+        'pod',
+        'java',
       );
     }
   });
 
-  test('lists male decadevs', async () => {
-    const gender = 'male';
+  test('lists nodejs decadevs', async () => {
+    const pod = 'nodejs';
     const decadevs = await request(app).get(
-      `/api/v1/users/decadevs?gender=${gender}`,
+      `/api/v1/users/decadevs?pod=${pod}`,
     );
 
     for (let i = 0; i < JSON.parse(decadevs.text).allDecadevs.length; i++) {
       expect(JSON.parse(decadevs.text).allDecadevs[i]).toHaveProperty(
-        'gender',
-        'male',
+        'pod',
+        'nodejs',
       );
     }
   });
@@ -196,14 +204,16 @@ describe('Hiring Partners Verification', () => {
     return request(app)
       .post('/api/v1/hirer/signup')
       .send({
-        contactPerson: 'Shola',
+        name: 'Shola',
         email: 'sheyiogundijo@gmail.com',
-        name: 'GTB',
+        nameOfOrg: 'GTB',
         designation: 'CTO',
         Website: 'www.GTB.com',
         phone: '08066589871',
         numberOfTalentsRequired: '1-5',
         deadline: "Let's Talk First",
+        password: 'mysecret2',
+        industry: 'Technology',
       })
       .expect(res => {
         expect(res.body).toEqual(
@@ -212,20 +222,10 @@ describe('Hiring Partners Verification', () => {
               'Success!. An email has been sent to you. Please click link to verify your account.',
             token: expect.any(String),
             data: {
-              __v: expect.any(Number),
-              _id: expect.any(String),
-              contactPerson: 'Shola',
-              email: 'sheyiogundijo@gmail.com',
-              name: 'GTB',
-              designation: 'CTO',
-              phone: '08066589871',
-              numberOfTalentsRequired: '1-5',
-              deadline: "Let's Talk First",
-
-              createdAt: expect.any(String),
               active: false,
-              verified: expect.any(Boolean),
-              updatedAt: expect.any(String),
+              name: 'Shola',
+              verified: false,
+              industry: expect.any(String),
             },
           }),
         );
@@ -241,14 +241,14 @@ describe('Hiring Partners Verification', () => {
             expect.objectContaining({
               __v: 0,
               _id: expect.any(String),
-              contactPerson: 'Shola',
+              name: 'Shola',
               createdAt: expect.any(String),
               deadline: "Let's Talk First",
               designation: 'CTO',
               email: 'sheyiogundijo@gmail.com',
               active: false,
               verified: expect.any(Boolean),
-              name: 'GTB',
+              nameOfOrg: 'GTB',
               numberOfTalentsRequired: '1-5',
               phone: '08066589871',
               updatedAt: expect.any(String),
@@ -264,11 +264,665 @@ describe('Hiring Partners Verification', () => {
       .send({
         email: 'sheyiogundijo@gmail.com',
         name: 'GTB',
+        active: false,
       })
       .expect(res => {
         expect(res.body).toEqual({
           message: 'GTB has been activated!',
         });
+      });
+  });
+  test('Hiring Partner can login', () => {
+    return request(app)
+      .post('/api/v1/hirer/login')
+      .send({
+        email: 'sheyiogundijo@gmail.com',
+        password: 'mysecret2',
+      })
+      .expect(res => {
+        expect(res.body).toEqual({
+          verified: expect.any(Boolean),
+          active: expect.any(Boolean),
+          email: 'sheyiogundijo@gmail.com',
+          name: expect.any(String),
+          phone: expect.any(String),
+          nameOfOrg: expect.any(String),
+          designation: expect.any(String),
+          numberOfTalentsRequired: expect.any(String),
+          deadline: expect.any(String),
+          token: expect.any(String),
+          industry: expect.any(String),
+        });
+      });
+  });
+});
+
+describe('Updates Decadev Profile', () => {
+  test('Updates profile/contact details of Decadevs', async () => {
+    const email = 'sheyiogundijo@gmail.com';
+    const user = await request(app)
+      .post('/api/v1/users/login')
+      .send({
+        email,
+        password: 'mysecret',
+      });
+    return request(app)
+      .put(`/api/v1/users/update/userInfo/${email}`)
+      .set('Authorization', `Bearer ${user.body.token}`)
+      .send({
+        name: 'Jane Mary Lala',
+        location: 'Lagos',
+        profilePhoto:
+          'https://encq=tbn:ANd9GcSIcqjP8a8EfGrtkCX0CJXJ4HRltM5u8Jdhkz_TneWdb4rfPsMi',
+        bio: 'A very good dev',
+        github: 'https://github.com',
+        linkedIn: 'https://linkedin.com/in/oluwaseyi-ogundijo-a29699195',
+        stackOverflow: 'https://stackoverflow.com',
+        website: 'https://www.google.com/',
+      })
+      .expect(res => {
+        expect(res.body).toEqual(
+          expect.objectContaining({
+            message: 'Details have been successfully updated',
+            user: {
+              bio: expect.any(String),
+              count: expect.any(Number),
+              currentRole: expect.any(String),
+              cv: expect.any(String),
+              description: expect.any(String),
+              email: expect.any(String),
+              employments: expect.any(Array),
+              experience: expect.any(Array),
+              gender: expect.any(String),
+              github: expect.any(String),
+              interviews: [],
+              tests: expect.any(Array),
+              joined: expect.any(String),
+              linkedIn: expect.any(String),
+              education: expect.any(Array),
+              publications: expect.any(Array),
+              location: expect.any(String),
+              name: expect.any(String),
+              phone: expect.any(String),
+              portfolio: expect.any(Array),
+              profilePhoto: expect.any(String),
+              role: expect.any(String),
+              skills: expect.any(Array),
+              stack: expect.any(Array),
+              stackOverflow: expect.any(String),
+              website: expect.any(String),
+              pod: expect.any(String),
+            },
+          }),
+        );
+      });
+  });
+
+  test('Adds new employment details of Decadevs', async () => {
+    const email = 'sheyiogundijo@gmail.com';
+    const user = await request(app)
+      .post('/api/v1/users/login')
+      .send({
+        email,
+        password: 'mysecret',
+      });
+    return request(app)
+      .put(`/api/v1/users/update/new-employment/${email}`)
+      .set('Authorization', `Bearer ${user.body.token}`)
+      .send({
+        achievements: [
+          'Built a language-learning app for Arabic learners in AngularJS',
+          "Constructed a reporting tool so administrators could see their students' progress in real-time.",
+          'Developed custom AngularJS services and corresponding tests.',
+          'Created custom exact-target email templates and data extensions, and a tool to allow administrators to email users at the click of a button.',
+        ],
+        title: 'CTO',
+        location: 'Googlee',
+        duration: '2018 (9 months)',
+      })
+      .expect(res => {
+        expect(res.body).toEqual(
+          expect.objectContaining({
+            message: 'New Employment Details have been successfully added',
+            user: {
+              bio: expect.any(String),
+              count: expect.any(Number),
+              currentRole: expect.any(String),
+              cv: expect.any(String),
+              description: expect.any(String),
+              email: expect.any(String),
+              employments: expect.any(Array),
+              experience: expect.any(Array),
+              gender: expect.any(String),
+              github: expect.any(String),
+              education: expect.any(Array),
+              publications: expect.any(Array),
+              interviews: [],
+              tests: expect.any(Array),
+              joined: expect.any(String),
+              linkedIn: expect.any(String),
+              location: expect.any(String),
+              name: expect.any(String),
+              phone: expect.any(String),
+              portfolio: expect.any(Array),
+              profilePhoto: expect.any(String),
+              role: expect.any(String),
+              skills: expect.any(Array),
+              stack: expect.any(Array),
+              stackOverflow: expect.any(String),
+              website: expect.any(String),
+              pod: expect.any(String),
+            },
+          }),
+        );
+      });
+  });
+
+  test('Adds new skill details of Decadevs', async () => {
+    const email = 'sheyiogundijo@gmail.com';
+    const user = await request(app)
+      .post('/api/v1/users/login')
+      .send({
+        email,
+        password: 'mysecret',
+      });
+    return request(app)
+      .put(`/api/v1/users/update/new-skill/${email}`)
+      .set('Authorization', `Bearer ${user.body.token}`)
+      .send({
+        type: 'Food',
+        description: 'Cakes, Chocolate, Desert',
+      })
+      .expect(res => {
+        expect(res.body).toEqual(
+          expect.objectContaining({
+            message: 'New Skill Details have been successfully added',
+            user: {
+              bio: expect.any(String),
+              count: expect.any(Number),
+              currentRole: expect.any(String),
+              cv: expect.any(String),
+              description: expect.any(String),
+              email: expect.any(String),
+              employments: expect.any(Array),
+              experience: expect.any(Array),
+              gender: expect.any(String),
+              github: expect.any(String),
+              education: expect.any(Array),
+              publications: expect.any(Array),
+              interviews: [],
+              tests: expect.any(Array),
+              joined: expect.any(String),
+              linkedIn: expect.any(String),
+              location: expect.any(String),
+              name: expect.any(String),
+              phone: expect.any(String),
+              portfolio: expect.any(Array),
+              profilePhoto: expect.any(String),
+              role: expect.any(String),
+              skills: expect.any(Array),
+              stack: expect.any(Array),
+              stackOverflow: expect.any(String),
+              website: expect.any(String),
+              pod: expect.any(String),
+            },
+          }),
+        );
+      });
+  });
+
+  test('Adds new product details of Decadevs', async () => {
+    const email = 'sheyiogundijo@gmail.com';
+    const user = await request(app)
+      .post('/api/v1/users/login')
+      .send({
+        email,
+        password: 'mysecret',
+      });
+    return request(app)
+      .put(`/api/v1/users/update/new-project/${email}`)
+      .set('Authorization', `Bearer ${user.body.token}`)
+      .send({
+        title: 'Twitter',
+        languages: 'Visual Studio, HTML, Sitecore',
+      })
+      .expect(res => {
+        expect(res.body).toEqual(
+          expect.objectContaining({
+            message: 'New Portfolio Details have been successfully added',
+            user: {
+              bio: expect.any(String),
+              count: expect.any(Number),
+              currentRole: expect.any(String),
+              cv: expect.any(String),
+              description: expect.any(String),
+              email: expect.any(String),
+              employments: expect.any(Array),
+              experience: expect.any(Array),
+              gender: expect.any(String),
+              github: expect.any(String),
+              education: expect.any(Array),
+              publications: expect.any(Array),
+              interviews: [],
+              tests: expect.any(Array),
+              joined: expect.any(String),
+              linkedIn: expect.any(String),
+              location: expect.any(String),
+              name: expect.any(String),
+              phone: expect.any(String),
+              portfolio: expect.any(Array),
+              profilePhoto: expect.any(String),
+              role: expect.any(String),
+              skills: expect.any(Array),
+              stack: expect.any(Array),
+              stackOverflow: expect.any(String),
+              website: expect.any(String),
+              pod: expect.any(String),
+            },
+          }),
+        );
+      });
+  });
+
+  test('Deletes Employment details', async () => {
+    const email = 'sheyiogundijo@gmail.com';
+    const user = await request(app)
+      .post('/api/v1/users/login')
+      .send({
+        email,
+        password: 'mysecret',
+      });
+
+    const newEmployment = await request(app)
+      .put(`/api/v1/users/update/new-employment/${email}`)
+      .set('Authorization', `Bearer ${user.body.token}`)
+      .send({
+        achievements: [
+          'Built a language-learning app for Arabic learners in AngularJS',
+          "Constructed a reporting tool so administrators could see their students' progress in real-time.",
+          'Developed custom AngularJS services and corresponding tests.',
+          'Created custom exact-target email templates and data extensions, and a tool to allow administrators to email users at the click of a button.',
+        ],
+        title: 'CTO',
+        location: 'Googlee',
+        duration: '2018 (9 months)',
+      });
+
+    return request(app)
+      .put(`/api/v1/users/update/delete-employment/${email}`)
+      .set('Authorization', `Bearer ${user.body.token}`)
+      .send({
+        achievements: [
+          'Built a language-learning app for Arabic learners in AngularJS',
+          "Constructed a reporting tool so administrators could see their students' progress in real-time.",
+          'Developed custom AngularJS services and corresponding tests.',
+          'Created custom exact-target email templates and data extensions, and a tool to allow administrators to email users at the click of a button.',
+        ],
+        title: 'CTO',
+        location: 'Google',
+        duration: '2018 (9 months)',
+        id: newEmployment.body.user.employments[0]._id,
+      })
+      .expect(res => {
+        expect(res.body).toEqual(
+          expect.objectContaining({
+            message: 'Experience successfully deleted',
+            user: {
+              bio: expect.any(String),
+              count: expect.any(Number),
+              currentRole: expect.any(String),
+              cv: expect.any(String),
+              description: expect.any(String),
+              email: expect.any(String),
+              employments: expect.any(Array),
+              experience: expect.any(Array),
+              education: expect.any(Array),
+              publications: expect.any(Array),
+              gender: expect.any(String),
+              github: expect.any(String),
+              interviews: [],
+              tests: expect.any(Array),
+              joined: expect.any(String),
+              linkedIn: expect.any(String),
+              location: expect.any(String),
+              name: expect.any(String),
+              phone: expect.any(String),
+              portfolio: expect.any(Array),
+              profilePhoto: expect.any(String),
+              role: expect.any(String),
+              skills: expect.any(Array),
+              stack: expect.any(Array),
+              stackOverflow: expect.any(String),
+              website: expect.any(String),
+              pod: expect.any(String),
+            },
+          }),
+        );
+      });
+  });
+
+  test('Deletes Skill Details', async () => {
+    const email = 'sheyiogundijo@gmail.com';
+    const user = await request(app)
+      .post('/api/v1/users/login')
+      .send({
+        email,
+        password: 'mysecret',
+      });
+
+    const newSkill = await request(app)
+      .put(`/api/v1/users/update/new-skill/${email}`)
+      .set('Authorization', `Bearer ${user.body.token}`)
+      .send({
+        type: 'Food',
+        description: 'Cakes, Chocolate, Desert',
+      });
+
+    return request(app)
+      .put(`/api/v1/users/update/delete-skill/${email}`)
+      .set('Authorization', `Bearer ${user.body.token}`)
+      .send({
+        type: 'Food',
+        description: 'Cakes, Chocolate, IceCream',
+        id: newSkill.body.user.skills[0]._id,
+      })
+      .expect(res => {
+        expect(res.body).toEqual(
+          expect.objectContaining({
+            message: 'Skill successfully deleted',
+            user: {
+              bio: expect.any(String),
+              count: expect.any(Number),
+              currentRole: expect.any(String),
+              cv: expect.any(String),
+              description: expect.any(String),
+              email: expect.any(String),
+              employments: expect.any(Array),
+              experience: expect.any(Array),
+              gender: expect.any(String),
+              education: expect.any(Array),
+              publications: expect.any(Array),
+              github: expect.any(String),
+              interviews: [],
+              tests: expect.any(Array),
+              joined: expect.any(String),
+              linkedIn: expect.any(String),
+              location: expect.any(String),
+              name: expect.any(String),
+              phone: expect.any(String),
+              portfolio: expect.any(Array),
+              profilePhoto: expect.any(String),
+              role: expect.any(String),
+              skills: expect.any(Array),
+              stack: expect.any(Array),
+              stackOverflow: expect.any(String),
+              website: expect.any(String),
+              pod: expect.any(String),
+            },
+          }),
+        );
+      });
+  });
+  test('Deletes Portfolio/Project Details', async () => {
+    const email = 'sheyiogundijo@gmail.com';
+    const user = await request(app)
+      .post('/api/v1/users/login')
+      .send({
+        email,
+        password: 'mysecret',
+      });
+
+    const newProject = await request(app)
+      .put(`/api/v1/users/update/delete-project/${email}`)
+      .set('Authorization', `Bearer ${user.body.token}`)
+      .send({
+        title: 'Rosetta Stone',
+        languages: 'JavaScript, AngularJS, HTML, CSS, Bower, Grunt, Git',
+      });
+
+    return request(app)
+      .put(`/api/v1/users/update/delete-project/${email}`)
+      .set('Authorization', `Bearer ${user.body.token}`)
+      .send({
+        title: 'Rosetta Stone',
+        languages: 'JavaScript, AngularJS, HTML, CSS, Bower, Grunt, Git',
+        id: newProject.body.user.portfolio[0]._id,
+      })
+      .expect(res => {
+        expect(res.body).toEqual(
+          expect.objectContaining({
+            message: 'Project successfully deleted',
+            user: {
+              bio: expect.any(String),
+              count: expect.any(Number),
+              currentRole: expect.any(String),
+              cv: expect.any(String),
+              description: expect.any(String),
+              email: expect.any(String),
+              employments: expect.any(Array),
+              experience: expect.any(Array),
+              gender: expect.any(String),
+              github: expect.any(String),
+              interviews: [],
+              tests: expect.any(Array),
+              education: expect.any(Array),
+              publications: expect.any(Array),
+              joined: expect.any(String),
+              linkedIn: expect.any(String),
+              location: expect.any(String),
+              name: expect.any(String),
+              phone: expect.any(String),
+              portfolio: expect.any(Array),
+              profilePhoto: expect.any(String),
+              role: expect.any(String),
+              skills: expect.any(Array),
+              stack: expect.any(Array),
+              stackOverflow: expect.any(String),
+              website: expect.any(String),
+              pod: expect.any(String),
+            },
+          }),
+        );
+      });
+  });
+  test('Updates Portfolio/Project Details', async () => {
+    const email = 'sheyiogundijo@gmail.com';
+    const user = await request(app)
+      .post('/api/v1/users/login')
+      .send({
+        email,
+        password: 'mysecret',
+      });
+
+    const newProject = await request(app)
+      .put(`/api/v1/users/update/new-project/${email}`)
+      .set('Authorization', `Bearer ${user.body.token}`)
+      .send({
+        title: 'Rosetta Stone',
+        languages: 'JavaScript, AngularJS, HTML, CSS, Bower, Grunt, Git',
+      });
+
+    return request(app)
+      .put(`/api/v1/users/update/projectInfo/${email}`)
+      .set('Authorization', `Bearer ${user.body.token}`)
+      .send({
+        title: 'Rosetta Stone',
+        languages: 'JavaScript, AngularJS, HTML, CSS, Bower, Git',
+        id: newProject.body.user.portfolio[0]._id,
+      })
+      .expect(res => {
+        expect(res.body).toEqual(
+          expect.objectContaining({
+            message: 'Details have been successfully updated',
+            user: {
+              bio: expect.any(String),
+              count: expect.any(Number),
+              currentRole: expect.any(String),
+              cv: expect.any(String),
+              description: expect.any(String),
+              email: expect.any(String),
+              employments: expect.any(Array),
+              experience: expect.any(Array),
+              gender: expect.any(String),
+              github: expect.any(String),
+              interviews: [],
+              education: expect.any(Array),
+              publications: expect.any(Array),
+              tests: expect.any(Array),
+              joined: expect.any(String),
+              linkedIn: expect.any(String),
+              location: expect.any(String),
+              name: expect.any(String),
+              phone: expect.any(String),
+              portfolio: expect.any(Array),
+              profilePhoto: expect.any(String),
+              role: expect.any(String),
+              skills: expect.any(Array),
+              stack: expect.any(Array),
+              stackOverflow: expect.any(String),
+              website: expect.any(String),
+              pod: expect.any(String),
+            },
+          }),
+        );
+      });
+  });
+  test('Updates Skill Details', async () => {
+    const email = 'sheyiogundijo@gmail.com';
+    const user = await request(app)
+      .post('/api/v1/users/login')
+      .send({
+        email,
+        password: 'mysecret',
+      });
+
+    const newSkill = await request(app)
+      .put(`/api/v1/users/update/new-skill/${email}`)
+      .set('Authorization', `Bearer ${user.body.token}`)
+      .send({
+        type: 'Stuff',
+        description: 'CSS, HTML, Sass, TypeScript',
+      });
+
+    return request(app)
+      .put(`/api/v1/users/update/skillInfo/${email}`)
+      .set('Authorization', `Bearer ${user.body.token}`)
+      .send({
+        type: 'Stuff',
+        description: 'CSS, HTML, Sass, TypeScript, JS',
+        id: newSkill.body.user.skills[0]._id,
+      })
+      .expect(res => {
+        expect(res.body).toEqual(
+          expect.objectContaining({
+            message: 'Details have been successfully updated',
+            user: {
+              bio: expect.any(String),
+              count: expect.any(Number),
+              currentRole: expect.any(String),
+              cv: expect.any(String),
+              description: expect.any(String),
+              email: expect.any(String),
+              employments: expect.any(Array),
+              experience: expect.any(Array),
+              gender: expect.any(String),
+              github: expect.any(String),
+              interviews: [],
+              education: expect.any(Array),
+              publications: expect.any(Array),
+              tests: expect.any(Array),
+              joined: expect.any(String),
+              linkedIn: expect.any(String),
+              location: expect.any(String),
+              name: expect.any(String),
+              phone: expect.any(String),
+              portfolio: expect.any(Array),
+              profilePhoto: expect.any(String),
+              role: expect.any(String),
+              skills: expect.any(Array),
+              stack: expect.any(Array),
+              stackOverflow: expect.any(String),
+              website: expect.any(String),
+              pod: expect.any(String),
+            },
+          }),
+        );
+      });
+  });
+  test('Updates Employment Details', async () => {
+    const email = 'sheyiogundijo@gmail.com';
+    const user = await request(app)
+      .post('/api/v1/users/login')
+      .send({
+        email,
+        password: 'mysecret',
+      });
+
+    const newEmployment = await request(app)
+      .put(`/api/v1/users/update/new-employment/${email}`)
+      .set('Authorization', `Bearer ${user.body.token}`)
+      .send({
+        title: 'Junior Engineer',
+        duration: '2013 - PRESENT',
+        location: 'Rosetta Stone',
+        achievements: [
+          'Built a language-learning app for Arabic learners in AngularJS',
+          "Constructed a reporting tool so administrators could see their students' progress in real-time.",
+          'Developed custom AngularJS services and corresponding tests.',
+          'Created custom exact-target email templates and data extensions, and a tool to allow administrators to email users at the click of a button.',
+        ],
+      });
+
+    return request(app)
+      .put(`/api/v1/users/update/employmentInfo/${email}`)
+      .set('Authorization', `Bearer ${user.body.token}`)
+      .send({
+        title: 'Back-End Engineer',
+        duration: '2013 - PRESENT',
+        location: 'Rosetta Stone',
+        achievements: [
+          'Built a language-learning app for Arabic learners in AngularJS',
+          "Constructed a reporting tool so administrators could see their students' progress in real-time.",
+          'Developed custom AngularJS services and corresponding tests.',
+          'Created custom exact-target email templates and data extensions, and a tool to allow administrators to email users at the click of a button.',
+        ],
+        id: newEmployment.body.user.employments[0]._id,
+      })
+      .expect(res => {
+        expect(res.body).toEqual(
+          expect.objectContaining({
+            message: 'Details have been successfully updated',
+            user: {
+              bio: expect.any(String),
+              count: expect.any(Number),
+              currentRole: expect.any(String),
+              cv: expect.any(String),
+              description: expect.any(String),
+              email: expect.any(String),
+              employments: expect.any(Array),
+              experience: expect.any(Array),
+              education: expect.any(Array),
+              publications: expect.any(Array),
+              gender: expect.any(String),
+              github: expect.any(String),
+              interviews: [],
+              tests: expect.any(Array),
+              joined: expect.any(String),
+              linkedIn: expect.any(String),
+              location: expect.any(String),
+              name: expect.any(String),
+              phone: expect.any(String),
+              portfolio: expect.any(Array),
+              profilePhoto: expect.any(String),
+              role: expect.any(String),
+              skills: expect.any(Array),
+              stack: expect.any(Array),
+              stackOverflow: expect.any(String),
+              website: expect.any(String),
+              pod: expect.any(String),
+            },
+          }),
+        );
       });
   });
 });

@@ -1,9 +1,11 @@
 import mongoose, { Schema } from 'mongoose';
 import bcrypt from 'bcryptjs';
-import { ISkills, SkillSchema } from './Skills';
-import { EmploymentSchema, IEmployment } from './Employment';
+import { ISkills } from './Skills';
+import { IEmployment } from './Employment';
 import { IExperience, ExperienceSchema } from './Experiences';
-import { IPortfolio, PortfolioSchema } from './Portfolio';
+import { IPortfolio } from './Portfolio';
+import { IPublication } from './Publications';
+import { IEducation } from './Education';
 
 export interface IUser extends mongoose.Document {
   email: String;
@@ -11,17 +13,24 @@ export interface IUser extends mongoose.Document {
   role: String;
   name: String;
   profilePhoto: String;
-  gender: string;
-  skills?: Array<ISkills>;
-  publications: String;
+  gender: String;
+  github: String;
+  linkedIn: String;
+  stackOverflow: String;
+  website: String;
+  location: String;
+  skills: Array<ISkills>;
   cv?: String;
   bio?: String;
   notifications: String;
   contactPerson: String;
   phone: String;
+  publications?: Array<IPublication>;
+  education: Array<IEducation>;
   companyURL?: String;
   address: String;
   interviews: Array<String>;
+  tests: Array<String>;
   count: number;
   currentRole?: String;
   joined: String;
@@ -29,7 +38,8 @@ export interface IUser extends mongoose.Document {
   portfolio: Array<IPortfolio>;
   stack: Array<String>;
   experiences: Array<IExperience>;
-  employment: Array<IEmployment>;
+  employments: Array<IEmployment>;
+  pod: String;
 }
 
 const UserSchema: Schema = new Schema(
@@ -45,8 +55,16 @@ const UserSchema: Schema = new Schema(
     name: { type: String, required: true },
     profilePhoto: { type: String, required: true },
     gender: { type: String, default: 'male' },
-    skills: { type: [SkillSchema] },
-    publications: { type: mongoose.Schema.Types.ObjectId, ref: 'Publications' },
+    github: String,
+    linkedIn: String,
+    stackOverflow: String,
+    website: String,
+    location: String,
+    skills: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Skill' }],
+    publications: [
+      { type: mongoose.Schema.Types.ObjectId, ref: 'Publication' },
+    ],
+    education: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Education' }],
     cv: { type: String },
     bio: { type: String },
     notifications: { type: String },
@@ -59,6 +77,7 @@ const UserSchema: Schema = new Schema(
       default: 0,
     },
     interviews: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Interviews' }],
+    tests: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Tests' }],
     currentRole: {
       type: String,
     },
@@ -68,12 +87,13 @@ const UserSchema: Schema = new Schema(
     description: {
       type: String,
     },
-    portfolio: { type: [PortfolioSchema] },
+    portfolio: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Portfolio' }],
     stack: {
       type: Schema.Types.Mixed,
     },
     experience: { type: [ExperienceSchema] },
-    employments: { type: [EmploymentSchema] },
+    employments: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Employment' }],
+    pod: { type: String },
   },
   { timestamps: true },
 );

@@ -1,50 +1,58 @@
 import User from '../models/User';
-import Cycle from '../models/Cycle';
+// import Cycle from '../models/Cycle';
 import { Response, Request } from 'express';
+import { IUser } from '../models/User';
 
 /**
  * @route    GET api/decadevs.
  * @Desc     GET all decadevs.
  * @access   authorized.
  */
+
 export default async function getAllDecadevs(req: Request, res: Response) {
-  let { gender } = req.query;
-  gender = gender ? `${gender}`.toLowerCase() : '';
+  let { pod } = req.query;
+
+  pod = pod ? `${pod}`.toLowerCase() : '';
+
   try {
-    const onGenderNotPassed = !gender || gender === 'all';
+    const onPodNotPassed = !pod || pod === 'all';
 
-    //get cycle count
-    let activeCycle = await Cycle.findOne({ name: 'default' });
+    let allDecadevs = onPodNotPassed
+      ? await User.find({ role: 'dev' })
+          .populate('employments')
+          .populate('skills')
+          .populate('portfolio')
+          .populate('publications')
+          .populate('education')
+      : await User.find({ role: 'dev', pod })
+          .populate('employments')
+          .populate('skills')
+          .populate('portfolio')
+          .populate('publications')
+          .populate('education');
 
-    let activeCycleCount = activeCycle ? activeCycle.count : 1;
-    let prevCycle = activeCycleCount - 1;
-    let allDecadevs = onGenderNotPassed
-      ? await User.find({ role: 'dev', count: prevCycle })
-      : await User.find({ role: 'dev', count: prevCycle, gender });
+    let sortedDevs = allDecadevs.sort(
+      (a: IUser, b: IUser): number => a.count - b.count,
+    );
 
-    if (allDecadevs.length < 1 && activeCycle) {
-      activeCycle.count = activeCycleCount + 1;
-      await activeCycle.save();
-      activeCycleCount = activeCycle ? activeCycle.count : 1;
-      prevCycle = activeCycleCount - 1;
-      allDecadevs = onGenderNotPassed
-        ? await User.find({ role: 'dev', count: prevCycle })
-        : await User.find({ role: 'dev', count: prevCycle, gender });
-    }
+    let start = 0;
+    let end = 4;
+    const fourDecaDev = sortedDevs.slice(start, end);
 
-    //return just four decadev for now
-    const fourDecaDev = allDecadevs.slice(0, 4);
-
-    //update the current count for each of the four
     const updateCycle = fourDecaDev.map(async elem => {
-      elem.count = activeCycleCount;
+      ++elem.count;
       return await elem.save();
     });
 
     await Promise.all(updateCycle);
-
-    return res.send({ allDecadevs: fourDecaDev });
-  } catch {
+    (start += 4), (end += 4);
+    console.log({ fourDecaDev });
+    return res.send({
+      allDecadevs: fourDecaDev,
+      pod,
+      total: allDecadevs.length,
+    });
+  } catch (error) {
     return res.status(400).json({
       message: 'No Decadevs found!',
     });

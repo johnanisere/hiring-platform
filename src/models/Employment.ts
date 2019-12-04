@@ -1,6 +1,6 @@
-import { Schema } from 'mongoose';
+import mongoose, { Schema } from 'mongoose';
 
-export interface IEmployment {
+export interface IEmployment extends mongoose.Document {
   title: String;
   duration: String;
   location: String;
@@ -13,3 +13,5 @@ export const EmploymentSchema: Schema = new Schema({
   location: { type: String },
   achievements: { type: Schema.Types.Mixed },
 });
+
+export default mongoose.model<IEmployment>('Employment', EmploymentSchema);

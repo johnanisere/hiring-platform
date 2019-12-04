@@ -12,14 +12,15 @@ export default async function verifyHirer(req: Request, res: Response) {
         },
         { verified: true },
       ).exec();
+      await hirer.save();
 
       res.status(200).send({
-        message: `${req.body.email}, your account has been verified! You'll hear from us soon.`,
+        message: `${req.body.email}, your account has been verified! You'll only be able to log into your account after it has been activated, please wait until you hear from us soon.`,
       });
       return;
     } else {
       res.status(200).send({
-        message: `${req.body.email}, your account has been verification has been unsuccessful!`,
+        message: `${req.body.email}, your account verification has been unsuccessful!`,
       });
     }
     return;

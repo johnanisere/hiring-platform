@@ -1,17 +1,17 @@
-import User from '../models/User';
+import HiringPartner from '../models/HiringPartner';
 import joi from '@hapi/joi';
 import bcrypt from 'bcryptjs';
 import jwt from 'jsonwebtoken';
 import { Request, Response } from 'express';
 import { PRIVATE_KEY } from '../config';
 
-const loginSchema: any = {
+const hirerLoginSchema: any = {
   email: joi.string().required(),
   password: joi.string().required(),
 };
 
 export default async function userLogin(req: Request, res: Response) {
-  const { error, value } = joi.validate(req.body, loginSchema, {
+  const { error, value } = joi.validate(req.body, hirerLoginSchema, {
     skipFunctions: true,
     stripUnknown: true,
     abortEarly: false,
@@ -21,23 +21,19 @@ export default async function userLogin(req: Request, res: Response) {
   }
 
   try {
-    const requestedSingleUser = await User.findOne({
+    const requestedSingleHirer = await HiringPartner.findOne({
       email: value.email,
-    })
-      .populate('employments')
-      .populate('skills')
-      .populate('portfolio')
-      .populate('publications')
-      .populate('education')
-      .select({ __v: 0, _id: 0, createdAt: 0, updatedAt: 0 });
-    if (!requestedSingleUser) {
+    }).select({ __v: 0, _id: 0, createdAt: 0, updatedAt: 0 });
+    if (!requestedSingleHirer || requestedSingleHirer.active === false) {
       res.status(404).send({ error: 'user does not exist' });
+      return;
     } else {
-      const suspected = requestedSingleUser.toObject();
+      const suspected = requestedSingleHirer.toObject();
       const isMatch = await bcrypt.compare(value.password, suspected.password);
 
       if (!isMatch) {
         res.status(401).send({ error: 'wrong password' });
+        return;
       } else {
         const token = jwt.sign(
           {
@@ -50,15 +46,13 @@ export default async function userLogin(req: Request, res: Response) {
           },
         );
         const { password, ...rest } = suspected;
-
-        console.log({ rest });
         res
           .header('auth-token', token)
           .status(200)
           .send({ ...rest, token });
+        return;
       }
     }
-    return;
   } catch (err) {
     res.status(400).send({ err });
     return;
