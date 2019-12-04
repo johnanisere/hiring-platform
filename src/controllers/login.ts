@@ -51,7 +51,6 @@ export default async function userLogin(req: Request, res: Response) {
         );
         const { password, ...rest } = suspected;
 
-        console.log({ rest });
         res
           .header('auth-token', token)
           .status(200)

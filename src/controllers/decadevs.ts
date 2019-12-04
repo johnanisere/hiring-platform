@@ -46,7 +46,7 @@ export default async function getAllDecadevs(req: Request, res: Response) {
 
     await Promise.all(updateCycle);
     (start += 4), (end += 4);
-    console.log({ fourDecaDev });
+
     return res.send({
       allDecadevs: fourDecaDev,
       pod,
