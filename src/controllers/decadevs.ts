@@ -22,10 +22,14 @@ export default async function getAllDecadevs(req: Request, res: Response) {
           .populate('employments')
           .populate('skills')
           .populate('portfolio')
+          .populate('publications')
+          .populate('education')
       : await User.find({ role: 'dev', pod })
           .populate('employments')
           .populate('skills')
-          .populate('portfolio');
+          .populate('portfolio')
+          .populate('publications')
+          .populate('education');
 
     let sortedDevs = allDecadevs.sort(
       (a: IUser, b: IUser): number => a.count - b.count,

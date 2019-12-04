@@ -7,6 +7,10 @@ import Skill from '../../models/Skills';
 import skills from './data/skills';
 import Portfolio from '../../models/Portfolio';
 import portfolios from './data/portfolio';
+import Publications from '../../models/Publications';
+import publications from './data/publications';
+import Education from '../../models/Education';
+import education from './data/education';
 
 const cleanDb = async () => {
   try {
@@ -79,6 +83,39 @@ export const seedPortfolios = async () => {
     return err;
   }
 };
+
+export const seedPublications = async () => {
+  try {
+    const allPublications = publications.map(async publication => {
+      const newPublication = await new Publications(publication);
+      return newPublication.save();
+    });
+    const res: any = await Promise.all(allPublications);
+    const dev: any = await User.findOne({ email: 'sheyiogundijo@gmail.com' });
+    res.forEach((publication: any) => dev.publication.push(publication._id));
+    await dev.save();
+    return res;
+  } catch (err) {
+    return err;
+  }
+};
+
+export const seedEducation = async () => {
+  try {
+    const allEducation = education.map(async currentEducation => {
+      const newEducation = await new Education(currentEducation);
+      return newEducation.save();
+    });
+    const res: any = await Promise.all(allEducation);
+    const dev: any = await User.findOne({ email: 'sheyiogundijo@gmail.com' });
+    res.forEach((education: any) => dev.education.push(education._id));
+    await dev.save();
+    return res;
+  } catch (err) {
+    return err;
+  }
+};
+
 const seed = () => {
   cleanDb()
     .then(() => {
@@ -95,6 +132,12 @@ const seed = () => {
     })
     .then(() => {
       return seedPortfolios();
+    })
+    .then(() => {
+      return seedPublications();
+    })
+    .then(() => {
+      return seedEducation();
     })
     .catch(err => {
       console.log({ err });

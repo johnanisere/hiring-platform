@@ -1,15 +1,13 @@
 import mongoose, { Schema } from 'mongoose';
 
-export interface IPublications extends mongoose.Document {
-  publication: String;
+export interface IPublication extends mongoose.Document {
+  link: String;
+  title: String;
 }
 
-const NotificationSchema: Schema = new Schema({
-  publication: { type: String },
-  user: { type: Schema.Types.ObjectId, ref: 'User' },
+const PublicationSchema: Schema = new Schema({
+  link: { type: String },
+  title: { type: String },
 });
 
-export default mongoose.model<IPublications>(
-  'Publications',
-  NotificationSchema,
-);
+export default mongoose.model<IPublication>('Publication', PublicationSchema);

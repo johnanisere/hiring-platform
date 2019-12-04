@@ -4,6 +4,8 @@ import { ISkills } from './Skills';
 import { IEmployment } from './Employment';
 import { IExperience, ExperienceSchema } from './Experiences';
 import { IPortfolio } from './Portfolio';
+import { IPublication } from './Publications';
+import { IEducation } from './Education';
 
 export interface IUser extends mongoose.Document {
   email: String;
@@ -11,19 +13,20 @@ export interface IUser extends mongoose.Document {
   role: String;
   name: String;
   profilePhoto: String;
-  gender: string;
+  gender: String;
   github: String;
   linkedIn: String;
   stackOverflow: String;
   website: String;
   location: String;
   skills: Array<ISkills>;
-  publications: String;
   cv?: String;
   bio?: String;
   notifications: String;
   contactPerson: String;
   phone: String;
+  publications?: Array<IPublication>;
+  education: Array<IEducation>;
   companyURL?: String;
   address: String;
   interviews: Array<String>;
@@ -58,7 +61,10 @@ const UserSchema: Schema = new Schema(
     website: String,
     location: String,
     skills: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Skill' }],
-    publications: { type: mongoose.Schema.Types.ObjectId, ref: 'Publications' },
+    publications: [
+      { type: mongoose.Schema.Types.ObjectId, ref: 'Publication' },
+    ],
+    education: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Education' }],
     cv: { type: String },
     bio: { type: String },
     notifications: { type: String },

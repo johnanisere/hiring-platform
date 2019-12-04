@@ -19,6 +19,17 @@ import updatePortfolioInfo, {
   newPortfolio,
   deletePortfolio,
 } from '../controllers/updatePortfolio';
+
+import updatePublication, {
+  newPublication,
+  deletePublication,
+} from '../controllers/publication';
+
+import updateEducation, {
+  newEducation,
+  deleteEducation,
+} from '../controllers/education';
+
 import authCurrentUser from '../controllers/authCurrentUser';
 
 const router = Router();
@@ -40,6 +51,13 @@ router
   .put('/update/projectInfo/:email', authMiddleware, updatePortfolioInfo)
   .put('/update/new-project/:email', authMiddleware, newPortfolio)
   .put('/update/delete-project/:email', authMiddleware, deletePortfolio)
+  .put('/update/publicationInfo/:email', authMiddleware, updatePublication)
+  .put('/update/new-publication/:email', authMiddleware, newPublication)
+  .put('/update/delete-publication/:email', authMiddleware, deletePublication)
+  .put('/update/educationInfo/:email', authMiddleware, updateEducation)
+  .put('/update/new-education/:email', authMiddleware, newEducation)
+  .put('/update/delete-education/:email', authMiddleware, deleteEducation)
+
   .post('/me', authCurrentUser);
 
 export default router;
