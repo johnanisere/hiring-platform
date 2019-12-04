@@ -4,6 +4,8 @@ import seedUsers from '../src/db/seed/index';
 
 const { connectMongoDB, disconnectMongoDB } = require('../testSetup/mongodb');
 
+let interviewId = '';
+
 beforeAll(async () => {
   await connectMongoDB();
   seedUsers();
@@ -12,8 +14,8 @@ beforeAll(async () => {
 afterAll(() => disconnectMongoDB());
 
 describe('interview route', () => {
-  test('schedule interview', () => {
-    return request(app)
+  test('schedule interview', async () => {
+    let interview = await request(app)
       .post('/api/v1/interview/invite/')
       .send({
         hiringPartner: 'hiringpartner1@example.com',
@@ -45,6 +47,8 @@ describe('interview route', () => {
           }),
         );
       });
+
+    interviewId = interview.body.interviewData.id;
   }, 30000);
   test('Gets all Interviews', async () => {
     return request(app)
@@ -54,18 +58,35 @@ describe('interview route', () => {
         expect(Object.keys(res.body)).toContain('allInterviews');
       });
   });
+
+  test('Adds Reason for interview decline', async () => {
+    return await request(app)
+      .put('/api/v1/interview/why-decline/')
+      .send({
+        interviewId: interviewId,
+        declineReason: 'i just do not like the idea',
+      })
+      .expect(res => {
+        expect(res.status).toBe(200);
+        expect(res.body).toEqual(
+          expect.objectContaining({
+            message: 'Interview Invitation has been declined',
+          }),
+        );
+      });
+  });
 });
 
 describe('User Route', () => {
-  test('Has a /api endpoint', () => {
-    return request(app)
+  test('Has a /api endpoint', async () => {
+    return await request(app)
       .get('/api')
       .expect('Content-Type', /json/)
       .expect(200, { message: { hello: 'Hello World' } });
   });
 
-  test('Invite hiring partner', () => {
-    return request(app)
+  test('Invite hiring partner', async () => {
+    return await request(app)
       .post('/api/v1/users/hiring-partner/invite')
       .send({
         name: 'Flutterwave',
@@ -95,8 +116,8 @@ describe('User Route', () => {
       });
   });
 
-  test('logs in users', () => {
-    return request(app)
+  test('logs in users', async () => {
+    return await request(app)
       .post('/api/v1/users/login')
       .send({
         email: 'careers@flutterwave.com',
@@ -107,8 +128,8 @@ describe('User Route', () => {
       });
   });
 
-  test('lists all decadevs', () => {
-    return request(app)
+  test('lists all decadevs', async () => {
+    return await request(app)
       .get('/api/v1/users/decadevs')
       .expect(res => {
         expect(res.body.allDecadevs.length).toBe(4);
@@ -192,6 +213,7 @@ describe('Hiring Partners Verification', () => {
         numberOfTalentsRequired: '1-5',
         deadline: "Let's Talk First",
         password: 'mysecret2',
+        industry: 'Technology',
       })
       .expect(res => {
         expect(res.body).toEqual(
@@ -203,6 +225,7 @@ describe('Hiring Partners Verification', () => {
               active: false,
               name: 'Shola',
               verified: false,
+              industry: expect.any(String),
             },
           }),
         );
@@ -268,6 +291,7 @@ describe('Hiring Partners Verification', () => {
           numberOfTalentsRequired: expect.any(String),
           deadline: expect.any(String),
           token: expect.any(String),
+          industry: expect.any(String),
         });
       });
   });
@@ -312,8 +336,11 @@ describe('Updates Decadev Profile', () => {
               gender: expect.any(String),
               github: expect.any(String),
               interviews: [],
+              tests: expect.any(Array),
               joined: expect.any(String),
               linkedIn: expect.any(String),
+              education: expect.any(Array),
+              publications: expect.any(Array),
               location: expect.any(String),
               name: expect.any(String),
               phone: expect.any(String),
@@ -368,7 +395,10 @@ describe('Updates Decadev Profile', () => {
               experience: expect.any(Array),
               gender: expect.any(String),
               github: expect.any(String),
+              education: expect.any(Array),
+              publications: expect.any(Array),
               interviews: [],
+              tests: expect.any(Array),
               joined: expect.any(String),
               linkedIn: expect.any(String),
               location: expect.any(String),
@@ -418,7 +448,10 @@ describe('Updates Decadev Profile', () => {
               experience: expect.any(Array),
               gender: expect.any(String),
               github: expect.any(String),
+              education: expect.any(Array),
+              publications: expect.any(Array),
               interviews: [],
+              tests: expect.any(Array),
               joined: expect.any(String),
               linkedIn: expect.any(String),
               location: expect.any(String),
@@ -468,7 +501,10 @@ describe('Updates Decadev Profile', () => {
               experience: expect.any(Array),
               gender: expect.any(String),
               github: expect.any(String),
+              education: expect.any(Array),
+              publications: expect.any(Array),
               interviews: [],
+              tests: expect.any(Array),
               joined: expect.any(String),
               linkedIn: expect.any(String),
               location: expect.any(String),
@@ -540,9 +576,12 @@ describe('Updates Decadev Profile', () => {
               email: expect.any(String),
               employments: expect.any(Array),
               experience: expect.any(Array),
+              education: expect.any(Array),
+              publications: expect.any(Array),
               gender: expect.any(String),
               github: expect.any(String),
               interviews: [],
+              tests: expect.any(Array),
               joined: expect.any(String),
               linkedIn: expect.any(String),
               location: expect.any(String),
@@ -601,8 +640,11 @@ describe('Updates Decadev Profile', () => {
               employments: expect.any(Array),
               experience: expect.any(Array),
               gender: expect.any(String),
+              education: expect.any(Array),
+              publications: expect.any(Array),
               github: expect.any(String),
               interviews: [],
+              tests: expect.any(Array),
               joined: expect.any(String),
               linkedIn: expect.any(String),
               location: expect.any(String),
@@ -662,6 +704,9 @@ describe('Updates Decadev Profile', () => {
               gender: expect.any(String),
               github: expect.any(String),
               interviews: [],
+              tests: expect.any(Array),
+              education: expect.any(Array),
+              publications: expect.any(Array),
               joined: expect.any(String),
               linkedIn: expect.any(String),
               location: expect.any(String),
@@ -721,6 +766,9 @@ describe('Updates Decadev Profile', () => {
               gender: expect.any(String),
               github: expect.any(String),
               interviews: [],
+              education: expect.any(Array),
+              publications: expect.any(Array),
+              tests: expect.any(Array),
               joined: expect.any(String),
               linkedIn: expect.any(String),
               location: expect.any(String),
@@ -780,6 +828,9 @@ describe('Updates Decadev Profile', () => {
               gender: expect.any(String),
               github: expect.any(String),
               interviews: [],
+              education: expect.any(Array),
+              publications: expect.any(Array),
+              tests: expect.any(Array),
               joined: expect.any(String),
               linkedIn: expect.any(String),
               location: expect.any(String),
@@ -850,9 +901,12 @@ describe('Updates Decadev Profile', () => {
               email: expect.any(String),
               employments: expect.any(Array),
               experience: expect.any(Array),
+              education: expect.any(Array),
+              publications: expect.any(Array),
               gender: expect.any(String),
               github: expect.any(String),
               interviews: [],
+              tests: expect.any(Array),
               joined: expect.any(String),
               linkedIn: expect.any(String),
               location: expect.any(String),

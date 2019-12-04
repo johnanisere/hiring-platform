@@ -22,10 +22,14 @@ export default async function getAllDecadevs(req: Request, res: Response) {
           .populate('employments')
           .populate('skills')
           .populate('portfolio')
+          .populate('publications')
+          .populate('education')
       : await User.find({ role: 'dev', pod })
           .populate('employments')
           .populate('skills')
-          .populate('portfolio');
+          .populate('portfolio')
+          .populate('publications')
+          .populate('education');
 
     let sortedDevs = allDecadevs.sort(
       (a: IUser, b: IUser): number => a.count - b.count,
@@ -42,8 +46,12 @@ export default async function getAllDecadevs(req: Request, res: Response) {
 
     await Promise.all(updateCycle);
     (start += 4), (end += 4);
-
-    return res.send({ allDecadevs: fourDecaDev, pod });
+    console.log({ fourDecaDev });
+    return res.send({
+      allDecadevs: fourDecaDev,
+      pod,
+      total: allDecadevs.length,
+    });
   } catch (error) {
     return res.status(400).json({
       message: 'No Decadevs found!',

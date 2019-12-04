@@ -20,6 +20,8 @@ export default async function updatePortfolioInfo(
       .populate('employments')
       .populate('skills')
       .populate('portfolio')
+      .populate('publications')
+      .populate('education')
       .select({ __v: 0, _id: 0, createdAt: 0, updatedAt: 0, password: 0 });
     user ? await user.save() : console.log('Dev not found');
 
@@ -60,6 +62,8 @@ export async function newPortfolio(
       .populate('employments')
       .populate('skills')
       .populate('portfolio')
+      .populate('publications')
+      .populate('education')
       .select({ __v: 0, _id: 0, createdAt: 0, updatedAt: 0, password: 0 });
     if (user !== null) {
       const updatedUser = await user.save();
@@ -93,6 +97,8 @@ export async function deletePortfolio(
       .populate('employments')
       .populate('skills')
       .populate('portfolio')
+      .populate('publications')
+      .populate('education')
       .select({
         __v: 0,
         _id: 0,

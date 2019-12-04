@@ -31,6 +31,8 @@ export default [
     website: 'https://www.google.com/',
     location: 'Lagos',
     bio: 'A very good dev',
+    publications: [],
+    education: [],
     employments: [],
     skills: [],
     currentRole: 'JavaScript Developer in Seattle, WA, United States',
