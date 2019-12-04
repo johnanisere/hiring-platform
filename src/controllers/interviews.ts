@@ -46,6 +46,7 @@ export const scheduleInterview = async (req: Request, res: Response) => {
           endDate: savedInterview.endDate,
           description: savedInterview.description,
           id: savedInterview._id,
+          scheduled: savedInterview.startDate,
         },
         message: "Interview has been sent to Decadev's email",
       });

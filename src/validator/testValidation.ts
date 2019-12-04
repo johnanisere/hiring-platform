@@ -10,7 +10,7 @@ export const testValidation = (data: any) => {
       .string()
       .required()
       .email(),
-    duration: joi.string().required(),
+
     description: joi
       .string()
       .required()

@@ -6,7 +6,6 @@ const msg = (
   to: String,
   name: String,
   location: String,
-  duration: String,
   description: String,
   hiringPartner: String,
   nameOfOrg: String,
@@ -31,7 +30,7 @@ const msg = (
         dynamic_template_data: {
           name: name,
           location: location,
-          duration: duration,
+
           description: description,
           hiringPartner: hiringPartner,
           nameOfOrg: nameOfOrg,
@@ -57,7 +56,6 @@ async function scheduleTestMail(req: Request, decaDev: IUser, id: String) {
   let to = req.body.decaDev,
     name = decaDev.name,
     location = req.body.location,
-    duration = req.body.duration,
     description = req.body.description,
     hiringPartner = req.body.hiringPartner,
     nameOfOrg = req.body.nameOfOrg,
@@ -73,7 +71,6 @@ async function scheduleTestMail(req: Request, decaDev: IUser, id: String) {
       to,
       name,
       location,
-      duration,
       description,
       hiringPartner,
       nameOfOrg,

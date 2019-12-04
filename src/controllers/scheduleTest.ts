@@ -43,9 +43,9 @@ export default async function scheduleTest(req: Request, res: Response) {
         testData: {
           hiringPartner: savedTest.hiringPartner,
           decaDev: savedTest.decaDev,
-          duration: savedTest.duration,
           description: savedTest.description,
           id: savedTest._id,
+          scheduled: savedTest.startDate,
         },
         message: "Test details have been sent to Decadev's email",
       });

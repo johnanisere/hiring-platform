@@ -3,7 +3,7 @@ import mongoose, { Schema } from 'mongoose';
 export interface ITests extends mongoose.Document {
   hiringPartner: String;
   decaDev: String;
-  duration: String;
+
   description: String;
   nameOfOrg: String;
   testUrl?: String;
@@ -16,7 +16,7 @@ export interface ITests extends mongoose.Document {
 const TestsSchema: Schema = new Schema({
   hiringPartner: { type: String, required: true },
   decaDev: { type: String, required: true },
-  duration: { type: String, required: true },
+
   description: { type: String, required: true },
   nameOfOrg: { type: String, required: true },
   testUrl: { type: String },
