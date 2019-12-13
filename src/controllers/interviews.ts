@@ -5,8 +5,8 @@ import { interviewValidation } from '../validator/interviewValidation';
 import interviewInvitationMail from '../utils/interviewInvitation';
 export const scheduleInterview = async (req: Request, res: Response) => {
   try {
-    const { error } = interviewValidation(req.body);
-    if (error) return res.status(400).send(error.details[0].message);
+    const { error, value } = interviewValidation(req.body);
+    if (error) return res.status(400).send('Invalid Fields');
     const interview = new Interviews(req.body);
 
     try {

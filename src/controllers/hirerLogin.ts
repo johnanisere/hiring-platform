@@ -17,13 +17,15 @@ export default async function userLogin(req: Request, res: Response) {
     abortEarly: false,
   });
   if (error) {
-    res.status(400).send({ error });
+    return res.status(400).json({ error: error.details[0].message });
   }
 
   try {
     const requestedSingleHirer = await HiringPartner.findOne({
       email: value.email,
-    }).select({ __v: 0, _id: 0, createdAt: 0, updatedAt: 0 });
+    })
+      .populate('interviews')
+      .select({ __v: 0, _id: 0, createdAt: 0, updatedAt: 0 });
     if (!requestedSingleHirer || requestedSingleHirer.active === false) {
       res.status(404).send({ error: 'user does not exist' });
       return;
@@ -54,7 +56,7 @@ export default async function userLogin(req: Request, res: Response) {
       }
     }
   } catch (err) {
-    res.status(400).send({ err });
+    res.status(400).send({ actual: err.message, message: 'Login Error!' });
     return;
   }
 }

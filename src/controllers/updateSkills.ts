@@ -33,7 +33,7 @@ export default async function updateSkillInfo(
   } catch (err) {
     res.status(400).send({
       message: 'Skill Info update failed!!!',
-      error: err.message,
+      actual: err.message,
     });
     return;
   }
@@ -77,7 +77,7 @@ export async function newSkill(
   } catch (err) {
     res.status(400).send({
       message: 'Skill Info update failed!!!',
-      error: err.message,
+      actual: err.message,
     });
     return;
   }
@@ -101,7 +101,7 @@ export async function deleteSkill(
       .populate('education')
       .select({ __v: 0, _id: 0, createdAt: 0, updatedAt: 0, password: 0 });
 
-    user ? await user.save() : console.log('Dev not found');
+    user ? await user.save() : res.send('Dev not found');
     res.status(200).send({
       message: 'Skill successfully deleted',
       user,
@@ -110,7 +110,7 @@ export async function deleteSkill(
   } catch (err) {
     res.status(400).send({
       message: 'Skill Info delete failed!!!',
-      error: err.message,
+      actual: err.message,
     });
     return;
   }

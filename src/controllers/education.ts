@@ -79,9 +79,9 @@ export async function newEducation(
 
     return;
   } catch (err) {
-    res.status(400).send({
+    res.status(400).json({
       message: 'Education update failed!!!',
-      error: err.message,
+      actual: err.message,
     });
     return;
   }
@@ -105,7 +105,7 @@ export async function deleteEducation(
       .populate('education')
       .select({ __v: 0, _id: 0, createdAt: 0, updatedAt: 0, password: 0 });
 
-    user ? await user.save() : console.log('Dev not found');
+    user ? await user.save() : res.send('Dev not found');
     res.status(200).send({
       message: 'Education successfully deleted',
       user,
@@ -114,7 +114,7 @@ export async function deleteEducation(
   } catch (err) {
     res.status(400).send({
       message: 'Education delete failed!!!',
-      error: err.message,
+      actual: err.message,
     });
     return;
   }

@@ -23,7 +23,8 @@ export async function whyDecline(req: Request, res: Response) {
   } catch (error) {
     res.status(400).send({
       see: 'seems to be an error in whyDecline controller',
-      error: error.message,
+      actual: error.message,
+      message: "Error! Process failed"
     });
   }
 }
