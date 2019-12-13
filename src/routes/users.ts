@@ -32,6 +32,7 @@ import updateEducation, {
 
 import authCurrentUser from '../controllers/authCurrentUser';
 import hireDev from '../controllers/hireDev';
+import allDevs from '../controllers/allDecadevs';
 
 const router = Router();
 
@@ -58,7 +59,8 @@ router
   .put('/update/educationInfo/:email', authMiddleware, updateEducation)
   .put('/update/new-education/:email', authMiddleware, newEducation)
   .put('/update/delete-education/:email', authMiddleware, deleteEducation)
-
+  .put('/hire-dev', authMiddleware, hireDev)
+  .get('/all', authMiddleware, allDevs)
   .post('/me', authCurrentUser);
 
 export default router;
