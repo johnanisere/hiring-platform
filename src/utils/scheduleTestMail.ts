@@ -5,6 +5,7 @@ import { IUser } from '../models/User';
 const msg = (
   to: String,
   name: String,
+  duration: String,
   location: String,
   description: String,
   hiringPartner: String,
@@ -30,7 +31,7 @@ const msg = (
         dynamic_template_data: {
           name: name,
           location: location,
-
+          duration: duration,
           description: description,
           hiringPartner: hiringPartner,
           nameOfOrg: nameOfOrg,
@@ -64,6 +65,7 @@ async function scheduleTestMail(req: Request, decaDev: IUser, id: String) {
     endTime = req.body.endTime,
     startDate = req.body.startDate,
     endDate = req.body.endDate,
+    duration = req.body.duration,
     devID = id;
 
   await sendMail(
@@ -71,6 +73,7 @@ async function scheduleTestMail(req: Request, decaDev: IUser, id: String) {
       to,
       name,
       location,
+      duration,
       description,
       hiringPartner,
       nameOfOrg,
