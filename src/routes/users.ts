@@ -31,6 +31,7 @@ import updateEducation, {
 } from '../controllers/education';
 
 import authCurrentUser from '../controllers/authCurrentUser';
+import hireDev from '../controllers/hireDev';
 
 const router = Router();
 
