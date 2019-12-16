@@ -11,10 +11,8 @@ import { IUser } from '../models/User';
 
 export default async function getAllDecadevs(req: Request, res: Response) {
   let { pod } = req.query;
-  console.log({ pod });
-  pod = pod ? `${pod}`.toLowerCase() : '';
 
-  console.log({ pod });
+  pod = pod ? `${pod}`.toLowerCase() : '';
 
   try {
     const onPodNotPassed = !pod || pod === 'all';
