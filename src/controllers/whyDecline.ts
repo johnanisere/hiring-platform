@@ -25,7 +25,9 @@ export async function whyDecline(req: Request, res: Response) {
     });
     return;
   } catch (error) {
-    res.status(400).json({
+    if (error.status === 401 || error.status === 404)
+      return 'Error! Process failed';
+    return res.status(400).json({
       see: 'seems to be an error in whyDecline controller',
       actual: error.message,
       message: 'Error! Process failed',
