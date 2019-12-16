@@ -6,7 +6,7 @@ export interface IHiringPartner extends mongoose.Document {
   email: String;
   nameOfOrg: String;
   designation: String;
-  Website?: String;
+  website?: String;
   industry: String;
   phone: String;
   numberOfTalentsRequired: String;
@@ -14,6 +14,8 @@ export interface IHiringPartner extends mongoose.Document {
   verified: Boolean;
   active: Boolean;
   password: String;
+  interestLanguage: Array<String>;
+  interviews: Array<String>;
 }
 
 const HiringPartnerSchema: Schema = new Schema(
@@ -56,6 +58,11 @@ const HiringPartnerSchema: Schema = new Schema(
     password: {
       type: String,
     },
+    interestLanguage: {
+      type: [String],
+      required: true,
+    },
+    interviews: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Interviews' }],
   },
   { timestamps: true },
 );

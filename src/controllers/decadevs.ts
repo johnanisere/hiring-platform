@@ -18,13 +18,13 @@ export default async function getAllDecadevs(req: Request, res: Response) {
     const onPodNotPassed = !pod || pod === 'all';
 
     let allDecadevs = onPodNotPassed
-      ? await User.find({ role: 'dev' })
+      ? await User.find({ role: 'dev', hired: false })
           .populate('employments')
           .populate('skills')
           .populate('portfolio')
           .populate('publications')
           .populate('education')
-      : await User.find({ role: 'dev', pod })
+      : await User.find({ role: 'dev', pod, hired: false })
           .populate('employments')
           .populate('skills')
           .populate('portfolio')
@@ -46,7 +46,7 @@ export default async function getAllDecadevs(req: Request, res: Response) {
 
     await Promise.all(updateCycle);
     (start += 4), (end += 4);
-    console.log({ fourDecaDev });
+
     return res.send({
       allDecadevs: fourDecaDev,
       pod,

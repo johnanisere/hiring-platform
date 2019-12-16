@@ -17,7 +17,7 @@ export default async function userLogin(req: Request, res: Response) {
     abortEarly: false,
   });
   if (error) {
-    res.status(400).send({ error });
+    res.status(400).send({ error: error.details[0].message });
   }
 
   try {
@@ -51,7 +51,6 @@ export default async function userLogin(req: Request, res: Response) {
         );
         const { password, ...rest } = suspected;
 
-        console.log({ rest });
         res
           .header('auth-token', token)
           .status(200)
@@ -59,8 +58,8 @@ export default async function userLogin(req: Request, res: Response) {
       }
     }
     return;
-  } catch (err) {
-    res.status(400).send({ err });
+  } catch (error) {
+    res.status(400).send({ message: 'Network Error', actual: error.message });
     return;
   }
 }

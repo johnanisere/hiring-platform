@@ -36,14 +36,17 @@ export default async function updateUserInfo(
     } catch (err) {
       res.send({
         see: 'seems to be an error with the forIn in UpdateUserInfo controller',
-        error: err.message,
+        actual: err.message,
       });
       return;
     }
+    return;
   } catch (err) {
-    res.status(400).send({
+    if (err.status === 401 || err.status === 404)
+      return 'Error! Process failed';
+    return res.status(400).send({
       message: 'User Info update failed!!!',
-      error: err.message,
+      actual: err.message,
     });
     return;
   }

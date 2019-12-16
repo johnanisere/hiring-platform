@@ -17,10 +17,11 @@ export const testValidation = (data: any) => {
       .max(500),
     nameOfOrg: joi.string().required(),
     testUrl: joi.string(),
-    startTime: joi.string().required(),
-    endTime: joi.string().required(),
-    startDate: joi.string().required(),
-    endDate: joi.string().required(),
+    startTime: joi.string(),
+    endTime: joi.string(),
+    startDate: joi.string(),
+    endDate: joi.string(),
+    duration: joi.string(),
   };
 
   return joi.validate(data, schema);

@@ -11,7 +11,10 @@ export async function getAllUnactivated(_req: Request, res: Response) {
     res.status(204).send({ message: 'No unactivated Hiring Partner' });
     return;
   } catch (err) {
-    res.status(400).send(err.message);
+    res.status(400).send({
+      actual: err.message,
+      message: 'Error getting all inactive partners',
+    });
     return;
   }
 }
