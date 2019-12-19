@@ -10,6 +10,10 @@ export default async function scheduleTest(req: Request, res: Response) {
     if (error) return res.status(400).send(error.details[0].message);
     const test = new Test(req.body);
 
+    const testDuration = req.body.duration
+      ? req.body.duration
+      : `${req.body.startTime} on ${req.body.startDate}  -  ${req.body.endTime} on ${req.body.endDate}`;
+
     try {
       const hiringPartner = await User.findOne({
         email: req.body.hiringPartner,
@@ -30,7 +34,7 @@ export default async function scheduleTest(req: Request, res: Response) {
       if (decaDev) {
         decaDev.tests.push(test._id);
         await decaDev.save();
-        scheduleTestMail(req, decaDev, test._id);
+        scheduleTestMail(req, decaDev, testDuration, test._id);
       }
     } catch (error) {
       res
