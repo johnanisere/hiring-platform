@@ -6,6 +6,7 @@ import userLogin from '../controllers/login';
 import signUp from '../controllers/signUp';
 import changePassword from '../controllers/changePassword';
 import authMiddleware from '../middleware/auth';
+import hiringPartnerAuthMiddleware from '../middleware/partnerAuth';
 import updateUserInfo from '../controllers/updateUserInfo';
 import updateEmployment, {
   newEmployment,
@@ -34,12 +35,15 @@ import authCurrentUser from '../controllers/authCurrentUser';
 import hireDev from '../controllers/hireDev';
 import allDevs from '../controllers/allDecadevs';
 
+import getHirer from '../controllers/getHirer';
+
 const router = Router();
 
 router
   .post('/signup', signUp)
   .post('/login', userLogin)
-  .get('/decadevs', getAllDecadevs)
+  .get('/decadevs', hiringPartnerAuthMiddleware, getAllDecadevs)
+  .get('/getpartner', hiringPartnerAuthMiddleware, getHirer)
   .post('/hiring-partner/invite', inviteHiringPartner)
   .put('/change-password', authMiddleware, changePassword)
   .put('/update-password/', authMiddleware, updatePassword)
