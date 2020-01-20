@@ -51,9 +51,6 @@ export default async function getAllDecadevs(req: Request, res: Response) {
       returnNew = false;
     }
 
-    console.log(thePod.length);
-    console.log(returnNew);
-
     await partner!.save();
 
     if (returnNew) {
