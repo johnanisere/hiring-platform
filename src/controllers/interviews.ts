@@ -7,9 +7,7 @@ import interviewInvitationMail from '../utils/interviewInvitation';
 export const scheduleInterview = async (req: Request, res: Response) => {
   try {
     const { error, value } = interviewValidation(req.body);
-    console.log(error);
     if (error) return res.status(400).send('Invalid Fields');
-
     const interview = new Interviews(req.body);
     const savedInterview = await interview.save();
 
