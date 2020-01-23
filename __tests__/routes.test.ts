@@ -128,45 +128,45 @@ describe('User Route', () => {
       });
   });
 
-  test('lists all decadevs', async () => {
-    return await request(app)
-      .get('/api/v1/users/decadevs')
-      .expect(res => {
-        expect(res.body.allDecadevs.length).toBe(4);
+  // test('lists all decadevs', async () => {
+  //   return await request(app)
+  //     .get('/api/v1/users/decadevs')
+  //     .expect(res => {
+  //       expect(res.body.allDecadevs.length).toBe(4);
 
-        expect(res.status).toBe(200);
-        expect(Object.keys(res.body)).toContain('allDecadevs');
-        expect(res.body.allDecadevs).toHaveLength(4);
-      });
-  });
+  //       expect(res.status).toBe(200);
+  //       expect(Object.keys(res.body)).toContain('allDecadevs');
+  //       expect(res.body.allDecadevs).toHaveLength(4);
+  //     });
+  // });
 
-  test('lists java decadevs', async () => {
-    const pod = 'java';
-    const decadevs = await request(app).get(
-      `/api/v1/users/decadevs?pod=${pod}`,
-    );
+  // test('lists java decadevs', async () => {
+  //   const pod = 'java';
+  //   const decadevs = await request(app).get(
+  //     `/api/v1/users/decadevs?pod=${pod}`,
+  //   );
 
-    for (let i = 0; i < JSON.parse(decadevs.text).allDecadevs.length; i++) {
-      expect(JSON.parse(decadevs.text).allDecadevs[i]).toHaveProperty(
-        'pod',
-        'java',
-      );
-    }
-  });
+  //   for (let i = 0; i < JSON.parse(decadevs.text).allDecadevs.length; i++) {
+  //     expect(JSON.parse(decadevs.text).allDecadevs[i]).toHaveProperty(
+  //       'pod',
+  //       'java',
+  //     );
+  //   }
+  // });
 
-  test('lists nodejs decadevs', async () => {
-    const pod = 'nodejs';
-    const decadevs = await request(app).get(
-      `/api/v1/users/decadevs?pod=${pod}`,
-    );
+  // test('lists nodejs decadevs', async () => {
+  //   const pod = 'nodejs';
+  //   const decadevs = await request(app).get(
+  //     `/api/v1/users/decadevs?pod=${pod}`,
+  //   );
 
-    for (let i = 0; i < JSON.parse(decadevs.text).allDecadevs.length; i++) {
-      expect(JSON.parse(decadevs.text).allDecadevs[i]).toHaveProperty(
-        'pod',
-        'nodejs',
-      );
-    }
-  });
+  //   for (let i = 0; i < JSON.parse(decadevs.text).allDecadevs.length; i++) {
+  //     expect(JSON.parse(decadevs.text).allDecadevs[i]).toHaveProperty(
+  //       'pod',
+  //       'nodejs',
+  //     );
+  //   }
+  // });
 
   test('user can sign up', () => {
     return request(app)
