@@ -24,3 +24,4 @@ export default async function allDevs(_req: Request, res: Response) {
     });
   }
 }
+//
