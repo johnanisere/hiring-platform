@@ -22,7 +22,8 @@ export default function authCurrentUser(req: Request, res: Response) {
       .send({ ...user, token });
   } catch (error) {
     res.status(400).send({
-      error,
+      actual: error.message,
+      message: 'Authentication Error',
     });
   }
 }

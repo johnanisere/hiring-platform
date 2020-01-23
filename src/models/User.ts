@@ -40,6 +40,7 @@ export interface IUser extends mongoose.Document {
   experiences: Array<IExperience>;
   employments: Array<IEmployment>;
   pod: String;
+  hired: Boolean;
 }
 
 const UserSchema: Schema = new Schema(
@@ -94,6 +95,10 @@ const UserSchema: Schema = new Schema(
     experience: { type: [ExperienceSchema] },
     employments: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Employment' }],
     pod: { type: String },
+    hired: {
+      type: Boolean,
+      default: false,
+    },
   },
   { timestamps: true },
 );

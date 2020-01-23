@@ -26,7 +26,8 @@ export default async function inviteHiringPartner(req: Request, res: Response) {
     } catch (err) {
       res.status(400).send({
         see: 'seems to be an issue with sending an email',
-        error: err.message,
+        actual: err.message,
+        message: 'Unable to send invite emails',
       });
     }
     res.json({
@@ -36,6 +37,8 @@ export default async function inviteHiringPartner(req: Request, res: Response) {
     });
     return;
   } catch (err) {
-    res.status(400).send(err.message);
+    res
+      .status(400)
+      .json({ actual: err.message, message: 'Error! Process failed' });
   }
 }

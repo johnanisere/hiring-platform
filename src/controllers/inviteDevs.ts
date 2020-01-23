@@ -7,7 +7,7 @@ import { PRIVATE_KEY } from '../config';
 const sendInviteEmail = (emails: []) => {
   const invites = emails.map(async (email: string) => {
     let array = email.split(',');
-    const user = await new User({
+    const user = new User({
       password: 'newPassword',
       role: 'dev',
       name: array[0],
@@ -40,6 +40,8 @@ export const inviteDevs = async (req: Request, res: Response) => {
       message: `Your invites have been sent`,
     });
   } catch (error) {
-    return res.status(404).json(`Error: ${error}`);
+    return res
+      .status(404)
+      .json({ actual: error.message, message: 'Error! Process failed' });
   }
 };
