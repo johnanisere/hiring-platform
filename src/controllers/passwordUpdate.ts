@@ -9,6 +9,7 @@ export default async function updatePassword(
 ) {
   try {
     const { password, confirmPassword, email } = req.body;
+    console.log({ email, password, confirmPassword });
     if (password !== confirmPassword)
       return res.status(400).json({ error: "Password doesn't match" });
 
@@ -17,7 +18,7 @@ export default async function updatePassword(
     const user = await User.findOneAndUpdate({ email }, { password: hash });
 
     if (!user) {
-      res.send({ message: 'User not found!!!' });
+      res.send('User not found!!!');
       return;
     } else {
       const updated = await user.save();
@@ -34,7 +35,7 @@ export default async function updatePassword(
   } catch (err) {
     res.status(400).send({
       message: 'Password update failed!!!',
-      actual: err.message,
+      error: err.message,
     });
     return;
   }
