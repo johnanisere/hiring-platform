@@ -30,7 +30,7 @@ export async function interviewInviteResponse(req: Request, res: Response) {
       ).exec();
 
       res.status(200).send({
-        message: 'Interview Invitation has beeen accepted',
+        message: 'Interview Invitation has been accepted',
       });
       return;
     } else if (intent === 'false') {
@@ -58,7 +58,8 @@ export async function interviewInviteResponse(req: Request, res: Response) {
   } catch (error) {
     res.status(400).send({
       see: 'seems to be an error in the interviewInviteResponse controller',
-      message: error.message,
+      actual: error.message,
+      message: 'Error! Could not send response',
     });
     return;
   }

@@ -6,38 +6,36 @@ export async function activateHirer(req: Request, res: Response) {
   try {
     const hirer = await HiringPartner.findOne({ email: req.body.email });
 
-    if (hirer) {
-      await HiringPartner.updateOne(
-        {
-          email: req.body.email,
-        },
-        {
-          active: true,
-        },
-      ).exec();
-
-      await hirer.save();
-      try {
-        accountActivateMail(req);
-      } catch (err) {
-        res.status(400).send({
-          see: 'seems to be an issue with sending an email',
-          error: err.message,
-        });
-      }
-
-      res.status(200).send({
-        message: `${req.body.name} has been activated!`,
+    if (!hirer)
+      return res.status(400).json({
+        message: `${req.body.name} account not found`,
       });
-      return;
-    } else {
-      res.status(200).send({
-        message: `${req.body.name} account activation has been unsuccessful!`,
+    await HiringPartner.updateOne(
+      {
+        email: req.body.email,
+      },
+      {
+        active: true,
+      },
+    ).exec();
+
+    await hirer.save();
+    try {
+      accountActivateMail(req);
+    } catch (err) {
+      res.status(400).send({
+        see: 'seems to be an issue with sending an email',
+        actual: err.message,
+        message: 'Unable to send email!',
       });
-      return;
     }
+
+    res.status(200).send({
+      message: `${req.body.name} has been activated!`,
+    });
+    return;
   } catch (err) {
-    res.status(400).send(err.message);
+    res.status(400).json({ actual: err.message, message: 'Network Error' });
     return;
   }
 }

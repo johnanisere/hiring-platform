@@ -8,9 +8,10 @@ export default async function getAllInterviews(_req: Request, res: Response) {
       allInterviews,
     });
   } catch (error) {
-    res.status(400).send({
+    res.status(400).json({
       see: 'seems to be an error in the getAllInterviews controller',
-      message: error.message,
+      actual: error.message,
+      message: 'Error getting all interviews',
     });
     return;
   }

@@ -23,7 +23,7 @@ export default async function updatePortfolioInfo(
       .populate('publications')
       .populate('education')
       .select({ __v: 0, _id: 0, createdAt: 0, updatedAt: 0, password: 0 });
-    user ? await user.save() : console.log('Dev not found');
+    user ? await user.save() : res.send('Dev not found');
 
     res.status(200).send({
       message: 'Details have been successfully updated',
@@ -32,7 +32,7 @@ export default async function updatePortfolioInfo(
   } catch (err) {
     res.status(400).send({
       message: 'Portfolio Info update failed!!!',
-      error: err.message,
+      actual: err.message,
     });
     return;
   }
@@ -75,9 +75,9 @@ export async function newPortfolio(
       return;
     }
   } catch (err) {
-    res.status(400).send({
+    res.status(400).json({
       message: 'Portfolio Info update failed!!!',
-      error: err.message,
+      actual: err.message,
     });
     return;
   }
@@ -107,16 +107,16 @@ export async function deletePortfolio(
         password: 0,
       });
 
-    user ? await user.save() : console.log('Dev not found');
+    user ? await user.save() : res.send('Dev not found');
     res.status(200).send({
       message: 'Project successfully deleted',
       user,
     });
     return;
   } catch (err) {
-    res.status(400).send({
+    res.status(400).json({
       message: 'Portfolio Info delete failed!!!',
-      error: err.message,
+      actual: err.message,
     });
     return;
   }

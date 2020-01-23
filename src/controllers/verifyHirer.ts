@@ -25,7 +25,9 @@ export default async function verifyHirer(req: Request, res: Response) {
     }
     return;
   } catch (err) {
-    res.status(400).send(err.message);
+    res
+      .status(400)
+      .send({ actual: err.message, message: 'Error! Process failed' });
     return;
   }
 }
