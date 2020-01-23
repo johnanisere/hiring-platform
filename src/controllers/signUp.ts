@@ -14,7 +14,7 @@ export default async function signUp(
     if (iUser) {
       res.status(400).json({ error: ` Email ${iUser.email} already exists.` });
     } else {
-      const user = new User(req.body);
+      const user = await new User(req.body);
       user.profilePhoto =
         'https://res.cloudinary.com/demo/image/upload/w_150,h_150,c_thumb,g_face,r_20,e_sepia/l_cloudinary_icon,g_south_east,x_5,y_5,w_50,o_60,e_brightness:200/a_10/front_face.png';
       user.role = 'dev';
@@ -41,7 +41,7 @@ export default async function signUp(
     }
     return;
   } catch (error) {
-    res.status(400).json({ actual: error.message, message: 'Signup failed!' });
+    res.status(400).send(error);
     return;
   }
 }

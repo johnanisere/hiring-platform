@@ -33,6 +33,7 @@ async function devsMailInvite(token: string, name: string, email: string) {
     link = `${process.env.CLIENT_URL}/update-password/${token}/${email}`;
 
   await sendMail(msg(to, link, name));
+  console.log('Done');
 }
 
 export default devsMailInvite;
