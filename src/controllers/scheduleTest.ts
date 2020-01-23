@@ -10,10 +10,6 @@ export default async function scheduleTest(req: Request, res: Response) {
     if (error) return res.status(400).send(error.details[0].message);
     const test = new Test(req.body);
 
-    const testDuration = req.body.duration
-      ? req.body.duration
-      : `${req.body.startTime} on ${req.body.startDate}  -  ${req.body.endTime} on ${req.body.endDate}`;
-
     try {
       const hiringPartner = await User.findOne({
         email: req.body.hiringPartner,
@@ -23,7 +19,7 @@ export default async function scheduleTest(req: Request, res: Response) {
       hiringPartner && (await hiringPartner.save());
     } catch (error) {
       res.status(400).send({
-        actaual: error,
+        error,
         message: 'unable to find hirer',
       });
     }
@@ -34,12 +30,10 @@ export default async function scheduleTest(req: Request, res: Response) {
       if (decaDev) {
         decaDev.tests.push(test._id);
         await decaDev.save();
-        scheduleTestMail(req, decaDev, testDuration, test._id);
+        scheduleTestMail(req, decaDev, test._id);
       }
     } catch (error) {
-      res
-        .status(400)
-        .send({ actual: error, message: 'unable to find decadev' });
+      res.status(400).send({ error, message: 'unable to find decadev' });
     }
 
     try {
@@ -56,16 +50,12 @@ export default async function scheduleTest(req: Request, res: Response) {
         message: "Test details have been sent to Decadev's email",
       });
     } catch (error) {
-      return res.status(404).json({
-        actual: error.message,
-        message: 'Unable to save tests',
-      });
+      return res.status(404).json(`Error: ${error}`);
     }
   } catch (err) {
-    res.send(400).send({
-      message: 'Please make sure you have the right inputs',
-      actual: err.message,
-    });
+    res
+      .send(400)
+      .send({ message: 'Please make sure you have the right inputs' });
     return;
   }
 }

@@ -68,3 +68,4 @@ router
   .post('/me', authCurrentUser);
 
 export default router;
+//vhj

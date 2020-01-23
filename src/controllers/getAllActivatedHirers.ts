@@ -11,13 +11,10 @@ export default async function getAllActivatedHirers(
       res.status(200).send(activatedHirers);
       return;
     }
-    res.status(204).json({ message: 'No activated Hiring Partner' });
+    res.status(204).send({ message: 'No activated Hiring Partner' });
     return;
   } catch (err) {
-    res.status(400).json({
-      actual: err.message,
-      message: 'Error getting all activated partners',
-    });
+    res.status(400).send(err.message);
     return;
   }
 }

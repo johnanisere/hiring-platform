@@ -1,7 +1,6 @@
 import request from 'supertest';
 import app from '../src/app';
 import seedUsers from '../src/db/seed/index';
-import { seedPartners } from '../src/db/seed/index';
 
 const { connectMongoDB, disconnectMongoDB } = require('../testSetup/mongodb');
 
@@ -10,7 +9,6 @@ const { connectMongoDB, disconnectMongoDB } = require('../testSetup/mongodb');
 beforeAll(async () => {
   await connectMongoDB();
   seedUsers();
-  await seedPartners();
 });
 
 afterAll(() => disconnectMongoDB());
@@ -176,11 +174,21 @@ describe('Hiring Partners Verification', () => {
         deadline: "Let's Talk First",
         password: 'mysecret2',
         industry: 'Technology',
-        interestLanguage: [],
       })
       .expect(res => {
-        expect(Object.keys(res.body)).toContain('message');
-        expect(Object.keys(res.body)).toContain('token');
+        expect(res.body).toEqual(
+          expect.objectContaining({
+            message:
+              'Success!. An email has been sent to you. Please click link to verify your account.',
+            token: expect.any(String),
+            data: {
+              active: false,
+              name: 'Shola',
+              verified: false,
+              industry: expect.any(String),
+            },
+          }),
+        );
       });
   });
   test('get all unactivated hirers', () => {
@@ -362,7 +370,6 @@ describe('Updates Decadev Profile', () => {
               stackOverflow: expect.any(String),
               website: expect.any(String),
               pod: expect.any(String),
-              hired: expect.any(Boolean),
             },
           }),
         );
@@ -423,7 +430,6 @@ describe('Updates Decadev Profile', () => {
               stackOverflow: expect.any(String),
               website: expect.any(String),
               pod: expect.any(String),
-              hired: expect.any(Boolean),
             },
           }),
         );
@@ -477,7 +483,6 @@ describe('Updates Decadev Profile', () => {
               stackOverflow: expect.any(String),
               website: expect.any(String),
               pod: expect.any(String),
-              hired: expect.any(Boolean),
             },
           }),
         );
@@ -531,7 +536,6 @@ describe('Updates Decadev Profile', () => {
               stackOverflow: expect.any(String),
               website: expect.any(String),
               pod: expect.any(String),
-              hired: expect.any(Boolean),
             },
           }),
         );
@@ -609,7 +613,6 @@ describe('Updates Decadev Profile', () => {
               stackOverflow: expect.any(String),
               website: expect.any(String),
               pod: expect.any(String),
-              hired: expect.any(Boolean),
             },
           }),
         );
@@ -673,7 +676,6 @@ describe('Updates Decadev Profile', () => {
               stackOverflow: expect.any(String),
               website: expect.any(String),
               pod: expect.any(String),
-              hired: expect.any(Boolean),
             },
           }),
         );
@@ -736,7 +738,6 @@ describe('Updates Decadev Profile', () => {
               stackOverflow: expect.any(String),
               website: expect.any(String),
               pod: expect.any(String),
-              hired: expect.any(Boolean),
             },
           }),
         );
@@ -799,7 +800,6 @@ describe('Updates Decadev Profile', () => {
               stackOverflow: expect.any(String),
               website: expect.any(String),
               pod: expect.any(String),
-              hired: expect.any(Boolean),
             },
           }),
         );
@@ -862,7 +862,6 @@ describe('Updates Decadev Profile', () => {
               stackOverflow: expect.any(String),
               website: expect.any(String),
               pod: expect.any(String),
-              hired: expect.any(Boolean),
             },
           }),
         );
@@ -939,7 +938,6 @@ describe('Updates Decadev Profile', () => {
               stackOverflow: expect.any(String),
               website: expect.any(String),
               pod: expect.any(String),
-              hired: expect.any(Boolean),
             },
           }),
         );

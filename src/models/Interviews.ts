@@ -29,7 +29,7 @@ const InterviewsSchema: Schema = new Schema({
   accepted: { type: Boolean, default: false },
   declined: { type: Boolean, default: false },
   pending: { type: Boolean, default: true },
-  declineReason: { type: String, enum: ['Time Conflict', 'Health Challenge'] },
+  declineReason: { type: String },
 });
 
 export default mongoose.model<IInterviews>('Interviews', InterviewsSchema);

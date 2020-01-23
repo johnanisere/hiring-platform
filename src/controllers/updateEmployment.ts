@@ -23,7 +23,7 @@ export default async function updateEmploymentInfo(
       .populate('publications')
       .populate('education')
       .select({ __v: 0, _id: 0, createdAt: 0, updatedAt: 0, password: 0 });
-    user ? await user.save() : res.send('Dev not found');
+    user ? await user.save() : console.log('Dev not found');
 
     res.status(200).send({
       message: 'Details have been successfully updated',
@@ -32,7 +32,7 @@ export default async function updateEmploymentInfo(
   } catch (err) {
     res.status(400).send({
       message: 'Employment Info update failed!!!',
-      actual: err.message,
+      error: err.message,
     });
     return;
   }
@@ -79,7 +79,7 @@ export async function newEmployment(
   } catch (err) {
     res.status(400).send({
       message: 'Employment Info update failed!!!',
-      actual: err.message,
+      error: err.message,
     });
     return;
   }
@@ -103,7 +103,7 @@ export async function deleteEmployment(
       .populate('education')
       .select({ __v: 0, _id: 0, createdAt: 0, updatedAt: 0, password: 0 });
 
-    user ? await user.save() : res.send('Dev not found');
+    user ? await user.save() : console.log('Dev not found');
     res.status(200).send({
       message: 'Experience successfully deleted',
       user,
@@ -112,7 +112,7 @@ export async function deleteEmployment(
   } catch (err) {
     res.status(400).send({
       message: 'Employment Info delete failed!!!',
-      actual: err.message,
+      error: err.message,
     });
     return;
   }

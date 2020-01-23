@@ -13,7 +13,7 @@ export interface IHiringPartner extends mongoose.Document {
   email: String;
   nameOfOrg: String;
   designation: String;
-  website?: String;
+  Website?: String;
   industry: String;
   phone: String;
   numberOfTalentsRequired: String;
@@ -80,11 +80,6 @@ const HiringPartnerSchema: Schema = new Schema(
     password: {
       type: String,
     },
-    interestLanguage: {
-      type: [String],
-      required: true,
-    },
-    interviews: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Interviews' }],
   },
   { timestamps: true },
 );
