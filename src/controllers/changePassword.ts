@@ -15,9 +15,9 @@ export default async function changePassword(req: Request, res: Response) {
     await User.updateOne({ _id: checkUser._id }, { $set: { password: hash } });
     return res.status(200).json({ message: `Password updated successfully` });
   } catch (err) {
+    console.log(err.message);
     return res.status(400).json({
-      message: 'Password update failed!!!',
-      error: err.message,
+      error: 'Password update failed!!!',
     });
   }
 }

@@ -11,8 +11,6 @@ import Publications from '../../models/Publications';
 import publications from './data/publications';
 import Education from '../../models/Education';
 import education from './data/education';
-import hiringPartner from './data/hiring-partner';
-import HiringPartner from '../../models/HiringPartner';
 
 const cleanDb = async () => {
   try {
@@ -28,24 +26,12 @@ const cleanDb = async () => {
 export const seedUsers = async () => {
   try {
     const allUsers = users.map(async user => {
-      const newUser = new User(user);
+      const newUser = await new User(user);
       return newUser.save();
     });
-    const cycle = new Cycle();
+    const cycle = await new Cycle();
     await cycle.save();
     const res = await Promise.all(allUsers);
-    return res;
-  } catch (err) {
-    return err;
-  }
-};
-export const seedPartners = async () => {
-  try {
-    const allPartners = hiringPartner.map(async partner => {
-      const newPartner = new HiringPartner(partner);
-      return await newPartner.save();
-    });
-    const res = await Promise.all(allPartners);
     return res;
   } catch (err) {
     return err;
@@ -135,9 +121,6 @@ const seed = () => {
     .then(() => {
       return seedUsers();
     })
-    .then(() => {
-      return seedPartners();
-    })
     .then(res => {
       console.log(`Database has been seeded with ${res.length} users`);
     })
@@ -145,8 +128,6 @@ const seed = () => {
       return seedEmployments();
     })
     .then(() => {
-      {
-      }
       return seedSkills();
     })
     .then(() => {

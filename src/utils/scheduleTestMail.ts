@@ -5,12 +5,15 @@ import { IUser } from '../models/User';
 const msg = (
   to: String,
   name: String,
-  duration: String,
   location: String,
   description: String,
   hiringPartner: String,
   nameOfOrg: String,
   testUrl: String,
+  startTime: String,
+  endTime: String,
+  startDate: String,
+  endDate: String,
   id: String,
 ) => {
   return {
@@ -26,12 +29,16 @@ const msg = (
         ],
         dynamic_template_data: {
           name: name,
-          duration: duration,
           location: location,
+
           description: description,
           hiringPartner: hiringPartner,
           nameOfOrg: nameOfOrg,
           testUrl: testUrl,
+          startTime: startTime,
+          endTime: endTime,
+          startDate: startDate,
+          endDate: endDate,
           Sender_Name: 'Decagon Institute',
           Sender_Address:
             '2nd Floor Traditions Building Familoni Street, off Lekki - Epe Express',
@@ -45,32 +52,33 @@ const msg = (
   };
 };
 
-async function scheduleTestMail(
-  req: Request,
-  decaDev: IUser,
-  testDuration: String,
-  id: String,
-) {
+async function scheduleTestMail(req: Request, decaDev: IUser, id: String) {
   let to = req.body.decaDev,
     name = decaDev.name,
-    duration = testDuration,
     location = req.body.location,
     description = req.body.description,
     hiringPartner = req.body.hiringPartner,
     nameOfOrg = req.body.nameOfOrg,
     testUrl = req.body.testUrl,
+    startTime = req.body.startTime,
+    endTime = req.body.endTime,
+    startDate = req.body.startDate,
+    endDate = req.body.endDate,
     devID = id;
 
   await sendMail(
     msg(
       to,
       name,
-      duration,
       location,
       description,
       hiringPartner,
       nameOfOrg,
       testUrl,
+      startTime,
+      endTime,
+      startDate,
+      endDate,
       devID,
     ),
   );
