@@ -8,21 +8,42 @@ export const scheduleInterview = async (req: Request, res: Response) => {
   try {
     const { error, value } = interviewValidation(req.body);
     if (error) return res.status(400).send('Invalid Fields');
-
     const interview = new Interviews(req.body);
     const savedInterview = await interview.save();
+
+    let interviewedUser = await User.findOne({ email: req.body.decaDev });
+
+    let podName = interviewedUser!.pod;
 
     const hiringPartner = await HiringPartner.findOne({
       email: value.hiringPartner,
     });
 
+    //Why is this coming after saving the interview to the database?
     if (!hiringPartner) {
       res.status(404).json({ message: 'partner not found' });
       return;
     }
 
+    for (
+      let i = 0, length = hiringPartner.currentInviteCount.length;
+      i < length;
+      i++
+    ) {
+      if (hiringPartner.currentInviteCount[i].pod === podName.toLowerCase()) {
+        if (hiringPartner.currentInviteCount[i].count >= 1) {
+          ++hiringPartner.currentInviteCount[i].count;
+          hiringPartner.currentInviteCount[i].next = false;
+        } else {
+          ++hiringPartner.currentInviteCount[i].count;
+          hiringPartner.currentInviteCount[i].next = true;
+        }
+      }
+    }
+
     hiringPartner.interviews.push(interview._id);
     hiringPartner.markModified('interviews');
+    hiringPartner.markModified('currentInviteCount');
     await hiringPartner.save();
 
     const decaDev = await User.findOne({ email: req.body.decaDev });
