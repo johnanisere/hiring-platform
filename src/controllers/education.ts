@@ -119,3 +119,5 @@ export async function deleteEducation(
     return;
   }
 }
+
+//console.log
