@@ -86,44 +86,13 @@ describe('User Route', () => {
       .get('/api')
       .expect('Content-Type', /json/)
       .expect(200, { message: { hello: 'Hello World' } });
-  });
-
-  test('Invite hiring partner', async () => {
-    return await request(app)
-      .post('/api/v1/users/hiring-partner/invite')
-      .send({
-        name: 'Flutterwave',
-        email: 'careers@flutterwave.com',
-        phone: '08074382109',
-        password: 'password',
-        profilePhoto:
-          'https://res.cloudinary.com/demo/image/upload/w_150,h_150,c_thumb,g_fac...',
-        role: 'Hiring Partner',
-      })
-      .expect(res => {
-        expect(res.body).toEqual(
-          expect.objectContaining({
-            _id: expect.any(String),
-            name: 'Flutterwave',
-            email: 'careers@flutterwave.com',
-            password: expect.any(String),
-            phone: expect.any(String),
-            profilePhoto: expect.any(String),
-            token: expect.any(String),
-            createdAt: expect.any(String),
-            updatedAt: expect.any(String),
-            id: expect.any(String),
-            role: expect.any(String),
-          }),
-        );
-      });
-  });
+  }, 30000);
 
   test('logs in users', async () => {
     return await request(app)
       .post('/api/v1/users/login')
       .send({
-        email: 'careers@flutterwave.com',
+        email: 'sheyiogundijo@gmail.com',
         password: 'newsecret2',
       })
       .expect(res => {
@@ -152,7 +121,7 @@ describe('User Route', () => {
     return request(app)
       .post('/api/v1/users/login')
       .send({
-        email: 'careers@flutterwave.com',
+        email: 'sheyiogundijo@gmail.com',
         password: 'newsecret2',
       })
       .expect(res => {
