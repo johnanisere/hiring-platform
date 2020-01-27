@@ -84,8 +84,11 @@ describe('User Route', () => {
   test('Has a /api endpoint', async () => {
     return await request(app)
       .get('/api')
-      .expect('Content-Type', /json/)
-      .expect(200, { message: { hello: 'Hello World' } });
+      .expect(res => {
+        expect(res.body).toEqual(
+          expect.objectContaining({ message: { hello: 'Hello World' } }),
+        );
+      });
   });
 
   test('Invite hiring partner', async () => {
