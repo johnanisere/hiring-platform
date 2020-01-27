@@ -89,7 +89,7 @@ describe('User Route', () => {
           expect.objectContaining({ message: { hello: 'Hello World' } }),
         );
       });
-  }, 3000);
+  }, 30000);
 
   test('Invite hiring partner', async () => {
     return await request(app)
