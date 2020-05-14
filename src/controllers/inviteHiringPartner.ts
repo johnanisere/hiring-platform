@@ -1,6 +1,5 @@
 import User from '../models/User';
 import jwt from 'jsonwebtoken';
-import { PRIVATE_KEY } from '../config';
 import { Request, Response } from 'express';
 import sendInviteMail from '../utils/sendInviteMail';
 
@@ -16,13 +15,15 @@ export default async function inviteHiringPartner(req: Request, res: Response) {
         userId: data.id,
         email: data.email,
       },
-      PRIVATE_KEY,
+      `${process.env.ACCESS_TOKEN_SECRET}`,
       {
         expiresIn: '1h',
       },
     );
     try {
-      sendInviteMail(req, token);
+      if (process.env.NODE_ENV !== 'test') {
+        sendInviteMail(req, token);
+      }
     } catch (err) {
       res.status(400).send({
         see: 'seems to be an issue with sending an email',

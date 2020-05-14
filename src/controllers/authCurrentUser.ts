@@ -1,6 +1,5 @@
 import { Request, Response } from 'express';
 import jwt from 'jsonwebtoken';
-import { PRIVATE_KEY } from '../config';
 
 export default function authCurrentUser(req: Request, res: Response) {
   try {
@@ -10,7 +9,7 @@ export default function authCurrentUser(req: Request, res: Response) {
         id: user._id,
         email: user.email,
       },
-      PRIVATE_KEY,
+      `${process.env.ACCESS_TOKEN_SECRET}`,
       {
         expiresIn: '1h',
       },

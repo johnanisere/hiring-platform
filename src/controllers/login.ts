@@ -3,7 +3,6 @@ import joi from '@hapi/joi';
 import bcrypt from 'bcryptjs';
 import jwt from 'jsonwebtoken';
 import { Request, Response } from 'express';
-import { PRIVATE_KEY } from '../config';
 
 const loginSchema: any = {
   email: joi.string().required(),
@@ -44,7 +43,7 @@ export default async function userLogin(req: Request, res: Response) {
             id: suspected.id,
             email: suspected.email,
           },
-          PRIVATE_KEY,
+          `${process.env.ACCESS_TOKEN_SECRET}`,
           {
             expiresIn: '1h',
           },

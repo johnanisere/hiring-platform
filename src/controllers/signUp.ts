@@ -1,6 +1,5 @@
 import User from '../models/User';
 import jwt from 'jsonwebtoken';
-import { PRIVATE_KEY } from '../config';
 import { Response, Request, NextFunction } from 'express';
 import sendSignUpMail from '../utils/sendSignUpMail';
 
@@ -25,7 +24,7 @@ export default async function signUp(
           userId: newUser.id,
           email: newUser.email,
         },
-        PRIVATE_KEY,
+        `${process.env.ACCESS_TOKEN_SECRET}`,
         {
           expiresIn: '1h',
         },

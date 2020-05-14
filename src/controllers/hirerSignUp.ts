@@ -1,6 +1,5 @@
 import HiringPartner from '../models/HiringPartner';
 import jwt from 'jsonwebtoken';
-import { PRIVATE_KEY } from '../config';
 import { Request, Response } from 'express';
 import sendSignUpMail from '../utils/sendSignUpMail';
 import joi from '@hapi/joi';
@@ -39,7 +38,7 @@ export default async function hirerSignUp(req: Request, res: Response) {
           userId: savedData._id,
           email: data.email,
         },
-        PRIVATE_KEY,
+        `${process.env.ACCESS_TOKEN_SECRET}`,
         {
           expiresIn: '1h',
         },
