@@ -1,36 +1,35 @@
 import { Request, Response, NextFunction } from 'express';
 import jwt from 'jsonwebtoken';
-import { PRIVATE_KEY } from '../config';
-import User from '../models/User';
+import httpStatus from 'http-status';
 
-export default function authMiddleware(
-  req: Request,
-  res: Response,
-  next: NextFunction,
-) {
+import sendResponse from '../utils/response';
+
+export default function auth(req: Request, res: Response, next: NextFunction) {
   const token = req.headers['authorization'];
 
   if (!token) {
-    res.status(401).send({ message: 'UnAuthorised User' });
+    res.status(httpStatus.FORBIDDEN).send(
+      sendResponse({
+        message: 'No Token, Access Denied!',
+      }),
+    );
 
     return;
   }
 
-  const actualToken = token.split(' ')[1];
+  try {
+    const reqToken = token.split(' ')[1];
 
-  jwt.verify(actualToken, PRIVATE_KEY, async (err: any, payload: any) => {
-    if (err) {
-      res.status(401).send(err);
-    }
+    jwt.verify(reqToken, `${process.env.ACCESS_TOKEN_SECRET}`);
 
-    let doc = await User.findOne({ email: payload.email }).select({
-      password: 0,
-    });
-    if (doc) {
-      req.body.user = doc;
-      next();
-    } else {
-      res.status(401).send({ error: 'Unauthorized User' });
-    }
-  });
+    next();
+  } catch (error) {
+    res.status(httpStatus.UNAUTHORIZED).send(
+      sendResponse({
+        message: 'Unauthorized User!',
+        error,
+      }),
+    );
+    return;
+  }
 }
