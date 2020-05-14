@@ -1,26 +1,27 @@
 import mongoose from 'mongoose';
 
-async function connectMongoDB() {
-  mongoose.set('useNewUrlParser', true);
-  mongoose.set('useFindAndModify', false);
-  mongoose.set('useCreateIndex', true);
+async function connectMongoDB(dbname: string) {
   await mongoose
-    .connect('mongodb://localhost:27017/routesTest', {
+    .connect(`${process.env.MONGO_URI_TEST}/${dbname}`, {
       useNewUrlParser: true,
       useCreateIndex: true,
+      useFindAndModify: false,
+      useUnifiedTopology: true,
     })
     .catch((err: any) => {
       console.error(err);
-
-      process.exit(1);
+      return;
     });
-  console.log('Connected');
+
+  console.log('Connected to testDB');
 }
 
 async function disconnectMongoDB() {
   await mongoose.connection.db.dropDatabase();
 
-  mongoose.connection.close();
+  await mongoose.connection.close();
+
+  // await db.close();
 }
 
 module.exports = {
