@@ -14,8 +14,8 @@ let admin: any;
 let token: string;
 
 beforeAll(async () => {
-  seed();
   await connectMongoDB('dev-test');
+  await seed();
 
   admin = await request(app)
     .post('/api/v1/users/login')
@@ -34,7 +34,7 @@ describe('/users/hire-dev', () => {
       .put('/api/v1/users/hire-dev')
       .set('Authorization', `Bearer ${token}`)
       .send({
-        email: 'sheyiogundijo@gmail.com',
+        email: 'decadev@example.com',
         hired: true,
       })
       .then(res => {
@@ -52,7 +52,7 @@ describe('/users/hire-dev', () => {
       .put('/api/v1/users/hire-dev')
       .set('Authorization', `Bearer ${token}`)
       .send({
-        email: 'decadev@example.com',
+        email: 'wrongdecadev@example.com',
         hired: true,
       })
       .then(res => {
@@ -70,7 +70,7 @@ describe('/users/hire-dev', () => {
       .put('/api/v1/users/hire-dev')
       .set('Authorization', `Bearer ${token}`)
       .send({
-        email: 'sheyiogundijo@gmail.com',
+        email: 'decadev@example.com',
         hired: false,
       })
       .then(res => {
