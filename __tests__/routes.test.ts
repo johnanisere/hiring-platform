@@ -1,14 +1,14 @@
 import request from 'supertest';
 import app from '../src/app';
-import seedUsers from '../src/db/seed/index';
-import { seedPartners } from '../src/db/seed/index';
+import seedUsers from '../testSetup/seed/index';
+import { seedPartners } from '../testSetup/seed/index';
 
 const { connectMongoDB, disconnectMongoDB } = require('../testSetup/mongodb');
 
 // let interviewId = '';
 
 beforeAll(async () => {
-  await connectMongoDB();
+  await connectMongoDB('routesTest');
   seedUsers();
   await seedPartners();
 });
