@@ -1,17 +1,38 @@
-import Interviews from '../models/Interviews';
 import { Request, Response } from 'express';
+import httpStatus from 'http-status';
+
+import Interviews from '../models/Interviews';
 import HiringPartner from '../models/HiringPartner';
 import User from '../models/User';
 import { interviewValidation } from '../validator/interviewValidation';
 import interviewInvitationMail from '../utils/interviewInvitation';
+import sendResponse from '../utils/response';
+
 export const scheduleInterview = async (req: Request, res: Response) => {
+  const { error, value } = interviewValidation(req.body);
+  if (error) {
+    res.status(httpStatus.BAD_REQUEST).send(
+      sendResponse({
+        message: 'Please provide valid interview details',
+        error,
+      }),
+    );
+    return;
+  }
+
   try {
-    const { error, value } = interviewValidation(req.body);
-    if (error) return res.status(400).send('Invalid Fields');
     const interview = new Interviews(req.body);
-    const savedInterview = await interview.save();
 
     let interviewedUser = await User.findOne({ email: req.body.decaDev });
+
+    if (!interviewedUser) {
+      res.status(httpStatus.NOT_FOUND).send(
+        sendResponse({
+          message: 'decadev not found!',
+        }),
+      );
+      return;
+    }
 
     let podName = interviewedUser!.pod;
 
@@ -19,11 +40,16 @@ export const scheduleInterview = async (req: Request, res: Response) => {
       email: value.hiringPartner,
     });
 
-    //Why is this coming after saving the interview to the database?
     if (!hiringPartner) {
-      res.status(404).json({ message: 'partner not found' });
+      res.status(httpStatus.NOT_FOUND).send(
+        sendResponse({
+          message: 'partner not found!',
+        }),
+      );
       return;
     }
+
+    const savedInterview = await interview.save();
 
     for (
       let i = 0, length = hiringPartner.currentInviteCount.length;
@@ -51,7 +77,10 @@ export const scheduleInterview = async (req: Request, res: Response) => {
     if (!decaDev) return;
     decaDev.interviews.push(interview._id);
     await decaDev.save();
-    interviewInvitationMail(req, decaDev, interview._id);
+
+    if (process.env.NODE_ENV !== 'test') {
+      interviewInvitationMail(req, decaDev, interview._id);
+    }
 
     return res.status(200).json({
       interviewData: {
