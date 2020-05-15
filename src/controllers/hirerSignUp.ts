@@ -44,7 +44,9 @@ export default async function hirerSignUp(req: Request, res: Response) {
         },
       );
       try {
-        sendSignUpMail(req, token);
+        if (process.env.NODE_ENV !== 'test') {
+          sendSignUpMail(req, token);
+        }
       } catch (err) {
         res.status(400).send({
           see: `seems to be an issue with sending an email to ${req.body.email}!`,
