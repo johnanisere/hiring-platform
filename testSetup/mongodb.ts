@@ -1,6 +1,7 @@
 import mongoose from 'mongoose';
 
-let connection: any;
+import User from '../src/models/User';
+import HiringPartner from '../src/models/HiringPartner';
 
 async function connectMongoDB(dbname: string) {
   await mongoose
@@ -14,18 +15,20 @@ async function connectMongoDB(dbname: string) {
       console.error(err);
       return;
     });
-
-  connection = mongoose.connection;
-
   console.log('Connected to testDB');
 }
 
 async function disconnectMongoDB() {
-  await connection.db.dropDatabase();
-
-  await mongoose.connection.close();
-
-  // await db.close();
+  await User.remove({}, function(err) {
+    if (err) {
+      console.log(err);
+    }
+  });
+  await HiringPartner.remove({}, function(err) {
+    if (err) {
+      console.log(err);
+    }
+  });
 }
 
 module.exports = {
