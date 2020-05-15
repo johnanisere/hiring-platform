@@ -1,0 +1,27 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Updates Decadev Profile Adds new skill details of Decadevs 1`] = `
+Object {
+  "bio": "A very good dev",
+  "count": 1,
+  "education": Array [],
+  "email": "decadev-user@example.com",
+  "experience": Array [],
+  "gender": "male",
+  "github": "https://github.com",
+  "hired": false,
+  "interviews": Array [],
+  "linkedIn": "https://linkedin.com/in/oluwaseyi-ogundijo-a29699195",
+  "location": "Lagos",
+  "name": "Jane Mary Lala",
+  "phone": "08074583218",
+  "pod": "java",
+  "portfolio": Array [],
+  "profilePhoto": "https://encq=tbn:ANd9GcSIcqjP8a8EfGrtkCX0CJXJ4HRltM5u8Jdhkz_TneWdb4rfPsMi",
+  "publications": Array [],
+  "role": "dev",
+  "stackOverflow": "https://stackoverflow.com",
+  "tests": Array [],
+  "website": "https://www.google.com/",
+}
+`;
