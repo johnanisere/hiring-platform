@@ -1,29 +1,45 @@
 import mongoose from 'mongoose';
 
-async function connectMongoDB() {
-  mongoose.set('useNewUrlParser', true);
-  mongoose.set('useFindAndModify', false);
-  mongoose.set('useCreateIndex', true);
+import User from '../src/models/User';
+import HiringPartner from '../src/models/HiringPartner';
+
+async function connectMongoDB(dbname: string) {
   await mongoose
-    .connect('mongodb://localhost:27017/routesTest', {
+    .connect(`${process.env.MONGO_URI_TEST}/${dbname}`, {
       useNewUrlParser: true,
       useCreateIndex: true,
+      useFindAndModify: false,
+      useUnifiedTopology: true,
     })
     .catch((err: any) => {
       console.error(err);
-
-      process.exit(1);
+      return;
     });
-  console.log('Connected');
+  console.log('Connected to testDB');
 }
 
 async function disconnectMongoDB() {
-  await mongoose.connection.db.dropDatabase();
+  try {
+    await User.deleteMany({});
+    await HiringPartner.deleteMany({});
 
-  mongoose.connection.close();
+    await mongoose.connection.close();
+  } catch (err) {
+    console.log('error removing models', err);
+  }
+}
+async function disconnectDecadevMongoDB() {
+  try {
+    await User.deleteMany({});
+
+    await mongoose.connection.close();
+  } catch (err) {
+    console.log('error removing models', err);
+  }
 }
 
 module.exports = {
   connectMongoDB,
   disconnectMongoDB,
+  disconnectDecadevMongoDB,
 };

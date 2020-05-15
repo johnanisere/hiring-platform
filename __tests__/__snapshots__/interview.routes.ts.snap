@@ -1,0 +1,15 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`interview route schedule interview 1`] = `
+Object {
+  "decaDev": "interviewed@example.com",
+  "description": "This is to inform you that you have been shortlisted for an interview",
+  "endDate": "wed, 1st oct 2020",
+  "endTime": "11am",
+  "hiringPartner": "dola@example.com",
+  "location": "Victoria Island",
+  "scheduled": "wed, 1st oct 2020",
+  "startDate": "wed, 1st oct 2020",
+  "startTime": "10am",
+}
+`;

@@ -20,10 +20,12 @@ const app = express();
 const swaggerUi = require('swagger-ui-express');
 const swaggerDocument = require('../doc.json');
 
-dbConnection.once('open', function() {
-  seed();
-  console.log('MongoDB database connection established successfully');
-});
+if (process.env.NODE_ENV !== 'test') {
+  dbConnection.once('open', function() {
+    seed();
+    console.log('MongoDB database connection established successfully');
+  });
+}
 
 // Setup Request logging
 const logFormat = process.env.NODE_ENV === 'production' ? 'combined' : 'dev';

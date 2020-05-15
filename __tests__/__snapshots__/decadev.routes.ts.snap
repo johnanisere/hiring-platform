@@ -1,0 +1,41 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`/users/hire-dev Responds with status code 200 and Object containing message "Jane Mary has been added back to the platform" where "hired" is false 1`] = `
+Object {
+  "message": "Jane Mary has been added back to the platform",
+  "payload": Object {
+    "decadev": "Jane Mary",
+  },
+}
+`;
+
+exports[`/users/hire-dev Responsds with status code 200 and Object containing message 1`] = `
+Object {
+  "message": "Jane Mary has been hired",
+  "payload": Object {
+    "decadev": "Jane Mary",
+  },
+}
+`;
+
+exports[`/users/hire-dev Responsds with status code 404 and Object containing message "decadev not found!" 1`] = `
+Object {
+  "message": "decadev not found!",
+}
+`;
+
+exports[`/users/update-password/ Responds with status 200 and message "User not found!!!" if password is wrong 1`] = `
+Object {
+  "message": "User not found!!!",
+}
+`;
+
+exports[`/users/update-password/ Responds with status 200 and message 1`] = `
+Object {
+  "message": "Password updated",
+  "updated": Object {
+    "email": "decadev@example.com",
+    "name": "Jane Mary",
+  },
+}
+`;

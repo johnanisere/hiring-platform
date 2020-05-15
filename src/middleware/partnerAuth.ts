@@ -1,6 +1,5 @@
 import { Request, Response, NextFunction } from 'express';
 import jwt from 'jsonwebtoken';
-import { PRIVATE_KEY } from '../config';
 import HiringPartner from '../models/HiringPartner';
 
 export default function authMiddleware(
@@ -18,19 +17,23 @@ export default function authMiddleware(
 
   const actualToken = token.split(' ')[1];
 
-  jwt.verify(actualToken, PRIVATE_KEY, async (err: any, payload: any) => {
-    if (err) {
-      res.status(401).send(err);
-    }
+  jwt.verify(
+    actualToken,
+    `${process.env.ACCESS_TOKEN_SECRET}`,
+    async (err: any, payload: any) => {
+      if (err) {
+        res.status(401).send(err);
+      }
 
-    let doc = await HiringPartner.findOne({ email: payload.email }).select({
-      password: 0,
-    });
-    if (doc) {
-      req.body.id = doc._id;
-      next();
-    } else {
-      res.status(401).send({ error: 'Unauthorized User' });
-    }
-  });
+      let doc = await HiringPartner.findOne({ email: payload.email }).select({
+        password: 0,
+      });
+      if (doc) {
+        req.body.id = doc._id;
+        next();
+      } else {
+        res.status(401).send({ error: 'Unauthorized User' });
+      }
+    },
+  );
 }

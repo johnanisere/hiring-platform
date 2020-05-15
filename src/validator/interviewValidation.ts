@@ -24,6 +24,7 @@ export const interviewValidation = (data: any) => {
     declined: joi.boolean(),
     pending: joi.boolean(),
     declineReason: joi.string(),
+    id: joi.any(),
   };
 
   return joi.validate(data, schema);

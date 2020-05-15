@@ -2,7 +2,6 @@ import { Request, Response } from 'express';
 import User from '../models/User';
 import devsMailInvite from '../utils/devinvite';
 import jwt from 'jsonwebtoken';
-import { PRIVATE_KEY } from '../config';
 
 const sendInviteEmail = (emails: []) => {
   const invites = emails.map(async (email: string) => {
@@ -22,7 +21,7 @@ const sendInviteEmail = (emails: []) => {
         email: array[1],
         userId: newDev._id,
       },
-      PRIVATE_KEY,
+      `${process.env.ACCESS_TOKEN_SECRET}`,
       {
         expiresIn: '1h',
       },
