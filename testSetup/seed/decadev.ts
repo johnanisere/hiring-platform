@@ -19,6 +19,7 @@ const users = [
     role: 'dev',
     profilePhoto:
       'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSIcqjP8a8EfGrtkCX0CJXJ4HRltM5u8Jdhkz_TneWdb4rfPsMi',
+    pod: 'android',
   },
 ];
 
