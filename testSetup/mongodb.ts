@@ -1,5 +1,7 @@
 import mongoose from 'mongoose';
 
+let connection: any;
+
 async function connectMongoDB(dbname: string) {
   await mongoose
     .connect(`${process.env.MONGO_URI_TEST}/${dbname}`, {
@@ -13,11 +15,13 @@ async function connectMongoDB(dbname: string) {
       return;
     });
 
+  connection = mongoose.connection;
+
   console.log('Connected to testDB');
 }
 
 async function disconnectMongoDB() {
-  await mongoose.connection.db.dropDatabase();
+  await connection.db.dropDatabase();
 
   await mongoose.connection.close();
 
