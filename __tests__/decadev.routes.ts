@@ -3,7 +3,10 @@ import request from 'supertest';
 import app from '../src/app';
 import seed from '../testSetup/seed/decadev';
 
-const { connectMongoDB, disconnectMongoDB } = require('../testSetup/mongodb');
+const {
+  connectMongoDB,
+  disconnectDecadevMongoDB,
+} = require('../testSetup/mongodb');
 
 const credentials = {
   email: 'doe@example.com',
@@ -36,7 +39,7 @@ beforeAll(async () => {
   decadevToken = decadev.body.token;
 });
 
-afterAll(async () => await disconnectMongoDB());
+afterAll(async () => await disconnectDecadevMongoDB());
 
 describe('/users/hire-dev', () => {
   test('Responsds with status code 200 and Object containing message', async () => {

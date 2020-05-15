@@ -22,6 +22,17 @@ async function disconnectMongoDB() {
   try {
     await User.deleteMany({});
     await HiringPartner.deleteMany({});
+
+    await mongoose.connection.close();
+  } catch (err) {
+    console.log('error removing models', err);
+  }
+}
+async function disconnectDecadevMongoDB() {
+  try {
+    await User.deleteMany({});
+
+    await mongoose.connection.close();
   } catch (err) {
     console.log('error removing models', err);
   }
@@ -30,4 +41,5 @@ async function disconnectMongoDB() {
 module.exports = {
   connectMongoDB,
   disconnectMongoDB,
+  disconnectDecadevMongoDB,
 };
