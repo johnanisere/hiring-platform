@@ -3,7 +3,7 @@ import { Request, Response } from 'express';
 import joi from '@hapi/joi';
 import httpStatus from 'http-status';
 
-import feedbackMail from '../utils/feedBackMail';
+import feedbackMail from '../utils/feedbackMail';
 import sendResponse from '../utils/response';
 
 const hireDevReqBodySchema = joi.object().keys({
