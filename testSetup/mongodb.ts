@@ -19,16 +19,12 @@ async function connectMongoDB(dbname: string) {
 }
 
 async function disconnectMongoDB() {
-  await User.remove({}, function(err) {
-    if (err) {
-      console.log(err);
-    }
-  });
-  await HiringPartner.remove({}, function(err) {
-    if (err) {
-      console.log(err);
-    }
-  });
+  try {
+    await User.deleteMany({});
+    await HiringPartner.deleteMany({});
+  } catch (err) {
+    console.log('error removing models', err);
+  }
 }
 
 module.exports = {
